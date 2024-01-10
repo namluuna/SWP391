@@ -15,20 +15,7 @@ create table users(
 	created_at datetime
 )
 
-create table user_addresses(
-	id int IDENTITY(1,1) PRIMARY KEY,
-	user_id int,
-	province_code nvarchar(20) NOT NULL,
-	district_code nvarchar(20) NOT NULL,
-	ward_code nvarchar(20) NOT NULL,
-	address nvarchar(100),
-	created_at datetime,
-	deleted_at datetime
-)
-ALTER TABLE user_addresses ADD CONSTRAINT user_address_province_code_fkey FOREIGN KEY (province_code) REFERENCES provinces(code);
-ALTER TABLE user_addresses ADD CONSTRAINT user_address_district_code_fkey FOREIGN KEY (district_code) REFERENCES districts(code);
-ALTER TABLE user_addresses ADD CONSTRAINT user_address_ward_code_fkey FOREIGN KEY (ward_code) REFERENCES wards(code);
-ALTER TABLE user_addresses ADD CONSTRAINT user_fkey FOREIGN KEY (user_id) REFERENCES users(id);
+
 
 create table categories(
 	id int IDENTITY(1,1) PRIMARY KEY,
@@ -171,3 +158,17 @@ ALTER TABLE wards ADD CONSTRAINT wards_district_code_fkey FOREIGN KEY (district_
 CREATE INDEX idx_wards_district ON wards(district_code);
 CREATE INDEX idx_wards_unit ON wards(administrative_unit_id);
 
+create table user_addresses(
+	id int IDENTITY(1,1) PRIMARY KEY,
+	user_id int,
+	province_code nvarchar(20) NOT NULL,
+	district_code nvarchar(20) NOT NULL,
+	ward_code nvarchar(20) NOT NULL,
+	address nvarchar(100),
+	created_at datetime,
+	deleted_at datetime
+)
+ALTER TABLE user_addresses ADD CONSTRAINT user_address_province_code_fkey FOREIGN KEY (province_code) REFERENCES provinces(code);
+ALTER TABLE user_addresses ADD CONSTRAINT user_address_district_code_fkey FOREIGN KEY (district_code) REFERENCES districts(code);
+ALTER TABLE user_addresses ADD CONSTRAINT user_address_ward_code_fkey FOREIGN KEY (ward_code) REFERENCES wards(code);
+ALTER TABLE user_addresses ADD CONSTRAINT user_fkey FOREIGN KEY (user_id) REFERENCES users(id);
