@@ -12,8 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <a href="employees?mod=1">create new employees</a>
-        <h1>List of Employees</h1>
+         <a href="employees?mod=1">create new Groups</a>
+        <h1>List of Groups</h1>
     
     <table border="1">
         <tr>
@@ -27,10 +27,11 @@
         <!-- Loop through the employees and display their information -->
         <c:forEach var="groups" items="${data}">
             <tr>
-                <td>${employee.id}</td>
-                <td>${employee.first}</td>
-                <td>${employee.last}</td>
-                <td>${employee.age}</td>
+                <td>${groups.id}</td>
+                <td>${groups.name}</td>
+                <td>${groups.description}</td>
+                <td>${groups.created_at}</td>
+                <td>${groups.deleted_at}</td>
                 <td><a href="">select</a></td>
                 <td><a href="">delete</a></td>
             </tr>
