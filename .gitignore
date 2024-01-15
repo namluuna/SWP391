@@ -5,3 +5,4 @@ SWP_391/nbproject/project.properties
 build/
 SWP_391/nbproject/project.properties
 *.properties
+SWP_391/build/web/WEB-INF/lib/sqljdbc42.jar
