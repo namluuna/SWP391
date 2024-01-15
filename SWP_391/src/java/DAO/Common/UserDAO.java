@@ -151,7 +151,7 @@ public class UserDAO extends DBContext{
                 Timestamp created_at = rs.getTimestamp("created_at");
                 UserAddressDAO uadao = new UserAddressDAO();
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
-                User u = new User(user_id, phone, email, password, phone, is_deleted, role, status, user_addresses);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -160,4 +160,12 @@ public class UserDAO extends DBContext{
         return users;
     }
 
+    public static void main(String[] args) {
+        UserDAO udao = new UserDAO();
+        ArrayList<User> users = new ArrayList<>();
+        users = udao.sellectallUser();
+        for (User user : users) {
+            System.out.println(user.toString());
+        }
+    }
 }
