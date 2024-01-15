@@ -2,4 +2,6 @@
 /Swp391_group2/nbproject/private/
 /SWP_391/nbproject/private/
 SWP_391/nbproject/project.properties
-/SWP_391/dist/
+build/
+SWP_391/nbproject/project.properties
+*.properties
