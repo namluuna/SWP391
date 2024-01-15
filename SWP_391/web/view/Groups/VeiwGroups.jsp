@@ -42,7 +42,7 @@
                             <td>${group.created_at}</td>
                             <td>${group.deleted_at}</td>
                             <td>
-                                <a href="" class="btn btn-info btn-sm">Select</a>
+                                <a href="" class="btn btn-info btn-sm">Edit</a>
                                 <a href="" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>

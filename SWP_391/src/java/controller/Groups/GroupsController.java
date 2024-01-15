@@ -59,8 +59,8 @@ public class GroupsController extends HttpServlet {
         GroupsDAO g = new GroupsDAO();
         ArrayList<Groups> data = g.selectAllGroups();
         request.setAttribute("data", data);
-//        request.getRequestDispatcher("view\\Groups\\VeiwGroups.jsp").forward(request, response);
-        request.getRequestDispatcher("view\\Groups\\CreateGroups.jsp").forward(request, response);
+        request.getRequestDispatcher("view\\Groups\\VeiwGroups.jsp").forward(request, response);
+//        request.getRequestDispatcher("view\\Groups\\CreateGroups.jsp").forward(request, response);
     } 
 
     /** 
