@@ -8,7 +8,6 @@ import DAO.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javafx.scene.chart.PieChart;
 import model.Groups.Groups;
 /**
  *
