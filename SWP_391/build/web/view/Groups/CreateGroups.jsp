@@ -40,7 +40,7 @@
 <div class="container">
     <div class="card mx-auto p-4">
         <h1 class="text-center mb-4">Create New Groups</h1>
-        <form>
+        <form name="form" action="groups" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -48,14 +48,6 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
                 <input type="text" class="form-control" id="description" name="description">
-            </div>
-            <div class="mb-3">
-                <label for="created_at" class="form-label">Created_at:</label>
-                <input type="datetime" class="form-control" id="created_at" name="created_at">
-            </div>
-            <div class="mb-3">
-                <label for="deleted_at" class="form-label">Deleted_at:</label>
-                <input type="datetime" class="form-control" id="deleted_at" name="deleted_at">
             </div>
             <button type="submit" class="btn btn-primary" name="add">ADD</button>
         </form>

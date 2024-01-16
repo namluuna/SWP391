@@ -9,13 +9,13 @@ package model.Groups;
  * @author lucdu
  */
 public class Groups {
-    int id;
+    String id;
     String name , description , created_at , deleted_at;
 
     public Groups() {
     }
 
-    public Groups(int id, String name, String description, String created_at, String deleted_at) {
+    public Groups(String id, String name, String description, String created_at, String deleted_at) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,11 +23,11 @@ public class Groups {
         this.deleted_at = deleted_at;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -67,6 +67,8 @@ public class Groups {
     public String toString() {
         return "Groups{" + "id=" + id + ", name=" + name + ", description=" + description + ", created_at=" + created_at + ", deleted_at=" + deleted_at + '}';
     }
+
+   
     
     
     

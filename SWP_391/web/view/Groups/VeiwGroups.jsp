@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="container mt-5">
-            <a href="employees?mod=1" class="btn btn-primary mb-3">Create New Group</a>
+            <a href="groups?mod=1" class="btn btn-primary mb-3">Create New Group</a>
             <h1>List of Groups</h1>
         
             <table class="table table-bordered">
