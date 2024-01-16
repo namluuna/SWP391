@@ -24,6 +24,10 @@
         <servlet-name>GroupsController</servlet-name>
         <servlet-class>controller.Groups.GroupsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadCategoryController</servlet-name>
+        <servlet-class>controller.sale.LoadCategoryController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login-controller</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>GroupsController</servlet-name>
         <url-pattern>/groups</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadCategoryController</servlet-name>
+        <url-pattern>/loadcategory</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
