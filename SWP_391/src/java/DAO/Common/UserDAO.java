@@ -19,11 +19,10 @@ import model.Common.UserAddress;
  *
  * @author ifyou
  */
-public class UserDAO extends DBContext{
-    
-    
-     public void addNewUser(User user){
-         try {
+public class UserDAO extends DBContext {
+
+    public void addNewUser(User user) {
+        try {
             // SQL INSERT query
             String sql = "INSERT INTO [users] (name, email, password, phone, is_deleted, role, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -41,9 +40,9 @@ public class UserDAO extends DBContext{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-     }
-     
-     public void deleteUser(int userID){
+    }
+
+    public void deleteUser(int userID) {
         try {
             String sql = "UPDATE users SET [is_deleted] = 1 WHERE [id] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -53,10 +52,10 @@ public class UserDAO extends DBContext{
             ex.printStackTrace();
         }
     }
-    
-    public User getUserByID(String userId){
-         
-         try {
+
+    public User getUserByID(String userId) {
+
+        try {
             // Select user with email
             String sql = "SELECT * FROM users WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -79,10 +78,10 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
-     
-     public User searchUserByEmail(String email){
-         
-         try {
+
+    public User searchUserByEmail(String email) {
+
+        try {
             // Select user with email
             String sql = "SELECT * FROM users WHERE email = ?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -105,9 +104,10 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
-    public User searchUserByEmailAndPassword(String userEmail, String userPassword){
-         
-         try {
+
+    public User searchUserByEmailAndPassword(String userEmail, String userPassword) {
+
+        try {
             // Select user with email
             String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND is_deleted = 0";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -131,8 +131,8 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
-     
-    public ArrayList<User> sellectallUser(){
+
+    public ArrayList<User> sellectallUser() {
         ArrayList<User> users = new ArrayList<>();
         try {
             // Select address from user with user id
@@ -160,12 +160,4 @@ public class UserDAO extends DBContext{
         return users;
     }
 
-    public static void main(String[] args) {
-        UserDAO udao = new UserDAO();
-        ArrayList<User> users = new ArrayList<>();
-        users = udao.sellectallUser();
-        for (User user : users) {
-            System.out.println(user.toString());
-        }
-    }
 }
