@@ -12,15 +12,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Time;
-import java.util.List;
 import model.Categories.Category;
 
 /**
  *
  * @author MTD
  */
-public class LoadCategoryController extends HttpServlet {
+public class EditCategoryController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -32,11 +30,7 @@ public class LoadCategoryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        CategoryDAO dao = new CategoryDAO();
-        List<Category> listC = dao.selectAllCategory();
-        request.setAttribute("listCC", listC);
-        request.setAttribute("create_at", new java.sql.Timestamp(new java.util.Date().getTime()));
-        request.getRequestDispatcher("view\\sale\\ManagerCategory.jsp").forward(request, response);
+        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
