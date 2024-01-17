@@ -35,7 +35,6 @@ public class LoadCategoryController extends HttpServlet {
         CategoryDAO dao = new CategoryDAO();
         List<Category> listC = dao.selectAllCategory();
         request.setAttribute("listCC", listC);
-        request.setAttribute("create_at", new java.sql.Timestamp(new java.util.Date().getTime()));
         request.getRequestDispatcher("view\\sale\\ManagerCategory.jsp").forward(request, response);
     } 
 
