@@ -15,7 +15,7 @@ import model.Common.District;
  * @author ifyou
  */
 public class DistrictDAO extends DBContext{
-    public ArrayList selectAllProvince() {
+    public ArrayList selectAllDistrict() {
         ArrayList<District> provinces = new ArrayList<District>();
 
         try {
@@ -34,5 +34,4 @@ public class DistrictDAO extends DBContext{
         }
         return provinces;
     }
-
 }

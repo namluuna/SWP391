@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,15 +59,15 @@
             input:focus {
                 border-color: #ff4500;
             }
-            
+
             textarea:focus {
                 border-color: #ff4500;
             }
-            
+
             select:focus {
                 border-color: #ff4500;
             }
-            
+
             button {
                 background-color: #ff4500;
                 color: #fff;
@@ -121,28 +122,45 @@
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
 
+
                     <label for="province">Province:</label>
                     <select id="province" name="province" required>
-                        <option value="province1">Province 1</option>
-                        <option value="province2">Province 2</option>
-                        <!-- Add more options as needed -->
-
+                        <c:forEach items="${provinces}" var="c">
+                            <option value="${c.code}">${c.name}</option>
+                        </c:forEach>
                     </select>
 
                     <label for="district">District:</label>
                     <select id="district" name="district" required>
-                        <!-- District options will depend on the selected province -->
+                        <c:forEach items="${districts}" var="c">
+                            <option value="${c.code}">${c.name}</option>
+                        </c:forEach>
                     </select>
 
                     <label for="ward">Ward:</label>
                     <select id="ward" name="ward" required>
-                        <!-- Ward options will depend on the selected district -->
+                        <c:forEach items="${wards}" var="c">
+                            <option value="${c.code}">${c.name}</option>
+                        </c:forEach>
                     </select>
-
                     <label for="address">Address:</label>
                     <textarea id="address" name="address" rows="4" required></textarea>
                     <button type="submit">Register</button>
                     <br>
+                    <div class="input-image">
+                        <div>
+                            <label for="input">
+                                Choose Image <br />
+                                <i class="fa-solid fa-camera"></i>
+                                <input class="field image-name" id="input" type="file" name="image" style="display: none"
+                                       required />
+                            </label>
+                        </div>
+                        <h6 class="empty-alert">
+                            Don't forget to upload an image of your product!
+                        </h6>
+                        <img src="./img/imgPreview.jpg" alt="" class="input-image__display" />
+                    </div>
                 </form>
 
             </div>

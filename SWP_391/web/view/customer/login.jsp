@@ -108,7 +108,7 @@
                     <br>
                     <div class="links">
                         <a href="fogotpassword.jsp">Forgot password?</a>
-                        <a href="register.jsp">Do not have an account?</a>
+                        <a href="/SWP_391/register">Do not have an account?</a>
                     </div>
                 </form>
 
