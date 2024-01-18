@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Register</title>
         <style>
             body {
                 font-family: "Comic Sans MS", cursive;
@@ -132,39 +132,61 @@
 
                     <label for="district">District:</label>
                     <select id="district" name="district" required>
-                        <c:forEach items="${districts}" var="c">
-                            <option value="${c.code}">${c.name}</option>
-                        </c:forEach>
+                        <option value=""></option>
                     </select>
 
                     <label for="ward">Ward:</label>
                     <select id="ward" name="ward" required>
-                        <c:forEach items="${wards}" var="c">
-                            <option value="${c.code}">${c.name}</option>
-                        </c:forEach>
+                        <option value=""></option>
                     </select>
                     <label for="address">Address:</label>
                     <textarea id="address" name="address" rows="4" required></textarea>
-                    <button type="submit">Register</button>
+                    <button type="submit" onclick="addUser()">Register</button>
                     <br>
-                    <div class="input-image">
-                        <div>
-                            <label for="input">
-                                Choose Image <br />
-                                <i class="fa-solid fa-camera"></i>
-                                <input class="field image-name" id="input" type="file" name="image" style="display: none"
-                                       required />
-                            </label>
-                        </div>
-                        <h6 class="empty-alert">
-                            Don't forget to upload an image of your product!
-                        </h6>
-                        <img src="./img/imgPreview.jpg" alt="" class="input-image__display" />
-                    </div>
+                    <!--                    <div class="input-image">
+                                            <div>
+                                                <label for="input">
+                                                    Choose Image <br />
+                                                    <i class="fa-solid fa-camera"></i>
+                                                    <input class="field image-name" id="input" type="file" name="image" style="display: none"
+                                                           required />
+                                                </label>
+                                            </div>
+                                            <h6 class="empty-alert">
+                                                Don't forget to upload an image of your product!
+                                            </h6>
+                                            <img src="./img/imgPreview.jpg" alt="" class="input-image__display" />
+                                        </div>-->
                 </form>
-
             </div>
-
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#province").change(function () {
+                var selectedProvince = $(this).val();
+                $.ajax({
+                    url: "/SWP_391/DistrictServlet",
+                    method: "POST",
+                    data: {provinceCode: selectedProvince},
+                    success: function (data) {
+                        $("#district").html(data);
+                        $("#ward").html("<option value=''>Select Ward</option>");
+                    }
+                });
+            });
+            $("#district").change(function () {
+                var selectedDistrict = $(this).val();
+                $.ajax({
+                    url: "/SWP_391/WardServlet",
+                    method: "POST",
+                    data: {districtCode: selectedDistrict},
+                    success: function (data) {
+                        $("#ward").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </html>

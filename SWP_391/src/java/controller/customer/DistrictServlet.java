@@ -5,8 +5,6 @@
 package controller.customer;
 
 import DAO.Common.DistrictDAO;
-import DAO.Common.ProvinceDAO;
-import DAO.Common.WardDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,14 +13,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Common.District;
-import model.Common.Province;
-import model.Common.Ward;
 
 /**
  *
  * @author ifyou
  */
-public class RegisterController extends HttpServlet {
+public class DistrictServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +34,15 @@ public class RegisterController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ProvinceDAO pdao = new ProvinceDAO();
-            List<Province> provinces = pdao.selectAllProvince();
-            request.setAttribute("provinces", provinces);
-            request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DistrictServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DistrictServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -71,7 +72,14 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String proviceCode = request.getParameter("provinceCode");
+        DistrictDAO districtDAO = new DistrictDAO();
+        List<District> districts = districtDAO.selectDistrictByProvinceCode(proviceCode);
+        String options = "";
+        for (District district : districts) {
+            options += "<option value='" + district.getCode() + "'>" + district.getName() + "</option>";
+        }
+        response.getWriter().write(options);
     }
 
     /**

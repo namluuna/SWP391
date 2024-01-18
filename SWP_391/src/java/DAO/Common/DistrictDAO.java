@@ -16,7 +16,7 @@ import model.Common.District;
  */
 public class DistrictDAO extends DBContext{
     public ArrayList selectAllDistrict() {
-        ArrayList<District> provinces = new ArrayList<District>();
+        ArrayList<District> provinces = new ArrayList<>();
 
         try {
             String sql = "  SELECT * FROM [districts]";
@@ -34,4 +34,26 @@ public class DistrictDAO extends DBContext{
         }
         return provinces;
     }
+    
+    public ArrayList selectDistrictByProvinceCode(String provinceCode){
+        ArrayList<District> districts = new ArrayList<>();
+
+        try {
+            String sql = "  SELECT * FROM [districts] WHERE province_code = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, provinceCode);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                String province_code = rs.getString("province_code");
+                District district = new District(code, name, province_code);
+                districts.add(district);
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return districts;
+    }
+    
 }

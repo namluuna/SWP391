@@ -4,8 +4,6 @@
  */
 package controller.customer;
 
-import DAO.Common.DistrictDAO;
-import DAO.Common.ProvinceDAO;
 import DAO.Common.WardDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,15 +12,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Common.District;
-import model.Common.Province;
 import model.Common.Ward;
 
 /**
  *
  * @author ifyou
  */
-public class RegisterController extends HttpServlet {
+public class WardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +34,15 @@ public class RegisterController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ProvinceDAO pdao = new ProvinceDAO();
-            List<Province> provinces = pdao.selectAllProvince();
-            request.setAttribute("provinces", provinces);
-            request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet WardServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet WardServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -71,7 +72,15 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String districtCode = request.getParameter("districtCode");
+        WardDAO wardDAO = new WardDAO();
+        List<Ward> wards = wardDAO.selectWardByDistrictCode(districtCode);
+        String options = "";
+        for (Ward ward : wards) {
+            options += "<option value='" + ward.getCode() + "'>" + ward.getName() + "</option>";
+        }
+        // Send the options as the response
+        response.getWriter().write(options);
     }
 
     /**
