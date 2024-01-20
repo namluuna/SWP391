@@ -4,11 +4,13 @@
  */
 package controller.customer;
 
+import DAO.Common.AccountActiveTokenDAO;
 import DAO.Common.DistrictDAO;
 import DAO.Common.ProvinceDAO;
 import DAO.Common.UserAddressDAO;
 import DAO.Common.UserDAO;
 import DAO.Common.WardDAO;
+import Service.MailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,6 +18,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.UUID;
+import model.Common.AccountActiveToken;
 import model.Common.District;
 import model.Common.Province;
 import model.Common.User;
@@ -134,7 +138,6 @@ public class RegisterController extends HttpServlet {
             request.setAttribute("password", password);
             request.setAttribute("confirmPassword", confirmPassword);
             request.setAttribute("phone", phone);
-
             request.setAttribute("provinceCode", provinceCode);
             request.setAttribute("wardCode", wardCode);
             request.setAttribute("districtCode", districtCode);
@@ -164,7 +167,14 @@ public class RegisterController extends HttpServlet {
         UserAddressDAO userAddressDAO = new UserAddressDAO();
         userAddressDAO.addNewUserAddress(userAddress);
         // add account access token of new user
-        
+        String activeToken = UUID.randomUUID().toString();
+        AccountActiveToken accountAtiveToken = new AccountActiveToken(newUser.getEmail(), activeToken, null);
+        AccountActiveTokenDAO accountActiveTokenDAO = new AccountActiveTokenDAO();
+        accountActiveTokenDAO.createAccountActiveToken(accountAtiveToken);
+        // send the account active url to the via emailuser
+        MailService mailService = new MailService();
+        mailService.sendVerifyAccount(newUser.getEmail(), activeToken);
+        response.sendRedirect("view\\customer\\thankpage.jsp");
     }
 
     /**
