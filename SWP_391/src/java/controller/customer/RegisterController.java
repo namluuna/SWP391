@@ -6,6 +6,8 @@ package controller.customer;
 
 import DAO.Common.DistrictDAO;
 import DAO.Common.ProvinceDAO;
+import DAO.Common.UserAddressDAO;
+import DAO.Common.UserDAO;
 import DAO.Common.WardDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +18,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Common.District;
 import model.Common.Province;
+import model.Common.User;
+import model.Common.UserAddress;
 import model.Common.Ward;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -71,11 +76,99 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //get info from form
+        String name = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+        String phone = request.getParameter("phone");
+        String provinceCode = request.getParameter("province");
+        String districtCode = request.getParameter("district");
+        String wardCode = request.getParameter("ward");
+        String address = request.getParameter("address");
+        // validate information
+        // validate if the email is already exist
+        UserDAO userDAO = new UserDAO();
+        User checkUser = userDAO.searchUserByEmail(email);
+        // if an user have used entered email
+        if (checkUser != null) {
+            String errorEmailMessage = "This email is alreaddy exist!";
+            // check if the password and confirm password are not match
+            if (!password.equals(confirmPassword)) {
+                String errorConfirmPasswordMessage = "Confirm Password is not match!";
+                request.setAttribute("errorConfirmPasswordMessage", errorConfirmPasswordMessage);
+            }
+            // return the entered information for user
+            request.setAttribute("name", name);
+            request.setAttribute("email", email);
+            request.setAttribute("password", password);
+            request.setAttribute("confirmPassword", confirmPassword);
+            request.setAttribute("phone", phone);
+
+            request.setAttribute("provinceCode", provinceCode);
+            request.setAttribute("wardCode", wardCode);
+            request.setAttribute("districtCode", districtCode);
+            request.setAttribute("address", address);
+            ProvinceDAO pdao = new ProvinceDAO();
+            List<Province> provinces = pdao.selectAllProvince();
+            request.setAttribute("provinces", provinces);
+            Province selectedProvince = pdao.findProvinceByCode(provinceCode);
+            request.setAttribute("selectedProvince", selectedProvince);
+            DistrictDAO districtDAO = new DistrictDAO();
+            District seletedDistrict = districtDAO.findDistrictByCode(districtCode);
+            request.setAttribute("selectedDistrict", seletedDistrict);
+            WardDAO wardDAO = new WardDAO();
+            Ward selectedWard = wardDAO.findWardByCode(wardCode);
+            request.setAttribute("selectedWard", selectedWard);
+            request.setAttribute("errorEmailMessage", errorEmailMessage);
+            request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
+
+        }
+        // check if the password and confirm password are match or not
+        if (!password.equals(confirmPassword)) {
+            // return the error message and entered information
+            String errorConfirmPasswordMessage = "Confirm Password is not match!";
+            request.setAttribute("errorConfirmPasswordMessage", errorConfirmPasswordMessage);
+            request.setAttribute("name", name);
+            request.setAttribute("email", email);
+            request.setAttribute("password", password);
+            request.setAttribute("confirmPassword", confirmPassword);
+            request.setAttribute("phone", phone);
+
+            request.setAttribute("provinceCode", provinceCode);
+            request.setAttribute("wardCode", wardCode);
+            request.setAttribute("districtCode", districtCode);
+            request.setAttribute("address", address);
+            ProvinceDAO pdao = new ProvinceDAO();
+            List<Province> provinces = pdao.selectAllProvince();
+            request.setAttribute("provinces", provinces);
+            Province selectedProvince = pdao.findProvinceByCode(provinceCode);
+            request.setAttribute("selectedProvince", selectedProvince);
+            DistrictDAO districtDAO = new DistrictDAO();
+            District seletedDistrict = districtDAO.findDistrictByCode(districtCode);
+            request.setAttribute("selectedDistrict", seletedDistrict);
+            WardDAO wardDAO = new WardDAO();
+            Ward selectedWard = wardDAO.findWardByCode(wardCode);
+            request.setAttribute("selectedWard", selectedWard);
+            request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
+        }
+        // save the user information
+        // encode the password of user
+        String encodedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+        User registerUser = new User(name, email, encodedPassword, phone, 0, 4, 0);
+        userDAO.addNewUser(registerUser);
+        // get information of the new user
+        User newUser = userDAO.searchUserByEmail(registerUser.getEmail());
+        // create user address of new user
+        UserAddress userAddress = new UserAddress(newUser.getId(), provinceCode, districtCode, wardCode, address);
+        UserAddressDAO userAddressDAO = new UserAddressDAO();
+        userAddressDAO.addNewUserAddress(userAddress);
+        // add account access token of new user
+        
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short descriptio n of the servlet.
      *
      * @return a String containing servlet description
      */

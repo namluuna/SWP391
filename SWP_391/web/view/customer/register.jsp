@@ -110,21 +110,38 @@
         <div class="container">
             <div class="card">
                 <h2>Register</h2>
-                <form action="#" method="post">
+                <form action="/SWP_391/register" method="post">
+                    <label for="fullName">Full Name:</label>
+                    <input type="fullName" id="fullName" name="fullName" value="${name}" required>
+
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" value="${email}" required>
+                    <c:if test="${not empty errorEmailMessage}">
+                        <p style="color: red;">${errorEmailMessage}</p> 
+                    </c:if>
+                    <!--<p style="color: red;">${errorEmailMessage}</p>--> 
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" value="${password}" required>
 
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-
+                    <input type="password" id="confirmPassword" name="confirmPassword" value="${confirmPassword}" required>
+                    <c:if test="${not empty errorConfirmPasswordMessage}">
+                        <p style="color: red;">${errorConfirmPasswordMessage}</p> 
+                    </c:if>
                     <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" value="${phone}" required>
 
 
                     <label for="province">Province:</label>
                     <select id="province" name="province" required>
+                        <c:choose>
+                            <c:when test="${not empty selectedProvince}">
+                                <option value="${selectedProvince.code}">${selectedProvince.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="1">Select Your Province</option>
+                            </c:otherwise>
+                        </c:choose>                     
                         <c:forEach items="${provinces}" var="c">
                             <option value="${c.code}">${c.name}</option>
                         </c:forEach>
@@ -132,31 +149,31 @@
 
                     <label for="district">District:</label>
                     <select id="district" name="district" required>
-                        <option value=""></option>
+                        <c:choose>
+                            <c:when test="${not empty selectedDistrict}">
+                                <option value="${selectedDistrict.code}">${selectedDistrict.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                    <option value=""></option>
+                            </c:otherwise>
+                        </c:choose>   
                     </select>
 
                     <label for="ward">Ward:</label>
                     <select id="ward" name="ward" required>
-                        <option value=""></option>
+                        <c:choose>
+                            <c:when test="${not empty selectedWard}">
+                                <option value="${selectedWard.code}">${selectedWard.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                    <option value=""></option>
+                            </c:otherwise>
+                        </c:choose> 
                     </select>
                     <label for="address">Address:</label>
-                    <textarea id="address" name="address" rows="4" required></textarea>
-                    <button type="submit" onclick="addUser()">Register</button>
+                    <textarea id="address" name="address" rows="4" value="${address}" required></textarea>
+                    <button type="submit">Register</button>
                     <br>
-                    <!--                    <div class="input-image">
-                                            <div>
-                                                <label for="input">
-                                                    Choose Image <br />
-                                                    <i class="fa-solid fa-camera"></i>
-                                                    <input class="field image-name" id="input" type="file" name="image" style="display: none"
-                                                           required />
-                                                </label>
-                                            </div>
-                                            <h6 class="empty-alert">
-                                                Don't forget to upload an image of your product!
-                                            </h6>
-                                            <img src="./img/imgPreview.jpg" alt="" class="input-image__display" />
-                                        </div>-->
                 </form>
             </div>
         </div>

@@ -56,4 +56,23 @@ public class DistrictDAO extends DBContext{
         return districts;
     }
     
+    public District findDistrictByCode(String districtCode){
+        try {
+            String sql = "  SELECT * FROM [districts] WHERE code = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, districtCode);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                String province_code = rs.getString("province_code");
+                District district = new District(code, name, province_code);
+                return district;
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }
