@@ -44,6 +44,18 @@
         <servlet-name>LoadEditCategory</servlet-name>
         <servlet-class>controller.sale.LoadEditCategory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadColorController</servlet-name>
+        <servlet-class>controller.sale.LoadColorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddColorController</servlet-name>
+        <servlet-class>controller.sale.AddColorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteColorController</servlet-name>
+        <servlet-class>controller.sale.DeleteColorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login-controller</url-pattern>
@@ -87,6 +99,18 @@
     <servlet-mapping>
         <servlet-name>LoadEditCategory</servlet-name>
         <url-pattern>/loadedit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadColorController</servlet-name>
+        <url-pattern>/LoadColorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddColorController</servlet-name>
+        <url-pattern>/AddColorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteColorController</servlet-name>
+        <url-pattern>/DeleteColorController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
