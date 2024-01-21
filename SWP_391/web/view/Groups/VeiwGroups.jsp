@@ -24,6 +24,7 @@
             <div class="btn-group mb-3">
                 <a href="groups" class="btn btn-secondary">All Groups</a>
                 <a href="groups?show=active" class="btn btn-success">Active Groups</a>
+                <a href="groups?show=updated" class="btn btn-warning">Updated Groups</a>
                 <a href="groups?show=deleted" class="btn btn-danger">Deleted Groups</a>
             </div>
 
@@ -34,6 +35,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Created_at</th>
+                        <th>Updated_at</th>
                         <th>Deleted_at</th>
                         <th>Actions</th>
                     </tr>
@@ -50,6 +52,7 @@
                                     <td>${group.name}</td>
                                     <td>${group.description}</td>
                                     <td>${group.created_at}</td>
+                                    <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
                                         <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
@@ -64,6 +67,22 @@
                                     <td>${group.name}</td>
                                     <td>${group.description}</td>
                                     <td>${group.created_at}</td>
+                                    <td>${group.updated_at}</td>
+                                    <td>${group.deleted_at}</td>
+                                    <td>
+                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="groups?mod=3&id=${group.getId()}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            </c:when>
+                            <c:when test="${param.show eq 'updated' && not empty group.updated_at}">
+                                <!-- Display only updated groups -->
+                                <tr>
+                                    <td>${group.id}</td>
+                                    <td>${group.name}</td>
+                                    <td>${group.description}</td>
+                                    <td>${group.created_at}</td>
+                                    <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
                                         <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
@@ -78,6 +97,7 @@
                                     <td>${group.name}</td>
                                     <td>${group.description}</td>
                                     <td>${group.created_at}</td>
+                                    <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
                                         <!-- Add a button to restore the group -->

@@ -28,7 +28,8 @@ public class GroupsDAO extends DBContext {
                 String Description = rs.getString("description");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
-                Groups groups = new Groups(Id, Name, Description, Created_at, Deleted_at);
+                String Updated_at = rs.getString("updated_at");
+                Groups groups = new Groups(Id, Name, Description, Created_at, Deleted_at, Updated_at);
                 groupsList.add(groups);
             }
         } catch (Exception e) {
@@ -37,7 +38,7 @@ public class GroupsDAO extends DBContext {
         return groupsList;
     }
 
-   public void createNewGroups(String name, String description) {
+    public void createNewGroups(String name, String description) {
         try {
             String sql = "INSERT INTO groups (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -106,8 +107,9 @@ public class GroupsDAO extends DBContext {
                 String Description = rs.getString("description");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
+                String Updated_at = rs.getString("updated_at");
 
-                group = new Groups(Id, Name, Description, Created_at, Deleted_at);
+                group = new Groups(Id, Name, Description, Created_at, Deleted_at, Updated_at);
             }
         } catch (Exception e) {
             System.out.println("selectGroupsByID: " + e.getMessage());
@@ -117,7 +119,7 @@ public class GroupsDAO extends DBContext {
 
     public void updateGroups(String id, String name, String description) {
         try {
-            String sql = "UPDATE groups SET name = ?, description = ? WHERE id = ?";
+            String sql = "UPDATE groups SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
