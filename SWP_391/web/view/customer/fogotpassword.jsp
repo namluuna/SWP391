@@ -100,10 +100,13 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Fogot password</h2>
-                <form>
+                <h2>Forgot password</h2>
+                <form action="/SWP_391/ResetPassword" method="post">
                     <p>Enter your email to reset password:</p>
-                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
+                    <c:if test="${not empty message}">
+                        <p style="color: red;">${message}</p> 
+                    </c:if>
                     <button type="submit">Reset password</button>
                     <br>
                 </form>

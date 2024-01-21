@@ -1,16 +1,15 @@
 <%-- 
-    Document   : login
-    Created on : Jan 15, 2024, 10:48:09 AM
+    Document   : ResetPasswordSuccess
+    Created on : Jan 21, 2024, 2:58:07 PM
     Author     : ifyou
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>Reset Password Success</title>
         <style>
             body {
                 font-family: "Comic Sans MS", cursive;
@@ -46,7 +45,7 @@
                 flex-direction: column;
             }
 
-            input {
+            input, select, textarea{
                 padding: 10px;
                 margin-bottom: 12px;
                 border: 1px solid #ddd;
@@ -57,6 +56,14 @@
             }
 
             input:focus {
+                border-color: #ff4500;
+            }
+
+            textarea:focus {
+                border-color: #ff4500;
+            }
+
+            select:focus {
                 border-color: #ff4500;
             }
 
@@ -99,28 +106,11 @@
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="card">
-                <h2>Login</h2>
-                <c:if test="${not empty message}">
-                    <p style="color: blue;">${message}</p> 
-                </c:if>
-                <c:if test="${not empty passwordChange}">
-                    <p style="color: blue;">${passwordChange}</p> 
-                </c:if>
-                <form action="/SWP_391/login" method="post">
-                    <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
-                    <input type="password" id="password" name="password" placeholder="Password"  value="${password}" required>
-                    <c:if test="${not empty wrongLoginInfo}">
-                        <p style="color: red;">${wrongLoginInfo}</p> 
-                    </c:if>
-                    <button type="submit">Login</button>
-                    <br>
-                    <div class="links">
-                        <a href="fogotpassword.jsp">Forgot password?</a>
-                        <a href="/SWP_391/register">Do not have an account?</a>
-                    </div>
-                </form>
+        <div class="thank-container">
+            <h1>Your password has been successfully reset</h1>
+            <p>An email to reset password was sent to your email. Please check and click the button to change your password!</p>
+            <div class="btn-container">
+                <a href="#" class="btn">Login Now</a>
             </div>
         </div>
     </body>

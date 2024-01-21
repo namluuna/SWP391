@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>controller.admin.LoginController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CartController</servlet-name>
         <servlet-class>controller.customer.CartController</servlet-class>
     </servlet>
@@ -57,9 +53,41 @@
         <servlet-class>controller.sale.DeleteColorController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>controller.customer.RegisterController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MasterController</servlet-name>
+        <servlet-class>controller.master.MasterController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DistrictServlet</servlet-name>
+        <servlet-class>controller.customer.DistrictServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WardServlet</servlet-name>
+        <servlet-class>controller.customer.WardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyAccountController</servlet-name>
+        <servlet-class>controller.customer.VerifyAccountController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>LoginController</servlet-name>
-        <url-pattern>/login-controller</url-pattern>
-    </servlet-mapping>
+        <servlet-class>controller.Common.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordController</servlet-name>
+        <servlet-class>controller.Common.ResetPasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetNewPasswordController</servlet-name>
+        <servlet-class>controller.Common.SetNewPasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.Common.LogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/CartController</url-pattern>
@@ -111,6 +139,40 @@
     <servlet-mapping>
         <servlet-name>DeleteColorController</servlet-name>
         <url-pattern>/DeleteColorController</url-pattern>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MasterController</servlet-name>
+        <url-pattern>/master</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DistrictServlet</servlet-name>
+        <url-pattern>/DistrictServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WardServlet</servlet-name>
+        <url-pattern>/WardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyAccountController</servlet-name>
+        <url-pattern>/verify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordController</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetNewPasswordController</servlet-name>
+        <url-pattern>/SetNewPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
