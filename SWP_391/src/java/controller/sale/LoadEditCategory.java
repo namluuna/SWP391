@@ -3,23 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.Groups;
+package controller.sale;
 
-import DAO.GroupsDAO.GroupsDAO;
+import DAO.GroupsDAO.CategoryDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import model.Groups.Groups;
+import java.text.SimpleDateFormat;
+import model.Categories.Category;
 
 /**
  *
- * @author lucdu
+ * @author MTD
  */
-public class GroupsController extends HttpServlet {
+public class LoadEditCategory extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,18 +31,13 @@ public class GroupsController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GroupsController</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GroupsController at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        String id = request.getParameter("cid");
+        CategoryDAO dao = new CategoryDAO();
+        Category c = dao.getCaByID(id);
+        request.setAttribute("detail", c);
+        String s = new SimpleDateFormat("MM/dd/yyyy").format(c.getCreated_at());
+        request.setAttribute("create_at", s);
+        request.getRequestDispatcher("view\\sale\\EditCategory.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,11 +51,7 @@ public class GroupsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        GroupsDAO g = new GroupsDAO();
-        ArrayList<Groups> data = g.selectAllGroups();
-        request.setAttribute("data", data);
-//        request.getRequestDispatcher("view\\Groups\\VeiwGroups.jsp").forward(request, response);
-        request.getRequestDispatcher("view\\Groups\\CreateGroups.jsp").forward(request, response);
+        processRequest(request, response);
     } 
 
     /** 
@@ -73,7 +64,7 @@ public class GroupsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /** 

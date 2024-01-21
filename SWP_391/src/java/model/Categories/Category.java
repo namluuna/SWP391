@@ -2,20 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.Groups;
+package model.Categories;
+
+import java.sql.Timestamp;
 
 /**
  *
- * @author lucdu
+ * @author MTD
  */
-public class Groups {
-    int id;
-    String name , description , created_at , deleted_at;
+public class Category {
+    private int id;
+    private String name , description;
+    private Timestamp created_at , deleted_at;
 
-    public Groups() {
+    public Category() {
     }
 
-    public Groups(int id, String name, String description, String created_at, String deleted_at) {
+    public Category(int id, String name, String description, Timestamp created_at, Timestamp deleted_at) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -47,26 +50,27 @@ public class Groups {
         this.description = description;
     }
 
-    public String getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public String getDeleted_at() {
+    public Timestamp getDeleted_at() {
         return deleted_at;
     }
 
-    public void setDeleted_at(String deleted_at) {
+    public void setDeleted_at(Timestamp deleted_at) {
         this.deleted_at = deleted_at;
     }
 
     @Override
     public String toString() {
-        return "Groups{" + "id=" + id + ", name=" + name + ", description=" + description + ", created_at=" + created_at + ", deleted_at=" + deleted_at + '}';
+        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", created_at=" + created_at + ", deleted_at=" + deleted_at + '}';
     }
+    
     
     
     
