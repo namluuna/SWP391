@@ -83,12 +83,12 @@
                         errorMessageDescription.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Vui lòng nhập tên.";
+                            errorMessageName.innerHTML = "Please enter a name";
                             return false;
                         }
 
                         if (description === "") {
-                            errorMessageDescription.innerHTML = "Vui lòng nhập mô tả.";
+                            errorMessageDescription.innerHTML = "Please enter a description";
                             return false;
                         }
 
