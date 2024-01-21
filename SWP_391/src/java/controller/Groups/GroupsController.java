@@ -96,11 +96,13 @@ public class GroupsController extends HttpServlet {
             GroupsDAO p = new GroupsDAO();
             p.createNewGroups(name, description);
             response.sendRedirect("groups");
+            return;
         }
         if (request.getParameter("update") != null) {
             GroupsDAO p = new GroupsDAO();
             p.updateGroups(id, name, description);
             response.sendRedirect("groups");
+            return;
         }
         if (request.getParameter("delete") != null) {
             GroupsDAO p = new GroupsDAO();
