@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Group Management</title>
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -19,8 +19,14 @@
     <body>
         <div class="container mt-5">
             <a href="groups?mod=1" class="btn btn-primary mb-3">Create New Group</a>
-            <h1>List of Groups</h1>
-        
+            <h1>Group Management</h1>
+
+            <div class="btn-group mb-3">
+                <a href="groups" class="btn btn-secondary">All Groups</a>
+                <a href="groups?show=active" class="btn btn-success">Active Groups</a>
+                <a href="groups?show=deleted" class="btn btn-danger">Deleted Groups</a>
+            </div>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -35,17 +41,54 @@
                 <tbody>
                     <!-- Loop through the groups and display their information -->
                     <c:forEach var="group" items="${data}">
-                        <tr>
-                            <td>${group.id}</td>
-                            <td>${group.name}</td>
-                            <td>${group.description}</td>
-                            <td>${group.created_at}</td>
-                            <td>${group.deleted_at}</td>
-                            <td>
-                                <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                <a href="" class="btn btn-danger btn-sm">Delete</a>
-                            </td>
-                        </tr>
+                        <!-- Check if the group should be displayed based on the 'show' parameter -->
+                        <c:choose>
+                            <c:when test="${empty param.show || param.show eq 'all'}">
+                                <!-- Display all groups -->
+                                <tr>
+                                    <td>${group.id}</td>
+                                    <td>${group.name}</td>
+                                    <td>${group.description}</td>
+                                    <td>${group.created_at}</td>
+                                    <td>${group.deleted_at}</td>
+                                    <td>
+                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="groups?mod=3&id=${group.getId()}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            </c:when>
+                            <c:when test="${param.show eq 'active' && empty group.deleted_at}">
+                                <!-- Display only active groups -->
+                                <tr>
+                                    <td>${group.id}</td>
+                                    <td>${group.name}</td>
+                                    <td>${group.description}</td>
+                                    <td>${group.created_at}</td>
+                                    <td>${group.deleted_at}</td>
+                                    <td>
+                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="groups?mod=3&id=${group.getId()}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            </c:when>
+                            <c:when test="${param.show eq 'deleted' && not empty group.deleted_at}">
+                                <!-- Display only deleted groups -->
+                                <tr>
+                                    <td>${group.id}</td>
+                                    <td>${group.name}</td>
+                                    <td>${group.description}</td>
+                                    <td>${group.created_at}</td>
+                                    <td>${group.deleted_at}</td>
+                                    <td>
+                                        <!-- Add a button to restore the group -->
+                                        <form method="POST" action="groups">
+                                            <input type="hidden" name="id" value="${group.id}">
+                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:when>
+                        </c:choose>
                     </c:forEach>
                 </tbody>
             </table>

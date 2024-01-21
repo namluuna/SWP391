@@ -67,7 +67,9 @@ public class GroupsController extends HttpServlet {
             request.setAttribute("group", group);
             request.getRequestDispatcher("view\\Groups\\UpdateGroups.jsp").forward(request, response);
         }
-
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
+            g.softDeleteGroups(request.getParameter("id"));
+        }
         //------------------------------------------------------------------------------------------------------------------
         ArrayList<Groups> data = g.selectAllGroups();
         request.setAttribute("data", data);
@@ -99,6 +101,18 @@ public class GroupsController extends HttpServlet {
             GroupsDAO p = new GroupsDAO();
             p.updateGroups(id, name, description);
             response.sendRedirect("groups");
+        }
+        if (request.getParameter("delete") != null) {
+            GroupsDAO p = new GroupsDAO();
+            p.softDeleteGroups(id);
+            response.sendRedirect("groups");
+            return;
+        }
+        if (request.getParameter("restore") != null) {
+            GroupsDAO p = new GroupsDAO();
+            p.restoreGroups(id);
+            response.sendRedirect("groups");
+            return;
         }
     }
 }

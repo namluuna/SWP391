@@ -37,7 +37,7 @@ public class GroupsDAO extends DBContext {
         return groupsList;
     }
 
-    public void createNewGroups(String name, String description) {
+   public void createNewGroups(String name, String description) {
         try {
             String sql = "INSERT INTO groups (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -56,6 +56,39 @@ public class GroupsDAO extends DBContext {
         } catch (Exception e) {
             System.out.println("createNewGroups: " + e.getMessage());
         }
+    }
+//    public void createNewGroups(String name, String description) {
+//        try {
+//            String sql = "INSERT INTO groups (id, name, description, created_at) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            // Find the maximum existing ID
+//            int maxId = getMaxGroupId();
+//
+//            // Set the new ID
+//            st.setInt(1, maxId + 1);
+//            st.setString(2, name);
+//            st.setString(3, description);
+//
+//            // Execute the update
+//            st.executeUpdate();
+//        } catch (Exception e) {
+//            System.out.println("createNewGroups: " + e.getMessage());
+//        }
+//    }
+
+    private int getMaxGroupId() {
+        int maxId = 0;
+        try {
+            String sql = "SELECT MAX(id) AS max_id FROM groups";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                maxId = rs.getInt("max_id");
+            }
+        } catch (Exception e) {
+            System.out.println("getMaxGroupId: " + e.getMessage());
+        }
+        return maxId;
     }
 
     public Groups selectGroupsByID(String id) {
@@ -102,17 +135,53 @@ public class GroupsDAO extends DBContext {
         }
     }
 
+    public void softDeleteGroups(String id) {
+        try {
+            String sql = "UPDATE groups SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, Integer.parseInt(id));
+
+            int rowsUpdated = st.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Group with ID " + id + " soft-deleted successfully.");
+            } else {
+                System.out.println("No group found with ID " + id);
+            }
+        } catch (Exception e) {
+            System.out.println("softDeleteGroups: " + e.getMessage());
+        }
+    }
+
+    public void restoreGroups(String id) {
+        try {
+            String sql = "UPDATE groups SET deleted_at = NULL WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, Integer.parseInt(id));
+
+            int rowsUpdated = st.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Group with ID " + id + " restored successfully.");
+            } else {
+                System.out.println("No group found with ID " + id);
+            }
+        } catch (Exception e) {
+            System.out.println("restoreGroups: " + e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         GroupsDAO g = new GroupsDAO();
 //        ArrayList<Groups> data = g.selectAllGroups();
 //        System.out.println(data);
 //        g.createNewGroups("dsds", "dsdsd");
         Groups selectedGroup = g.selectGroupsByID("2");
-    if (selectedGroup != null) {
-        System.out.println("Selected Group: " + selectedGroup);
-        g.updateGroups(selectedGroup.getId(), "New Name", "New Description");
-    } else {
-        System.out.println("Group not found.");
-    }
+        if (selectedGroup != null) {
+            System.out.println("Selected Group: " + selectedGroup);
+            g.updateGroups(selectedGroup.getId(), "New Name", "New Description");
+        } else {
+            System.out.println("Group not found.");
+        }
     }
 }
