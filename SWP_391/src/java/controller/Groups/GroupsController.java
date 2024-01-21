@@ -63,9 +63,8 @@ public class GroupsController extends HttpServlet {
             request.getRequestDispatcher("view\\Groups\\CreateGroups.jsp").forward(request, response);
         }
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
-            g.selectGroupsByID(request.getParameter("id"));
-            Groups ga = g.selectGroupsByID("id");
-            request.setAttribute("ga", ga);
+            Groups group = g.selectGroupsByID(request.getParameter("id"));
+            request.setAttribute("group", group);
             request.getRequestDispatcher("view\\Groups\\UpdateGroups.jsp").forward(request, response);
         }
 
@@ -96,7 +95,7 @@ public class GroupsController extends HttpServlet {
             p.createNewGroups(name, description);
             response.sendRedirect("groups");
         }
-        if (request.getParameter("update")!= null) {
+        if (request.getParameter("update") != null) {
             GroupsDAO p = new GroupsDAO();
             p.updateGroups(id, name, description);
             response.sendRedirect("groups");

@@ -43,15 +43,15 @@
         <form name="form" action="groups" method="POST">
             <div class="mb-3">
                 <label for="id" class="form-label">GroupsID:</label>
-                <input type="text" class="form-control" id="id" name="id" value="${ga.getId()}">
+                <input type="text" class="form-control" id="id" name="id" value="${group.getId()}" readonly>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" value="${ga.getName()}">
+                <input type="text" class="form-control" id="name" name="name" value="${group.getName()}">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
-                <input type="text" class="form-control" id="description" name="description" value="">
+                <input type="text" class="form-control" id="description" name="description" value="${group.getDescription()}">
             </div>
             <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
         </form>
