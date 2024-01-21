@@ -33,4 +33,22 @@ public class ProvinceDAO extends DBContext{
         }
         return provinces;
     }
+    public Province findProvinceByCode(String povinceCode){
+        try {
+            String sql = "  SELECT * FROM [provinces] WHERE code = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, povinceCode);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                Province province = new Province(code, name);
+                return province;
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
