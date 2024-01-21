@@ -96,85 +96,90 @@ public class RegisterController extends HttpServlet {
         User checkUser = userDAO.searchUserByEmail(email);
         // if an user have used entered email
         if (checkUser != null) {
-            String errorEmailMessage = "This email is alreaddy exist!";
+            String errorEmailMessage = "This email is already exist!";
             // check if the password and confirm password are not match
             if (!password.equals(confirmPassword)) {
                 String errorConfirmPasswordMessage = "Confirm Password is not match!";
                 request.setAttribute("errorConfirmPasswordMessage", errorConfirmPasswordMessage);
+                // return the entered information for user
+                request.setAttribute("name", name);
+                request.setAttribute("email", email);
+                request.setAttribute("password", password);
+                request.setAttribute("confirmPassword", confirmPassword);
+                request.setAttribute("phone", phone);
+
+                request.setAttribute("provinceCode", provinceCode);
+                request.setAttribute("wardCode", wardCode);
+                request.setAttribute("districtCode", districtCode);
+                request.setAttribute("address", address);
+                ProvinceDAO pdao = new ProvinceDAO();
+                List<Province> provinces = pdao.selectAllProvince();
+                request.setAttribute("provinces", provinces);
+                Province selectedProvince = pdao.findProvinceByCode(provinceCode);
+                request.setAttribute("selectedProvince", selectedProvince);
+                DistrictDAO districtDAO = new DistrictDAO();
+                District seletedDistrict = districtDAO.findDistrictByCode(districtCode);
+                request.setAttribute("selectedDistrict", seletedDistrict);
+                WardDAO wardDAO = new WardDAO();
+                Ward selectedWard = wardDAO.findWardByCode(wardCode);
+                request.setAttribute("selectedWard", selectedWard);
+                request.setAttribute("errorEmailMessage", errorEmailMessage);
+                request.setAttribute("address", address);
+                request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
+            } else {
+                // the email is exist and the password is the same with confirm password
+                // return the entered information for user
+                request.setAttribute("name", name);
+                request.setAttribute("email", email);
+                request.setAttribute("password", password);
+                request.setAttribute("confirmPassword", confirmPassword);
+                request.setAttribute("phone", phone);
+
+                request.setAttribute("provinceCode", provinceCode);
+                request.setAttribute("wardCode", wardCode);
+                request.setAttribute("districtCode", districtCode);
+                request.setAttribute("address", address);
+                ProvinceDAO pdao = new ProvinceDAO();
+                List<Province> provinces = pdao.selectAllProvince();
+                request.setAttribute("provinces", provinces);
+                Province selectedProvince = pdao.findProvinceByCode(provinceCode);
+                request.setAttribute("selectedProvince", selectedProvince);
+                DistrictDAO districtDAO = new DistrictDAO();
+                District seletedDistrict = districtDAO.findDistrictByCode(districtCode);
+                request.setAttribute("selectedDistrict", seletedDistrict);
+                WardDAO wardDAO = new WardDAO();
+                Ward selectedWard = wardDAO.findWardByCode(wardCode);
+                request.setAttribute("selectedWard", selectedWard);
+                request.setAttribute("errorEmailMessage", errorEmailMessage);
+                request.setAttribute("address", address);
+                request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
             }
-            // return the entered information for user
-            request.setAttribute("name", name);
-            request.setAttribute("email", email);
-            request.setAttribute("password", password);
-            request.setAttribute("confirmPassword", confirmPassword);
-            request.setAttribute("phone", phone);
 
-            request.setAttribute("provinceCode", provinceCode);
-            request.setAttribute("wardCode", wardCode);
-            request.setAttribute("districtCode", districtCode);
-            request.setAttribute("address", address);
-            ProvinceDAO pdao = new ProvinceDAO();
-            List<Province> provinces = pdao.selectAllProvince();
-            request.setAttribute("provinces", provinces);
-            Province selectedProvince = pdao.findProvinceByCode(provinceCode);
-            request.setAttribute("selectedProvince", selectedProvince);
-            DistrictDAO districtDAO = new DistrictDAO();
-            District seletedDistrict = districtDAO.findDistrictByCode(districtCode);
-            request.setAttribute("selectedDistrict", seletedDistrict);
-            WardDAO wardDAO = new WardDAO();
-            Ward selectedWard = wardDAO.findWardByCode(wardCode);
-            request.setAttribute("selectedWard", selectedWard);
-            request.setAttribute("errorEmailMessage", errorEmailMessage);
-            request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
+        } else {
+            // the info is valid
+            // encode the password of user
+            String encodedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+            // save the user information
+            User registerUser = new User(name, email, encodedPassword, phone, 0, 4, 0);
+            userDAO.addNewUser(registerUser);
+            // get information of the new user
+            User newUser = userDAO.searchUserByEmail(registerUser.getEmail());
+            // create user address of new user
+            UserAddress userAddress = new UserAddress(newUser.getId(), provinceCode, districtCode, wardCode, address);
+            UserAddressDAO userAddressDAO = new UserAddressDAO();
+            userAddressDAO.addNewUserAddress(userAddress);
+            // add account access token of new user
+            String activeToken = UUID.randomUUID().toString();
+            AccountActiveToken accountAtiveToken = new AccountActiveToken(newUser.getEmail(), activeToken, null);
+            AccountActiveTokenDAO accountActiveTokenDAO = new AccountActiveTokenDAO();
+            accountActiveTokenDAO.createAccountActiveToken(accountAtiveToken);
+            // send the account active url to the via emailuser
+            MailService mailService = new MailService();
+            mailService.sendVerifyAccount(newUser.getEmail(), activeToken);
+            // redirect to thank page
+            response.sendRedirect("view\\customer\\thankpage.jsp");
+        }
 
-        }
-        // check if the password and confirm password are match or not
-        if (!password.equals(confirmPassword)) {
-            // return the error message and entered information
-            String errorConfirmPasswordMessage = "Confirm Password is not match!";
-            request.setAttribute("errorConfirmPasswordMessage", errorConfirmPasswordMessage);
-            request.setAttribute("name", name);
-            request.setAttribute("email", email);
-            request.setAttribute("password", password);
-            request.setAttribute("confirmPassword", confirmPassword);
-            request.setAttribute("phone", phone);
-            request.setAttribute("provinceCode", provinceCode);
-            request.setAttribute("wardCode", wardCode);
-            request.setAttribute("districtCode", districtCode);
-            request.setAttribute("address", address);
-            ProvinceDAO pdao = new ProvinceDAO();
-            List<Province> provinces = pdao.selectAllProvince();
-            request.setAttribute("provinces", provinces);
-            Province selectedProvince = pdao.findProvinceByCode(provinceCode);
-            request.setAttribute("selectedProvince", selectedProvince);
-            DistrictDAO districtDAO = new DistrictDAO();
-            District seletedDistrict = districtDAO.findDistrictByCode(districtCode);
-            request.setAttribute("selectedDistrict", seletedDistrict);
-            WardDAO wardDAO = new WardDAO();
-            Ward selectedWard = wardDAO.findWardByCode(wardCode);
-            request.setAttribute("selectedWard", selectedWard);
-            request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
-        }
-        // save the user information
-        // encode the password of user
-        String encodedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
-        User registerUser = new User(name, email, encodedPassword, phone, 0, 4, 0);
-        userDAO.addNewUser(registerUser);
-        // get information of the new user
-        User newUser = userDAO.searchUserByEmail(registerUser.getEmail());
-        // create user address of new user
-        UserAddress userAddress = new UserAddress(newUser.getId(), provinceCode, districtCode, wardCode, address);
-        UserAddressDAO userAddressDAO = new UserAddressDAO();
-        userAddressDAO.addNewUserAddress(userAddress);
-        // add account access token of new user
-        String activeToken = UUID.randomUUID().toString();
-        AccountActiveToken accountAtiveToken = new AccountActiveToken(newUser.getEmail(), activeToken, null);
-        AccountActiveTokenDAO accountActiveTokenDAO = new AccountActiveTokenDAO();
-        accountActiveTokenDAO.createAccountActiveToken(accountAtiveToken);
-        // send the account active url to the via emailuser
-        MailService mailService = new MailService();
-        mailService.sendVerifyAccount(newUser.getEmail(), activeToken);
-        response.sendRedirect("view\\customer\\thankpage.jsp");
     }
 
     /**

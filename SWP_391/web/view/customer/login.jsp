@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -101,20 +102,23 @@
         <div class="container">
             <div class="card">
                 <h2>Login</h2>
-                <form>
-                    <input type="text" id="username" name="username" placeholder="Email" required>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                <c:if test="${not empty message}">
+                    <p style="color: blue;">${message}</p> 
+                </c:if>
+                <form action="/SWP_391/login" method="post">
+                    <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
+                    <input type="password" id="password" name="password" placeholder="Password"  value="${password}" required>
+                    <c:if test="${not empty wrongLoginInfo}">
+                        <p style="color: red;">${wrongLoginInfo}</p> 
+                    </c:if>
                     <button type="submit">Login</button>
                     <br>
                     <div class="links">
-                        <a href="fogotpassword.jsp">Forgot password?</a>
+                        <a href="view/customer/fogotpassword.jsp">Forgot password?</a>
                         <a href="/SWP_391/register">Do not have an account?</a>
                     </div>
                 </form>
-
             </div>
-
         </div>
-
     </body>
 </html>

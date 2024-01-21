@@ -72,7 +72,7 @@ public class MailService {
                     + "      <small\n"
                     + "        >Thank you for creating an account. Please click the following button to verify your account:</small>\n"
                     + "      <small\n"
-                    + "        >If you didn't request a code, you can safely ignore this email.</small\n"
+                    + "        >If you didn't create account, you can safely ignore this email.</small\n"
                     + "      >\n"
                     + "      <button\n"
                     + "        style=\"\n"

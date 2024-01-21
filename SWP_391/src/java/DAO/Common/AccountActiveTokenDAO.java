@@ -50,9 +50,33 @@ public class AccountActiveTokenDAO extends DBContext{
         return null;
     }
     
-    public static void main(String[] args) {
-        AccountActiveTokenDAO accountActiveTokenDAO = new AccountActiveTokenDAO();
-        AccountActiveToken accountActiveToken = new AccountActiveToken("khangnhhe160625@fpt.edu.vn", "1234567", null);
-        accountActiveTokenDAO.createAccountActiveToken(accountActiveToken);
+    public AccountActiveToken findByActiveToken(String activeToken){
+        try {
+            String sql = "  SELECT * FROM [account_active_tokens] WHERE token = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, activeToken);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String userEmail = rs.getString("user_email");
+                String token = rs.getString("token");
+                Timestamp expirationTime = rs.getTimestamp("expiration_time");
+                AccountActiveToken accountActiveToken = new AccountActiveToken(userEmail, token, expirationTime);
+                return accountActiveToken;
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void deleteAccountActiveToken(String email){
+        try {
+            String sql = "DELETE FROM [account_active_tokens] WHERE [user_email] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
