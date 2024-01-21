@@ -15,8 +15,8 @@ import model.Common.District;
  * @author ifyou
  */
 public class DistrictDAO extends DBContext{
-    public ArrayList selectAllDistrict() {
-        ArrayList<District> provinces = new ArrayList<>();
+    public ArrayList selectAllProvince() {
+        ArrayList<District> provinces = new ArrayList<District>();
 
         try {
             String sql = "  SELECT * FROM [districts]";
@@ -34,45 +34,5 @@ public class DistrictDAO extends DBContext{
         }
         return provinces;
     }
-    
-    public ArrayList selectDistrictByProvinceCode(String provinceCode){
-        ArrayList<District> districts = new ArrayList<>();
 
-        try {
-            String sql = "  SELECT * FROM [districts] WHERE province_code = ?";
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, provinceCode);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                String code = rs.getString("code");
-                String name = rs.getString("name");
-                String province_code = rs.getString("province_code");
-                District district = new District(code, name, province_code);
-                districts.add(district);
-            }
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
-        return districts;
-    }
-    
-    public District findDistrictByCode(String districtCode){
-        try {
-            String sql = "  SELECT * FROM [districts] WHERE code = ?";
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, districtCode);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                String code = rs.getString("code");
-                String name = rs.getString("name");
-                String province_code = rs.getString("province_code");
-                District district = new District(code, name, province_code);
-                return district;
-            }
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
 }
