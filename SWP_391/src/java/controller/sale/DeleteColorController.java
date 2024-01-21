@@ -20,33 +20,26 @@ import model.product.Color;
  */
 public class DeleteColorController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+    
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        ColorDAO colorDAO = new ColorDAO();
-        List<Color> colorList = colorDAO.selectAllCategory();
-
-        // Chuyển danh sách màu vào request attribute
-        request.setAttribute("colorList", colorList);
-
-        // Forward đến trang JSP để hiển thị danh sách màu
-        request.getRequestDispatcher("/WEB-INF/views/colorList.jsp").forward(request, response);
+       String ccid = request.getParameter("cid");
+        ColorDAO dao = new ColorDAO();
+        dao.deleteColor(ccid);
+        response.sendRedirect("loadcategory");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -54,29 +47,12 @@ public class DeleteColorController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    processRequest(request, response);
-    
-    // Lấy ID của màu cần xóa từ request parameter
-    int idToDelete = Integer.parseInt(request.getParameter("id"));
+    throws ServletException, IOException {
+        processRequest(request, response);
+    } 
 
-    // Xóa màu từ database
-    ColorDAO colorDAO = new ColorDAO();
-    boolean success = colorDAO.deleteColor(idToDelete);
-
-    if (success) {
-        // Nếu thành công, chuyển hướng đến trang danh sách màu
-        response.sendRedirect(request.getContextPath() + "/LoadColorController");
-    } else {
-        // Nếu thất bại, hiển thị thông báo lỗi
-        request.setAttribute("errorMessage", "Failed to delete color.");
-        request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
-    }
-}
-
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -84,13 +60,12 @@ public class DeleteColorController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override

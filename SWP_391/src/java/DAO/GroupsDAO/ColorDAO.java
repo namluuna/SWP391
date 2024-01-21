@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.Categories.Category;
 import model.product.Color;
 
 /**
@@ -19,75 +18,69 @@ import model.product.Color;
 public class ColorDAO extends DBContext{
     PreparedStatement st = null;
     ResultSet rs = null;
-    
-    public List<Color> selectAllCategory(){
-    List<Color> list = new ArrayList<>();
-    try {
-            String sql = "SELECT [id]\n" +
-    "      ,[name]\n" +
-    "      ,[description]\n" +
-    "      ,[created_at]\n" +
-    "      ,[deleted_at]\n" +
-    "      ,[updated_at]\n" +
-    "  FROM [dbo].[colors]";
+    public List<Color> selectAllColor(){
+        List<Color> list = new ArrayList<>();
+        try {
+            String sql = "select * from categories";
             st = connection.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()) {                
-                list.add(new Color(rs.getInt(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getTimestamp(4),
-                            rs.getTimestamp(5)));
+             list.add(new Color(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getTimestamp(4),
+                        rs.getTimestamp(5)));
             }
         } catch (Exception e) {
-            System.out.println("Error in ColorDAO: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return list;
     }
-    
-    public boolean addColor(Color color) {
+    public void addColor(String name, String des, String cre
+            ) {
+         
         try {
-            String sql = "INSERT INTO colors (name, description, created_at) VALUES (?, ?, GETDATE())";
+            String sql = "INSERT  dbo.categories ( [name], [description], created_at ) values (?, ?, ?);";
             st = connection.prepareStatement(sql);
-            st.setString(1, color.getName());
-            st.setString(2, color.getDescription());
-            int rowsAffected = st.executeUpdate();
-            return rowsAffected > 0;
+            st.setString(1, name);
+            st.setString(2, des);
+            st.setString(3, cre);
+            st.executeUpdate();
+            
         } catch (Exception e) {
-            System.out.println("Error adding color: " + e.getMessage());
-            e.printStackTrace();
-            return false;
         }
     }
-    
-    public boolean updateColor(Color color) {
+    public void deleteColor(String pid) {
+        
         try {
-            String sql = "UPDATE colors SET name=?, description=? WHERE id=?";
+            String sql = "delete from categories where id = ?";
             st = connection.prepareStatement(sql);
-            st.setString(1, color.getName());
-            st.setString(2, color.getDescription());
-            st.setInt(3, color.getId());
-            int rowsAffected = st.executeUpdate();
-            return rowsAffected > 0;
+            st.setString(1, pid);
+            st.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Error updating color: " + e.getMessage());
-            e.printStackTrace();
-            return false;
         }
     }
-    
-    public boolean deleteColor(int id) {
+     public Color getCaByID(String id) {
+       
         try {
-            String sql = "DELETE FROM colors WHERE id=?";
-            st = connection.prepareStatement(sql);
-            st.setInt(1, id);
-            int rowsAffected = st.executeUpdate();
-            return rowsAffected > 0;
+             String sql = "select * from categories where id = ?";
+           st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                return new Color(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getTimestamp(4),
+                        rs.getTimestamp(5));
+            }
         } catch (Exception e) {
-            System.out.println("Error deleting color: " + e.getMessage());
-            e.printStackTrace();
-            return false;
         }
+        return null;
+    }
+    public static void main(String[] args) {
+       ColorDAO g = new ColorDAO();
+        List<Color> data = g.selectAllColor();
+        System.out.println(data);
     }
 }
