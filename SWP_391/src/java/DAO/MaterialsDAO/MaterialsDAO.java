@@ -2,22 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO.GroupsDAO;
+package DAO.MaterialsDAO;
 
 import DAO.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Groups.Groups;
+import java.util.List;
+
+import model.Materials.materials;
+
 /**
  *
- * @author lucdu
+ * @author Admin
  */
-public class GroupsDAO extends DBContext{
-    public ArrayList<Groups> selectAllGroups(){
-        ArrayList<Groups> groupsList = new ArrayList<>();
+public class MaterialsDAO extends DBContext {
+    // ham hien thi list 
+     public ArrayList<materials> getAll(){
+        ArrayList<materials> materialsList = new ArrayList<>();
         try {
-            String sql = "select * from groups";
+            String sql = "select * from materials";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {                
@@ -26,17 +30,23 @@ public class GroupsDAO extends DBContext{
                 String Description = rs.getString("description");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
-                Groups groups = new Groups(Id, Name, Description, Created_at, Deleted_at);
-                groupsList.add(groups);                    
+                String Updated_at = rs.getString("updated_at");
+                materials m = new materials(Id, Name, Description, Created_at, Updated_at, Deleted_at);
+                materialsList.add(m);
+           
             }
         } catch (Exception e) {
-            System.out.println("getGroupsList: " + e.getMessage());
+            System.out.println("getMaterialsList: " + e.getMessage());
         }
-        return groupsList;
-    }
+        return materialsList;
+     }
+
+    // ham main
     public static void main(String[] args) {
-       GroupsDAO g = new GroupsDAO();
-        ArrayList<Groups> data = g.selectAllGroups();
+        MaterialsDAO mdao = new MaterialsDAO();
+        List<materials> data = mdao.getAll();
         System.out.println(data);
+
     }
+
 }
