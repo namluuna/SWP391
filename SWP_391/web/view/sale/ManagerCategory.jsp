@@ -251,19 +251,19 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="#addcategory"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-<!--                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
+                            <!--                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-<!--                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>-->
+                            <!--                            <th>
+                                                            <span class="custom-checkbox">
+                                                                <input type="checkbox" id="selectAll">
+                                                                <label for="selectAll"></label>
+                                                            </span>
+                                                        </th>-->
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
@@ -274,16 +274,17 @@
                     <tbody>
                         <c:forEach items="${listCC}" var="o">
                             <tr>
-<!--                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>-->
+                                <!--                                <td>
+                                                                    <span class="custom-checkbox">
+                                                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                                                        <label for="checkbox1"></label>
+                                                                    </span>
+                                                                </td>-->
                                 <td>${o.id}</td>
                                 <td>${o.name}</td>
                                 <td>${o.description}</td>
-                                <td>${o.created_at}</td>
+                                <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                                <td><fmt:formatDate value="${o.created_at}" pattern="yyyy-MM-dd" /></td>
                                 <td>
                                     <a href="loadedit?cid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="deletecategory?cid=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -327,21 +328,21 @@
                             <div class="form-group">
                                 <label>Create_at</label>
                                 <input name="create" type="text" class="form-control" required readonly value="${create_at}" >
-<!--                                <fmt:formatDate value="" type="both" timeStyle="long" 
-dateStyle="long" /> -->
+                                <!--                                <fmt:formatDate value="" type="both" timeStyle="long" 
+                                                dateStyle="long" /> -->
                             </div>
-<!--                            <div class="form-group">
-                                <label>Price</label>
-                                <input name="price" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Title</label>
-                                <textarea name="title" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" required></textarea>
-                            </div>-->
+                            <!--                            <div class="form-group">
+                                                            <label>Price</label>
+                                                            <input name="price" type="text" class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Title</label>
+                                                            <textarea name="title" class="form-control" required></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <textarea name="description" class="form-control" required></textarea>
+                                                        </div>-->
 
 
                         </div>

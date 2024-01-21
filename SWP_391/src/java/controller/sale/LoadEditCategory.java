@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 import model.Categories.Category;
 
 /**
@@ -34,7 +35,8 @@ public class LoadEditCategory extends HttpServlet {
         CategoryDAO dao = new CategoryDAO();
         Category c = dao.getCaByID(id);
         request.setAttribute("detail", c);
-        request.setAttribute("create_at", new java.sql.Timestamp(new java.util.Date().getTime()));
+        String s = new SimpleDateFormat("MM/dd/yyyy").format(c.getCreated_at());
+        request.setAttribute("create_at", s);
         request.getRequestDispatcher("view\\sale\\EditCategory.jsp").forward(request, response);
     } 
 

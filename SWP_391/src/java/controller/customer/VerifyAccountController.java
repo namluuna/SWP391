@@ -2,20 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.admin;
+package controller.customer;
 
+import DAO.Common.AccountActiveTokenDAO;
+import DAO.Common.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Common.AccountActiveToken;
+import model.Common.User;
 
 /**
  *
  * @author ifyou
  */
-public class LoginController extends HttpServlet {
+public class VerifyAccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,20 +33,29 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            // dadasdasda
+            String verifyToken = request.getParameter("token");
+            AccountActiveTokenDAO accountActiveTokenDAO = new AccountActiveTokenDAO();
+            AccountActiveToken accountActiveToken = accountActiveTokenDAO.findByActiveToken(verifyToken);
+            // check if token is valid
+            if (accountActiveToken != null) {
+                // Get the user with account ative token
+                UserDAO userDAO = new UserDAO();
+                User user = userDAO.searchUserByEmail(accountActiveToken.getUserEmail());
+                // change the status of user
+                userDAO.activeUserAccount(user.getEmail());
+                // delete the active tokens
+                accountActiveTokenDAO.deleteAccountActiveToken(accountActiveToken.getUserEmail());
+                // redirect to the login page with success message
+                String message = "Your account has been successfully activated. Please login to continue using the service";
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
+            }else{
+             // return to 404 not found page
+             response.sendRedirect("404.jsp");
+            }
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
