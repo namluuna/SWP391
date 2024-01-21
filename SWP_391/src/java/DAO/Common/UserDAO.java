@@ -84,7 +84,7 @@ public class UserDAO extends DBContext{
          
          try {
             // Select user with email
-            String sql = "SELECT * FROM users WHERE email = ?";
+            String sql = "SELECT * FROM [users] WHERE [email] = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, email);
             ResultSet rs = st.executeQuery();
@@ -97,7 +97,7 @@ public class UserDAO extends DBContext{
                 int is_deleted = rs.getInt("is_deleted");
                 int role = rs.getInt("role");
                 int status = rs.getInt("status");
-                User u = new User(name, user_email, password, phone, is_deleted, role, status);
+                User u = new User(id, name, user_email, password, phone, is_deleted, role, status);
                 return u;
             }
         } catch (SQLException e) {
@@ -123,7 +123,7 @@ public class UserDAO extends DBContext{
                 int is_deleted = rs.getInt("is_deleted");
                 int role = rs.getInt("role");
                 int status = rs.getInt("status");
-                User u = new User(name, user_email, password, phone, is_deleted, role, status);
+                User u = new User(id, name, user_email, password, phone, is_deleted, role, status);
                 return u;
             }
         } catch (SQLException e) {
@@ -185,10 +185,11 @@ public class UserDAO extends DBContext{
 
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        ArrayList<User> users = new ArrayList<>();
-        users = udao.sellectallUser();
-        for (User user : users) {
+        User user = udao.searchUserByEmail("ifyouwant9612@gmail.com");
+        if (user != null) {
             System.out.println(user.toString());
+        }else{
+            System.out.println("null");
         }
     }
 }

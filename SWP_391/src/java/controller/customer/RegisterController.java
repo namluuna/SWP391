@@ -163,7 +163,7 @@ public class RegisterController extends HttpServlet {
             User registerUser = new User(name, email, encodedPassword, phone, 0, 4, 0);
             userDAO.addNewUser(registerUser);
             // get information of the new user
-            User newUser = userDAO.searchUserByEmail(registerUser.getEmail());
+            User newUser = userDAO.searchUserByEmail(email);
             // create user address of new user
             UserAddress userAddress = new UserAddress(newUser.getId(), provinceCode, districtCode, wardCode, address);
             UserAddressDAO userAddressDAO = new UserAddressDAO();
