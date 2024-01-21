@@ -1,16 +1,15 @@
 <%-- 
-    Document   : login
-    Created on : Jan 15, 2024, 10:48:09 AM
+    Document   : SetNewPassword
+    Created on : Jan 21, 2024, 3:50:38 PM
     Author     : ifyou
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>Set New Password</title>
         <style>
             body {
                 font-family: "Comic Sans MS", cursive;
@@ -101,25 +100,16 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Login</h2>
-                <c:if test="${not empty message}">
-                    <p style="color: blue;">${message}</p> 
-                </c:if>
-                <c:if test="${not empty passwordChange}">
-                    <p style="color: blue;">${passwordChange}</p> 
-                </c:if>
-                <form action="/SWP_391/login" method="post">
-                    <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
-                    <input type="password" id="password" name="password" placeholder="Password"  value="${password}" required>
-                    <c:if test="${not empty wrongLoginInfo}">
-                        <p style="color: red;">${wrongLoginInfo}</p> 
+                <h2>Set New Password</h2>
+                <form action="/SWP_391/SetNewPassword" method="post">
+                    <input type="password" id="password" name="password" placeholder="Enter new password" value="${password}" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter password(confirm)"  value="${confirmPassword}" required>
+                    <c:if test="${not empty message}">
+                        <p style="color: red;">${message}</p> 
                     </c:if>
-                    <button type="submit">Login</button>
+                    <input type="hidden" name="token" value="${token}">
+                    <button type="submit">Reset Password</button>
                     <br>
-                    <div class="links">
-                        <a href="fogotpassword.jsp">Forgot password?</a>
-                        <a href="/SWP_391/register">Do not have an account?</a>
-                    </div>
                 </form>
             </div>
         </div>

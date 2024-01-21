@@ -142,7 +142,19 @@ public class UserDAO extends DBContext{
             ex.printStackTrace();
         }
     }
-     
+    
+    public void changePassword(String email, String newPassword){
+        try {
+            String sql = "UPDATE users SET [password] = ? WHERE [email] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, newPassword);
+            statement.setString(2, email);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public ArrayList<User> sellectallUser(){
         ArrayList<User> users = new ArrayList<>();
         try {
