@@ -18,9 +18,17 @@
     </head>
     <body>
         <div class="container mt-5">
-            <a href="employees?mod=1" class="btn btn-primary mb-3">Create New Group</a>
-            <h1>List of Groups</h1>
-        
+            
+            <h1>Group Management</h1>
+            <div><a href="groups?mod=1" class="btn btn-primary mb-3">Create New Group</a></div>
+            
+            <div class="btn-group mb-3">
+                <a href="groups" class="btn btn-secondary">All Groups</a>
+                <a href="groups?show=active" class="btn btn-success">Active Groups</a>
+                <a href="groups?show=updated" class="btn btn-warning">Updated Groups</a>
+                <a href="groups?show=deleted" class="btn btn-danger">Deleted Groups</a>
+            </div>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>

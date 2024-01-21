@@ -27,7 +27,7 @@ public class GroupsDAO extends DBContext{
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 Groups groups = new Groups(Id, Name, Description, Created_at, Deleted_at);
-                groupsList.add(groups);                    
+                groupsList.add(groups);
             }
         } catch (Exception e) {
             System.out.println("getGroupsList: " + e.getMessage());

@@ -58,4 +58,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
+                        // Đặt thông báo lỗi thành trống trước khi kiểm tra
+                        errorMessageName.innerHTML = "";
+                        errorMessageDescription.innerHTML = "";
+
+                        if (name === "") {
+                            errorMessageName.innerHTML = "Please enter a name";
+                            return false;
+                        }
+
+                        if (description === "") {
+                            errorMessageDescription.innerHTML = "Please enter a description";
+                            return false;
+                        }
+
+                        return true;
+                    }
+        </script>
+    </body>
 </html>

@@ -41,10 +41,6 @@
         <servlet-class>controller.sale.LoadEditCategory</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListMaterials</servlet-name>
-        <servlet-class>controller.Materials.ListMaterials</servlet-class>
-    </servlet>
-    <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controller.customer.RegisterController</servlet-class>
     </servlet>
@@ -121,8 +117,6 @@
         <url-pattern>/loadedit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListMaterials</servlet-name>
-        <url-pattern>/listm</url-pattern>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
