@@ -76,6 +76,10 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>controller.Common.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FormsController</servlet-name>
+        <servlet-class>controller.sale.FormsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/CartController</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FormsController</servlet-name>
+        <url-pattern>/Forms</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
