@@ -32,7 +32,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>NO</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Created_at</th>
