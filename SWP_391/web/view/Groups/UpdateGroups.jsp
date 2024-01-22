@@ -49,10 +49,10 @@
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Update Groups</h1>
                 <form name="form" action="groups" method="POST" onsubmit="return validateForm();">
-                    <div class="mb-3">
+<!--                    <div class="mb-3">
                         <label for="id" class="form-label">GroupsID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="${group.getId()}" readonly>
-                    </div>
+                    </div>-->
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" value="${group.getName()}">
