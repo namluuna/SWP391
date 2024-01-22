@@ -8,18 +8,22 @@ import DAO.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Groups.Groups;
-
+import model.Sale.Form;
 /**
  *
  * @author lucdu
  */
-public class GroupsDAO extends DBContext {
-
-    public ArrayList<Groups> selectAllGroups() {
-        ArrayList<Groups> groupsList = new ArrayList<>();
+public class FormDAO extends DBContext{
+    public ArrayList<Form> selectAllForm() {
+        ArrayList<Form> groupsList = new ArrayList<>();
         try {
-            String sql = "select * from groups";
+            String sql = "SELECT [id]\n" +
+                        "      ,[name]\n" +
+                        "      ,[description]\n" +
+                        "      ,[created_at]\n" +
+                        "      ,[deleted_at]\n" +
+                        "      ,[updated_at]\n" +
+                        "  FROM [dbo].[forms]";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -29,7 +33,8 @@ public class GroupsDAO extends DBContext {
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
-                Groups groups = new Groups(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                Form groups = new Form(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                System.err.println("FORM " + groups.getName());
                 groupsList.add(groups);
             }
         } catch (Exception e) {
@@ -38,9 +43,9 @@ public class GroupsDAO extends DBContext {
         return groupsList;
     }
 
-    public void createNewGroups(String name, String description) {
+    public void createNewForm(String name, String description) {
         try {
-            String sql = "INSERT INTO groups (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO forms (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
@@ -80,7 +85,7 @@ public class GroupsDAO extends DBContext {
     private int getMaxGroupId() {
         int maxId = 0;
         try {
-            String sql = "SELECT MAX(id) AS max_id FROM groups";
+            String sql = "SELECT MAX(id) AS max_id FROM forms";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
@@ -92,10 +97,10 @@ public class GroupsDAO extends DBContext {
         return maxId;
     }
 
-    public Groups selectGroupsByID(String id) {
-        Groups group = null;
+    public Form selectFormByID(String id) {
+        Form group = null;
         try {
-            String sql = "SELECT * FROM groups WHERE id = ?";
+            String sql = "SELECT * FROM forms WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
@@ -109,7 +114,7 @@ public class GroupsDAO extends DBContext {
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
 
-                group = new Groups(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                group = new Form(Id, Name, Description, Created_at, Deleted_at, Updated_at);
             }
         } catch (Exception e) {
             System.out.println("selectGroupsByID: " + e.getMessage());
@@ -117,9 +122,9 @@ public class GroupsDAO extends DBContext {
         return group;
     }
 
-    public void updateGroups(String id, String name, String description) {
+    public void updateForm(String id, String name, String description) {
         try {
-            String sql = "UPDATE groups SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE forms SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
@@ -137,9 +142,9 @@ public class GroupsDAO extends DBContext {
         }
     }
 
-    public void softDeleteGroups(String id) {
+    public void softDeleteForm(String id) {
         try {
-            String sql = "UPDATE groups SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE forms SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
@@ -157,7 +162,7 @@ public class GroupsDAO extends DBContext {
 
     public void restoreGroups(String id) {
         try {
-            String sql = "UPDATE groups SET deleted_at = NULL WHERE id = ?";
+            String sql = "UPDATE forms SET deleted_at = NULL WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
@@ -174,16 +179,15 @@ public class GroupsDAO extends DBContext {
     }
 
     public static void main(String[] args) {
-        GroupsDAO g = new GroupsDAO();
-//        ArrayList<Groups> data = g.selectAllGroups();
-//        System.out.println(data);
-//        g.createNewGroups("dsds", "dsdsd");
-        Groups selectedGroup = g.selectGroupsByID("2");
-        if (selectedGroup != null) {
-            System.out.println("Selected Group: " + selectedGroup);
-            g.updateGroups(selectedGroup.getId(), "New Name", "New Description");
-        } else {
-            System.out.println("Group not found.");
-        }
+        FormDAO g = new FormDAO();
+        ArrayList<Form> data = g.selectAllForm();
+        System.out.println(data);
+//        Form selectedGroup = g.selectFormByID("2");
+//        if (selectedGroup != null) {
+//            System.out.println("Selected Group: " + selectedGroup);
+//            g.updateForm(selectedGroup.getId(), "New Name", "New Description");
+//        } else {
+//            System.out.println("Group not found.");
+//        }
     }
 }

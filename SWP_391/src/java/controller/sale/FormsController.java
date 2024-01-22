@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.Groups;
+package controller.sale;
 
+import DAO.GroupsDAO.FormDAO;
 import DAO.GroupsDAO.GroupsDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -12,13 +13,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import model.Groups.Groups;
+import model.Sale.Form;
 
 /**
- *
+ *  
  * @author lucdu
  */
-public class GroupsController extends HttpServlet {
+public class FormsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +38,10 @@ public class GroupsController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GroupsController</title>");
+            out.println("<title>Servlet FormsController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GroupsController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FormsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,22 +59,22 @@ public class GroupsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        GroupsDAO g = new GroupsDAO();
+        FormDAO g = new FormDAO();
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            request.getRequestDispatcher("view\\Groups\\CreateGroups.jsp").forward(request, response);
+            request.getRequestDispatcher("view\\sale\\CreateForm.jsp").forward(request, response);
         }
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
-            Groups group = g.selectGroupsByID(request.getParameter("id"));
+            Form group = g.selectFormByID(request.getParameter("id"));
             request.setAttribute("group", group);
-            request.getRequestDispatcher("view\\Groups\\UpdateGroups.jsp").forward(request, response);
+            request.getRequestDispatcher("view\\sale\\UpdateForm.jsp").forward(request, response);
         }
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
-            g.softDeleteGroups(request.getParameter("id"));
+            g.softDeleteForm(request.getParameter("id"));
         }
         //------------------------------------------------------------------------------------------------------------------
-        ArrayList<Groups> data = g.selectAllGroups();
+        ArrayList<Form> data = g.selectAllForm();
         request.setAttribute("data", data);
-        request.getRequestDispatcher("view\\Groups\\VeiwGroups.jsp").forward(request, response);
+        request.getRequestDispatcher("view\\sale\\ViewForm.jsp").forward(request, response);
     }
 
     /**
@@ -93,27 +94,27 @@ public class GroupsController extends HttpServlet {
         String created_at = request.getParameter("created_at");
         String deleted_at = request.getParameter("deleted_at");
         if (request.getParameter("add") != null) {
-            GroupsDAO p = new GroupsDAO();
-            p.createNewGroups(name, description);
-            response.sendRedirect("groups");
+            FormDAO p = new FormDAO();
+            p.createNewForm(name, description);
+            response.sendRedirect("Forms");
             return;
         }
         if (request.getParameter("update") != null) {
-            GroupsDAO p = new GroupsDAO();
-            p.updateGroups(id, name, description);
-            response.sendRedirect("groups");
+            FormDAO p = new FormDAO();
+            p.updateForm(id, name, description);
+            response.sendRedirect("Forms");
             return;
         }
         if (request.getParameter("delete") != null) {
-            GroupsDAO p = new GroupsDAO();
-            p.softDeleteGroups(id);
-            response.sendRedirect("groups");
+            FormDAO p = new FormDAO();
+            p.softDeleteForm(id);
+            response.sendRedirect("Forms");
             return;
         }
         if (request.getParameter("restore") != null) {
-            GroupsDAO p = new GroupsDAO();
+            FormDAO p = new FormDAO();
             p.restoreGroups(id);
-            response.sendRedirect("groups");
+            response.sendRedirect("Forms");
             return;
         }
     }

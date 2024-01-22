@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.Groups;
+package model.Sale;
 
 /**
  *
- * @author lucdu
+ * @author Admin
  */
-public class Groups {
+public class Form {
     String id;
     String name , description , created_at , deleted_at, updated_at;
 
-    public Groups() {
+    public Form() {
     }
 
-    public Groups(String id, String name, String description, String created_at, String deleted_at, String updated_at) {
+    public Form(String id, String name, String description, String created_at, String deleted_at, String updated_at) {
         this.id = id;
         this.name = name;
         this.description = description;
