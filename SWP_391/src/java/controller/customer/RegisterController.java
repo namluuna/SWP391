@@ -124,7 +124,6 @@ public class RegisterController extends HttpServlet {
                 Ward selectedWard = wardDAO.findWardByCode(wardCode);
                 request.setAttribute("selectedWard", selectedWard);
                 request.setAttribute("errorEmailMessage", errorEmailMessage);
-                request.setAttribute("address", address);
                 request.getRequestDispatcher("view\\customer\\register.jsp").forward(request, response);
             } else {
                 // the email is exist and the password is the same with confirm password
@@ -138,7 +137,6 @@ public class RegisterController extends HttpServlet {
                 request.setAttribute("provinceCode", provinceCode);
                 request.setAttribute("wardCode", wardCode);
                 request.setAttribute("districtCode", districtCode);
-                request.setAttribute("address", address);
                 ProvinceDAO pdao = new ProvinceDAO();
                 List<Province> provinces = pdao.selectAllProvince();
                 request.setAttribute("provinces", provinces);
