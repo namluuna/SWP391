@@ -110,7 +110,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="colors?mod=3&id=${color.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="color?mod=3&id=${color.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,7 +183,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <form method="POST" action="colors">
+                                                        <form method="POST" action="groups">
                                                             <input type="hidden" name="id" value="${color.id}">
                                                             <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                         </form>

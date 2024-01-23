@@ -59,7 +59,6 @@ public class ColorController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ColorsDAO c = new ColorsDAO();
-        ArrayList<Colors> data = c.getAll();
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
             request.getRequestDispatcher("view\\color\\AddColors.jsp").forward(request, response);
         }
@@ -71,7 +70,7 @@ public class ColorController extends HttpServlet {
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
             c.softDeleteColors(request.getParameter("id"));
         }
-
+        ArrayList<Colors> data = c.getAll();
         request.setAttribute("Cdata", data);
         request.getRequestDispatcher("view\\color\\ListColors.jsp").forward(request, response);
     }
@@ -110,7 +109,7 @@ public class ColorController extends HttpServlet {
             response.sendRedirect("colors");
             return;
         }
-        if (request.getParameter("restore") != null) {
+         if (request.getParameter("restore") != null) {
             ColorsDAO c = new ColorsDAO();
             c.restoreColors(id);
             response.sendRedirect("colors");
