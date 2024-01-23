@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Group Management</title>
+        <title>Forms Management</title>
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -19,20 +19,20 @@
     <body>
         <div class="container mt-5">
             
-            <h1>Group Management</h1>
-            <div><a href="groups?mod=1" class="btn btn-primary mb-3">Create New Group</a></div>
+            <h1>Forms Management</h1>
+            <div><a href="Forms?mod=1" class="btn btn-primary mb-3">Create New Forms</a></div>
             
             <div class="btn-group mb-3">
-                <a href="groups" class="btn btn-secondary">All Groups</a>
-                <a href="groups?show=active" class="btn btn-success">Active Groups</a>
-                <a href="groups?show=updated" class="btn btn-warning">Updated Groups</a>
-                <a href="groups?show=deleted" class="btn btn-danger">Deleted Groups</a>
+                <a href="Forms" class="btn btn-secondary">All Forms</a>
+                <a href="Forms?show=active" class="btn btn-success">Active Forms</a>
+                <a href="Forms?show=updated" class="btn btn-warning">Updated Forms</a>
+                <a href="Forms?show=deleted" class="btn btn-danger">Deleted Forms</a>
             </div>
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>NO</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Created_at</th>
@@ -56,7 +56,7 @@
                                     <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
-                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="Forms?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${group.getId()}">
                                             Delete
                                         </button>
@@ -70,11 +70,11 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this group?
+                                                        Are you sure you want to delete this form?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="groups?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,11 +106,11 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this group?
+                                                        Are you sure you want to delete this form?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="groups?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,7 +128,7 @@
                                     <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
-                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="Forms?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${group.getId()}">
                                             Delete
                                         </button>
@@ -146,7 +146,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="groups?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,7 +183,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <form method="POST" action="groups">
+                                                        <form method="POST" action="Forms">
                                                             <input type="hidden" name="id" value="${group.id}">
                                                             <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                         </form>
