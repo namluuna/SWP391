@@ -112,7 +112,7 @@
                 <h2>Register</h2>
                 <form action="/SWP_391/register" method="post">
                     <label for="fullName">Full Name:</label>
-                    <input type="fullName" id="fullName" name="fullName" value="${name}" required>
+                    <input type="fullName" id="fullName" name="fullName" value="${name}" required >
 
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" value="${email}" required>
