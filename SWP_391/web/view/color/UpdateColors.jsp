@@ -47,20 +47,17 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Update Groups</h1>
+                <h1 class="text-center mb-4">Update Color</h1>
                 <form name="form" action="colors" method="POST" onsubmit="return validateForm();">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">ColorID:</label>
-                        <input type="text" class="form-control" id="id" name="id" value="${color.getId()}" readonly>
-                    </div>
+                    <input type="hidden" class="form-control" id="id" name="id" value="${colors.getId()}" readonly>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" value="${color.getName()}">
+                        <input type="text" class="form-control" id="name" name="name" value="${colors.getName()}">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description" value="${color.getDescription()}">
+                        <input type="text" class="form-control" id="description" name="description" value="${colors.getDescription()}">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
