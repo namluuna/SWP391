@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Materials Management</title>
+        <title>Color Management</title>
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -18,15 +18,15 @@
     </head>
     <body>
         <div class="container mt-5">
-
-            <h1>Materials Management</h1>
-            <div><a href="materials?mod=1" class="btn btn-primary mb-3">Create New Materials</a></div>
-
+            
+            <h1>Color Management</h1>
+            <div><a href="colors?mod=1" class="btn btn-primary mb-3">Create New Colors</a></div>
+            
             <div class="btn-group mb-3">
-                <a href="materials" class="btn btn-secondary">All materials</a>
-                <a href="materials?show=active" class="btn btn-success">Active materials</a>
-                <a href="materials?show=updated" class="btn btn-warning">Updated materials</a>
-                <a href="materials?show=deleted" class="btn btn-danger">Deleted materials</a>
+                <a href="colors" class="btn btn-secondary">All Colors</a>
+                <a href="colors?show=active" class="btn btn-success">Active Colors</a>
+                <a href="colors?show=updated" class="btn btn-warning">Updated Colors</a>
+                <a href="colors?show=deleted" class="btn btn-danger">Deleted Colors</a>
             </div>
 
             <table class="table table-bordered">
@@ -43,24 +43,24 @@
                 </thead>
                 <tbody>
                     <!-- Loop through the groups and display their information -->
-                    <c:forEach var="material" items="${Mdata}">
+                    <c:forEach var="color" items="${Cdata}">
                         <!-- Check if the group should be displayed based on the 'show' parameter -->
                         <c:choose>
                             <c:when test="${empty param.show || param.show eq 'all'}">
                                 <!-- Display all groups -->
                                 <tr>
-                                    <td>${material.id}</td>
-                                    <td>${material.name}</td>
-                                    <td>${material.description}</td>
-                                    <td>${material.created_at}</td>
-                                    <td>${material.updated_at}</td>
-                                    <td>${material.deleted_at}</td>
+                                    <td>${color.id}</td>
+                                    <td>${color.name}</td>
+                                    <td>${color.description}</td>
+                                    <td>${color.created_at}</td>
+                                    <td>${color.updated_at}</td>
+                                    <td>${color.deleted_at}</td>
                                     <td>
-                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
+                                        <a href="colors?mod=2&id=${color.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${color.getId()}">
                                             Delete
                                         </button>
-                                        <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmDeleteModal${color.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -70,11 +70,11 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this materials?
+                                                        Are you sure you want to delete this color?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="colors?mod=3&id=${color.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,21 +82,21 @@
                                     </td>
                                 </tr>
                             </c:when>
-                            <c:when test="${param.show eq 'active' && empty material.deleted_at}">
+                            <c:when test="${param.show eq 'active' && empty color.deleted_at}">
                                 <!-- Display only active groups -->
                                 <tr>
-                                    <td>${material.id}</td>
-                                    <td>${material.name}</td>
-                                    <td>${material.description}</td>
-                                    <td>${material.created_at}</td>
-                                    <td>${material.updated_at}</td>
-                                    <td>${material.deleted_at}</td>
+                                    <td>${color.id}</td>
+                                    <td>${color.name}</td>
+                                    <td>${color.description}</td>
+                                    <td>${color.created_at}</td>
+                                    <td>${color.updated_at}</td>
+                                    <td>${color.deleted_at}</td>
                                     <td>
-                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
+                                        <a href="colors?mod=2&id=${color.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${color.getId()}">
                                             Delete
                                         </button>
-                                        <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmDeleteModal${color.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -106,11 +106,11 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this material?
+                                                        Are you sure you want to delete this color?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="color?mod=3&id=${color.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,21 +118,21 @@
                                     </td>
                                 </tr>
                             </c:when>
-                            <c:when test="${param.show eq 'updated' && not empty material.updated_at}">
+                            <c:when test="${param.show eq 'updated' && not empty color.updated_at}">
                                 <!-- Display only updated groups -->
                                 <tr>
-                                    <td>${material.id}</td>
-                                    <td>${material.name}</td>
-                                    <td>${material.description}</td>
-                                    <td>${material.created_at}</td>
-                                    <td>${material.updated_at}</td>
-                                    <td>${material.deleted_at}</td>
+                                    <td>${color.id}</td>
+                                    <td>${color.name}</td>
+                                    <td>${color.description}</td>
+                                    <td>${color.created_at}</td>
+                                    <td>${color.updated_at}</td>
+                                    <td>${color.deleted_at}</td>
                                     <td>
-                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
+                                        <a href="colors?mod=2&id=${color.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${color.getId()}">
                                             Delete
                                         </button>
-                                        <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmDeleteModal${color.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -142,11 +142,11 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this material?
+                                                        Are you sure you want to delete this color?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="colors?mod=3&id=${color.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,22 +154,22 @@
                                     </td>
                                 </tr>
                             </c:when>
-                            <c:when test="${param.show eq 'deleted' && not empty material.deleted_at}">
+                            <c:when test="${param.show eq 'deleted' && not empty color.deleted_at}">
                                 <!-- Display only deleted groups -->
                                 <tr>
-                                    <td>${material.id}</td>
-                                    <td>${material.name}</td>
-                                    <td>${material.description}</td>
-                                    <td>${material.created_at}</td>
-                                    <td>${material.updated_at}</td>
-                                    <td>${material.deleted_at}</td>
+                                    <td>${color.id}</td>
+                                    <td>${color.name}</td>
+                                    <td>${color.description}</td>
+                                    <td>${color.created_at}</td>
+                                    <td>${color.updated_at}</td>
+                                    <td>${color.deleted_at}</td>
                                     <td>
                                         <!-- Add a button to restore the group -->
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${material.id}">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${color.id}">
                                             Restore
                                         </button>
                                         <!-- Restore Confirmation Modal -->
-                                        <div class="modal fade" id="confirmRestoreModal${material.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmRestoreModal${color.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -179,12 +179,12 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to restore this material?
+                                                        Are you sure you want to restore this color?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <form method="POST" action="materials">
-                                                            <input type="hidden" name="id" value="${material.id}">
+                                                        <form method="POST" action="groups">
+                                                            <input type="hidden" name="id" value="${color.id}">
                                                             <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                         </form>
                                                     </div>

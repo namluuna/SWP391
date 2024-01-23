@@ -1,6 +1,6 @@
 <%-- 
-    Document   : CreateGroups
-    Created on : Jan 15, 2024, 9:25:58 AM
+    Document   : UpdateGroups
+    Created on : Jan 16, 2024, 3:00:02 PM
     Author     : lucdu
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create New Groups</title>
+        <title>Update Groups</title>
         <!-- Thêm Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -47,19 +47,20 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Create New Materials</h1>
+                <h1 class="text-center mb-4">Update Materials</h1>
                 <form name="form" action="materials" method="POST" onsubmit="return validateForm();">
+                     <input type="hidden" class="form-control" id="id" name="id" value="${materials.getId()}" readonly>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" value="${materials.getName()}">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description">
+                        <input type="text" class="form-control" id="description" name="description" value="${materials.getDescription()}">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
+                    <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
                     <a href="materials" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>

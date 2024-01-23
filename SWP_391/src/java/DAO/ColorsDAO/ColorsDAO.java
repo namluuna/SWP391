@@ -2,27 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO.MaterialsDAO;
+package DAO.ColorsDAO;
 
 import DAO.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-
-import model.Materials.materials;
+import model.Colors.Colors;
 
 /**
  *
  * @author Admin
  */
-public class MaterialsDAO extends DBContext {
 
-    // ham hien thi list 
-   public ArrayList<materials> getAll() {
-        ArrayList<materials> list = new ArrayList<>();
+public class ColorsDAO extends DBContext {
+
+   public ArrayList<Colors> getAll() {
+        ArrayList<Colors> colorsList = new ArrayList<>();
         try {
-            String sql = "select * from materials";
+            String sql = "select * from colors";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -32,38 +30,37 @@ public class MaterialsDAO extends DBContext {
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
-                materials m = new materials(Id, Name, Description, Created_at, Deleted_at, Updated_at);
-                list.add(m);
+                Colors c = new Colors(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                colorsList.add(c);
             }
         } catch (Exception e) {
-            System.out.println("getMaterialsList: " + e.getMessage());
+            System.out.println("getColorsList: " + e.getMessage());
         }
-        return list;
+        return colorsList;
     }
-    // ham create
-    public void createNewMaterials(String name, String description) {
+   
+   
+    public void createNewColors(String name, String description) {
         try {
-            String sql = "INSERT INTO materials (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO colors (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
             st.executeUpdate();
             ResultSet generatedKeys = st.getGeneratedKeys();
             if (generatedKeys.next()) {
-                int newMaterialsId = generatedKeys.getInt(1);
-                System.out.println("New materials created with ID: " + newMaterialsId);
+                int newColorId = generatedKeys.getInt(1);
+                System.out.println("New color created with ID: " + newColorId);
             }
         } catch (Exception e) {
-            System.out.println("createNewMaterials: " + e.getMessage());
+            System.out.println("createNewColors: " + e.getMessage());
         }
     }
-
- 
-    // ham selectByID
-    public materials selectMaterialsByID(String id) {
-        materials m = null;
+    
+     public Colors selectColorByID(String id) {
+        Colors c = null;
         try {
-            String sql = "SELECT * FROM materials WHERE id = ?";
+            String sql = "SELECT * FROM colors WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
@@ -77,18 +74,17 @@ public class MaterialsDAO extends DBContext {
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
 
-                m = new materials(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                c = new Colors(Id, Name, Description, Created_at, Deleted_at, Updated_at);
             }
         } catch (Exception e) {
-            System.out.println("selectMaterialsByID: " + e.getMessage());
+            System.out.println("selectColorsByID: " + e.getMessage());
         }
-        return m;
+        return c;
     }
-
-    // ham update
-    public void updateMaterials(String id, String name, String description) {
+     
+      public void updateColors(String id, String name, String description) {
         try {
-            String sql = "UPDATE materials SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE colors SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
@@ -97,59 +93,54 @@ public class MaterialsDAO extends DBContext {
             int rowsUpdated = st.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Materials with ID " + id + " updated successfully.");
+                System.out.println("Colors with ID " + id + " updated successfully.");
             } else {
-                System.out.println("No materials found with ID " + id);
+                System.out.println("No color found with ID " + id);
             }
         } catch (Exception e) {
-            System.out.println("updateMaterials: " + e.getMessage());
+            System.out.println("updateColors: " + e.getMessage());
         }
     }
-    // ham softdeleted
-
-    public void softDeleteMaterials(String id) {
+      
+          public void softDeleteColors(String id) {
         try {
-            String sql = "UPDATE materials SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE colors SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
             int rowsUpdated = st.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Materials with ID " + id + " soft-deleted successfully.");
+                System.out.println("Colors with ID " + id + " soft-deleted successfully.");
             } else {
-                System.out.println("No materials found with ID " + id);
+                System.out.println("No colors found with ID " + id);
             }
         } catch (Exception e) {
-            System.out.println("softDeleteMaterials: " + e.getMessage());
+            System.out.println("softDeleteColors: " + e.getMessage());
         }
     }
-    // ham restore
 
-    public void restoreMaterials(String id) {
+    public void restoreColors(String id) {
         try {
-            String sql = "UPDATE materials SET deleted_at = NULL WHERE id = ?";
+            String sql = "UPDATE colors SET deleted_at = NULL WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
             int rowsUpdated = st.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("materials with ID " + id + " restored successfully.");
+                System.out.println("Colors with ID " + id + " restored successfully.");
             } else {
-                System.out.println("No materials found with ID " + id);
+                System.out.println("No colors found with ID " + id);
             }
         } catch (Exception e) {
-            System.out.println("restoreMaterials: " + e.getMessage());
+            System.out.println("restoreColors: " + e.getMessage());
         }
     }
-
-    // ham main
+    
     public static void main(String[] args) {
-        MaterialsDAO mdao = new MaterialsDAO();
-        ArrayList<materials> data = mdao.getAll();
+        ColorsDAO c = new ColorsDAO();
+        ArrayList<Colors> data = c.getAll();
         System.out.println(data);
-
     }
-
 }

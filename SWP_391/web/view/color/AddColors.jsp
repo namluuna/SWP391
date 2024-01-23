@@ -47,8 +47,8 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Create New Materials</h1>
-                <form name="form" action="materials" method="POST" onsubmit="return validateForm();">
+                <h1 class="text-center mb-4">Create New Color</h1>
+                <form name="form" action="colors" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name">
@@ -60,7 +60,7 @@
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add">ADD</button>
-                    <a href="materials" class="btn btn-secondary">Cancel</a>
+                    <a href="colors" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

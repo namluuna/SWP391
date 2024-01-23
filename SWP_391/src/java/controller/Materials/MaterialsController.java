@@ -4,6 +4,8 @@
  */
 package controller.Materials;
 
+import model.Materials.materials;
+import java.util.ArrayList;
 import DAO.MaterialsDAO.MaterialsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,14 +13,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.Materials.materials;
 
 /**
  *
  * @author Admin
  */
-public class ListMaterials extends HttpServlet {
+public class MaterialsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class ListMaterials extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListMaterials</title>");            
+            out.println("<title>Servlet MaterialsController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListMaterials at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MaterialsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,13 +58,21 @@ public class ListMaterials extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MaterialsDAO mdao = new MaterialsDAO();
-        if(request.getParameter("mod")!= null && request.getParameter("mod").equals("1")){
-            request.getRequestDispatcher("view//materials//AddMaterials.jsp").forward(request, response);
+        MaterialsDAO m = new MaterialsDAO();
+        ArrayList<materials> data = m.getAll();
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
+            request.getRequestDispatcher("view\\materials\\AddMaterials.jsp").forward(request, response);
         }
-        ArrayList<materials> data = mdao.getAll();
-        request.setAttribute("data", data);
-        request.getRequestDispatcher("view//materials//ListMaterials.jsp").forward(request, response);
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
+            materials materials = m.selectMaterialsByID(request.getParameter("id"));
+            request.setAttribute("materials", materials);
+            request.getRequestDispatcher("view\\materials\\UpdateMaterials.jsp").forward(request, response);
+        }
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
+            m.softDeleteMaterials(request.getParameter("id"));
+        }
+        request.setAttribute("Mdata", data);
+        request.getRequestDispatcher("view\\materials\\ListMaterials.jsp").forward(request, response);
     }
 
     /**
@@ -78,7 +86,36 @@ public class ListMaterials extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String created_at = request.getParameter("created_at");
+        String deleted_at = request.getParameter("deleted_at");
+        if (request.getParameter("add") != null) {
+            MaterialsDAO p = new MaterialsDAO();
+            p.createNewMaterials(name, description);
+            response.sendRedirect("materials");
+            return;
+        }
+         if (request.getParameter("update") != null) {
+           MaterialsDAO p = new MaterialsDAO();
+            p.updateMaterials(id, name, description);
+            response.sendRedirect("materials");
+            return;
+        }
+          if (request.getParameter("delete") != null) {
+            MaterialsDAO p = new MaterialsDAO();
+            p.softDeleteMaterials(id);
+            response.sendRedirect("materials");
+            return;
+        }
+            if (request.getParameter("restore") != null) {
+            MaterialsDAO p = new MaterialsDAO();
+            p.restoreMaterials(id);
+            response.sendRedirect("materials");
+            return;
+        }
+        
     }
 
     /**

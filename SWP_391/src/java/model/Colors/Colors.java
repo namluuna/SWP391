@@ -2,16 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.Materials;
-public class materials {
+package model.Colors;
 
+/**
+ *
+ * @author Admin
+ */
+public class Colors {
     String id;
-    String name, description, created_at, deleted_at, updated_at;
+    String name , description , created_at , deleted_at, updated_at;
 
-    public materials() {
+    public Colors() {
     }
 
-    public materials(String id, String name, String description, String created_at, String deleted_at, String updated_at) {
+    public Colors(String id, String name, String description, String created_at, String deleted_at, String updated_at) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -67,13 +71,10 @@ public class materials {
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
     }
-
-  
-
-    @Override
+     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Materials{");
+        sb.append("Colors{");
         sb.append("id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", description=").append(description);
@@ -83,5 +84,4 @@ public class materials {
         sb.append('}');
         return sb.toString();
     }
-
 }
