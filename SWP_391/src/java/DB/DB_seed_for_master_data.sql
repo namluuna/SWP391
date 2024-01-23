@@ -1,11 +1,17 @@
-INSERT INTO categories (name, description, created_at)
+INSERT INTO groups (name, description, created_at)
 VALUES ('Limited Edition', 'Description', SYSDATETIME());
-INSERT INTO categories (name, description, created_at)
+INSERT INTO groups (name, description, created_at)
 VALUES ('Online Only', 'Description', SYSDATETIME());
-INSERT INTO categories (name, description, created_at)
+INSERT INTO groups (name, description, created_at)
 VALUES ('Sale off', 'Description', SYSDATETIME());
-INSERT INTO categories (name, description, created_at)
+INSERT INTO groups (name, description, created_at)
 VALUES ('New Arrival', 'Description', SYSDATETIME());
+
+INSERT INTO categories (name, description, created_at)
+VALUES ('Men', 'Description', SYSDATETIME());
+INSERT INTO categories (name, description, created_at)
+VALUES ('Women', 'Description', SYSDATETIME());
+
 
 
 INSERT INTO materials (name, description, created_at)
