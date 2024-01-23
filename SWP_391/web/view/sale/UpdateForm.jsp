@@ -48,7 +48,7 @@
         <div class="container">
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Update Forms</h1>
-                <form name="form" action="groups" method="POST" onsubmit="return validateForm();">
+                <form name="form" action="Forms" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
                         <label for="id" class="form-label">FormsID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="${group.getId()}" readonly>
@@ -64,7 +64,7 @@
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
-                    <a href="groups" class="btn btn-secondary">Cancel</a>
+                    <a href="Forms" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>
