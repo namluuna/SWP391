@@ -8,16 +8,20 @@ INSERT INTO groups (name, description, created_at)
 VALUES ('New Arrival', 'Description', SYSDATETIME());
 
 INSERT INTO categories (name, description, created_at)
-VALUES ('Men', 'Description', SYSDATETIME());
+VALUES (N'Basas', N'Basas - Đường nét đơn giản, bền vững với thời gian.', SYSDATETIME());
 INSERT INTO categories (name, description, created_at)
-VALUES ('Women', 'Description', SYSDATETIME());
-
-
+VALUES (N'Vintas', N'Vintage mang trong mình những nét đặc trưng của các thập niên trước đó, thường là từ những năm 1920-1980.', SYSDATETIME());
+INSERT INTO categories (name, description, created_at)
+VALUES (N'Urban', N'Urban năng lượng, sức sống trẻ trung và thậm chí có phần nổi loạn, cá tính.', SYSDATETIME());
+INSERT INTO categories (name, description, created_at)
+VALUES (N'Pattern', N'Pattern đôi giày “họa tiết” đầy sắc màu, nổi bật, cảm hứng.', SYSDATETIME());
+INSERT INTO categories (name, description, created_at)
+VALUES (N'Back Creaseeeeeee', N'Giày da nhưng mang form thiết kế sneaker, sự kết hợp hoàn hảo giữa năng động yêu thích sự thanh lịch.....', SYSDATETIME());
 
 INSERT INTO materials (name, description, created_at)
 VALUES ('Canvas', 'Description', SYSDATETIME());
 INSERT INTO materials (name, description, created_at)
-VALUES ('Suede|Da L?n', 'Description', SYSDATETIME());
+VALUES (N'Suede|Da L?n', 'Description', SYSDATETIME());
 INSERT INTO materials (name, description, created_at)
 VALUES ('Leather|Da', 'Description', SYSDATETIME());
 INSERT INTO materials (name, description, created_at)
