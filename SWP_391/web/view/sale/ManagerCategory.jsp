@@ -247,10 +247,10 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Manage <b>Product</b></h2>
+                            <h2>Manage <b>Category</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addcategory"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                            <a href="#addcategory"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
                             <!--                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
                         </div>
                     </div>
@@ -283,8 +283,9 @@
                                 <td>${o.id}</td>
                                 <td>${o.name}</td>
                                 <td>${o.description}</td>
-                                <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-                                <td><fmt:formatDate value="${o.created_at}" pattern="yyyy-MM-dd" /></td>
+                                <td>${o.created_at}</td>
+
+
                                 <td>
                                     <a href="loadedit?cid=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="deletecategory?cid=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -313,7 +314,7 @@
                 <div class="modal-content">
                     <form action="addcategory" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Add Product</h4>
+                            <h4 class="modal-title">Add Category</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
@@ -329,7 +330,7 @@
                                 <label>Create_at</label>
                                 <input name="create" type="text" class="form-control" required readonly value="${create_at}" >
                                 <!--                                <fmt:formatDate value="" type="both" timeStyle="long" 
-                                                dateStyle="long" /> -->
+                                dateStyle="long" /> -->
                             </div>
                             <!--                            <div class="form-group">
                                                             <label>Price</label>
