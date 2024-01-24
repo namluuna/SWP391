@@ -110,7 +110,7 @@
             <h1>Your password reset token have been expired</h1>
             <p>Please reset password again!</p>
             <div class="btn-container">
-                <a href="#" class="btn">Go to Home Page</a>
+                <a href="index.jsp" class="btn">Go to Home Page</a>
             </div>
         </div>
     </body>
