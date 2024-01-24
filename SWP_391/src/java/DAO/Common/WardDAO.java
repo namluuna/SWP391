@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.Common.District;
 import model.Common.Ward;
 
 /**
@@ -35,5 +36,44 @@ public class WardDAO extends DBContext{
         }
         return wards;
     }
+    public ArrayList selectWardByDistrictCode(String districtCode){
+        ArrayList<Ward> wards = new ArrayList<>();
 
+        try {
+            String sql = "  SELECT * FROM [wards] WHERE district_code = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, districtCode);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                String district_code = rs.getString("district_code");
+                Ward ward = new Ward(code, name, district_code);
+                wards.add(ward);
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return wards;
+    }
+    
+    public Ward findWardByCode(String wardCode){
+        try {
+            String sql = "  SELECT * FROM [wards] WHERE code = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, wardCode);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                String district_code = rs.getString("district_code");
+                Ward ward = new Ward(code, name, district_code);
+                return ward;
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }

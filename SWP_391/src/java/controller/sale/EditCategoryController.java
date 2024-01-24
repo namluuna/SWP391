@@ -12,7 +12,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Timestamp;
 import model.Categories.Category;
 
 /**
@@ -31,15 +30,7 @@ public class EditCategoryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.setCharacterEncoding("UTF-8");
-        String editid = request.getParameter("id");
-        String editname =  request.getParameter("name");
-        String editdes =  request.getParameter("description");
-        Timestamp editcreate =  new java.sql.Timestamp(new java.util.Date().getTime());
-        CategoryDAO dao = new CategoryDAO();
-        dao.editCategory(editid,editname, editdes, editcreate.toString());
         
-        response.sendRedirect("loadcategory");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +45,6 @@ public class EditCategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
-       
     } 
 
     /** 
