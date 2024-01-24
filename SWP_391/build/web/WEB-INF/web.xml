@@ -9,6 +9,14 @@
         <servlet-class>controller.sale.CreateProductController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>FormsController</servlet-name>
+        <servlet-class>controller.sale.FormsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormsController</servlet-name>
+        <url-pattern>/Forms</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>EditOrderStatusController</servlet-name>
         <servlet-class>controller.shipper.EditOrderStatusController</servlet-class>
     </servlet>
