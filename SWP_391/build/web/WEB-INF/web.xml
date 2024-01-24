@@ -29,6 +29,14 @@
         <servlet-class>controller.Groups.GroupsController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>MaterialsController</servlet-name>
+        <servlet-class>controller.Materials.MaterialsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ColorController</servlet-name>
+        <servlet-class>controller.Colors.ColorController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>LoadCategoryController</servlet-name>
         <servlet-class>controller.sale.LoadCategoryController</servlet-class>
     </servlet>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/CartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MaterialsController</servlet-name>
+        <url-pattern>/materials</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColorController</servlet-name>
+        <url-pattern>/colors</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateProductController</servlet-name>
