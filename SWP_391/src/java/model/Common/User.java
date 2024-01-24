@@ -43,17 +43,6 @@ public class User {
         this.role = role;
         this.status = status;
     }
-
-    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.is_deleted = is_deleted;
-        this.role = role;
-        this.status = status;
-    }
     
     public int getId() {
         return id;
@@ -129,7 +118,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phone=" + phone + ", is_deleted=" + is_deleted + ", role=" + role + ", status=" + status + ", address="   + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phone=" + phone + ", is_deleted=" + is_deleted + ", role=" + role + ", status=" + status + ", address=" + address.toString() + '}';
     }
 
     
