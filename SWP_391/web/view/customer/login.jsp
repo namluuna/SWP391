@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Login</title>
         <style>
             body {
@@ -44,6 +45,7 @@
             form {
                 display: flex;
                 flex-direction: column;
+
             }
 
             input {
@@ -96,6 +98,12 @@
             a:hover {
                 color: rgb(13, 133, 185);
             }
+            .form-field{
+                font-size: 14px;
+                padding-bottom: 12px;
+                justify-content: center;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
@@ -111,6 +119,10 @@
                 <form action="/SWP_391/login" method="post">
                     <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
                     <input type="password" id="password" name="password" placeholder="Password"  value="${password}" required>
+                    <div class="form-field">
+                        <input type="checkbox" onclick="myFunction()">
+                        <label>Show Password</label>
+                    </div>
                     <c:if test="${not empty wrongLoginInfo}">
                         <p style="color: red;">${wrongLoginInfo}</p> 
                     </c:if>
@@ -124,4 +136,15 @@
             </div>
         </div>
     </body>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+    </script>
 </html>
