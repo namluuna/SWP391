@@ -243,36 +243,36 @@
         </style>
     <body>
         <jsp:include page="../Groups/header.jsp"></jsp:include>
-        <div class="container">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Manage <b>Product</b></h2>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="#addcategory"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                            <!--                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Manage <b>Product</b></h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="#addcategory"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                                <!--                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
+                            </div>
                         </div>
                     </div>
-                </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <!--                            <th>
-                                                            <span class="custom-checkbox">
-                                                                <input type="checkbox" id="selectAll">
-                                                                <label for="selectAll"></label>
-                                                            </span>
-                                                        </th>-->
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>created_at</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <!--                            <th>
+                                                                <span class="custom-checkbox">
+                                                                    <input type="checkbox" id="selectAll">
+                                                                    <label for="selectAll"></label>
+                                                                </span>
+                                                            </th>-->
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>created_at</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <c:forEach items="${listCC}" var="o">
                             <tr>
                                 <!--                                <td>
@@ -355,7 +355,7 @@
                 </div>
             </div>
         </div>
-                             <jsp:include page="../Groups/footer.jsp"></jsp:include>
+        <jsp:include page="../Groups/footer.jsp"></jsp:include>
         <script src="js/manager.js" type="text/javascript"></script>
         <script>
 

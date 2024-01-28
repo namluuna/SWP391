@@ -87,14 +87,14 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                         <div class="contact">
-                            <h3>About lighten</h3>
-                            <span>Tincidunt elit magnis nulla facilisis. Dolor Sapien nunc amet ultrices, </span>
+                            <h3>About Shoes</h3>
+                            <span>There is nothing easy to do with big developers.</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a> Distributed By <a href="https://themewagon.com">ThemeWagon </a></p>
+                <p>Made by group 2</p>
             </div>
 
         </div>
@@ -103,27 +103,6 @@
     <script src="js/popper.min.js"></script> 
     <script src="js/bootstrap.bundle.min.js"></script> 
     <script src="js/jquery-3.0.0.min.js"></script> 
-    <script src="js/plugin.js"></script> 
-    <!-- sidebar --> 
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script> 
-    <script src="js/custom.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".fancybox").fancybox({
-                openEffect: "none",
-                closeEffect: "none"
-            });
-
-            $(".zoom").hover(function () {
-
-                $(this).addClass('transition');
-            }, function () {
-
-                $(this).removeClass('transition');
-            });
-        });
-
-    </script> 
+    <script src="js/plugin.js"></script>
 </body>
 </html>
