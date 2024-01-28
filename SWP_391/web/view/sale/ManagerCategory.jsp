@@ -242,6 +242,7 @@
             }
         </style>
     <body>
+        <jsp:include page="../Groups/header.jsp"></jsp:include>
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -354,6 +355,7 @@
                 </div>
             </div>
         </div>
+                             <jsp:include page="../Groups/footer.jsp"></jsp:include>
         <script src="js/manager.js" type="text/javascript"></script>
         <script>
 

@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                 <div class="top-box">
-                                    <p>long established fact that a reader will be </p>
+                                    <p>Shoe shop will launch soon</p>
                                 </div>
                             </div>
                         </div>
@@ -83,20 +83,21 @@
                                 <div class="limit-box">
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
-                                            <li class="active"> <a href="index.html">Home</a> </li>
+<!--                                            <li class="active"> <a href="index.html">Home</a> </li>-->
                                             <li> <a href="groups">Groups</a> </li>
                                             <li> <a href="Forms">Form</a> </li>
                                             <li> <a href="materials"> Material</a> </li>
                                             <li> <a href="loadcategory">Categories</a> </li>
+                                            <li> <a href="colors">Colors</a> </li>
 <!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+<!--                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
                             <li><a class="buy" href="#">Login</a></li>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <!-- end header inner --> 
