@@ -74,7 +74,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                             <div class="full">
                                 <div class="center-desk">
-                                    <div class="logo"> <a href="groups"><img src="images/logo.jpg" alt="logo"/></a> </div>
+                                    <div class="logo"> <a href="groups"><img src="images/logo2.jpg" alt="logo"/></a> </div>
                                 </div>
                             </div>
                         </div>
@@ -84,12 +84,11 @@
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
                                             <li class="active"> <a href="index.html">Home</a> </li>
-                                            <li> <a href="about.html">About</a> </li>
-                                            <li> <a href="product.html">product</a> </li>
-                                            <li> <a href="blog.html"> Blog</a> </li>
-                                            <li> <a href="contact.html">Contact</a> </li>
-                                            <li class="mean-last"> <a href="#contact">signup</a> </li>
-
+                                            <li> <a href="about.html">Groups</a> </li>
+                                            <li> <a href="product.html">Form</a> </li>
+                                            <li> <a href="blog.html"> Material</a> </li>
+                                            <li> <a href="contact.html">Categories</a> </li>
+<!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>
                                 </div>
