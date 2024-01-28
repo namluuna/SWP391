@@ -84,10 +84,10 @@
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
                                             <li class="active"> <a href="index.html">Home</a> </li>
-                                            <li> <a href="about.html">Groups</a> </li>
-                                            <li> <a href="product.html">Form</a> </li>
-                                            <li> <a href="blog.html"> Material</a> </li>
-                                            <li> <a href="contact.html">Categories</a> </li>
+                                            <li> <a href="groups">Groups</a> </li>
+                                            <li> <a href="Forms">Form</a> </li>
+                                            <li> <a href="materials"> Material</a> </li>
+                                            <li> <a href="loadcategory">Categories</a> </li>
 <!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>

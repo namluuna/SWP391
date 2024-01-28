@@ -17,6 +17,7 @@
         </style>
     </head>
     <body>
+         <jsp:include page="web/view/Groups/header.jsp"></jsp:include>
         <div class="container mt-5">
 
             <h1>Materials Management</h1>
