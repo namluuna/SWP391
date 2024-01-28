@@ -120,7 +120,7 @@
                     <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
                     <input type="password" id="password" name="password" placeholder="Password"  value="${password}" required>
                     <div class="form-field">
-                        <input type="checkbox" onclick="myFunction()">
+                        <input type="checkbox" onclick="showPassword()">
                         <label>Show Password</label>
                     </div>
                     <c:if test="${not empty wrongLoginInfo}">
@@ -137,7 +137,7 @@
         </div>
     </body>
     <script>
-        function myFunction() {
+        function showPassword() {
             var x = document.getElementById("password");
             if (x.type === "password") {
                 x.type = "text";

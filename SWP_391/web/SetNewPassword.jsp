@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Set New Password</title>
+        
         <style>
             body {
                 font-family: "Comic Sans MS", cursive;
@@ -95,6 +96,12 @@
             a:hover {
                 color: rgb(13, 133, 185);
             }
+             .form-field{
+                font-size: 14px;
+                padding-bottom: 12px;
+                justify-content: center;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
@@ -103,7 +110,15 @@
                 <h2>Set New Password</h2>
                 <form action="/SWP_391/SetNewPassword" method="post">
                     <input type="password" id="password" name="password" placeholder="Enter new password" value="${password}" required>
+                    <div class="form-field">
+                        <input type="checkbox" onclick="showPassword()">
+                        <label>Show Password</label>
+                    </div>
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter password(confirm)"  value="${confirmPassword}" required>
+                    <div class="form-field">
+                        <input type="checkbox" onclick="showConfirmPassword()">
+                        <label>Show Confirm Password</label>
+                    </div>
                     <c:if test="${not empty message}">
                         <p style="color: red;">${message}</p> 
                     </c:if>
@@ -114,4 +129,22 @@
             </div>
         </div>
     </body>
+    <script>
+        function showPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function showConfirmPassword() {
+            var x = document.getElementById("confirmPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </html>
