@@ -112,7 +112,7 @@
             <p>Welcome to become our customer!</p>
             <p>An email to active account was sent to your email. Please check and click the button to verify your account!</p>
             <div class="btn-container">
-                <a href="#" class="btn">Login Now</a>
+                <a href="/SWP_391/login" class="btn">Login Now</a>
             </div>
         </div>
     </body>
