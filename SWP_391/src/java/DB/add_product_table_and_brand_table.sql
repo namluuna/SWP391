@@ -34,6 +34,7 @@ create table brands(
 	description nvarchar(500),
 	created_at datetime,
 	deleted_at datetime,
+        updated_at datetime,
 )
 
 
@@ -45,3 +46,4 @@ ALTER TABLE products ADD CONSTRAINT product_group_id_fkey FOREIGN KEY (group_id)
 
 ALTER TABLE product_details ADD CONSTRAINT product_detail_color_id_fkey FOREIGN KEY (color_id) REFERENCES colors(id);
 ALTER TABLE product_details ADD CONSTRAINT product_detail_size_id_fkey FOREIGN KEY (color_id) REFERENCES sizes(id);
+ALTER TABLE product_details ADD CONSTRAINT product_detail_product_id_fkey FOREIGN KEY (color_id) REFERENCES sizes(id);

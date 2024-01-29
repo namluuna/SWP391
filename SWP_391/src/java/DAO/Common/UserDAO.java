@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Common.User;
@@ -182,14 +183,41 @@ public class UserDAO extends DBContext{
         }
         return users;
     }
-
+    public ArrayList<User> sellectallStaff(){
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from [users] WHERE is_deleted = 0 AND [role] IN (2,3)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int user_id = rs.getInt("id");
+                String user_name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String phone = rs.getString("phone");
+                int is_deleted = rs.getInt("is_deleted");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                Timestamp created_at = rs.getTimestamp("created_at");
+                UserAddressDAO uadao = new UserAddressDAO();
+                ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses);
+                users.add(u);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+    
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        User user = udao.searchUserByEmail("ifyouwant9612@gmail.com");
-        if (user != null) {
-            System.out.println(user.toString());
+        List<User> users = udao.sellectallStaff();
+        if (!users.isEmpty()) {
+            System.out.println(users.get(0).getEmail());
         }else{
-            System.out.println("null");
+            System.out.println("World");
         }
     }
 }
