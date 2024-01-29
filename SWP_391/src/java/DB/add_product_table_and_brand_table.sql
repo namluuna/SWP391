@@ -33,6 +33,7 @@ create table brands(
 	name nvarchar(50) not null,
 	description nvarchar(500),
 	created_at datetime,
+	updated_at datetime,
 	deleted_at datetime,
 )
 
