@@ -8,18 +8,17 @@ import DAO.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Groups.Groups;
+import model.Groups.Brands;
 
 /**
  *
  * @author lucdu
  */
-public class GroupsDAO extends DBContext {
-
-    public ArrayList<Groups> selectAllGroups() {
-        ArrayList<Groups> groupsList = new ArrayList<>();
+public class BrandsDAO extends DBContext {
+    public ArrayList<Brands> selectAllBrands() {
+        ArrayList<Brands> brandList = new ArrayList<>();
         try {
-            String sql = "select * from groups";
+            String sql = "select * from brands";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -29,18 +28,18 @@ public class GroupsDAO extends DBContext {
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
-                Groups groups = new Groups(Id, Name, Description, Created_at, Deleted_at, Updated_at);
-                groupsList.add(groups);
+                Brands brands = new Brands(Id, Name, Description, Created_at, Updated_at, Deleted_at);
+                brandList.add(brands);
             }
         } catch (Exception e) {
-            System.out.println("getGroupsList: " + e.getMessage());
+            System.out.println("getBrandsList: " + e.getMessage());
         }
-        return groupsList;
+        return brandList;
     }
 
-    public void createNewGroups(String name, String description) {
+    public void createNewBrand(String name, String description) {
         try {
-            String sql = "INSERT INTO groups (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO brands (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
@@ -52,16 +51,16 @@ public class GroupsDAO extends DBContext {
             ResultSet generatedKeys = st.getGeneratedKeys();
             if (generatedKeys.next()) {
                 int newGroupId = generatedKeys.getInt(1);
-                System.out.println("New group created with ID: " + newGroupId);
+                System.out.println("New Brands created with ID: " + newGroupId);
             }
         } catch (Exception e) {
-            System.out.println("createNewGroups: " + e.getMessage());
+            System.out.println("createNewBrands: " + e.getMessage());
         }
     }
-    public Groups selectGroupsByID(String id) {
-        Groups group = null;
+    public Brands selectbrandByID(String id) {
+        Brands brand = null;
         try {
-            String sql = "SELECT * FROM groups WHERE id = ?";
+            String sql = "SELECT * FROM brands WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
@@ -75,17 +74,17 @@ public class GroupsDAO extends DBContext {
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
 
-                group = new Groups(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                brand = new Brands(Id, Name, Description, Created_at, Updated_at, Deleted_at);
             }
         } catch (Exception e) {
-            System.out.println("selectGroupsByID: " + e.getMessage());
+            System.out.println("selectBrandByID: " + e.getMessage());
         }
-        return group;
+        return brand;
     }
 
-    public void updateGroups(String id, String name, String description) {
+    public void updateBrands(String id, String name, String description) {
         try {
-            String sql = "UPDATE groups SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE brands SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
@@ -94,62 +93,62 @@ public class GroupsDAO extends DBContext {
             int rowsUpdated = st.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Group with ID " + id + " updated successfully.");
+                System.out.println("Brands with ID " + id + " updated successfully.");
             } else {
-                System.out.println("No group found with ID " + id);
+                System.out.println("No Brands found with ID " + id);
             }
         } catch (Exception e) {
-            System.out.println("updateGroups: " + e.getMessage());
+            System.out.println("updateBrands: " + e.getMessage());
         }
     }
 
-    public void softDeleteGroups(String id) {
+    public void softDeleteBrands(String id) {
         try {
-            String sql = "UPDATE groups SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE brands SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
             int rowsUpdated = st.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Group with ID " + id + " soft-deleted successfully.");
+                System.out.println("Brands with ID " + id + " soft-deleted successfully.");
             } else {
-                System.out.println("No group found with ID " + id);
+                System.out.println("No brands found with ID " + id);
             }
         } catch (Exception e) {
-            System.out.println("softDeleteGroups: " + e.getMessage());
+            System.out.println("softDeleteBrands: " + e.getMessage());
         }
     }
 
-    public void restoreGroups(String id) {
+    public void restoreBrands(String id) {
         try {
-            String sql = "UPDATE groups SET deleted_at = NULL WHERE id = ?";
+            String sql = "UPDATE brands SET deleted_at = NULL WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(id));
 
             int rowsUpdated = st.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Group with ID " + id + " restored successfully.");
+                System.out.println("Brand with ID " + id + " restored successfully.");
             } else {
-                System.out.println("No group found with ID " + id);
+                System.out.println("No brand found with ID " + id);
             }
         } catch (Exception e) {
-            System.out.println("restoreGroups: " + e.getMessage());
+            System.out.println("restoreBrand: " + e.getMessage());
         }
     }
 
     public static void main(String[] args) {
-        GroupsDAO g = new GroupsDAO();
-//        ArrayList<Groups> data = g.selectAllGroups();
-//        System.out.println(data);
-//        g.createNewGroups("dsds", "dsdsd");
-        Groups selectedGroup = g.selectGroupsByID("2");
-        if (selectedGroup != null) {
-            System.out.println("Selected Group: " + selectedGroup);
-            g.updateGroups(selectedGroup.getId(), "New Name", "New Description");
-        } else {
-            System.out.println("Group not found.");
-        }
+        BrandsDAO b = new BrandsDAO();
+        ArrayList<Brands> data = b.selectAllBrands();
+        System.out.println(data);
+//        b.createNewBrand("dsds", "dsdsd");
+//        Groups selectedGroup = g.selectGroupsByID("2");
+//        if (selectedGroup != null) {
+//            System.out.println("Selected Group: " + selectedGroup);
+//            g.updateGroups(selectedGroup.getId(), "New Name", "New Description");
+//        } else {
+//            System.out.println("Group not found.");
+//        }
     }
 }

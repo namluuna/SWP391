@@ -35,7 +35,7 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Code_Color</th>
                         <th>Created_at</th>
                         <th>Updated_at</th>
                         <th>Deleted_at</th>
