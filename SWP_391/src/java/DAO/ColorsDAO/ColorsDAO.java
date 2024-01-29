@@ -26,7 +26,7 @@ public class ColorsDAO extends DBContext {
             while (rs.next()) {
                 String Id = String.valueOf(rs.getInt("id"));
                 String Name = rs.getString("name");
-                String Description = rs.getString("description");
+                String Description = rs.getString("color_code");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
@@ -42,7 +42,7 @@ public class ColorsDAO extends DBContext {
    
     public void createNewColors(String name, String description) {
         try {
-            String sql = "INSERT INTO colors (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO colors (name, color_code, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);
@@ -69,7 +69,7 @@ public class ColorsDAO extends DBContext {
             if (rs.next()) {
                 String Id = String.valueOf(rs.getInt("id"));
                 String Name = rs.getString("name");
-                String Description = rs.getString("description");
+                String Description = rs.getString("color_code");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
@@ -84,7 +84,7 @@ public class ColorsDAO extends DBContext {
      
       public void updateColors(String id, String name, String description) {
         try {
-            String sql = "UPDATE colors SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE colors SET name = ?, color_code = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             st.setString(2, description);

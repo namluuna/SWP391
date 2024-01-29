@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create New Groups</title>
+        <title>Tạo Mới</title>
         <!-- Thêm Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -47,20 +47,20 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Create New Color</h1>
+                <h1 class="text-center mb-4">Tạo mới</h1>
                 <form name="form" action="colors" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name:</label>
+                        <label for="name" class="form-label">Tên màu:</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description">
+                        <label for="color_code" class="form-label">Mã màu:</label>
+                        <input type="text" class="form-control" id="description" name="color_code">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
-                    <a href="colors" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" name="add">Tạo mới</button>
+                    <a href="colors" class="btn btn-secondary">Hủy bỏ</a>
                 </form>
             </div>
         </div>

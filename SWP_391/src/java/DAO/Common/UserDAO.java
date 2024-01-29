@@ -35,7 +35,6 @@ public class UserDAO extends DBContext{
             st.setInt(6, user.getRole());
             st.setInt(7, user.getStatus());
             st.setTimestamp(8, new java.sql.Timestamp(new java.util.Date().getTime()));
-
             // Execute INSERT
             st.executeUpdate();
         } catch (SQLException e) {

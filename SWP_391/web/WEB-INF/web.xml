@@ -9,6 +9,18 @@
         <servlet-class>controller.sale.CreateProductController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>FormsController</servlet-name>
+        <servlet-class>controller.sale.FormsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>controller.admin.UserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormsController</servlet-name>
+        <url-pattern>/Forms</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>EditOrderStatusController</servlet-name>
         <servlet-class>controller.shipper.EditOrderStatusController</servlet-class>
     </servlet>
@@ -165,6 +177,10 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/user</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
