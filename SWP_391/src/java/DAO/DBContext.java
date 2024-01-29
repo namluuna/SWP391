@@ -19,12 +19,10 @@ public class DBContext {
     public DBContext() {
         try {
             String user = "sa";
-            String pass = "9999";
+            String pass = "sa";
             String url = "jdbc:sqlserver://localhost:1433;databaseName=OSS";
-
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
-
         } catch (Exception ex) {
             System.err.println("Cannot connect database, " + ex);
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);

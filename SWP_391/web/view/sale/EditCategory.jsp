@@ -36,7 +36,7 @@
         <div id="editEmployeeModal" class="">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="editcategory" method="post">
+                    <form action="edit" method="post">
                         <div class="modal-header">						
                             <h4 class="modal-title">Edit Employee</h4>
                             <button  type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="loadcategory">X</a></button>

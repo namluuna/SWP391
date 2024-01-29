@@ -78,21 +78,6 @@ public class CategoryDAO extends DBContext{
         }
         return null;
     }
-     public void editCategory(String id, String name, String des, String cre
-            ) {
-         
-        try {
-            String sql = "UPDATE categories SET [name] = ?, [description] = ?, created_at = ? WHERE ID = ?;";
-            st = connection.prepareStatement(sql);
-            st.setString(1, name);
-            st.setString(2, des);
-            st.setString(3, cre);
-            st.setString(4, id);
-            st.executeUpdate();
-            
-        } catch (Exception e) {
-        }
-    }
     public static void main(String[] args) {
        CategoryDAO g = new CategoryDAO();
         List<Category> data = g.selectAllCategory();
