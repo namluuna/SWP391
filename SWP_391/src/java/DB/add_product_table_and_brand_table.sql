@@ -37,10 +37,9 @@ create table brands(
 	deleted_at datetime,
 )
 
-
 ALTER TABLE products ADD CONSTRAINT product_category_id_fkey FOREIGN KEY (category_id) REFERENCES categories(id);
 ALTER TABLE products ADD CONSTRAINT product_form_id_fkey FOREIGN KEY (form_id) REFERENCES forms(id);
-ALTER TABLE products ADD CONSTRAINT product_brand_id_fkey FOREIGN KEY (id) REFERENCES brands(id);
+ALTER TABLE products ADD CONSTRAINT product_brand_id_fkey FOREIGN KEY (brand_id) REFERENCES brands(id);
 ALTER TABLE products ADD CONSTRAINT product_material_id_fkey FOREIGN KEY (material_id) REFERENCES materials(id);
 ALTER TABLE products ADD CONSTRAINT product_group_id_fkey FOREIGN KEY (group_id) REFERENCES groups(id);
 
