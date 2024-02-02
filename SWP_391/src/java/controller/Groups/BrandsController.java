@@ -58,12 +58,12 @@ public class BrandsController extends HttpServlet {
     throws ServletException, IOException {
         BrandsDAO b = new BrandsDAO();
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            request.getRequestDispatcher("view\\Groups\\CreateBrands.jsp").forward(request, response);
+            request.getRequestDispatcher("view\\Brands\\CreateBrands.jsp").forward(request, response);
         }
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
             Brands brand = b.selectbrandByID(request.getParameter("id"));
-            request.setAttribute("group", brand);
-            request.getRequestDispatcher("view\\Groups\\UpdateBrands.jsp").forward(request, response);
+            request.setAttribute("brand", brand);
+            request.getRequestDispatcher("view\\Brands\\UpdateBrands.jsp").forward(request, response);
         }
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
             b.softDeleteBrands(request.getParameter("id"));
@@ -71,7 +71,7 @@ public class BrandsController extends HttpServlet {
         //------------------------------------------------------------------------------------------------------------------
         ArrayList<Brands> data = b.selectAllBrands();
         request.setAttribute("data", data);
-        request.getRequestDispatcher("view\\Groups\\VeiwBrands.jsp").forward(request, response);
+        request.getRequestDispatcher("view\\Brands\\VeiwBrands.jsp").forward(request, response);
     } 
 
     /** 
