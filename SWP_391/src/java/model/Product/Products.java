@@ -10,16 +10,16 @@ package model.Product;
  */
 public class Products {
 
-    String id, code, name, descrpition, price, category_id, form_id, brand_id, material_id, group_id, created_at, edited_at, deleted_at;
+    String id, code, name, description, price, category_id, form_id, brand_id, material_id, group_id, created_at, edited_at, deleted_at;
 
     public Products() {
     }
 
-    public Products(String id, String code, String name, String descrpition, String price, String category_id, String form_id, String brand_id, String material_id, String group_id, String created_at, String edited_at, String deleted_at) {
+    public Products(String id, String code, String name, String description, String price, String category_id, String form_id, String brand_id, String material_id, String group_id, String created_at, String edited_at, String deleted_at) {
         this.id = id;
         this.code = code;
         this.name = name;
-        this.descrpition = descrpition;
+        this.description = description;
         this.price = price;
         this.category_id = category_id;
         this.form_id = form_id;
@@ -55,12 +55,12 @@ public class Products {
         this.name = name;
     }
 
-    public String getDescrpition() {
-        return descrpition;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrpition(String descrpition) {
-        this.descrpition = descrpition;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPrice() {
@@ -137,7 +137,8 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Products{" + "id=" + id + ", code=" + code + ", name=" + name + ", descrpition=" + descrpition + ", price=" + price + ", category_id=" + category_id + ", form_id=" + form_id + ", brand_id=" + brand_id + ", material_id=" + material_id + ", group_id=" + group_id + ", created_at=" + created_at + ", edited_at=" + edited_at + ", deleted_at=" + deleted_at + '}';
+        return "Products{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", price=" + price + ", category_id=" + category_id + ", form_id=" + form_id + ", brand_id=" + brand_id + ", material_id=" + material_id + ", group_id=" + group_id + ", created_at=" + created_at + ", edited_at=" + edited_at + ", deleted_at=" + deleted_at + '}';
     }
 
+    
 }
