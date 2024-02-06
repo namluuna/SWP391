@@ -90,6 +90,7 @@
                                             <li> <a href="loadcategory">Categories</a> </li>
                                             <li> <a href="colors">Colors</a> </li>
                                             <li> <a href="brands">Brands</a> </li>
+                                            <li> <a href="products">Products</a> </li>
 <!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>

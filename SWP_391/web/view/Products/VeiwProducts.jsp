@@ -21,14 +21,14 @@
         
             <div class="container mt-5">
 
-                <h1>Quản Lý Trạng Thái</h1>
-                <div><a href="products?mod=1" class="btn btn-primary mb-3">Tạo trạng thái mới</a></div>
+                <h1>Quản Lý Sản Phẩm</h1>
+                <div><a href="products?mod=1" class="btn btn-primary mb-3">Tạo sản phẩm mới</a></div>
 
                 <div class="btn-group mb-3">
-                    <a href="products" class="btn btn-secondary">Tất cả trạng thái</a>
-                    <a href="products?show=active" class="btn btn-success">Trạng thái hoạt động</a>
-                    <a href="products?show=updated" class="btn btn-warning">Trạng thái vừa cập nhật</a>
-                    <a href="products?show=deleted" class="btn btn-danger">Trạng thái không hoạt động</a>
+                    <a href="products" class="btn btn-secondary">Tất cả sản phẩm</a>
+                    <a href="products?show=active" class="btn btn-success">Sản phẩm hoạt động</a>
+                    <a href="products?show=updated" class="btn btn-warning">Sản phẩm vừa cập nhật</a>
+                    <a href="products?show=deleted" class="btn btn-danger">Sản phẩm không hoạt động</a>
                 </div>
 
                 <table class="table table-bordered">
