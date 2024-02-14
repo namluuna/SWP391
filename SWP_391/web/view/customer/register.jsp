@@ -13,7 +13,7 @@
         <title>Register</title>
         <style>
             body {
-                font-family: "Comic Sans MS", cursive;
+                /*font-family: "Comic Sans MS", cursive;*/
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -115,12 +115,12 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Register</h2>
+                <h2>Ðăng Kí Tài Khoản</h2>
                 <form action="/SWP_391/register" method="post">
-                    <label for="fullName">Full Name:</label>
+                    <label for="fullName">Họ Tên:</label>
                     <input type="fullName" id="fullName" name="fullName" value="${name}" required >
 
-                    <label for="email">Email:</label>
+                    <label for="email">Địa chỉ Email:</label>
                     <input type="email" id="email" name="email" value="${email}" required>
                     <c:if test="${not empty errorEmailMessage}">
                         <p style="color: red;">${errorEmailMessage}</p> 
@@ -130,9 +130,9 @@
                     <input type="password" id="password" name="password" value="${password}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showPassword()">
-                        <label>Show Password</label>
+                        <label>Hiện Mật Khẩu</label>
                     </div>
-                    <label for="confirmPassword">Confirm Password:</label>
+                    <label for="confirmPassword">Xác nhận lại mật khẩu</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" value="${confirmPassword}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showConfirmPassword()">
