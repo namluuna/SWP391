@@ -3,6 +3,9 @@
     Created on : Feb 6, 2024, 7:28:23 PM
     Author     : lucdu
 --%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.Categories.Category" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,11 +47,15 @@
         </style>
     </head>
     <body>
-
+        <%
+    List<Category> data1 = new ArrayList<>();
+    if(request.getAttribute("data1") != null)
+        data1 = (List<Category>) request.getAttribute("data1");
+        %>
         <div class="container">
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Tạo sản phẩm mới</h1>
-                <form name="form" action="groups" method="POST" onsubmit="return validateForm();">
+                <form name="form" action="products" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
                         <label for="code" class="form-label">Mã sản phẩm:</label>
                         <input type="text" class="form-control" id="code" name="code">
@@ -71,7 +78,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Loại giày:</label>
-                        <input type="text" class="form-control" id="category_id" name="category_id">
+                        <select name="category_id">
+                            <option value="0">ALL</option>
+                            <%
+                            for(Category c:data1){
+                            out.print("<option value='"+c.getId()+"'>"+c.getName()+"</option>");
+                                }
+                            %>
+                        </select>
+                        <!--                        <input type="text" class="form-control" id="category_id" name="category_id">-->
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
@@ -95,7 +110,7 @@
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add">ADD</button>
-                    <a href="groups" class="btn btn-secondary">Cancel</a>
+                    <a href="products" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

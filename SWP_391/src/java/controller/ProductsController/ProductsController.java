@@ -4,7 +4,7 @@
  */
 
 package controller.ProductsController;
-
+import DAO.GroupsDAO.CategoryDAO;
 import DAO.ProductDAO.ProductsDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
+import model.Categories.Category;
 import model.Product.Products;
 
 /**
@@ -57,9 +59,12 @@ public class ProductsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductsDAO p = new ProductsDAO();
-//        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-//            request.getRequestDispatcher("view\\Groups\\CreateGroups.jsp").forward(request, response);
-//        }
+        CategoryDAO g = new CategoryDAO();
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
+            List<Category> data1 = g.selectAllCategory();
+            request.setAttribute("data1", data1);
+            request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
+        }
 //        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
 //            Groups group = g.selectGroupsByID(request.getParameter("id"));
 //            request.setAttribute("group", group);
@@ -84,7 +89,23 @@ public class ProductsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        String code = request.getParameter("code");
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String price = request.getParameter("price");
+        String category_id = request.getParameter("category_id");
+        String form_id = request.getParameter("form_id");
+        String brand_id = request.getParameter("brand_id");
+        String material_id = request.getParameter("material_id");
+        String group_id = request.getParameter("group_id");
+        
+        if (request.getParameter("add")!= null) {
+            ProductsDAO p = new ProductsDAO();
+            p.createNewProduct(code, name, description, price, category_id, form_id, brand_id, material_id, group_id);
+            response.sendRedirect("products");
+            return;
+        }
     }
 
     /** 
