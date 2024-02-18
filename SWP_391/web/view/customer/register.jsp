@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register</title>
+        <title>Đăng Ký</title>
         <style>
             body {
                 /*font-family: "Comic Sans MS", cursive;*/
@@ -126,17 +126,13 @@
                         <p style="color: red;">${errorEmailMessage}</p> 
                     </c:if>
                     <!--<p style="color: red;">${errorEmailMessage}</p>--> 
-                    <label for="password">Password:</label>
+                    <label for="password">Mật khẩu:</label>
                     <input type="password" id="password" name="password" value="${password}" required>
-                    <div class="form-field">
-                        <input type="checkbox" onclick="showPassword()">
-                        <label>Hiện Mật Khẩu</label>
-                    </div>
                     <label for="confirmPassword">Xác nhận lại mật khẩu</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" value="${confirmPassword}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showConfirmPassword()">
-                        <label>Show Confirm Password</label>
+                        <label>Hiện Mật Khẩu</label>
                     </div>
                     <c:if test="${not empty errorConfirmPasswordMessage}">
                         <p style="color: red;">${errorConfirmPasswordMessage}</p> 
@@ -145,14 +141,14 @@
                     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" value="${phone}" required>
 
 
-                    <label for="province">Province:</label>
+                    <label for="province">Tỉnh/Thành:</label>
                     <select id="province" name="province" required>
                         <c:choose>
                             <c:when test="${not empty selectedProvince}">
                                 <option value="${selectedProvince.code}">${selectedProvince.name}</option>
                             </c:when>
                             <c:otherwise>
-                                <option value="1">Select Your Province</option>
+                                <option value="1">Xin hãy chọn Tỉnh/Thành</option>
                             </c:otherwise>
                         </c:choose>                     
                         <c:forEach items="${provinces}" var="c">
@@ -160,7 +156,7 @@
                         </c:forEach>
                     </select>
 
-                    <label for="district">District:</label>
+                    <label for="district">Quận/Huyện:</label>
                     <select id="district" name="district" required>
                         <c:choose>
                             <c:when test="${not empty selectedDistrict}">
@@ -172,7 +168,7 @@
                         </c:choose>   
                     </select>
 
-                    <label for="ward">Ward:</label>
+                    <label for="ward">Phường/Xã:</label>
                     <select id="ward" name="ward" required>
                         <c:choose>
                             <c:when test="${not empty selectedWard}">
@@ -183,9 +179,9 @@
                             </c:otherwise>
                         </c:choose> 
                     </select>
-                    <label for="address">Address:</label>
+                    <label for="address">Địa Chỉ:</label>
                     <textarea id="address" name="address" rows="4" value="${address}" required></textarea>
-                    <button type="submit">Register</button>
+                    <button type="submit">Đăng Ký</button>
                     <br>
                 </form>
             </div>
@@ -228,10 +224,13 @@
         }
         function showConfirmPassword() {
             var x = document.getElementById("confirmPassword");
-            if (x.type === "password") {
+            var y = document.getElementById("confirmPassword");
+            if (x.type === "password" && y.type === "password") {
                 x.type = "text";
+                y.type = "text";
             } else {
                 x.type = "password";
+                y.type = "password";
             }
         }
     </script>

@@ -11,10 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Login</title>
+        <title>Đăng nhập</title>
         <style>
             body {
-                font-family: "Comic Sans MS", cursive;
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -109,7 +108,7 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Login</h2>
+                <h2>Đăng nhập</h2>
                 <c:if test="${not empty message}">
                     <p style="color: blue;">${message}</p> 
                 </c:if>
@@ -118,19 +117,19 @@
                 </c:if>
                 <form action="/SWP_391/login" method="post">
                     <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
-                    <input type="password" id="password" name="password" placeholder="Password"  value="${password}" required>
+                    <input type="password" id="password" name="password" placeholder="Mật Khẩu"  value="${password}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showPassword()">
-                        <label>Show Password</label>
+                        <label>Hiện Password</label>
                     </div>
                     <c:if test="${not empty wrongLoginInfo}">
                         <p style="color: red;">${wrongLoginInfo}</p> 
                     </c:if>
-                    <button type="submit">Login</button>
+                    <button type="submit">Đăng Nhập</button>
                     <br>
                     <div class="links">
-                        <a href="fogotpassword.jsp">Forgot password?</a>
-                        <a href="/SWP_391/register">Do not have an account?</a>
+                        <a href="fogotpassword.jsp">Quên mật khẩu?</a>
+                        <a href="/SWP_391/register">Đăng ký</a>
                     </div>
                 </form>
             </div>

@@ -96,10 +96,10 @@ public class RegisterController extends HttpServlet {
         User checkUser = userDAO.searchUserByEmail(email);
         // if an user have used entered email
         if (checkUser != null) {
-            String errorEmailMessage = "This email is already exist!";
+            String errorEmailMessage = "Địa chỉ email này đã tồn tại!";
             // check if the password and confirm password are not match
             if (!password.equals(confirmPassword)) {
-                String errorConfirmPasswordMessage = "Confirm Password is not match!";
+                String errorConfirmPasswordMessage = "Mật khẩu và xác nhận mật khẩu không khớp!";
                 request.setAttribute("errorConfirmPasswordMessage", errorConfirmPasswordMessage);
                 // return the entered information for user
                 request.setAttribute("name", name);
