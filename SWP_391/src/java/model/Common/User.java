@@ -20,7 +20,7 @@ public class User {
     private int role;
     private int status;
     private Timestamp created_at;
-    private ArrayList<UserAddress> address;
+    ArrayList<UserAddress> address;
 
     public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, ArrayList<UserAddress> address) {
         this.id = id;
@@ -31,6 +31,14 @@ public class User {
         this.is_deleted = is_deleted;
         this.role = role;
         this.status = status;
+        this.address = address;
+    }
+
+    public ArrayList<UserAddress> getAddress() {
+        return address;
+    }
+
+    public void setAddress(ArrayList<UserAddress> address) {
         this.address = address;
     }
     

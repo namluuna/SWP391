@@ -98,7 +98,9 @@ public class UserDAO extends DBContext{
                 int is_deleted = rs.getInt("is_deleted");
                 int role = rs.getInt("role");
                 int status = rs.getInt("status");
-                User u = new User(id, name, user_email, password, phone, is_deleted, role, status);
+                UserAddressDAO uadao = new UserAddressDAO();
+                ArrayList userAddresses = uadao.sellectallUserAddress(id);
+                User u = new User(id, name, email, password, phone, is_deleted, role, status, userAddresses);
                 return u;
             }
         } catch (SQLException e) {
@@ -106,6 +108,7 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
+    
     public User searchUserByEmailAndPassword(String userEmail, String userPassword){
          
          try {
@@ -213,11 +216,9 @@ public class UserDAO extends DBContext{
     
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        List<User> users = udao.sellectallStaff();
-        if (!users.isEmpty()) {
-            System.out.println(users.get(0).getEmail());
-        }else{
-            System.out.println("World");
+        User u = udao.searchUserByEmail("ifyouwant9612@gmail.com");
+        for (UserAddress address : u.getAddress()) {
+            System.out.println(address.getDistrict_name());
         }
     }
 }

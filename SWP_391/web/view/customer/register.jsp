@@ -223,7 +223,7 @@
             }
         }
         function showConfirmPassword() {
-            var x = document.getElementById("confirmPassword");
+            var x = document.getElementById("password");
             var y = document.getElementById("confirmPassword");
             if (x.type === "password" && y.type === "password") {
                 x.type = "text";
