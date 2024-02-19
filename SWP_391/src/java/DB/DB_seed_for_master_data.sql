@@ -30,11 +30,13 @@ INSERT INTO materials (name, description, created_at)
 VALUES ('Taslan', 'Description', SYSDATETIME());
 
 INSERT INTO forms (name, description, created_at)
-VALUES ('Oxford', N'Oxford là một trong những kiểu dày thông dụng nhất của nam giới', SYSDATETIME());
+VALUES ('Low Top', N'Oxford là một trong những kiểu dày thông dụng nhất của nam giới', SYSDATETIME());
 INSERT INTO forms (name, description, created_at)
-VALUES (N'Brogues ', N'Kiểu longwing Oxford với phần cap toe vát tận ra phía sau và nối liền nhau.', SYSDATETIME());
+VALUES ('High Top', 'Description', SYSDATETIME());
 INSERT INTO forms (name, description, created_at)
-VALUES (N'Driver shoes', N'Thêm một kiểu giày dành cho mùa Hè bên cạnh Boat shoes là Driving Shoes.', SYSDATETIME());
+VALUES ('Slip-on', 'Description', SYSDATETIME());
+INSERT INTO forms (name, description, created_at)
+VALUES ('Mid Top', 'Description', SYSDATETIME());
 
 INSERT INTO sizes (name, description, created_at)
 VALUES ('35', 'Description', SYSDATETIME());
