@@ -72,7 +72,7 @@ public class UserDAO extends DBContext{
                 int is_deleted = rs.getInt("is_deleted");
                 int role = rs.getInt("role");
                 int status = rs.getInt("status");
-                User u = new User(name, user_email, password, phone, is_deleted, role, status);
+                User u = new User(id, name, user_email, password, phone, is_deleted, role, status);
                 return u;
             }
         } catch (SQLException e) {
@@ -216,9 +216,7 @@ public class UserDAO extends DBContext{
     
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        User u = udao.searchUserByEmail("ifyouwant9612@gmail.com");
-        for (UserAddress address : u.getAddress()) {
-            System.out.println(address.getDistrict_name());
-        }
+        User u = udao.getUserByID("16");
+        System.out.println(u);
     }
 }
