@@ -9,6 +9,14 @@
         <servlet-class>controller.sale.CreateProductController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>FormsController</servlet-name>
+        <servlet-class>controller.sale.FormsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormsController</servlet-name>
+        <url-pattern>/Forms</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>EditOrderStatusController</servlet-name>
         <servlet-class>controller.shipper.EditOrderStatusController</servlet-class>
     </servlet>
@@ -28,7 +36,7 @@
         <servlet-name>ColorController</servlet-name>
         <servlet-class>controller.Colors.ColorController</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <servlet>
         <servlet-name>LoadCategoryController</servlet-name>
         <servlet-class>controller.sale.LoadCategoryController</servlet-class>
     </servlet>
@@ -89,6 +97,14 @@
         <url-pattern>/CartController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>MaterialsController</servlet-name>
+        <url-pattern>/materials</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColorController</servlet-name>
+        <url-pattern>/colors</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CreateProductController</servlet-name>
         <url-pattern>/CreateProductController</url-pattern>
     </servlet-mapping>
@@ -105,12 +121,6 @@
         <url-pattern>/groups</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>MaterialsController</servlet-name>
-        <url-pattern>/materials</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ColorController</servlet-name>
-        <url-pattern>/colors</url-pattern>
         <servlet-name>LoadCategoryController</servlet-name>
         <url-pattern>/loadcategory</url-pattern>
     </servlet-mapping>

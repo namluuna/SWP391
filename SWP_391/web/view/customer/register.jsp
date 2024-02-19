@@ -104,6 +104,12 @@
             a:hover {
                 color: rgb(13, 133, 185);
             }
+             .form-field{
+                font-size: 14px;
+                padding-bottom: 12px;
+                justify-content: center;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
@@ -122,9 +128,16 @@
                     <!--<p style="color: red;">${errorEmailMessage}</p>--> 
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" value="${password}" required>
-
+                    <div class="form-field">
+                        <input type="checkbox" onclick="showPassword()">
+                        <label>Show Password</label>
+                    </div>
                     <label for="confirmPassword">Confirm Password:</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" value="${confirmPassword}" required>
+                    <div class="form-field">
+                        <input type="checkbox" onclick="showConfirmPassword()">
+                        <label>Show Confirm Password</label>
+                    </div>
                     <c:if test="${not empty errorConfirmPasswordMessage}">
                         <p style="color: red;">${errorConfirmPasswordMessage}</p> 
                     </c:if>
@@ -205,5 +218,21 @@
                 });
             });
         });
+        function showPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function showConfirmPassword() {
+            var x = document.getElementById("confirmPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
 </html>

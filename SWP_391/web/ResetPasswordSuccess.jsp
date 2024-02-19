@@ -110,7 +110,7 @@
             <h1>Your password has been successfully reset</h1>
             <p>An email to reset password was sent to your email. Please check and click the button to change your password!</p>
             <div class="btn-container">
-                <a href="#" class="btn">Login Now</a>
+                <a href="/SWP_391/login" class="btn">Login Now</a>
             </div>
         </div>
     </body>
