@@ -30,7 +30,7 @@ INSERT INTO materials (name, description, created_at)
 VALUES ('Taslan', 'Description', SYSDATETIME());
 
 INSERT INTO forms (name, description, created_at)
-VALUES ('Low Top', 'Description', SYSDATETIME());
+VALUES ('Low Top', N'Oxford là một trong những kiểu dày thông dụng nhất của nam giới', SYSDATETIME());
 INSERT INTO forms (name, description, created_at)
 VALUES ('High Top', 'Description', SYSDATETIME());
 INSERT INTO forms (name, description, created_at)
