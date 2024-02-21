@@ -17,28 +17,29 @@
         </style>
     </head>
     <body>
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="container mt-5">
             
-            <h1>Group Management</h1>
-            <div><a href="groups?mod=1" class="btn btn-primary mb-3">Create New Group</a></div>
+            <h1>Quản Lý Trạng Thái</h1>
+            <div><a href="groups?mod=1" class="btn btn-primary mb-3">Tạo trạng thái mới</a></div>
             
             <div class="btn-group mb-3">
-                <a href="groups" class="btn btn-secondary">All Groups</a>
-                <a href="groups?show=active" class="btn btn-success">Active Groups</a>
-                <a href="groups?show=updated" class="btn btn-warning">Updated Groups</a>
-                <a href="groups?show=deleted" class="btn btn-danger">Deleted Groups</a>
+                <a href="groups" class="btn btn-secondary">Tất cả trạng thái</a>
+                <a href="groups?show=active" class="btn btn-success">Trạng thái hoạt động</a>
+                <a href="groups?show=updated" class="btn btn-warning">Trạng thái vừa cập nhật</a>
+                <a href="groups?show=deleted" class="btn btn-danger">Trạng thái không hoạt động</a>
             </div>
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Created_at</th>
-                        <th>Updated_at</th>
-                        <th>Deleted_at</th>
-                        <th>Actions</th>
+                        <th>Tên trạng thái</th>
+                        <th>Mô tả trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật</th>
+                        <th>Ngày xóa</th>
+                        <th>Chức Năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -199,10 +200,10 @@
                 </tbody>
             </table>
         </div>
+        <jsp:include page="footer.jsp"></jsp:include>
         <!-- Include Bootstrap's JavaScript and Popper.js (optional) -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    </div>
 </body>
 </html>
