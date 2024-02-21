@@ -4,13 +4,13 @@
     Author     : Admin
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tạo mới nhân viên</title>
+        <title>Cập nhật nhân viên</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {
@@ -46,53 +46,37 @@
     <body>
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">update viên mới</h1>
+                <h1 class="text-center mb-4">Tạo nhân viên mới</h1>
                 <c:set var="c" value="${getStaffId}" />
                 <form  action="/SWP_391/updateStaff" method="POST" onsubmit="return validateEmail();" >
-                    <input type="text" name="name" value="${c.id}"  class="form-control" required/><br>
                     <div class="mb-3">
-                        Nhập tên: <input type="text" name="name" value="${c.name}"  class="form-control" required/><br>
+                        ID: <input type="text" name="id" value="${c.id}"  class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
-                        Nhập Email <input type="text" name="email"  value="${c.email} " id="email" class="form-control" required readonly /><br>                      
+                        Cập nhật tên: <input type="text" name="name" value="${c.name}"  class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
-                        Nhập mật khẩu: <input type="text" name="password"  value="${c.password}" class="form-control" required/><br>
+                        Email: <input type="text" name="email"  value="${c.email} " id="email" class="form-control" required readonly /><br>                     
                     </div>
                     <div class="mb-3">
-                        Nhập số điện thoại: <input type="number" name="phone" value="${c.phone}" class="form-control" required /><br>
+                        Cập nhật mật khẩu: <input type="text" name="password"  value="${c.password}" class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
-                        <label for="role">Vai trò:</label>
+                        Cập nhật số điện thoại: <input type="number" name="phone" value="${c.phone}" class="form-control" required /><br>
+                    </div>
+                    <div class="mb-3">
+                       <label for="role">Vai trò:</label>
                         <select id="role" name="role" class="form-control" required>
-                            <c:choose>
-                                <option value="" disabled selected>Chọn vai trò</option>
-                                <option value="2" ${role == '2' ? 'selected' : ''}>Saler</option>
-                                <option value="3" ${role == '3' ? 'selected' : ''}>Shipper</option>
-                            </c:choose>
+
+                           <option value="2" ${c.role == '2' ? 'selected' : ''}>Saler</option>
+                           <option value="3" ${c.role == '3' ? 'selected' : ''}>Shipper</option>
+                        
                         </select>
-
                     </div>
-
-                    <button type="submit" class="btn btn-primary" >Update</button>
-                    <a href="/SWP_391/staff" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" >Cập nhật</button>
+                    <a href="/SWP_391/staff" class="btn btn-secondary">Hủy bỏ</a>
                 </form>
             </div>
         </div>
-        <script>
-            function validateEmail() {
-                var emailInput = document.getElementById("email");
-                var emailValue = emailInput.value.trim(); // Remove leading and trailing spaces
-
-                // Check if the email is not empty and matches the required format
-                if (emailValue === "" || !/(^|\s)[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn)\s*$/.test(emailValue)) {
-                    alert("Email phải được định dạng có'@gmail.com' hoặc '@fpt.edu.vn'.");
-                    emailInput.focus();
-                    return false;
-                }
-
-                return true;
-            }
-        </script>
     </body>
 </html>

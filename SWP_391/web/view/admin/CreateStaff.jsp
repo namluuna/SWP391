@@ -51,7 +51,7 @@
                         Nhập tên: <input type="text" name="name" value="${name}"  class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
-                        Nhập Email <input type="text" name="email"  value="${email} " id="email" class="form-control" required /><br>
+                        Nhập Email: <input type="text" name="email"  value="${email} " id="email" class="form-control" required /><br>
                         <c:if test="${not empty errorEmailMessage}">
                             <p style="color: red;">${errorEmailMessage}</p> 
                         </c:if>
