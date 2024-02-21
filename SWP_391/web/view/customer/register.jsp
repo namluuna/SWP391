@@ -117,18 +117,18 @@
             <div class="card">
                 <h2>Ðăng Kí Tài Khoản</h2>
                 <form action="/SWP_391/register" method="post">
-                    <label for="fullName">Họ Tên:</label>
+                    <label for="fullName"><span style="color: red;">*</span>Họ Tên:</label>
                     <input type="fullName" id="fullName" name="fullName" value="${name}" required >
 
-                    <label for="email">Địa chỉ Email:</label>
+                    <label for="email"><span style="color: red;">*</span>Địa chỉ Email:</label>
                     <input type="email" id="email" name="email" value="${email}" required>
                     <c:if test="${not empty errorEmailMessage}">
                         <p style="color: red;">${errorEmailMessage}</p> 
                     </c:if>
                     <!--<p style="color: red;">${errorEmailMessage}</p>--> 
-                    <label for="password">Mật khẩu:</label>
+                    <label for="password"><span style="color: red;">*</span>Mật khẩu:</label>
                     <input type="password" id="password" name="password" value="${password}" required>
-                    <label for="confirmPassword">Xác nhận lại mật khẩu</label>
+                    <label for="confirmPassword"><span style="color: red;">*</span>Xác nhận lại mật khẩu</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" value="${confirmPassword}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showConfirmPassword()">
@@ -137,11 +137,11 @@
                     <c:if test="${not empty errorConfirmPasswordMessage}">
                         <p style="color: red;">${errorConfirmPasswordMessage}</p> 
                     </c:if>
-                    <label for="phone">Phone:</label>
+                    <label for="phone"><span style="color: red;">*</span>Phone:</label>
                     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" value="${phone}" required>
 
 
-                    <label for="province">Tỉnh/Thành:</label>
+                    <label for="province"><span style="color: red;">*</span>Tỉnh/Thành:</label>
                     <select id="province" name="province" required>
                         <c:choose>
                             <c:when test="${not empty selectedProvince}">
@@ -156,7 +156,7 @@
                         </c:forEach>
                     </select>
 
-                    <label for="district">Quận/Huyện:</label>
+                    <label for="district"><span style="color: red;">*</span>Quận/Huyện:</label>
                     <select id="district" name="district" required>
                         <c:choose>
                             <c:when test="${not empty selectedDistrict}">
@@ -168,7 +168,7 @@
                         </c:choose>   
                     </select>
 
-                    <label for="ward">Phường/Xã:</label>
+                    <label for="ward"><span style="color: red;">*</span>Phường/Xã:</label>
                     <select id="ward" name="ward" required>
                         <c:choose>
                             <c:when test="${not empty selectedWard}">
@@ -179,7 +179,7 @@
                             </c:otherwise>
                         </c:choose> 
                     </select>
-                    <label for="address">Địa Chỉ:</label>
+                    <label for="address"><span style="color: red;">*</span>Địa Chỉ:</label>
                     <textarea id="address" name="address" rows="4" value="${address}" required></textarea>
                     <button type="submit">Đăng Ký</button>
                     <br>
