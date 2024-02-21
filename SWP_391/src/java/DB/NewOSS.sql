@@ -370,6 +370,7 @@ CREATE TABLE [dbo].[users](
 	[is_deleted] [tinyint] NOT NULL,
 	[role] [tinyint] NOT NULL,
 	[status] [tinyint] NOT NULL,
+	[image_url] [varchar](255) NULL,
 	[created_at] [datetime] NULL,
 PRIMARY KEY CLUSTERED 
 (
