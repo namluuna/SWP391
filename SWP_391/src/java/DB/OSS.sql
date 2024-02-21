@@ -45,7 +45,7 @@ create table materials(
 create table colors(
 	id int IDENTITY(1,1) PRIMARY KEY,
 	name nvarchar(50) not null,
-	description nvarchar(500),
+	color_code nvarchar(500),
 	created_at datetime,
 	deleted_at datetime,
 )
