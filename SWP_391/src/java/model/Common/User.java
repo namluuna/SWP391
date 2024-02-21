@@ -62,6 +62,22 @@ public class User {
         this.role = role;
         this.status = status;
     }
+
+    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, Timestamp created_at, ArrayList<UserAddress> address) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.is_deleted = is_deleted;
+        this.role = role;
+        this.status = status;
+        this.created_at = created_at;
+        this.address = address;
+    }
+
+  
+    
     
     public int getId() {
         return id;

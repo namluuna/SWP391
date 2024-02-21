@@ -12,6 +12,22 @@
         <servlet-name>FormsController</servlet-name>
         <servlet-class>controller.sale.FormsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListStaffController</servlet-name>
+        <servlet-class>controller.admin.ListStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteStaffController</servlet-name>
+        <servlet-class>controller.admin.DeleteStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateStaffController</servlet-name>
+        <servlet-class>controller.admin.CreateStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateStaffController</servlet-name>
+        <servlet-class>controller.admin.UpdateStaffController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -175,6 +191,22 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListStaffController</servlet-name>
+        <url-pattern>/staff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteStaffController</servlet-name>
+        <url-pattern>/deleteStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateStaffController</servlet-name>
+        <url-pattern>/createStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStaffController</servlet-name>
+        <url-pattern>/updateStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

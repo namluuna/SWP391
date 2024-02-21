@@ -20,11 +20,10 @@ import model.Common.UserAddress;
  *
  * @author ifyou
  */
-public class UserDAO extends DBContext{
-    
-    
-     public void addNewUser(User user){
-         try {
+public class UserDAO extends DBContext {
+
+    public void addNewUser(User user) {
+        try {
             // SQL INSERT query
             String sql = "INSERT INTO [users] (name, email, password, phone, is_deleted, role, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -42,9 +41,9 @@ public class UserDAO extends DBContext{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-     }
-     
-     public void deleteUser(int userID){
+    }
+
+    public void deleteUser(int userID) {
         try {
             String sql = "UPDATE users SET [is_deleted] = 1 WHERE [id] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -54,10 +53,10 @@ public class UserDAO extends DBContext{
             ex.printStackTrace();
         }
     }
-    
-    public User getUserByID(String userId){
-         
-         try {
+
+    public User getUserByID(String userId) {
+
+        try {
             // Select user with email
             String sql = "SELECT * FROM users WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -80,10 +79,10 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
-     
-     public User searchUserByEmail(String email){
-         
-         try {
+
+    public User searchUserByEmail(String email) {
+
+        try {
             // Select user with email
             String sql = "SELECT * FROM [users] WHERE [email] = ?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -108,10 +107,10 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
-    
-    public User searchUserByEmailAndPassword(String userEmail, String userPassword){
-         
-         try {
+
+    public User searchUserByEmailAndPassword(String userEmail, String userPassword) {
+
+        try {
             // Select user with email
             String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND is_deleted = 0";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -135,8 +134,8 @@ public class UserDAO extends DBContext{
         }
         return null;
     }
-    
-    public void activeUserAccount(String email){
+
+    public void activeUserAccount(String email) {
         try {
             String sql = "UPDATE users SET [status] = 1 WHERE [email] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -146,8 +145,8 @@ public class UserDAO extends DBContext{
             ex.printStackTrace();
         }
     }
-    
-    public void changePassword(String email, String newPassword){
+
+    public void changePassword(String email, String newPassword) {
         try {
             String sql = "UPDATE users SET [password] = ? WHERE [email] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -158,8 +157,8 @@ public class UserDAO extends DBContext{
             ex.printStackTrace();
         }
     }
-    
-    public ArrayList<User> sellectallUser(){
+
+    public ArrayList<User> sellectallUser() {
         ArrayList<User> users = new ArrayList<>();
         try {
             // Select address from user with user id
@@ -186,12 +185,16 @@ public class UserDAO extends DBContext{
         }
         return users;
     }
-    public ArrayList<User> sellectallStaff(){
+
+    public ArrayList<User> sellectallStaffByPaging(int index) {
         ArrayList<User> users = new ArrayList<>();
         try {
             // Select address from user with user id
-            String sql = "SELECT * from [users] WHERE is_deleted = 0 AND [role] IN (2,3)";
+            String sql = "select * from users  WHERE is_deleted = 0 AND [role] IN (2,3)\n"
+                    + "order by id  desc\n"
+                    + "offset ? rows fetch  next 15 rows only";
             PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, (index-1)*15);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int user_id = rs.getInt("id");
@@ -205,7 +208,7 @@ public class UserDAO extends DBContext{
                 Timestamp created_at = rs.getTimestamp("created_at");
                 UserAddressDAO uadao = new UserAddressDAO();
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
-                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -213,10 +216,30 @@ public class UserDAO extends DBContext{
         }
         return users;
     }
-    
+
+    // ham dem so luong user trong database
+    public int getTotalUsers() {
+        String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] IN (2,3)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        User u = udao.getUserByID("16");
-        System.out.println(u);
+        ArrayList<User> u = udao.sellectallStaffByPaging(1);
+        for(User o : u){
+            System.out.println(o);
+        }
+        int count = udao.getTotalUsers();
+        System.out.println(count);
+        System.out.println(udao.getUserByID("83"));
     }
 }
