@@ -17,6 +17,7 @@
         </style>
     </head>
     <body>
+        <jsp:include page="../Groups/header.jsp"></jsp:include>
         <div class="container mt-5">
             
             <h1>Color Management</h1>
@@ -34,7 +35,7 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Code_Color</th>
                         <th>Created_at</th>
                         <th>Updated_at</th>
                         <th>Deleted_at</th>
@@ -199,10 +200,10 @@
                 </tbody>
             </table>
         </div>
+         <jsp:include page="../Groups/footer.jsp"></jsp:include>
         <!-- Include Bootstrap's JavaScript and Popper.js (optional) -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    </div>
 </body>
 </html>
