@@ -18,7 +18,7 @@
     </head>
     <body>
         <jsp:include page="../Groups/header.jsp"></jsp:include>
-        
+
             <div class="container mt-5">
 
                 <h1>Quản Lý Sản Phẩm</h1>
@@ -63,57 +63,56 @@
                                     <td>${product.name}</td>
                                     <td>${product.description}</td>
                                     <td>${product.price}</td>
-                                    <td>${product.category_id}</td>
-                                    <td>${product.form_id}</td>
-                                    <td>${product.brand_id}</td>
-                                    <td>${product.material_id}</td>
-                                    <td>${product.group_id}</td>
+                                    <td>${product.getCategory().getName()}</td>
+                                    <td>${product.getForm().getName()}</td>
+                                    <td>${product.getBrand().getName()}</td>
+                                    <td>${product.getMaterial().getName()}</td>
+                                    <td>${product.getGroup().getName()}</td>
                                     <td>${product.created_at}</td>
                                     <td>${product.edited_at}</td>
                                     <td>${product.deleted_at}</td>
-                                    <td>
-                                        <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
-                                            Delete
-                                        </button>
-                                        <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Are you sure you want to delete this product?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
+                                Delete
+                            </button>
+                            <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                    </td>
-                                </tr>
-                            </c:when>
-                            <c:when test="${param.show eq 'active' && empty product.deleted_at}">
-                                <!-- Display only active products -->
-                                <tr>
-                                    <td>${product.id}</td>
-                                    <td>${product.code}</td>
-                                    <td>${product.name}</td>
-                                    <td>${product.description}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.category_id}</td>
-                                    <td>${product.form_id}</td>
-                                    <td>${product.brand_id}</td>
-                                    <td>${product.material_id}</td>
-                                    <td>${product.group_id}</td>
-                                    <td>${product.created_at}</td>
-                                    <td>${product.edited_at}</td>
-                                    <td>${product.deleted_at}</td>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this product?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </td>
+                            </tr>
+                        </c:when>
+                        <c:when test="${param.show eq 'active' && empty product.deleted_at}">
+                            <!-- Display only active products -->
+                            <tr>
+                                <td>${product.id}</td>
+                                <td>${product.code}</td>
+                                <td>${product.name}</td>
+                                <td>${product.description}</td>
+                                <td>${product.price}</td>
+                                <td>${product.getCategory().getName()}</td>
+                                <td>${product.getForm().getName()}</td>
+                                <td>${product.getBrand().getName()}</td>
+                                <td>${product.getMaterial().getName()}</td>
+                                <td>${product.getGroup().getName()}</td>
+                                <td>${product.created_at}</td>
+                                <td>${product.edited_at}</td>
+                                <td>${product.deleted_at}</td>
                             <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
                                 Delete
@@ -148,11 +147,11 @@
                                 <td>${product.name}</td>
                                 <td>${product.description}</td>
                                 <td>${product.price}</td>
-                                <td>${product.category_id}</td>
-                                <td>${product.form_id}</td>
-                                <td>${product.brand_id}</td>
-                                <td>${product.material_id}</td>
-                                <td>${product.group_id}</td>
+                                <td>${product.getCategory().getName()}</td>
+                                <td>${product.getForm().getName()}</td>
+                                <td>${product.getBrand().getName()}</td>
+                                <td>${product.getMaterial().getName()}</td>
+                                <td>${product.getGroup().getName()}</td>
                                 <td>${product.created_at}</td>
                                 <td>${product.edited_at}</td>
                                 <td>${product.deleted_at}</td>
@@ -190,42 +189,42 @@
                                 <td>${product.name}</td>
                                 <td>${product.description}</td>
                                 <td>${product.price}</td>
-                                <td>${product.category_id}</td>
-                                <td>${product.form_id}</td>
-                                <td>${product.brand_id}</td>
-                                <td>${product.material_id}</td>
-                                <td>${product.group_id}</td>
+                                <td>${product.getCategory().getName()}</td>
+                                <td>${product.getForm().getName()}</td>
+                                <td>${product.getBrand().getName()}</td>
+                                <td>${product.getMaterial().getName()}</td>
+                                <td>${product.getGroup().getName()}</td>
                                 <td>${product.created_at}</td>
                                 <td>${product.edited_at}</td>
                                 <td>${product.deleted_at}</td>
-                                <!-- Add a button to restore the product -->
-                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${product.id}">
-                                Restore
-                            </button>
-                            <!-- Restore Confirmation Modal -->
-                            <div class="modal fade" id="confirmRestoreModal${product.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="confirmRestoreModalLabel">Confirm Restore</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to restore this product?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <form method="POST" action="products">
-                                                <input type="hidden" name="id" value="${product.id}">
-                                                <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
-                                            </form>
+                                    <!-- Add a button to restore the product -->
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${product.id}">
+                                        Restore
+                                    </button>
+                                    <!-- Restore Confirmation Modal -->
+                                    <div class="modal fade" id="confirmRestoreModal${product.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirmRestoreModalLabel">Confirm Restore</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to restore this product?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <form method="POST" action="products">
+                                                        <input type="hidden" name="id" value="${product.id}">
+                                                        <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            </td>
+                                </td>
                             </tr>
                         </c:when>
                     </c:choose>

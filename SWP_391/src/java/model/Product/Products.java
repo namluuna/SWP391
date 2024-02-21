@@ -4,28 +4,40 @@
  */
 package model.Product;
 
+import java.sql.Timestamp;
+import model.Categories.Category;
+import model.Groups.Brands;
+import model.Groups.Groups;
+import model.Materials.materials;
+import model.Sale.Form;
+
 /**
  *
  * @author lucdu
  */
 public class Products {
 
-    String id, code, name, description, price, category_id, form_id, brand_id, material_id, group_id, created_at, edited_at, deleted_at;
+    String id, code, name, description, price;
+    private Category category;
+    private Form form;
+    private Brands brand;
+    private materials material;
+    private Groups group;
+    private Timestamp created_at;
+    private Timestamp edited_at;
+    private Timestamp deleted_at;
 
-    public Products() {
-    }
-
-    public Products(String id, String code, String name, String description, String price, String category_id, String form_id, String brand_id, String material_id, String group_id, String created_at, String edited_at, String deleted_at) {
+    public Products(String id, String code, String name, String description, String price, Category category, Form form, Brands brand, materials material, Groups group, Timestamp created_at, Timestamp edited_at, Timestamp deleted_at) {
         this.id = id;
         this.code = code;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.category_id = category_id;
-        this.form_id = form_id;
-        this.brand_id = brand_id;
-        this.material_id = material_id;
-        this.group_id = group_id;
+        this.category = category;
+        this.form = form;
+        this.brand = brand;
+        this.material = material;
+        this.group = group;
         this.created_at = created_at;
         this.edited_at = edited_at;
         this.deleted_at = deleted_at;
@@ -71,74 +83,96 @@ public class Products {
         this.price = price;
     }
 
-    public String getCategory_id() {
-        return category_id;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public String getForm_id() {
-        return form_id;
+    public Form getForm() {
+        return form;
     }
 
-    public void setForm_id(String form_id) {
-        this.form_id = form_id;
+    public void setForm(Form form) {
+        this.form = form;
     }
 
-    public String getBrand_id() {
-        return brand_id;
+    public Brands getBrand() {
+        return brand;
     }
 
-    public void setBrand_id(String brand_id) {
-        this.brand_id = brand_id;
+    public void setBrand(Brands brand) {
+        this.brand = brand;
     }
 
-    public String getMaterial_id() {
-        return material_id;
+    public materials getMaterial() {
+        return material;
     }
 
-    public void setMaterial_id(String material_id) {
-        this.material_id = material_id;
+    public void setMaterial(materials material) {
+        this.material = material;
     }
 
-    public String getGroup_id() {
-        return group_id;
+    public Groups getGroup() {
+        return group;
     }
 
-    public void setGroup_id(String group_id) {
-        this.group_id = group_id;
+    public void setGroup(Groups group) {
+        this.group = group;
     }
 
-    public String getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public String getEdited_at() {
+    public Timestamp getEdited_at() {
         return edited_at;
     }
 
-    public void setEdited_at(String edited_at) {
+    public void setEdited_at(Timestamp edited_at) {
         this.edited_at = edited_at;
     }
 
-    public String getDeleted_at() {
+    public Timestamp getDeleted_at() {
         return deleted_at;
     }
 
-    public void setDeleted_at(String deleted_at) {
+    public void setDeleted_at(Timestamp deleted_at) {
         this.deleted_at = deleted_at;
     }
 
     @Override
     public String toString() {
-        return "Products{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", price=" + price + ", category_id=" + category_id + ", form_id=" + form_id + ", brand_id=" + brand_id + ", material_id=" + material_id + ", group_id=" + group_id + ", created_at=" + created_at + ", edited_at=" + edited_at + ", deleted_at=" + deleted_at + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Products{");
+        sb.append("id=").append(id);
+        sb.append(", code=").append(code);
+        sb.append(", name=").append(name);
+        sb.append(", description=").append(description);
+        sb.append(", price=").append(price);
+        sb.append(", category=").append(category);
+        sb.append(", form=").append(form);
+        sb.append(", brand=").append(brand);
+        sb.append(", material=").append(material);
+        sb.append(", group=").append(group);
+        sb.append(", created_at=").append(created_at);
+        sb.append(", edited_at=").append(edited_at);
+        sb.append(", deleted_at=").append(deleted_at);
+        sb.append('}');
+        return sb.toString();
     }
+
+
+  
+    
+    
+    
 
     
 }

@@ -5,10 +5,22 @@
 package DAO.ProductDAO;
 
 import DAO.DBContext;
+import DAO.GroupsDAO.BrandsDAO;
+import DAO.GroupsDAO.CategoryDAO;
+import DAO.GroupsDAO.FormDAO;
+import DAO.GroupsDAO.GroupsDAO;
+import DAO.MaterialsDAO.MaterialsDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import model.Categories.Category;
+import model.Groups.Brands;
+import model.Groups.Groups;
+import model.Materials.materials;
 import model.Product.Products;
+import model.Sale.Form;
+import model.Sale.Product;
 
 /**
  *
@@ -29,16 +41,25 @@ public class ProductsDAO extends DBContext {
                 String Description = rs.getString("description");
                 String Price = String.valueOf(rs.getInt("price"));
                 String Category_id = String.valueOf(rs.getInt("category_id"));
+                CategoryDAO cDAO = new CategoryDAO();
+                Category category = cDAO.getCaByID(Category_id);
                 String Form_id = String.valueOf(rs.getInt("form_id"));
+                FormDAO fDAO = new FormDAO();
+                Form form = fDAO.selectFormByID(Form_id);
                 String Brand_id = String.valueOf(rs.getInt("brand_id"));
+                BrandsDAO bDAO = new BrandsDAO();
+                Brands brand = bDAO.selectbrandByID(Brand_id);
                 String Material_id = String.valueOf(rs.getInt("material_id"));
+                MaterialsDAO mDAO = new MaterialsDAO();
+                materials material = mDAO.selectMaterialsByID(Material_id);
                 String Group_id = String.valueOf(rs.getInt("group_id"));
-                String Created_at = rs.getString("created_at");
-                String Deleted_at = rs.getString("deleted_at");
-                String Edited_at = rs.getString("edited_at");
-                Products producs = new Products(Id, Code, Name, Description, Price, Category_id, Form_id, Brand_id, Material_id, Group_id, Created_at, Edited_at, Deleted_at);
-
-                ProductsList.add(producs);
+                GroupsDAO gDAO = new GroupsDAO();
+                Groups group = gDAO.selectGroupsByID(Group_id);
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp Edited_at = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
+                Products product = new Products(Id, Code, Name, Description, Price, category, form, brand, material, group, createdAt, Edited_at, deletedAt);
+                ProductsList.add(product);
             }
         } catch (Exception e) {
             System.out.println("getProductsList: " + e.getMessage());
@@ -70,7 +91,7 @@ public class ProductsDAO extends DBContext {
                 String Deleted_at = rs.getString("deleted_at");
                 String Edited_at = rs.getString("edited_at");
 
-                product = new Products(Id, Code, Name, Description, Price, Category_id, Form_id, Brand_id, Material_id, Group_id, Created_at, Edited_at, Deleted_at);
+             //   product = new Products(Id, Code, Name, Description, Price, Category_id, Form_id, Brand_id, Material_id, Group_id, Created_at, Edited_at, Deleted_at);
             }
         } catch (Exception e) {
             System.out.println("selectProductsByID: " + e.getMessage());
@@ -107,8 +128,8 @@ public class ProductsDAO extends DBContext {
         //System.out.println(data);
 //        Products pro = p.selectProductByID("3");
 //        System.out.println(pro);
-p.createNewProduct("NK123", "Nike co cao", "kieu dang co cao", "9000", "1", "1", "1", "1", "1");
-        System.out.println(data);
+//p.createNewProduct("NK123", "Nike co cao", "kieu dang co cao", "9000", "1", "1", "1", "1", "1");
+        System.out.println(data.get(1).toString());
     }
 
 }
