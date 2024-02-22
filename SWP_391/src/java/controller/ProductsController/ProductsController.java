@@ -4,7 +4,11 @@
  */
 
 package controller.ProductsController;
+import DAO.GroupsDAO.BrandsDAO;
 import DAO.GroupsDAO.CategoryDAO;
+import DAO.GroupsDAO.FormDAO;
+import DAO.GroupsDAO.GroupsDAO;
+import DAO.MaterialsDAO.MaterialsDAO;
 import DAO.ProductDAO.ProductsDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -15,7 +19,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Categories.Category;
+import model.Groups.Brands;
+import model.Groups.Groups;
+import model.Materials.materials;
 import model.Product.Products;
+import model.Sale.Form;
 
 /**
  *
@@ -59,10 +67,22 @@ public class ProductsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductsDAO p = new ProductsDAO();
-        CategoryDAO g = new CategoryDAO();
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            List<Category> data1 = g.selectAllCategory();
-            request.setAttribute("data1", data1);
+        CategoryDAO cdao = new CategoryDAO();
+        FormDAO fdao = new FormDAO();
+        BrandsDAO bdao = new BrandsDAO();
+        MaterialsDAO mdao = new MaterialsDAO();
+        GroupsDAO gdao = new GroupsDAO();
+        ArrayList<Form> data2 = fdao.selectAllForm();
+        ArrayList<Brands> data3 = bdao.selectAllBrands();
+        ArrayList<materials> data4 =mdao.getAll();
+        ArrayList<Groups> data5 = gdao.selectAllGroups();
+        List<Category> data1 = cdao.selectAllCategory();
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {             
+                request.setAttribute("data1", data1);
+                request.setAttribute("data2", data2);
+                request.setAttribute("data3", data3);
+                request.setAttribute("data4", data4);
+                request.setAttribute("data5", data5);
             request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
         }
 //        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
