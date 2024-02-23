@@ -108,7 +108,7 @@ public class ProductsDAO extends DBContext {
 
     public void createNewProduct(String code, String name, String description, String price, String categoryId, String formId, String brandId, String materialId, String groupId) {
         try {
-            String sql = "INSERT INTO products (code, name, description, price, category_id, form_id, brand_id, material_id, group_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO products (code, name, description, price, category_id, form_id, brand_id, material_id, group_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, code);
             st.setString(2, name);
@@ -127,6 +127,63 @@ public class ProductsDAO extends DBContext {
             }
         } catch (Exception e) {
             System.out.println("createNewProduct: " + e.getMessage());
+        }
+    }
+
+    public void updateProduct(String productId, String code, String name, String description, String price, String categoryId, String formId, String brandId, String materialId, String groupId) {
+        try {
+            String sql = "UPDATE products SET code = ?, name = ?, description = ?, price = ?, category_id = ?, form_id = ?, brand_id = ?, material_id = ?, group_id = ?, edited_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, code);
+            st.setString(2, name);
+            st.setString(3, description);
+            st.setString(4, price);
+            st.setString(5, categoryId);
+            st.setString(6, formId);
+            st.setString(7, brandId);
+            st.setString(8, materialId);
+            st.setString(9, groupId);
+            st.setString(10, productId);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product updated successfully.");
+            } else {
+                System.out.println("Failed to update product.");
+            }
+        } catch (Exception e) {
+            System.out.println("updateProduct: " + e.getMessage());
+        }
+    }
+
+    public void softDeleteProduct(String productId) {
+        try {
+            String sql = "UPDATE products SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, productId);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product soft deleted successfully.");
+            } else {
+                System.out.println("Failed to soft delete product.");
+            }
+        } catch (Exception e) {
+            System.out.println("softDeleteProduct: " + e.getMessage());
+        }
+    }
+
+    public void restoreProduct(String productId) {
+        try {
+            String sql = "UPDATE products SET deleted_at = NULL WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, productId);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product restored successfully.");
+            } else {
+                System.out.println("Failed to restore product.");
+            }
+        } catch (Exception e) {
+            System.out.println("restoreProduct: " + e.getMessage());
         }
     }
 
