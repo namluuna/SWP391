@@ -54,6 +54,28 @@ public class UserDAO extends DBContext {
         }
     }
 
+    public void update(User user) {
+        String sql = "update users SET [name]=?,"
+                + " [email] =?,"
+                + " [password] = ?,"
+                + "[phone] = ?,"
+                + "[role]= ?,"
+                + "[status]=? where id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getName());
+                statement.setString(2, user.getEmail());
+                statement.setString(3, user.getPassword());
+                statement.setString(4, user.getPhone());
+                statement.setInt(5, user.getRole());
+                statement.setInt(6, user.getStatus());
+                statement.setInt(7, user.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+        }
+            
+    }
+
     public User getUserByID(String userId) {
 
         try {
@@ -194,7 +216,7 @@ public class UserDAO extends DBContext {
                     + "order by id  desc\n"
                     + "offset ? rows fetch  next 15 rows only";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, (index-1)*15);
+            st.setInt(1, (index - 1) * 15);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int user_id = rs.getInt("id");
@@ -235,7 +257,7 @@ public class UserDAO extends DBContext {
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
         ArrayList<User> u = udao.sellectallStaffByPaging(1);
-        for(User o : u){
+        for (User o : u) {
             System.out.println(o);
         }
         int count = udao.getTotalUsers();

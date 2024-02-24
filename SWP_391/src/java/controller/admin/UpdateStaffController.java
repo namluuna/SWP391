@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Common.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -36,7 +37,7 @@ public class UpdateStaffController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateStaffController</title>");            
+            out.println("<title>Servlet UpdateStaffController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateStaffController at " + request.getContextPath() + "</h1>");
@@ -57,18 +58,18 @@ public class UpdateStaffController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
-       String id_raw = request.getParameter("id");
-       int id ;
-       UserDAO udao = new UserDAO();
-       try{
-           id = Integer.parseInt(id_raw);
-           User getStaffId = udao.getUserByID(id_raw);
-           request.setAttribute("getStaffId", getStaffId);
-           request.getRequestDispatcher("view\\admin\\UpdateStaff.jsp").forward(request, response);
-       }catch(NumberFormatException e){
-           
-       }
+        // processRequest(request, response);
+        String id_raw = request.getParameter("id");
+        int id;
+        UserDAO udao = new UserDAO();
+        try {
+            id = Integer.parseInt(id_raw);
+            User getStaffId = udao.getUserByID(id_raw);
+            request.setAttribute("getStaffId", getStaffId);
+            request.getRequestDispatcher("view\\admin\\UpdateStaff.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
+
+        }
     }
 
     /**
@@ -82,7 +83,40 @@ public class UpdateStaffController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        int sid = Integer.parseInt(request.getParameter("id"));
+        String sName = request.getParameter("name");
+        String sEmail = request.getParameter("email");
+        String sPassword = request.getParameter("password");
+        String sPhone = request.getParameter("phone");
+        String sRole = request.getParameter("role");
+        String sStatus = request.getParameter("status");
+        UserDAO udao = new UserDAO();
+        if (sStatus.equals("1")) {
+            if (sRole.equals("2")) {
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                udao.update(user);
+                response.sendRedirect("staff");
+            } else if (sRole.equals("3")) {
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
+                udao.update(user);
+                response.sendRedirect("staff");
+            }
+        } else if (sStatus.equals("0")) {
+            if (sRole.equals("2")) {
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 2, 0);
+                udao.update(user);
+                response.sendRedirect("staff");
+            } else if (sRole.equals("3")) {
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 3, 0);
+                udao.update(user);
+                response.sendRedirect("staff");
+            }
+        }
+
     }
 
     /**

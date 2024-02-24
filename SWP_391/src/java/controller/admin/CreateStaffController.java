@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Common.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -90,22 +91,21 @@ public class CreateStaffController extends HttpServlet {
             request.setAttribute("role", sRole);
             request.setAttribute("errorEmailMessage", errorEmailMessage);
             request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
-        }else{
+        } else {
             if (sRole.equals("2")) {
-            UserDAO udao = new UserDAO();
-            User user = new User(sName, sEmail, sPassword, sPhone, 0, 2, 1);
-            udao.addNewUser(user);
-            response.sendRedirect("staff");
-        } else if (sRole.equals("3")) {
-            UserDAO udao = new UserDAO();
-            User user = new User(sName, sEmail, sPassword, sPhone, 0, 3, 1);
-            udao.addNewUser(user);
-            response.sendRedirect("staff");
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                UserDAO udao = new UserDAO();
+                User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                udao.addNewUser(user);
+                response.sendRedirect("staff");
+            } else if (sRole.equals("3")) {
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                UserDAO udao = new UserDAO();
+                User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
+                udao.addNewUser(user);
+                response.sendRedirect("staff");
+            }
         }
-        }
-        
-
-        
 
     }
 
