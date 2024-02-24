@@ -52,32 +52,41 @@
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Tạo sản phẩm mới</h1>
                 <form name="form" action="products" method="POST" onsubmit="return validateForm();">
+                    <input type="hidden" class="form-control" name="id" value="${product.getId()}">
                     <div class="mb-3">
                         <label for="code" class="form-label">Mã sản phẩm:</label>
-                        <input type="text" class="form-control" id="code" name="code">
+                        <input type="text" class="form-control" id="code" name="code" value="${product.getCode()}">
                         <span id="error-message-code" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Tên sản phẩm:</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" value="${product.getName()}">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Mô tả sản phẩm:</label>
-                        <textarea class="form-control form-control-lg" id="description" name="description"></textarea>
+                        <textarea class="form-control form-control-lg" id="description" name="description">${product.getDescription()}</textarea>
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Giá tiền:</label>
-                        <input type="text" class="form-control" id="price" name="price">
+                        <input type="text" class="form-control" id="price" name="price" value="${product.getPrice()}">
                         <span id="error-message-price" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Loại giày:</label>
                         <select id="category_id" name="category_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn loại giày</option>                    
+                            <option value="0">Xin hãy chọn loại giày</option>  
                             <c:forEach items="${data1}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
+                                <c:choose>
+                                    <c:when test="${product.getCategory().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </select>
                         <span id="error-message-category" style="color: red;"></span>
@@ -87,7 +96,15 @@
                         <select id="form_id" name="form_id" class="form-select" required>
                             <option value="0">Xin hãy chọn kiểu dáng</option>                    
                             <c:forEach items="${data2}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
+                                <c:choose>
+                                    <c:when test="${product.getForm().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </select>
                         <span id="error-message-form" style="color: red;"></span>
@@ -95,9 +112,17 @@
                     <div class="mb-3">
                         <label for="brand_id" class="form-label">Hãng giày:</label>
                         <select id="brand_id" name="brand_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn hãng giày</option>                    
+                            <option value="0">Xin hãy chọn hãng giày</option>
                             <c:forEach items="${data3}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
+                                <c:choose>
+                                    <c:when test="${product.getBrand().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </select>
                         <span id="error-message-brand" style="color: red;"></span>
@@ -107,7 +132,15 @@
                         <select id="material_id" name="material_id" class="form-select" required>
                             <option value="0">Xin hãy chọn dòng sản phẩm</option>                    
                             <c:forEach items="${data4}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
+                                <c:choose>
+                                    <c:when test="${product.getMaterial().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </select>
                         <span id="error-message-material" style="color: red;"></span>
@@ -117,12 +150,20 @@
                         <select id="group_id" name="group_id" class="form-select" required>
                             <option value="0">Xin hãy chọn trạng thái sản phẩm</option>                    
                             <c:forEach items="${data5}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
+                                <c:choose>
+                                    <c:when test="${product.getGroup().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </select>
                         <span id="error-message-group" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
+                    <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
                     <a href="products" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>

@@ -20,7 +20,6 @@ import model.Groups.Groups;
 import model.Materials.materials;
 import model.Product.Products;
 import model.Sale.Form;
-import model.Sale.Product;
 
 /**
  *
@@ -130,7 +129,7 @@ public class ProductsDAO extends DBContext {
         }
     }
 
-    public void updateProduct(String productId, String code, String name, String description, String price, String categoryId, String formId, String brandId, String materialId, String groupId) {
+    public void updateProduct(String id, String code, String name, String description, String price, String categoryId, String formId, String brandId, String materialId, String groupId) {
         try {
             String sql = "UPDATE products SET code = ?, name = ?, description = ?, price = ?, category_id = ?, form_id = ?, brand_id = ?, material_id = ?, group_id = ?, edited_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -143,7 +142,7 @@ public class ProductsDAO extends DBContext {
             st.setString(7, brandId);
             st.setString(8, materialId);
             st.setString(9, groupId);
-            st.setString(10, productId);
+            st.setString(10, id);
             int rowsAffected = st.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Product updated successfully.");
@@ -193,7 +192,7 @@ public class ProductsDAO extends DBContext {
         //System.out.println(data);
 //        Products pro = p.selectProductByID("3");
 //        System.out.println(pro);
-        p.createNewProduct("NK123", "Nike co cao", "kieu dang co cao", "9000", "2", "4", "1", "40", "1");
+//        p.createNewProduct("NK123", "Nike co cao", "kieu dang co cao", "9000", "2", "4", "1", "40", "1");
 //        System.out.println(data.get(1).toString());
     }
 
