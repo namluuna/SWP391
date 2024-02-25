@@ -140,7 +140,7 @@ public class GroupsDAO extends DBContext {
     }
 
     public static void main(String[] args) {
-        GroupsDAO g = new GroupsDAO();
+    GroupsDAO g = new GroupsDAO();
 //        ArrayList<Groups> data = g.selectAllGroups();
 //        System.out.println(data);
 //        g.createNewGroups("dsds", "dsdsd");
