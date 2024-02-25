@@ -35,7 +35,7 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Code_Color</th>
+                        <th>Color_Code</th>
                         <th>Created_at</th>
                         <th>Updated_at</th>
                         <th>Deleted_at</th>
@@ -52,7 +52,7 @@
                                 <tr>
                                     <td>${color.id}</td>
                                     <td>${color.name}</td>
-                                    <td>${color.description}</td>
+                                    <td>${color.color_code}</td>
                                     <td>${color.created_at}</td>
                                     <td>${color.updated_at}</td>
                                     <td>${color.deleted_at}</td>
@@ -88,7 +88,7 @@
                                 <tr>
                                     <td>${color.id}</td>
                                     <td>${color.name}</td>
-                                    <td>${color.description}</td>
+                                    <td>${color.color_code}</td>
                                     <td>${color.created_at}</td>
                                     <td>${color.updated_at}</td>
                                     <td>${color.deleted_at}</td>
@@ -124,7 +124,7 @@
                                 <tr>
                                     <td>${color.id}</td>
                                     <td>${color.name}</td>
-                                    <td>${color.description}</td>
+                                    <td>${color.color_code}</td>
                                     <td>${color.created_at}</td>
                                     <td>${color.updated_at}</td>
                                     <td>${color.deleted_at}</td>
@@ -160,7 +160,7 @@
                                 <tr>
                                     <td>${color.id}</td>
                                     <td>${color.name}</td>
-                                    <td>${color.description}</td>
+                                    <td>${color.color_code}</td>
                                     <td>${color.created_at}</td>
                                     <td>${color.updated_at}</td>
                                     <td>${color.deleted_at}</td>

@@ -24,6 +24,10 @@
         <servlet-name>SizesController</servlet-name>
         <servlet-class>controller.ProductsController.SizesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductDetailController</servlet-name>
+        <servlet-class>controller.ProductsController.ProductDetailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>SizesController</servlet-name>
         <url-pattern>/sizes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductDetailController</servlet-name>
+        <url-pattern>/productdetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
