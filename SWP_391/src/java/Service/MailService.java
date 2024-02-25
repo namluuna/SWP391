@@ -22,7 +22,7 @@ public class MailService {
     public void sendVerifyAccount(String toEmail, String verifyCode) {
         //provide sender's email ID
         String fromEmail = "kn97502@gmail.com";
-        String fromPassword = "lgsrpjfrvhhkrxhw";
+        String fromPassword = "tzrzytbzbeaxmfnu";
 
         //provide Mailtrap's host address
         String host = "smtp.gmail.com";

@@ -149,7 +149,11 @@ public class UserAddress {
     public void setDeleted_at(Timestamp deleted_at) {
         this.deleted_at = deleted_at;
     }
-
+    
+    public String showAddress(){
+        return address + " " + ward_name + " " + district_name + " " + province_name ; 
+    }
+    
     @Override
     public String toString() {
         return "UserAddress{" + "id=" + id + ", user_id=" + user_id + ", province_name=" + province_name + ", province_code=" + province_code + ", district_name=" + district_name + ", district_code=" + district_code + ", ward_name=" + ward_name + ", ward_code=" + ward_code + ", address=" + address + ", created_at=" + created_at + '}';

@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Common.User;
 import model.Common.UserAddress;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -49,6 +50,19 @@ public class UserDAO extends DBContext{
             String sql = "UPDATE users SET [is_deleted] = 1 WHERE [id] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, userID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void editUser(int userID, String name, String phone){
+        try {
+            String sql = "UPDATE users SET [name] = ?, [phone] = ? WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, phone);
+            statement.setInt(3, userID);
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -100,7 +114,8 @@ public class UserDAO extends DBContext{
                 int status = rs.getInt("status");
                 UserAddressDAO uadao = new UserAddressDAO();
                 ArrayList userAddresses = uadao.sellectallUserAddress(id);
-                User u = new User(id, name, email, password, phone, is_deleted, role, status, userAddresses);
+                String image = rs.getString("image_url");
+                User u = new User(id, name, email, password, phone, is_deleted, role, status, userAddresses, image);
                 return u;
             }
         } catch (SQLException e) {
@@ -178,7 +193,8 @@ public class UserDAO extends DBContext{
                 Timestamp created_at = rs.getTimestamp("created_at");
                 UserAddressDAO uadao = new UserAddressDAO();
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
-                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses);
+                String image = rs.getString("image_url");
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses, image);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -203,9 +219,10 @@ public class UserDAO extends DBContext{
                 int role = rs.getInt("role");
                 int status = rs.getInt("status");
                 Timestamp created_at = rs.getTimestamp("created_at");
+                String image = rs.getString("image_url");
                 UserAddressDAO uadao = new UserAddressDAO();
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
-                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses, image);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -216,7 +233,7 @@ public class UserDAO extends DBContext{
     
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        User u = udao.getUserByID("16");
-        System.out.println(u);
+        String encodedPassword = BCrypt.hashpw("LB@123456", BCrypt.gensalt(10));
+        udao.changePassword("ifyouwant9612@gmail.com", encodedPassword);
     }
 }

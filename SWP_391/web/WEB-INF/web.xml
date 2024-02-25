@@ -20,6 +20,34 @@
         <servlet-name>ProductsController</servlet-name>
         <servlet-class>controller.ProductsController.ProductsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>controller.Common.ProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUserAddressController</servlet-name>
+        <servlet-class>controller.customer.AddUserAddressController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUserAddress</servlet-name>
+        <servlet-class>controller.Common.DeleteUserAddress</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserProfile</servlet-name>
+        <servlet-class>controller.Common.EditUserProfile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadImageServlet</servlet-name>
+        <servlet-class>controller.Common.UploadImageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <servlet-class>controller.Common.ChangePasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditAddressController</servlet-name>
+        <servlet-class>controller.Common.EditAddressController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -191,6 +219,34 @@
     <servlet-mapping>
         <servlet-name>ProductsController</servlet-name>
         <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserAddressController</servlet-name>
+        <url-pattern>/addUserAddress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserAddress</servlet-name>
+        <url-pattern>/deleteUserAddress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserProfile</servlet-name>
+        <url-pattern>/editUserProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadImageServlet</servlet-name>
+        <url-pattern>/uploadImageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAddressController</servlet-name>
+        <url-pattern>/editAddressController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
