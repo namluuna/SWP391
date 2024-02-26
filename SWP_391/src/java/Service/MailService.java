@@ -22,7 +22,7 @@ public class MailService {
     public void sendVerifyAccount(String toEmail, String verifyCode) {
         //provide sender's email ID
         String fromEmail = "kn97502@gmail.com";
-        String fromPassword = "lgsrpjfrvhhkrxhw";
+        String fromPassword = "tzrzytbzbeaxmfnu";
 
         //provide Mailtrap's host address
         String host = "smtp.gmail.com";
@@ -67,12 +67,12 @@ public class MailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Dear User!</h1>\n"
-                    + "      <h3>Thank you for being our customer</h3>\n"
+                    + "    <h1>Quý khách hàng thân mến!</h1>\n"
+                    + "      <h3>Cảm ơn bạn vì đã trở thành khách hàng của Online Shoes Store</h3>\n"
                     + "      <small\n"
-                    + "        >Thank you for creating an account. Please click the following button to verify your account:</small>\n"
+                    + "        >Cảm ơn bạn vì đã tạo tài khoản. Xin hãy click vào nút bên dưới để kích hoạt tài khoản:</small>\n"
                     + "      <small\n"
-                    + "        >If you didn't create account, you can safely ignore this email.</small\n"
+                    + "        >Nếu bạn không tạo tài khoản, xin hãy bỏ qua email này.</small\n"
                     + "      >\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -83,9 +83,9 @@ public class MailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/verify?token=" + verifyCode + "\">Verification link</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/verify?token=" + verifyCode + "\">Kích hoạt tài khoản</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Questions? <a href=\"\">We're here to help</a></h5>\n"
+                    + "      <h5>Nếu bạn có câu hỏi? <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
                     + "    </div>",
                     "text/html");
 
@@ -144,12 +144,12 @@ public class MailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Dear User!</h1>\n"
-                    + "      <h3>Your password has been successfully reset!</h3>\n"
+                    + "    <h1>Quý khách hàng thân mến!</h1>\n"
+                    + "      <h3>Mật khẩu của bạn đã được reset thành công!</h3>\n"
                     + "      <small\n"
-                    + "        >Please click the following button to reset your password:</small>\n"
+                    + "        >Xin hãy click vào nút bên dưới để tiến hành đặt lại mật khẩu:</small>\n"
                     + "      <small\n"
-                    + "        >If you didn't reset the password, you can safely ignore this email.</small\n"
+                    + "        >Nếu bạn không reset mật khẩu, bạn có thể bỏ qua email này.</small\n"
                     + "      >\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -160,9 +160,9 @@ public class MailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SetNewPassword?token=" + resetPasswordToken + "\">Reset Password</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SetNewPassword?token=" + resetPasswordToken + "\">Đặt lại mật khẩu</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Questions? <a href=\"\">We're here to help</a></h5>\n"
+                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
                     + "    </div>",
                     "text/html");
 

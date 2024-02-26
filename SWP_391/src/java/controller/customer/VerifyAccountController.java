@@ -47,7 +47,7 @@ public class VerifyAccountController extends HttpServlet {
                 // delete the active tokens
                 accountActiveTokenDAO.deleteAccountActiveToken(accountActiveToken.getUserEmail());
                 // redirect to the login page with success message
-                String message = "Your account has been successfully activated. Please login to continue using the service";
+                String message = "Tài khoản của bạn đã được kích hoạt thành công. Xin hãy đăng nhập để tiếp tục sử dụng dịch vụ";
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
             }else{

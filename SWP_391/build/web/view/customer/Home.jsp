@@ -15,6 +15,7 @@
         <h1>Hello World from Home page! The content is coming soon</h1>
     <c:if test="${not empty user}">
         <p style="">Hello ${user.name}</p>
+        <p style="">Hello ${user.getAddress().toString()}</p>
         <a href="/SWP_391/logout">Logout</a>
     </c:if>
 </body>

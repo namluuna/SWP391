@@ -64,9 +64,8 @@
                                 <td>${o.id}</td>
                                 <td>${o.name}</td>
                                 <td>${o.description}</td>
-                                <td>${o.created_at}</td>
-
-
+                                <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                                <td><fmt:formatDate value="${o.created_at}" pattern="yyyy-MM-dd" /></td>
                                 <td>
                                         <a href="loadedit?cid=${o.id}" class="btn btn-info btn-sm">Edit</a>
 <!--                                        <a href="deletecategory?cid=" class="btn btn-danger" >Delete</a>-->
@@ -106,7 +105,7 @@
                 <div class="modal-content">
                     <form action="addcategory" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Add Category</h4>
+                            <h4 class="modal-title">Add Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
@@ -122,7 +121,7 @@
                                 <label>Create_at</label>
                                 <input name="create" type="text" class="form-control" required readonly value="${create_at}" >
                                 <!--                                <fmt:formatDate value="" type="both" timeStyle="long" 
-                                dateStyle="long" /> -->
+                                                dateStyle="long" /> -->
                             </div>
                             <!--                            <div class="form-group">
                                                             <label>Price</label>
@@ -147,6 +146,7 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="../Groups/footer.jsp"></jsp:include>
         <script src="js/manager.js" type="text/javascript"></script>
         <script>
 

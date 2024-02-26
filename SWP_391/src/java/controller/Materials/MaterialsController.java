@@ -59,7 +59,6 @@ public class MaterialsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MaterialsDAO m = new MaterialsDAO();
-        ArrayList<materials> data = m.getAll();
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
             request.getRequestDispatcher("view\\materials\\AddMaterials.jsp").forward(request, response);
         }
@@ -71,6 +70,7 @@ public class MaterialsController extends HttpServlet {
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
             m.softDeleteMaterials(request.getParameter("id"));
         }
+        ArrayList<materials> data = m.getAll();
         request.setAttribute("Mdata", data);
         request.getRequestDispatcher("view\\materials\\ListMaterials.jsp").forward(request, response);
     }

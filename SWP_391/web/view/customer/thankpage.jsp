@@ -12,7 +12,6 @@
         <title>Thank Page</title>
         <style>
             body {
-                font-family: "Comic Sans MS", cursive;
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -107,12 +106,12 @@
     </head>
     <body>
         <div class="thank-container">
-            <h1>Thank You for Registering!</h1>
-            <p>Your registration was successful.</p>
-            <p>Welcome to become our customer!</p>
-            <p>An email to active account was sent to your email. Please check and click the button to verify your account!</p>
+            <h1>Cảm ơn bạn đã đăng kí tài khoản!</h1>
+            <p>Bạn đã đăng kí tài khoản thành công.</p>
+            <p>Cảm ơn bạn đã trở thành khách hàng của Online Shoes Store!</p>
+            <p>Mail kích hoạt tài khoản đã được gửi đến địa chỉ email của bạn. Xin hãy kiểm tra email và kích hoạt tài khoản!</p>
             <div class="btn-container">
-                <a href="/SWP_391/login" class="btn">Login Now</a>
+                <a href="/SWP_391/login" class="btn">Đăng nhập ngay</a>
             </div>
         </div>
     </body>

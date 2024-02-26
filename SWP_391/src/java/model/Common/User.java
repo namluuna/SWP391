@@ -20,9 +20,10 @@ public class User {
     private int role;
     private int status;
     private Timestamp created_at;
-    private ArrayList<UserAddress> address;
+    ArrayList<UserAddress> address;
+    private String image;
 
-    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, ArrayList<UserAddress> address) {
+    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, ArrayList<UserAddress> address, String image) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -31,6 +32,15 @@ public class User {
         this.is_deleted = is_deleted;
         this.role = role;
         this.status = status;
+        this.address = address;
+        this.image = image;
+    }
+
+    public ArrayList<UserAddress> getAddress() {
+        return address;
+    }
+
+    public void setAddress(ArrayList<UserAddress> address) {
         this.address = address;
     }
     
@@ -125,6 +135,14 @@ public class User {
 
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

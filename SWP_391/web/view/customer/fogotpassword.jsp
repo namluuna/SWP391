@@ -12,7 +12,6 @@
         <title>Fogot password</title>
         <style>
             body {
-                font-family: "Comic Sans MS", cursive;
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -100,15 +99,14 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Forgot password</h2>
+                <h2>Quên mật khẩu</h2>
                 <form action="/SWP_391/ResetPassword" method="post">
-                    <p>Enter your email to reset password:</p>
+                    <p>Xin hãy nhập email để reset mật khẩu:</p>
                     <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
                     <c:if test="${not empty message}">
                         <p style="color: red;">${message}</p> 
                     </c:if>
-                    <button type="submit">Reset password</button>
-                    <br>
+                    <button type="submit">Đặt lại mật khẩu
                 </form>
 
             </div>

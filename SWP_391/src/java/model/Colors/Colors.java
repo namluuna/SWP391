@@ -9,16 +9,17 @@ package model.Colors;
  * @author Admin
  */
 public class Colors {
+
     String id;
-    String name , description , created_at , deleted_at, updated_at;
+    String name, color_code, created_at, deleted_at, updated_at;
 
     public Colors() {
     }
 
-    public Colors(String id, String name, String description, String created_at, String deleted_at, String updated_at) {
+    public Colors(String id, String name, String color_code, String created_at, String deleted_at, String updated_at) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.color_code = color_code;
         this.created_at = created_at;
         this.deleted_at = deleted_at;
         this.updated_at = updated_at;
@@ -40,12 +41,12 @@ public class Colors {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getColor_code() {
+        return color_code;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setColor_code(String color_code) {
+        this.color_code = color_code;
     }
 
     public String getCreated_at() {
@@ -71,17 +72,19 @@ public class Colors {
     public void setUpdated_at(String updated_at) {
         this.updated_at = updated_at;
     }
-     @Override
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Colors{");
         sb.append("id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", description=").append(description);
+        sb.append(", color_code=").append(color_code);
         sb.append(", created_at=").append(created_at);
         sb.append(", deleted_at=").append(deleted_at);
         sb.append(", updated_at=").append(updated_at);
         sb.append('}');
         return sb.toString();
     }
+
 }
