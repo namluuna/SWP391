@@ -248,9 +248,27 @@
         <servlet-name>EditAddressController</servlet-name>
         <url-pattern>/editAddressController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CustomerProductsController</servlet-name>
+        <servlet-class>controller.ProductsController.CustomerProductsController</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>CustomerProductsController</servlet-name>
+        <url-pattern>/CustomerProducts</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductDetailController</servlet-name>
+        <servlet-class>controller.ProductsController.ProductDetailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductDetailController</servlet-name>
+        <url-pattern>/productdetails</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
+    
 </web-app>
