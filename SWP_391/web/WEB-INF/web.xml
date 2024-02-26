@@ -47,6 +47,8 @@
     <servlet>
         <servlet-name>EditAddressController</servlet-name>
         <servlet-class>controller.Common.EditAddressController</servlet-class>
+        <servlet-name>CustomerProductsController</servlet-name>
+        <servlet-class>controller.ProductsController.CustomerProductsController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
@@ -247,6 +249,8 @@
     <servlet-mapping>
         <servlet-name>EditAddressController</servlet-name>
         <url-pattern>/editAddressController</url-pattern>
+        <servlet-name>CustomerProductsController</servlet-name>
+        <url-pattern>/CustomerProducts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
