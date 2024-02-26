@@ -122,8 +122,8 @@
                         </select>
                         <span id="error-message-group" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
-                    <a href="products" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" name="add">Lưu</button>
+                    <a href="products" class="btn btn-secondary">Hủy</a>
                 </form>
             </div>
         </div>
