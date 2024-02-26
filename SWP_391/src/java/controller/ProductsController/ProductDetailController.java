@@ -76,7 +76,14 @@ public class ProductDetailController extends HttpServlet {
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
             request.getRequestDispatcher("view\\Products\\CreatePDetails.jsp").forward(request, response);
         }
-        
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
+            ProductDetails pDetail = pd.selectProductDetailById(request.getParameter("id"));
+            request.setAttribute("pDetail", pDetail);
+            request.getRequestDispatcher("view\\Products\\UpdatePDetail.jsp").forward(request, response);
+        }
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
+            pd.softDeleteProductDetail(request.getParameter("id"));
+        }
         ArrayList<ProductDetails> data = pd.selectAllProductDetails();
         request.setAttribute("data", data);
         request.getRequestDispatcher("view\\Products\\VeiwPDetails.jsp").forward(request, response);
@@ -108,7 +115,21 @@ public class ProductDetailController extends HttpServlet {
             response.sendRedirect("productdetails");
             return;
         }
-        
+        if (request.getParameter("update") != null) {
+            pd.updateProductDetail(id, product_id, color_id, size_id, inventory_number, image_url_1, image_url_2, image_url_3, image_url_4);
+            response.sendRedirect("productdetails");
+            return;
+        }
+        if (request.getParameter("delete") != null) {
+            pd.softDeleteProductDetail(id);
+            response.sendRedirect("productdetails");
+            return;
+        }
+        if (request.getParameter("restore") != null) {
+            pd.restoreProductDetail(id);
+            response.sendRedirect("productdetails");
+            return;
+        }
     }
 
     /** 

@@ -71,11 +71,11 @@
                                     <td>${pd.edited_at}</td>
                                     <td>${pd.deleted_at}</td>
                                     <td>
-                                        <a href="productdetails?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
+                                        <a href="productdetails?mod=2&id=${pd.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${pd.getId()}">
                                             Delete
                                         </button>
-                                        <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmDeleteModal${pd.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -89,7 +89,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="productdetails?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="productdetails?mod=3&id=${pd.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,28 +97,27 @@
                                     </td>
                                 </tr>
                             </c:when>
-                            <c:when test="${param.show eq 'active' && empty product.deleted_at}">
+                            <c:when test="${param.show eq 'active' && empty pd.deleted_at}">
                                 <!-- Display only active products -->
                                 <tr>
-                                    <td>${product.id}</td>
-                                    <td>${product.code}</td>
-                                    <td>${product.name}</td>
-                                    <td>${product.description}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.getCategory().getName()}</td>
-                                    <td>${product.getForm().getName()}</td>
-                                    <td>${product.getBrand().getName()}</td>
-                                    <td>${product.getMaterial().getName()}</td>
-                                    <td>${product.getGroup().getName()}</td>
-                                    <td>${product.created_at}</td>
-                                    <td>${product.edited_at}</td>
-                                    <td>${product.deleted_at}</td>
+                                    <td>${pd.id}</td>
+                                    <td>${pd.getProduct().getName()}</td>
+                                    <td>${pd.getColor().getName()}</td>
+                                    <td>${pd.getSize().getName()}</td>
+                                    <td>${pd.getInventory_number()}</td>
+                                    <td>${pd.getImage_url_1()}</td>
+                                    <td>${pd.getImage_url_2()}</td>
+                                    <td>${pd.getImage_url_3()}</td>
+                                    <td>${pd.getImage_url_4()}</td>
+                                    <td>${pd.created_at}</td>
+                                    <td>${pd.edited_at}</td>
+                                    <td>${pd.deleted_at}</td>
                                     <td>
-                                        <a href="productdetails?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
+                                        <a href="productdetails?mod=2&id=${pd.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${pd.getId()}">
                                             Delete
                                         </button>
-                                        <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmDeleteModal${pd.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -132,7 +131,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="productdetails?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="productdetails?mod=3&id=${pd.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,28 +139,27 @@
                                     </td>
                                 </tr>
                             </c:when>
-                            <c:when test="${param.show eq 'updated' && not empty product.edited_at}">
+                            <c:when test="${param.show eq 'updated' && not empty pd.edited_at}">
                                 <!-- Display only updated products -->
                                 <tr>
-                                    <td>${product.id}</td>
-                                    <td>${product.code}</td>
-                                    <td>${product.name}</td>
-                                    <td>${product.description}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.getCategory().getName()}</td>
-                                    <td>${product.getForm().getName()}</td>
-                                    <td>${product.getBrand().getName()}</td>
-                                    <td>${product.getMaterial().getName()}</td>
-                                    <td>${product.getGroup().getName()}</td>
-                                    <td>${product.created_at}</td>
-                                    <td>${product.edited_at}</td>
-                                    <td>${product.deleted_at}</td><!-- comment -->
+                                    <td>${pd.id}</td>
+                                    <td>${pd.getProduct().getName()}</td>
+                                    <td>${pd.getColor().getName()}</td>
+                                    <td>${pd.getSize().getName()}</td>
+                                    <td>${pd.getInventory_number()}</td>
+                                    <td>${pd.getImage_url_1()}</td>
+                                    <td>${pd.getImage_url_2()}</td>
+                                    <td>${pd.getImage_url_3()}</td>
+                                    <td>${pd.getImage_url_4()}</td>
+                                    <td>${pd.created_at}</td>
+                                    <td>${pd.edited_at}</td>
+                                    <td>${pd.deleted_at}</td>
                                     <td>
-                                        <a href="productdetails?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
+                                        <a href="productdetails?mod=2&id=${pd.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${pd.getId()}">
                                             Delete
                                         </button>
-                                        <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmDeleteModal${pd.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -175,7 +173,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="productdetails?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
+                                                        <a href="productdetails?mod=3&id=${pd.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,29 +181,28 @@
                                     </td>
                                 </tr>
                             </c:when>
-                            <c:when test="${param.show eq 'deleted' && not empty product.deleted_at}">
+                            <c:when test="${param.show eq 'deleted' && not empty pd.deleted_at}">
                                 <!-- Display only deleted products -->
                                 <tr>
-                                    <td>${product.id}</td>
-                                    <td>${product.code}</td>
-                                    <td>${product.name}</td>
-                                    <td>${product.description}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.getCategory().getName()}</td>
-                                    <td>${product.getForm().getName()}</td>
-                                    <td>${product.getBrand().getName()}</td>
-                                    <td>${product.getMaterial().getName()}</td>
-                                    <td>${product.getGroup().getName()}</td>
-                                    <td>${product.created_at}</td>
-                                    <td>${product.edited_at}</td>
-                                    <td>${product.deleted_at}</td>
+                                    <td>${pd.id}</td>
+                                    <td>${pd.getProduct().getName()}</td>
+                                    <td>${pd.getColor().getName()}</td>
+                                    <td>${pd.getSize().getName()}</td>
+                                    <td>${pd.getInventory_number()}</td>
+                                    <td>${pd.getImage_url_1()}</td>
+                                    <td>${pd.getImage_url_2()}</td>
+                                    <td>${pd.getImage_url_3()}</td>
+                                    <td>${pd.getImage_url_4()}</td>
+                                    <td>${pd.created_at}</td>
+                                    <td>${pd.edited_at}</td>
+                                    <td>${pd.deleted_at}</td>
                                     <td>
                                         <!-- Add a button to restore the product -->
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${product.id}">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${pd.id}">
                                             Restore
                                         </button>
                                         <!-- Restore Confirmation Modal -->
-                                        <div class="modal fade" id="confirmRestoreModal${product.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="confirmRestoreModal${pd.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -220,7 +217,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                         <form method="POST" action="productdetails">
-                                                            <input type="hidden" name="id" value="${product.id}">
+                                                            <input type="hidden" name="id" value="${pd.id}">
                                                             <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                         </form>
                                                     </div>

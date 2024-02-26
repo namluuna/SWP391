@@ -81,9 +81,104 @@ public class ProductDetailDAO extends DBContext {
         return false;
     }
 
+    public ProductDetails selectProductDetailById(String detailId) {
+        try {
+            String sql = "SELECT * FROM product_details WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, detailId);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                String Id = String.valueOf(rs.getInt("id"));
+                String Product_id = String.valueOf(rs.getInt("product_id"));
+                ProductsDAO pDAO = new ProductsDAO();
+                Products product = pDAO.selectProductByID(Product_id);
+                String Color_id = String.valueOf(rs.getInt("color_id"));
+                ColorsDAO cDAO = new ColorsDAO();
+                Colors color = cDAO.selectColorByID(Color_id);
+                String Size_id = String.valueOf(rs.getInt("size_id"));
+                SizeDAO sDAO = new SizeDAO();
+                Sizes size = sDAO.selectSizeByID(Size_id);
+                String InventoryNumber = String.valueOf(rs.getInt("inventory_number"));
+                String Image_url_1 = rs.getString("image_url_1");
+                String Image_url_2 = rs.getString("image_url_2");
+                String Image_url_3 = rs.getString("image_url_3");
+                String Image_url_4 = rs.getString("image_url_4");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp editedAt = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
+
+                return new ProductDetails(Id, product, color, size, InventoryNumber, Image_url_1, Image_url_2, Image_url_3, Image_url_4, createdAt, editedAt, deletedAt);
+            }
+        } catch (Exception e) {
+            System.out.println("selectProductDetailById: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public boolean updateProductDetail(String id, String productId, String colorId, String sizeId, String inventoryNumber, String imageUrl1, String imageUrl2, String imageUrl3, String imageUrl4) {
+        try {
+            String sql = "UPDATE product_details SET product_id = ?, color_id = ?, size_id = ?, inventory_number = ?, image_url_1 = ?, image_url_2 = ?, image_url_3 = ?, image_url_4 = ?, edited_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, productId);
+            statement.setString(2, colorId);
+            statement.setString(3, sizeId);
+            statement.setString(4, inventoryNumber);
+            statement.setString(5, imageUrl1);
+            statement.setString(6, imageUrl2);
+            statement.setString(7, imageUrl3);
+            statement.setString(8, imageUrl4);
+            statement.setString(9, id);
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Product detail was updated successfully!");
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("updateProductDetail: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean softDeleteProductDetail(String id) {
+        try {
+            String sql = "UPDATE product_details SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Product detail was soft deleted successfully!");
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("softDelete: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean restoreProductDetail(String id) {
+        try {
+            String sql = "UPDATE product_details SET deleted_at = NULL WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Product detail was restored successfully!");
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("restore: " + e.getMessage());
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         ProductDetailDAO pdao = new ProductDetailDAO();
         ArrayList<ProductDetails> data = pdao.selectAllProductDetails();
-        System.out.println(data);
+        ProductDetails pd = pdao.selectProductDetailById("8");
+        System.out.println(pd);
     }
 }
