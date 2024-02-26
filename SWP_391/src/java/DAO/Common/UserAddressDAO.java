@@ -35,7 +35,18 @@ public class UserAddressDAO extends DBContext {
             e.printStackTrace();
         }
     }
-
+    
+    public void deleteUserAddress(String id){
+        try {
+            String sql = "UPDATE [user_addresses] SET deleted_at = CURRENT_TIMESTAMP WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public ArrayList<UserAddress> sellectallUserAddress(int userID) {
         ArrayList<UserAddress> userAddresses = new ArrayList<>();
         try {
@@ -65,5 +76,54 @@ public class UserAddressDAO extends DBContext {
         }
         return userAddresses;
     }
-
+    
+    public UserAddress searchById(String id){
+        try {
+            // Select address from user with user id
+            String sql = "SELECT ua.[id] AS [id], ua.[user_id] AS [user_id], ua.[province_code] AS [province_code], p.[name] as [province_name], ua.[district_code] AS [district_code], d.name as [district_name], ua.[ward_code] as [ward_code], w.[name] as [ward_name], ua.[address]"
+                    + " FROM [users] AS u JOIN [user_addresses] AS ua ON u.[id] = ua.[user_id]"
+                    + "JOIN [provinces] AS p ON ua.[province_code] = p.[code] JOIN [districts] AS d ON ua.[district_code] = d.[code] JOIN [wards] AS w ON ua.[ward_code] = w.[code]"
+                    + "WHERE ua.[id] = ? AND ua.[deleted_at] IS NULL";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int addressId = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                String province_code = rs.getString("province_code");
+                String province_name = rs.getString("province_name");
+                String district_code = rs.getString("district_code");
+                String district_name = rs.getString("district_name");
+                String ward_code = rs.getString("ward_code");
+                String ward_name = rs.getString("ward_name");
+                String address = rs.getString("address");
+                UserAddress ua = new UserAddress(addressId, user_id, province_name, province_code, district_name, district_code, ward_name, ward_code, address);
+                return ua;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void editUserAddress(String id, String provineCode, String districtCode, String wardCode, String address){
+        try {
+            String sql = "UPDATE user_addresses SET [province_code] = ?, [district_code] = ?, [ward_code] = ?, [address] = ? WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, provineCode);
+            statement.setString(2, districtCode);
+            statement.setString(3, wardCode);
+            statement.setString(4, address);
+            statement.setString(5, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
+    public static void main(String[] args) {
+        UserAddressDAO uaDAO = new UserAddressDAO();
+        uaDAO.editUserAddress("30", "01", "019", "00622", "Hello 123");
+    }
 }
