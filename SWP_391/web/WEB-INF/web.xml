@@ -272,6 +272,14 @@
         <servlet-name>SizesController</servlet-name>
         <url-pattern>/sizes</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListStaffController</servlet-name>
+        <servlet-class>controller.admin.ListStaffController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListStaffController</servlet-name>
+        <url-pattern>/staff</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
