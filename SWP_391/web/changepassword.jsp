@@ -1,17 +1,16 @@
 <%-- 
-    Document   : login
-    Created on : Jan 15, 2024, 10:48:09 AM
+    Document   : changepassword
+    Created on : Feb 25, 2024, 2:44:38 PM
     Author     : ifyou
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Đăng nhập</title>
+        <title>Set New Password</title>
+        
         <style>
             body {
                 margin: 0;
@@ -44,7 +43,6 @@
             form {
                 display: flex;
                 flex-direction: column;
-
             }
 
             input {
@@ -97,7 +95,7 @@
             a:hover {
                 color: rgb(13, 133, 185);
             }
-            .form-field{
+             .form-field{
                 font-size: 14px;
                 padding-bottom: 12px;
                 justify-content: center;
@@ -108,32 +106,35 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Đăng nhập</h2>
-                <c:if test="${not empty message}">
-                    <p style="color: blue;">${message}</p> 
-                </c:if>
-                <c:if test="${not empty passwordChange}">
-                    <p style="color: blue;">${passwordChange}</p> 
-                </c:if>
-                <c:if test="${not empty loginMessage}">
-                    <p style="color: blue;">${loginMessage}</p> 
-                </c:if>
-                <form action="/SWP_391/login" method="post">
-                    <input type="text" id="email" name="email" placeholder="Email" value="${email}" required>
-                    <input type="password" id="password" name="password" placeholder="Mật Khẩu"  value="${password}" required>
-                    <div class="form-field">
-                        <input type="checkbox" onclick="showPassword()">
-                        <label>Hiện Password</label>
-                    </div>
-                    <c:if test="${not empty wrongLoginInfo}">
-                        <p style="color: red;">${wrongLoginInfo}</p> 
+                <h2>Đổi mật khẩu</h2>
+                <form action="/SWP_391/changePassword" method="post">
+                    <label for="fullName"><span style="color: red;">*</span>Mật khẩu cũ:</label>
+                     <input type="password" id="oldPassword" name="oldPassword" placeholder="Xin hãy nhập mật khẩu cũ" value="${oldPassword}" required>
+                     <c:if test="${not empty passwordIncorrect}">
+                        <p style="color: red;">${passwordIncorrect}</p> 
                     </c:if>
-                    <button type="submit">Đăng Nhập</button>
-                    <br>
-                    <div class="links">
-                        <a href="fogotpassword.jsp">Quên mật khẩu?</a>
-                        <a href="/SWP_391/register">Đăng ký</a>
+                    <div class="form-field">
                     </div>
+                    <label for="fullName"><span style="color: red;">*</span>Mật khẩu mới:</label>
+                    <input type="password" id="password" name="password" placeholder="Xin hãy nhập mật khẩu mới" value="${password}" required>
+                    
+                    <div class="form-field">
+                    </div>
+                    <label for="fullName"><span style="color: red;">*</span>Xác nhận mật khẩu:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Xin hãy nhập lại mật khẩu mới"  value="${confirmPassword}" required>
+                    <div class="form-field">
+                        <input type="checkbox" onclick="showConfirmPassword()">
+                        <label>Hiển thị mật khẩu</label>
+                    </div>
+                    <c:if test="${not empty passwordNotMatch}">
+                        <p style="color: red;">${passwordNotMatch}</p> 
+                    </c:if>
+                    <c:if test="${not empty message}">
+                        <p style="color: red;">${message}</p> 
+                    </c:if>
+                    <input type="hidden" name="token" value="${token}">
+                    <button type="submit">Đổi mật khẩu</button>
+                    <br>
                 </form>
             </div>
         </div>
@@ -147,6 +148,20 @@
                 x.type = "password";
             }
         }
-
+        function showConfirmPassword() {
+            var x = document.getElementById("oldPassword");
+            var y = document.getElementById("password");
+            var z = document.getElementById("confirmPassword");
+            if (x.type === "password" && y.type === "password" && z.type === "password") {
+                x.type = "text";
+                y.type = "text";
+                z.type = "text";
+            } else {
+                x.type = "password";
+                y.type = "password";
+                z.type = "password";
+            }
+        }
     </script>
 </html>
+

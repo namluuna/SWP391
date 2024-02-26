@@ -17,7 +17,7 @@ import model.Sale.Form;
  */
 public class Products {
 
-    String id, code, name, description, price;
+    private String id, code, name, description, price;
     private Category category;
     private Form form;
     private Brands brand;

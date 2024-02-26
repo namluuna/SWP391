@@ -50,14 +50,14 @@
                 <h1 class="text-center mb-4">Create New Color</h1>
                 <form name="form" action="colors" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name:</label>
+                        <label for="name" class="form-label">Tên màu:</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description">
-                        <span id="error-message-description" style="color: red;"></span>
+                        <label for="color_code" class="form-label">Mã màu:</label>
+                        <input type="text" class="form-control" id="color_code" name="color_code">
+                        <span id="error-message-colorcode" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add">ADD</button>
                     <a href="colors" class="btn btn-secondary">Cancel</a>
@@ -70,21 +70,21 @@
         <script>
                     function validateForm() {
                         var name = document.getElementById("name").value.trim();
-                        var description = document.getElementById("description").value.trim();
+                        var colorcode = document.getElementById("colorcode").value.trim();
                         var errorMessageName = document.getElementById("error-message-name");
-                        var errorMessageDescription = document.getElementById("error-message-description");
+                        var errorMessageColorCode = document.getElementById("error-message-colorcode");
 
                         // Đặt thông báo lỗi thành trống trước khi kiểm tra
                         errorMessageName.innerHTML = "";
-                        errorMessageDescription.innerHTML = "";
+                        errorMessageColorCode.innerHTML = "";
 
                         if (name === "") {
                             errorMessageName.innerHTML = "Please enter a name";
                             return false;
                         }
 
-                        if (description === "") {
-                            errorMessageDescription.innerHTML = "Please enter a description";
+                        if (colorcode === "") {
+                            errorMessageColorCode.innerHTML = "Please enter a description";
                             return false;
                         }
 

@@ -73,7 +73,7 @@ public class LoginController extends HttpServlet {
                 request.getSession().setAttribute("user", user);
                 // check if account is not active
                 if (user.getStatus() == 0 && user.getRole() == 4) {
-                    request.setAttribute("inactiveMessage", "User is inactive");
+                    request.setAttribute("inactiveMessage", "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email để kích hoạt tài khoản");
                     // send the message active account to customer
                     request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
                 } else {
@@ -95,7 +95,7 @@ public class LoginController extends HttpServlet {
             } else {
                 // password is false
                 request.getSession().setAttribute("user", null);
-                request.setAttribute("wrongLoginInfo", "email or password is incorrect!");
+                request.setAttribute("wrongLoginInfo", "Email hoặc mật khẩu không chính xác!");
                 request.setAttribute("email", email);
                 request.setAttribute("password", password);
                 request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
@@ -103,7 +103,7 @@ public class LoginController extends HttpServlet {
         } else {
             // email is not exist
             request.getSession().setAttribute("user", null);
-            request.setAttribute("wrongLoginInfo", "email or password is incorrect!");
+            request.setAttribute("wrongLoginInfo", "Email hoặc mật khẩu không chính xác!");
             request.setAttribute("email", email);
             request.setAttribute("password", password);
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);

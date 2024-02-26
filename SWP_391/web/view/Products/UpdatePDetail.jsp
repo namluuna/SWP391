@@ -1,6 +1,6 @@
 <%-- 
-    Document   : CreateProducts
-    Created on : Feb 6, 2024, 7:28:23 PM
+    Document   : UpdatePDetail
+    Created on : Feb 26, 2024, 8:14:11 AM
     Author     : lucdu
 --%>
 
@@ -50,80 +50,90 @@
     <body>
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Tạo sản phẩm mới</h1>
-                <form name="form" action="products" method="POST" onsubmit="return validateForm();">
+                <h1 class="text-center mb-4">Cập nhật chi tiết sản phẩm mới</h1>
+                <form name="form" action="productdetails" method="POST" onsubmit="return validateForm();">
+                    <input type="hidden" class="form-control" name="id" value="${pDetail.getId()}">
                     <div class="mb-3">
-                        <label for="code" class="form-label">Mã sản phẩm:</label>
-                        <input type="text" class="form-control" id="code" name="code">
+                        <label for="product_id" class="form-label">Tên Sản Phẩm:</label>
+                        <select id="product_id" name="product_id" class="form-select" required>
+                            <option value="0">Xin hãy chọn sản phẩm</option>                    
+                            <c:forEach items="${data1}" var="c">
+                                <c:choose>
+                                    <c:when test="${pDetail.getProduct().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
                         <span id="error-message-code" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Tên sản phẩm:</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <label for="color_id" class="form-label">Màu Sắc:</label>
+                        <select id="color_id" name="color_id" class="form-select" required>
+                            <option value="0">Xin hãy chọn màu sắc</option>                    
+                            <c:forEach items="${data2}" var="c">
+                                <c:choose>
+                                    <c:when test="${pDetail.getColor().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Mô tả sản phẩm:</label>
-                        <textarea class="form-control form-control-lg" id="description" name="description"></textarea>
+                        <label for="size_id" class="form-label">Kích Thước Sản Phẩm:</label>
+                        <select id="size_id" name="size_id" class="form-select" required>
+                            <option value="0">Xin hãy chọn kích cỡ giày</option>                    
+                            <c:forEach items="${data3}" var="c">
+                                <c:choose>
+                                    <c:when test="${pDetail.getSize().getId() eq c.getId()}">
+
+                                        <option selected value="${c.getId()}">${c.getName()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option  value="${c.getId()}">${c.getName()}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label">Giá tiền:</label>
-                        <input type="text" class="form-control" id="price" name="price">
+                        <label for="inventory" class="form-label">Nhập Số Lượng Sản Phẩm:</label>
+                        <input type="text" class="form-control" id="inventory" name="inventory" value="${pDetail.getInventory_number()}">
                         <span id="error-message-price" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="category_id" class="form-label">Loại giày:</label>
-                        <select id="category_id" name="category_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn loại giày</option>                    
-                            <c:forEach items="${data1}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
-                            </c:forEach>
-                        </select>
+                        <label for="image1" class="form-label">Tải Ảnh 1 Lên:</label>
+                        <input type="text" class="form-control" id="image1" name="image1" value="${pDetail.getImage_url_1()}">
                         <span id="error-message-category" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="form_id" class="form-label">Kiểu dáng:</label>
-                        <select id="form_id" name="form_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn kiểu dáng</option>                    
-                            <c:forEach items="${data2}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
-                            </c:forEach>
-                        </select>
+                        <label for="image2" class="form-label">Tải Ảnh 2 Lên:</label>
+                        <input type="text" class="form-control" id="image2" name="image2" value="${pDetail.getImage_url_2()}">
                         <span id="error-message-form" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="brand_id" class="form-label">Hãng giày:</label>
-                        <select id="brand_id" name="brand_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn hãng giày</option>                    
-                            <c:forEach items="${data3}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
-                            </c:forEach>
-                        </select>
+                        <label for="image3" class="form-label">Tải Ảnh 3 Lên:</label>
+                        <input type="text" class="form-control" id="image3" name="image3" value="${pDetail.getImage_url_3()}">
                         <span id="error-message-brand" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="material_id" class="form-label">Dòng sản phẩm:</label>
-                        <select id="material_id" name="material_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn dòng sản phẩm</option>                    
-                            <c:forEach items="${data4}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
-                            </c:forEach>
-                        </select>
+                        <label for="image4" class="form-label">Tải Ảnh 4 Lên:</label>
+                        <input type="text" class="form-control" id="image4" name="image4" value="${pDetail.getImage_url_4()}">
                         <span id="error-message-material" style="color: red;"></span>
                     </div>
-                    <div class="mb-3">
-                        <label for="group_id" class="form-label">Trạng thái sản phẩm:</label>
-                        <select id="group_id" name="group_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn trạng thái sản phẩm</option>                    
-                            <c:forEach items="${data5}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
-                            </c:forEach>
-                        </select>
-                        <span id="error-message-group" style="color: red;"></span>
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="add">Lưu</button>
-                    <a href="products" class="btn btn-secondary">Hủy</a>
+                    <button type="submit" class="btn btn-primary" name="update">Lưu</button>
+                    <a href="productdetails" class="btn btn-secondary">Hủy</a>
                 </form>
             </div>
         </div>
@@ -208,3 +218,4 @@
 
     </body>
 </html>
+

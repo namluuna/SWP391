@@ -2,24 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.Colors;
+package model.Product;
 
 /**
  *
- * @author Admin
+ * @author lucdu
  */
-public class Colors {
+public class Sizes {
 
-    String id;
-    String name, color_code, created_at, deleted_at, updated_at;
+    private String id, name, description, created_at, deleted_at, updated_at;
 
-    public Colors() {
+    public Sizes() {
     }
 
-    public Colors(String id, String name, String color_code, String created_at, String deleted_at, String updated_at) {
+    public Sizes(String id, String name, String description, String created_at, String deleted_at, String updated_at) {
         this.id = id;
         this.name = name;
-        this.color_code = color_code;
+        this.description = description;
         this.created_at = created_at;
         this.deleted_at = deleted_at;
         this.updated_at = updated_at;
@@ -41,12 +40,12 @@ public class Colors {
         this.name = name;
     }
 
-    public String getColor_code() {
-        return color_code;
+    public String getDescription() {
+        return description;
     }
 
-    public void setColor_code(String color_code) {
-        this.color_code = color_code;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCreated_at() {
@@ -76,10 +75,10 @@ public class Colors {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Colors{");
+        sb.append("Sizes{");
         sb.append("id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", color_code=").append(color_code);
+        sb.append(", description=").append(description);
         sb.append(", created_at=").append(created_at);
         sb.append(", deleted_at=").append(deleted_at);
         sb.append(", updated_at=").append(updated_at);

@@ -91,6 +91,8 @@
                                             <li> <a href="colors">Colors</a> </li>
                                             <li> <a href="brands">Brands</a> </li>
                                             <li> <a href="products">Products</a> </li>
+                                            <li> <a href="sizes">Sizes</a> </li>
+                                            <li> <a href="productdetails">Product Details</a> </li>
 <!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>

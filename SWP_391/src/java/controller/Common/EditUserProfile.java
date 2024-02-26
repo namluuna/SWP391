@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.Colors;
+package controller.Common;
 
-import DAO.ColorsDAO.ColorsDAO;
+import DAO.Common.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.Colors.Colors;
+import jakarta.servlet.http.HttpSession;
+import model.Common.User;
 
 /**
  *
- * @author Admin
+ * @author ifyou
  */
-public class ColorController extends HttpServlet {
+public class EditUserProfile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class ColorController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ColorController</title>");
+            out.println("<title>Servlet EditUserProfile</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ColorController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditUserProfile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,22 +58,7 @@ public class ColorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ColorsDAO c = new ColorsDAO();
-
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            request.getRequestDispatcher("view\\color\\AddColors.jsp").forward(request, response);
-        }
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
-            Colors color = c.selectColorByID(request.getParameter("id"));
-            request.setAttribute("colors", color);
-            request.getRequestDispatcher("view\\color\\UpdateColors.jsp").forward(request, response);
-        }
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
-            c.softDeleteColors(request.getParameter("id"));
-        }
-        ArrayList<Colors> data = c.getAll();
-        request.setAttribute("Cdata", data);
-        request.getRequestDispatcher("view\\color\\ListColors.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -87,34 +72,20 @@ public class ColorController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
         String name = request.getParameter("name");
-        String color_code = request.getParameter("color_code");
-        String created_at = request.getParameter("created_at");
-        String deleted_at = request.getParameter("deleted_at");
-        if (request.getParameter("add") != null) {
-            ColorsDAO c = new ColorsDAO();
-            c.createNewColors(name, color_code);
-            response.sendRedirect("colors");
+        String phone = request.getParameter("phone");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        UserDAO userDAO = new UserDAO();
+        if (user == null) {
+            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
+            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
             return;
-        }
-        if (request.getParameter("update") != null) {
-            ColorsDAO c = new ColorsDAO();
-            c.updateColors(id, name, color_code);
-            response.sendRedirect("colors");
-            return;
-        }
-        if (request.getParameter("delete") != null) {
-            ColorsDAO c = new ColorsDAO();
-            c.softDeleteColors(id);
-            response.sendRedirect("colors");
-            return;
-        }
-        if (request.getParameter("restore") != null) {
-            ColorsDAO c = new ColorsDAO();
-            c.restoreColors(id);
-            response.sendRedirect("colors");
-            return;
+        } else {
+            userDAO.editUser(user.getId(), name, phone);
+            User newUser = userDAO.getUserByID(String.valueOf(user.getId()));
+            session.setAttribute("user", newUser);
+            response.sendRedirect("profile");
         }
     }
 
