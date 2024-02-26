@@ -77,7 +77,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[cart_items](
-	[id] [int] NOT NULL,
+	[id] [int]  IDENTITY(1,1) NOT NULL,
 	[customer_id] [int] NULL,
 	[product_detail_id] [int] NULL,
 	[quantity] [int] NULL,
