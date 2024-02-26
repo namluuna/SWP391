@@ -13,52 +13,12 @@
         <servlet-class>controller.sale.FormsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListStaffController</servlet-name>
-        <servlet-class>controller.admin.ListStaffController</servlet-class>
         <servlet-name>BrandsController</servlet-name>
         <servlet-class>controller.Groups.BrandsController</servlet-class>
-        <servlet-name>DeleteStaffController</servlet-name>
-        <servlet-class>controller.admin.DeleteStaffController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProductsController</servlet-name>
         <servlet-class>controller.ProductsController.ProductsController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SizesController</servlet-name>
-        <servlet-class>controller.ProductsController.SizesController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ProductDetailController</servlet-name>
-        <servlet-class>controller.ProductsController.ProductDetailController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FormsController</servlet-name>
-        <url-pattern>/Forms</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>EditOrderStatusController</servlet-name>
-        <servlet-class>controller.shipper.EditOrderStatusController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CreateGroupController</servlet-name>
-        <servlet-class>model.Admin.CreateGroupController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GroupsController</servlet-name>
-        <servlet-class>controller.Groups.GroupsController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>MaterialsController</servlet-name>
-        <servlet-class>controller.Materials.MaterialsController</servlet-class>
-    </servlet>
-     <servlet>
-        <servlet-name>CreateStaffController</servlet-name>
-        <servlet-class>controller.admin.CreateStaffController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateStaffController</servlet-name>
-        <servlet-class>controller.admin.UpdateStaffController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfileController</servlet-name>
@@ -80,11 +40,33 @@
         <servlet-name>UploadImageServlet</servlet-name>
         <servlet-class>controller.Common.UploadImageServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>ChangePasswordController</servlet-name>
         <servlet-class>controller.Common.ChangePasswordController</servlet-class>
-       
+    </servlet>
+    <servlet>
+        <servlet-name>EditAddressController</servlet-name>
+        <servlet-class>controller.Common.EditAddressController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormsController</servlet-name>
+        <url-pattern>/Forms</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditOrderStatusController</servlet-name>
+        <servlet-class>controller.shipper.EditOrderStatusController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateGroupController</servlet-name>
+        <servlet-class>model.Admin.CreateGroupController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GroupsController</servlet-name>
+        <servlet-class>controller.Groups.GroupsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MaterialsController</servlet-name>
+        <servlet-class>controller.Materials.MaterialsController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ColorController</servlet-name>
@@ -239,12 +221,32 @@
         <url-pattern>/products</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SizesController</servlet-name>
-        <url-pattern>/sizes</url-pattern>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProductDetailController</servlet-name>
-        <url-pattern>/productdetails</url-pattern>
+        <servlet-name>AddUserAddressController</servlet-name>
+        <url-pattern>/addUserAddress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserAddress</servlet-name>
+        <url-pattern>/deleteUserAddress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserProfile</servlet-name>
+        <url-pattern>/editUserProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadImageServlet</servlet-name>
+        <url-pattern>/uploadImageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAddressController</servlet-name>
+        <url-pattern>/editAddressController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
