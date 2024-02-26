@@ -133,7 +133,7 @@
                         <span id="error-message-material" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="update">Lưu</button>
-                    <a href="productdetails" class="btn btn-secondary">Cancel</a>
+                    <a href="productdetails" class="btn btn-secondary">Hủy</a>
                 </form>
             </div>
         </div>
