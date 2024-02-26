@@ -264,6 +264,54 @@
         <servlet-name>ProductDetailController</servlet-name>
         <url-pattern>/productdetails</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SizesController</servlet-name>
+        <servlet-class>controller.ProductsController.SizesController</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>SizesController</servlet-name>
+        <url-pattern>/sizes</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ListStaffController</servlet-name>
+        <servlet-class>controller.admin.ListStaffController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListStaffController</servlet-name>
+        <url-pattern>/staff</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>DeleteStaffController</servlet-name>
+        <servlet-class>controller.admin.DeleteStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateStaffController</servlet-name>
+        <servlet-class>controller.admin.CreateStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateStaffController</servlet-name>
+        <servlet-class>controller.admin.UpdateStaffController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteStaffController</servlet-name>
+        <url-pattern>/deleteStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateStaffController</servlet-name>
+        <url-pattern>/createStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStaffController</servlet-name>
+        <url-pattern>/updateStaff</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>controller.admin.SearchController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/searchStaff</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
