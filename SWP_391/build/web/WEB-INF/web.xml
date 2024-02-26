@@ -280,6 +280,25 @@
         <servlet-name>ProductDetailController</servlet-name>
         <url-pattern>/productdetails</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProductsController</servlet-name>
+        <servlet-class>controller.ProductsController.ProductsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SizesController</servlet-name>
+        <servlet-class>controller.ProductsController.SizesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductDetailController</servlet-name>
+        <servlet-class>controller.ProductsController.ProductDetailController</servlet-class>
+    </servlet>
+
+<servlet-mapping>
+        <servlet-name>ProductsController</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
