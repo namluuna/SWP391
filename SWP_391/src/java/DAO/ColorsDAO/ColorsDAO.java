@@ -26,11 +26,11 @@ public class ColorsDAO extends DBContext {
             while (rs.next()) {
                 String Id = String.valueOf(rs.getInt("id"));
                 String Name = rs.getString("name");
-                String Description = rs.getString("description");
+                String Color_code = rs.getString("color_code");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
-                Colors c = new Colors(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                Colors c = new Colors(Id, Name, Color_code, Created_at, Deleted_at, Updated_at);
                 colorsList.add(c);
             }
         } catch (Exception e) {
@@ -40,12 +40,12 @@ public class ColorsDAO extends DBContext {
     }
    
    
-    public void createNewColors(String name, String description) {
+    public void createNewColors(String name, String color_code) {
         try {
-            String sql = "INSERT INTO colors (name, description, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO colors (name, color_code, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
-            st.setString(2, description);
+            st.setString(2, color_code);
             st.executeUpdate();
             ResultSet generatedKeys = st.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -69,12 +69,12 @@ public class ColorsDAO extends DBContext {
             if (rs.next()) {
                 String Id = String.valueOf(rs.getInt("id"));
                 String Name = rs.getString("name");
-                String Description = rs.getString("description");
+                String Color_code = rs.getString("color_code");
                 String Created_at = rs.getString("created_at");
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
 
-                c = new Colors(Id, Name, Description, Created_at, Deleted_at, Updated_at);
+                c = new Colors(Id, Name, Color_code, Created_at, Deleted_at, Updated_at);
             }
         } catch (Exception e) {
             System.out.println("selectColorsByID: " + e.getMessage());
@@ -82,12 +82,12 @@ public class ColorsDAO extends DBContext {
         return c;
     }
      
-      public void updateColors(String id, String name, String description) {
+      public void updateColors(String id, String name, String color_code) {
         try {
-            String sql = "UPDATE colors SET name = ?, description = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
+            String sql = "UPDATE colors SET name = ?, color_code = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
-            st.setString(2, description);
+            st.setString(2, color_code);
             st.setInt(3, Integer.parseInt(id));
 
             int rowsUpdated = st.executeUpdate();

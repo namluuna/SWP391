@@ -20,7 +20,6 @@ import model.Groups.Groups;
 import model.Materials.materials;
 import model.Product.Products;
 import model.Sale.Form;
-import model.Sale.Product;
 
 /**
  *
@@ -67,34 +66,41 @@ public class ProductsDAO extends DBContext {
         return ProductsList;
     }
 
-    public Products selectProductByID(String id) {
+    public Products selectProductByID(String productId) {
         Products product = null;
         try {
             String sql = "SELECT * FROM products WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, Integer.parseInt(id));
-
+            st.setString(1, productId);
             ResultSet rs = st.executeQuery();
-
             if (rs.next()) {
-                String Id = String.valueOf(rs.getInt("id"));
-                String Code = rs.getString("code");
-                String Name = rs.getString("name");
-                String Description = rs.getString("description");
-                String Price = String.valueOf(rs.getInt("price"));
-                String Category_id = String.valueOf(rs.getInt("category_id"));
-                String Form_id = String.valueOf(rs.getInt("form_id"));
-                String Brand_id = String.valueOf(rs.getInt("brand_id"));
-                String Material_id = String.valueOf(rs.getInt("material_id"));
-                String Group_id = String.valueOf(rs.getInt("group_id"));
-                String Created_at = rs.getString("created_at");
-                String Deleted_at = rs.getString("deleted_at");
-                String Edited_at = rs.getString("edited_at");
-
-             //   product = new Products(Id, Code, Name, Description, Price, Category_id, Form_id, Brand_id, Material_id, Group_id, Created_at, Edited_at, Deleted_at);
+                String id = String.valueOf(rs.getInt("id"));
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                String price = String.valueOf(rs.getInt("price"));
+                String categoryId = String.valueOf(rs.getInt("category_id"));
+                CategoryDAO cDAO = new CategoryDAO();
+                Category category = cDAO.getCaByID(categoryId);
+                String formId = String.valueOf(rs.getInt("form_id"));
+                FormDAO fDAO = new FormDAO();
+                Form form = fDAO.selectFormByID(formId);
+                String brandId = String.valueOf(rs.getInt("brand_id"));
+                BrandsDAO bDAO = new BrandsDAO();
+                Brands brand = bDAO.selectbrandByID(brandId);
+                String materialId = String.valueOf(rs.getInt("material_id"));
+                MaterialsDAO mDAO = new MaterialsDAO();
+                materials material = mDAO.selectMaterialsByID(materialId);
+                String groupId = String.valueOf(rs.getInt("group_id"));
+                GroupsDAO gDAO = new GroupsDAO();
+                Groups group = gDAO.selectGroupsByID(groupId);
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp editedAt = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
+                product = new Products(id, code, name, description, price, category, form, brand, material, group, createdAt, editedAt, deletedAt);
             }
         } catch (Exception e) {
-            System.out.println("selectProductsByID: " + e.getMessage());
+            System.out.println("selectProductByID: " + e.getMessage());
         }
         return product;
     }
@@ -107,18 +113,76 @@ public class ProductsDAO extends DBContext {
             st.setString(2, name);
             st.setString(3, description);
             st.setString(4, price);
-            st.setInt(5, Integer.parseInt(categoryId));
-            st.setInt(6, Integer.parseInt(formId));
-            st.setInt(7, Integer.parseInt(brandId));
-            st.setInt(8, Integer.parseInt(materialId));
-            st.setInt(9, Integer.parseInt(groupId));
-
-            // Execute the update
-            st.executeUpdate();
-
-            System.out.println("New product created successfully.");
+            st.setString(5, categoryId);
+            st.setString(6, formId);
+            st.setString(7, brandId);
+            st.setString(8, materialId);
+            st.setString(9, groupId);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("New product created successfully.");
+            } else {
+                System.out.println("Failed to create new product.");
+            }
         } catch (Exception e) {
             System.out.println("createNewProduct: " + e.getMessage());
+        }
+    }
+
+    public void updateProduct(String id, String code, String name, String description, String price, String categoryId, String formId, String brandId, String materialId, String groupId) {
+        try {
+            String sql = "UPDATE products SET code = ?, name = ?, description = ?, price = ?, category_id = ?, form_id = ?, brand_id = ?, material_id = ?, group_id = ?, edited_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, code);
+            st.setString(2, name);
+            st.setString(3, description);
+            st.setString(4, price);
+            st.setString(5, categoryId);
+            st.setString(6, formId);
+            st.setString(7, brandId);
+            st.setString(8, materialId);
+            st.setString(9, groupId);
+            st.setString(10, id);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product updated successfully.");
+            } else {
+                System.out.println("Failed to update product.");
+            }
+        } catch (Exception e) {
+            System.out.println("updateProduct: " + e.getMessage());
+        }
+    }
+
+    public void softDeleteProduct(String productId) {
+        try {
+            String sql = "UPDATE products SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, productId);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product soft deleted successfully.");
+            } else {
+                System.out.println("Failed to soft delete product.");
+            }
+        } catch (Exception e) {
+            System.out.println("softDeleteProduct: " + e.getMessage());
+        }
+    }
+
+    public void restoreProduct(String productId) {
+        try {
+            String sql = "UPDATE products SET deleted_at = NULL WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, productId);
+            int rowsAffected = st.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product restored successfully.");
+            } else {
+                System.out.println("Failed to restore product.");
+            }
+        } catch (Exception e) {
+            System.out.println("restoreProduct: " + e.getMessage());
         }
     }
 
@@ -128,8 +192,8 @@ public class ProductsDAO extends DBContext {
         //System.out.println(data);
 //        Products pro = p.selectProductByID("3");
 //        System.out.println(pro);
-//p.createNewProduct("NK123", "Nike co cao", "kieu dang co cao", "9000", "1", "1", "1", "1", "1");
-        System.out.println(data.get(1).toString());
+//        p.createNewProduct("NK123", "Nike co cao", "kieu dang co cao", "9000", "2", "4", "1", "40", "1");
+//        System.out.println(data.get(1).toString());
     }
 
 }

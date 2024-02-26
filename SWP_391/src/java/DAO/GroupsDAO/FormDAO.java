@@ -34,7 +34,6 @@ public class FormDAO extends DBContext{
                 String Deleted_at = rs.getString("deleted_at");
                 String Updated_at = rs.getString("updated_at");
                 Form groups = new Form(Id, Name, Description, Created_at, Deleted_at, Updated_at);
-                System.err.println("FORM " + groups.getName());
                 groupsList.add(groups);
             }
         } catch (Exception e) {
@@ -181,7 +180,7 @@ public class FormDAO extends DBContext{
     public static void main(String[] args) {
         FormDAO g = new FormDAO();
         ArrayList<Form> data = g.selectAllForm();
-        System.out.println(data);
+//        System.out.println(data);
 //        Form selectedGroup = g.selectFormByID("2");
 //        if (selectedGroup != null) {
 //            System.out.println("Selected Group: " + selectedGroup);
