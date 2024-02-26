@@ -56,10 +56,10 @@
                         Cập nhật tên: <input type="text" name="name" value="${c.name}"  class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
-                        Email: <input type="text" name="email"  value="${c.email}"  id="email" class="form-control" required/><br>                    
+                        Email: <input type="text" name="email"  value="${c.email}"  id="email" class="form-control" required readonly/><br>                    
                     </div>
                     <div class="mb-3">
-                        Cập nhật mật khẩu: <input type="text" name="password"  value="${c.password}" class="form-control" required/><br>
+                        Cập nhật mật khẩu: <input type="password" name="password"  value="${c.password}" class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
                         Cập nhật số điện thoại: <input type="number" name="phone" value="${c.phone}" class="form-control" required /><br>
