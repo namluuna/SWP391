@@ -232,9 +232,9 @@
                     </div>
                     <table class="table table-striped table-hover">
                         <div class="float-right search-bar">
-                            <form action="/SWP_391/searchStaff" method="post">
+                            <form action="/SWP_391/staff" method="get">
                                 <div class="input-group">
-                                    <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="search-addon" >
+                                    <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm theo tên..." aria-label="Search" aria-describedby="search-addon" value="${txtSearch}" >
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-outline-primary">Tìm</button>
                                     </div>
