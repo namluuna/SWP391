@@ -38,7 +38,7 @@ public class ListStaffController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListStaffController</title>");            
+            out.println("<title>Servlet ListStaffController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListStaffController at " + request.getContextPath() + "</h1>");
@@ -61,19 +61,35 @@ public class ListStaffController extends HttpServlet {
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
         String indexPage = request.getParameter("index");
-        if(indexPage == null ){
+        if (indexPage == null) {
             indexPage = "1";
         }
-        int index =Integer.parseInt(indexPage);
-        int count = userDAO.getTotalUsers();
-        int endPage = count/15;
-        if(count % 15 !=0){
-            endPage++;
+        int index = Integer.parseInt(indexPage);
+
+        String txtSearch = request.getParameter("txtSearch");
+        if (txtSearch != null && !txtSearch.isEmpty()) {
+            int countName = userDAO.getTotalUsersByName(txtSearch);
+            int endPage = countName / 15;
+            if (countName % 15 != 0) {
+                endPage++;
+            }
+            ArrayList<User> selectStaff = userDAO.SearchUserByName(txtSearch, index);
+
+            request.setAttribute("endPage", endPage);
+            request.setAttribute("selectStaff", selectStaff);
+        } else {
+            int count = userDAO.getTotalUsers();
+            int endPage = count / 15;
+            if (count % 15 != 0) {
+                endPage++;
+            }
+            ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
+            request.setAttribute("txtSearch", txtSearch);
+            request.setAttribute("endPage", endPage);
+            request.setAttribute("selectStaff", selectStaff);
         }
-      ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
-      request.setAttribute("endPage", endPage);
-      request.setAttribute("selectStaff", selectStaff);  
-      request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
+
+        request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
     }
 
     /**
