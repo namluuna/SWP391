@@ -65,6 +65,84 @@ public class ProductsDAO extends DBContext {
         }
         return ProductsList;
     }
+    
+    public ArrayList<Products> selectProductbyCategory(String cat_id) {
+        ArrayList<Products> ProductsList = new ArrayList<>();
+        try {
+            String sql = "select * from products where category_id = "+cat_id;
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String Id = String.valueOf(rs.getInt("id"));
+                String Code = rs.getString("code");
+                String Name = rs.getString("name");
+                String Description = rs.getString("description");
+                String Price = String.valueOf(rs.getInt("price"));
+                String Category_id = String.valueOf(rs.getInt("category_id"));
+                CategoryDAO cDAO = new CategoryDAO();
+                Category category = cDAO.getCaByID(Category_id);
+                String Form_id = String.valueOf(rs.getInt("form_id"));
+                FormDAO fDAO = new FormDAO();
+                Form form = fDAO.selectFormByID(Form_id);
+                String Brand_id = String.valueOf(rs.getInt("brand_id"));
+                BrandsDAO bDAO = new BrandsDAO();
+                Brands brand = bDAO.selectbrandByID(Brand_id);
+                String Material_id = String.valueOf(rs.getInt("material_id"));
+                MaterialsDAO mDAO = new MaterialsDAO();
+                materials material = mDAO.selectMaterialsByID(Material_id);
+                String Group_id = String.valueOf(rs.getInt("group_id"));
+                GroupsDAO gDAO = new GroupsDAO();
+                Groups group = gDAO.selectGroupsByID(Group_id);
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp Edited_at = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
+                Products product = new Products(Id, Code, Name, Description, Price, category, form, brand, material, group, createdAt, Edited_at, deletedAt);
+                ProductsList.add(product);
+            }
+        } catch (Exception e) {
+            System.out.println("getProductsList: " + e.getMessage());
+        }
+        return ProductsList;
+    }
+    
+     public ArrayList<Products> selectProductbyBrand(String brand_id) {
+        ArrayList<Products> ProductsList = new ArrayList<>();
+        try {
+            String sql = "select * from products where brand_id = "+brand_id;
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String Id = String.valueOf(rs.getInt("id"));
+                String Code = rs.getString("code");
+                String Name = rs.getString("name");
+                String Description = rs.getString("description");
+                String Price = String.valueOf(rs.getInt("price"));
+                String Category_id = String.valueOf(rs.getInt("category_id"));
+                CategoryDAO cDAO = new CategoryDAO();
+                Category category = cDAO.getCaByID(Category_id);
+                String Form_id = String.valueOf(rs.getInt("form_id"));
+                FormDAO fDAO = new FormDAO();
+                Form form = fDAO.selectFormByID(Form_id);
+                String Brand_id = String.valueOf(rs.getInt("brand_id"));
+                BrandsDAO bDAO = new BrandsDAO();
+                Brands brand = bDAO.selectbrandByID(Brand_id);
+                String Material_id = String.valueOf(rs.getInt("material_id"));
+                MaterialsDAO mDAO = new MaterialsDAO();
+                materials material = mDAO.selectMaterialsByID(Material_id);
+                String Group_id = String.valueOf(rs.getInt("group_id"));
+                GroupsDAO gDAO = new GroupsDAO();
+                Groups group = gDAO.selectGroupsByID(Group_id);
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp Edited_at = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
+                Products product = new Products(Id, Code, Name, Description, Price, category, form, brand, material, group, createdAt, Edited_at, deletedAt);
+                ProductsList.add(product);
+            }
+        } catch (Exception e) {
+            System.out.println("getProductsList: " + e.getMessage());
+        }
+        return ProductsList;
+    }
 
     public Products selectProductByID(String productId) {
         Products product = null;
