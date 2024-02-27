@@ -39,7 +39,7 @@ public class EditCategoryController extends HttpServlet {
         CategoryDAO dao = new CategoryDAO();
         dao.editCategory(editid,editname, editdes, editcreate.toString());
         
-        response.sendRedirect("loadcategory");
+        response.sendRedirect("loadcategory");  
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,6 +54,7 @@ public class EditCategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
+        
     } 
 
     /** 

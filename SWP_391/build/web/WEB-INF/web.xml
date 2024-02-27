@@ -47,6 +47,14 @@
     <servlet>
         <servlet-name>EditAddressController</servlet-name>
         <servlet-class>controller.Common.EditAddressController</servlet-class>
+        <servlet-name>CustomerProductsController</servlet-name>
+        <servlet-class>controller.ProductsController.CustomerProductsController</servlet-class>
+        <servlet-name>SizesController</servlet-name>
+        <servlet-class>controller.ProductsController.SizesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductDetailController</servlet-name>
+        <servlet-class>controller.ProductsController.ProductDetailController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
@@ -255,6 +263,8 @@
      <servlet-mapping>
         <servlet-name>CustomerProductsController</servlet-name>
         <url-pattern>/CustomerProducts</url-pattern>
+        <servlet-name>SizesController</servlet-name>
+        <url-pattern>/sizes</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ProductDetailController</servlet-name>
