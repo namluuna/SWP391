@@ -12,14 +12,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.List;
 import model.Common.User;
 
 /**
  *
  * @author Admin
  */
-public class ListStaffController extends HttpServlet {
+public class SearchController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,7 +37,7 @@ public class ListStaffController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListStaffController</title>");            
+            out.println("<title>Servlet ListStaffController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListStaffController at " + request.getContextPath() + "</h1>");
@@ -61,19 +60,19 @@ public class ListStaffController extends HttpServlet {
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
         String indexPage = request.getParameter("index");
-        if(indexPage == null ){
+        if (indexPage == null) {
             indexPage = "1";
         }
-        int index =Integer.parseInt(indexPage);
+        int index = Integer.parseInt(indexPage);
         int count = userDAO.getTotalUsers();
-        int endPage = count/15;
-        if(count % 15 !=0){
+        int endPage = count / 15;
+        if (count % 15 != 0) {
             endPage++;
         }
-      ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
-      request.setAttribute("endPage", endPage);
-      request.setAttribute("selectStaff", selectStaff);  
-      request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
+        ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
+        request.setAttribute("endPage", endPage);
+        request.setAttribute("selectStaff", selectStaff);
+        request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
     }
 
     /**
@@ -87,7 +86,11 @@ public class ListStaffController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String txtSearch = request.getParameter("txtSearch");
+        UserDAO udao = new UserDAO();
+        ArrayList<User> user = udao.SearchUserByName(txtSearch);
+        request.setAttribute("selectStaff", user);
+        request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
     }
 
     /**
