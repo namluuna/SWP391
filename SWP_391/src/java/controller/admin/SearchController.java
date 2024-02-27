@@ -58,21 +58,7 @@ public class SearchController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDAO userDAO = new UserDAO();
-        String indexPage = request.getParameter("index");
-        if (indexPage == null) {
-            indexPage = "1";
-        }
-        int index = Integer.parseInt(indexPage);
-        int count = userDAO.getTotalUsers();
-        int endPage = count / 15;
-        if (count % 15 != 0) {
-            endPage++;
-        }
-        ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
-        request.setAttribute("endPage", endPage);
-        request.setAttribute("selectStaff", selectStaff);
-        request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
+       processRequest(request, response);
     }
 
     /**
@@ -86,11 +72,7 @@ public class SearchController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String txtSearch = request.getParameter("txtSearch");
-        UserDAO udao = new UserDAO();
-        ArrayList<User> user = udao.SearchUserByName(txtSearch);
-        request.setAttribute("selectStaff", user);
-        request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
+       processRequest(request, response);
     }
 
     /**
