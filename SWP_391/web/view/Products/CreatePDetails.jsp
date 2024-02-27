@@ -51,7 +51,7 @@
         <div class="container">
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Tạo chi tiết sản phẩm mới</h1>
-                <form name="form" action="productdetails" method="POST" onsubmit="return validateForm();">
+                <form name="form" action="productdetails" method="POST" enctype="multipart/form-data" onsubmit="return validateForm();">
                     <div class="mb-3">
                         <label for="product_id" class="form-label">Tên Sản Phẩm:</label>
                         <select id="product_id" name="product_id" class="form-select" required>
@@ -88,24 +88,20 @@
                         <span id="error-message-price" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="image1" class="form-label">Tải Ảnh 1 Lên:</label>
-                        <input type="text" class="form-control" id="image1" name="image1">
-                        <span id="error-message-category" style="color: red;"></span>
+                        <label for="image1" class="form-label">Image 1</label>
+                        <input type="file" class="form-control" id="image1" name="image1" accept="image/*" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image2" class="form-label">Tải Ảnh 2 Lên:</label>
-                        <input type="text" class="form-control" id="image2" name="image2">
-                        <span id="error-message-form" style="color: red;"></span>
+                        <label for="image2" class="form-label">Image 2</label>
+                        <input type="file" class="form-control" id="image2" name="image2" accept="image/*" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image3" class="form-label">Tải Ảnh 3 Lên:</label>
-                       <input type="text" class="form-control" id="image3" name="image3">
-                        <span id="error-message-brand" style="color: red;"></span>
+                        <label for="image3" class="form-label">Image 3</label>
+                        <input type="file" class="form-control" id="image3" name="image3" accept="image/*" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image4" class="form-label">Tải Ảnh 4 Lên:</label>
-                        <input type="text" class="form-control" id="image4" name="image4">
-                        <span id="error-message-material" style="color: red;"></span>
+                        <label for="image4" class="form-label">Image 4</label>
+                        <input type="file" class="form-control" id="image4" name="image4" accept="image/*" required>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add">ADD</button>
                     <a href="productdetails" class="btn btn-secondary">Cancel</a>

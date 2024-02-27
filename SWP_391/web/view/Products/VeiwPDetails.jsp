@@ -63,10 +63,22 @@
                                     <td>${pd.getColor().getName()}</td>
                                     <td>${pd.getSize().getName()}</td>
                                     <td>${pd.getInventory_number()}</td>
-                                    <td>${pd.getImage_url_1()}</td>
-                                    <td>${pd.getImage_url_2()}</td>
-                                    <td>${pd.getImage_url_3()}</td>
-                                    <td>${pd.getImage_url_4()}</td>
+                                    <td>
+                                        <!-- Hiển thị ảnh 1 -->
+                                        <img src="images/${pd.getImage_url_1()}" alt="Image 1" style="max-width: 100px; max-height: 100px;">
+                                    </td>
+                                    <td>
+                                        <!-- Hiển thị ảnh 2 -->
+                                        <img src="images/${pd.getImage_url_2()}" alt="Image 2" style="max-width: 100px; max-height: 100px;">
+                                    </td>
+                                    <td>
+                                        <!-- Hiển thị ảnh 3 -->
+                                        <img src="images/${pd.getImage_url_3()}" alt="Image 3" style="max-width: 100px; max-height: 100px;">
+                                    </td>
+                                    <td>
+                                        <!-- Hiển thị ảnh 4 -->
+                                        <img src="images/${pd.getImage_url_4()}" alt="Image 4" style="max-width: 100px; max-height: 100px;">
+                                    </td>
                                     <td>${pd.created_at}</td>
                                     <td>${pd.edited_at}</td>
                                     <td>${pd.deleted_at}</td>
