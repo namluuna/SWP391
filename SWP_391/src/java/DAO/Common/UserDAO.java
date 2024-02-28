@@ -54,8 +54,8 @@ public class UserDAO extends DBContext {
             ex.printStackTrace();
         }
     }
-    
-    public void editUser(int userID, String name, String phone){
+
+    public void editUser(int userID, String name, String phone) {
         try {
             String sql = "UPDATE users SET [name] = ?, [phone] = ? WHERE [id] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -67,8 +67,6 @@ public class UserDAO extends DBContext {
             ex.printStackTrace();
         }
     }
-    
-   
 
     public void update(User user) {
         String sql = "update users SET [name]=?,"
@@ -80,16 +78,16 @@ public class UserDAO extends DBContext {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getName());
-                statement.setString(2, user.getEmail());
-                statement.setString(3, user.getPassword());
-                statement.setString(4, user.getPhone());
-                statement.setInt(5, user.getRole());
-                statement.setInt(6, user.getStatus());
-                statement.setInt(7, user.getId());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getPhone());
+            statement.setInt(5, user.getRole());
+            statement.setInt(6, user.getStatus());
+            statement.setInt(7, user.getId());
             statement.executeUpdate();
         } catch (Exception e) {
         }
-            
+
     }
 
     public User getUserByID(String userId) {
@@ -258,11 +256,59 @@ public class UserDAO extends DBContext {
         return users;
     }
 
+    // ham search user by name
+    public ArrayList<User> SearchUserByName(String txtSearch, int index) {
+        ArrayList<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE is_deleted = 0 AND [role] IN (2,3) AND[name] LIKE ? order by id  desc\n"
+                + "offset ? rows fetch  next 15 rows only";
+        try {
+            // Select address from user with user id
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txtSearch + "%");
+            st.setInt(2, (index - 1) * 15);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int user_id = rs.getInt("id");
+                String user_name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String phone = rs.getString("phone");
+                int is_deleted = rs.getInt("is_deleted");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                Timestamp created_at = rs.getTimestamp("created_at");
+                UserAddressDAO uadao = new UserAddressDAO();
+                ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses);
+                users.add(u);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
     // ham dem so luong user trong database
     public int getTotalUsers() {
         String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] IN (2,3)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+
+        }
+        return 0;
+    }
+    //
+    public int getTotalUsersByName(String txtSearch ) {
+        String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] IN (2,3) AND [Name] like ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txtSearch + "%");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 return rs.getInt(1);
@@ -284,5 +330,13 @@ public class UserDAO extends DBContext {
         int count = udao.getTotalUsers();
         System.out.println(count);
         System.out.println(udao.getUserByID("83"));
+
+        ArrayList<User> user = udao.SearchUserByName("h", 1);
+        for (User o : user) {
+            System.out.println(o);
+        }
+        
+        int count2 =udao.getTotalUsersByName("j");
+        System.out.println(count2);
     }
 }

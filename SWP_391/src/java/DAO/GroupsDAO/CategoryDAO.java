@@ -15,9 +15,8 @@ import model.Categories.Category;
  *
  * @author MTD
  */
-public class CategoryDAO extends DBContext {
-
-    PreparedStatement st = null;
+public class CategoryDAO extends DBContext{
+   PreparedStatement st = null;
     ResultSet rs = null;
 
     public List<Category> selectAllCategory() {

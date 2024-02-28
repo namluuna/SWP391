@@ -175,6 +175,9 @@
                 margin-top: 10px;
                 font-size: 13px;
             }
+            .search-bar {
+                margin-bottom: 10px;
+            }
         </style>
         <script>
             $(document).ready(function () {
@@ -228,6 +231,16 @@
                         </div>
                     </div>
                     <table class="table table-striped table-hover">
+                        <div class="float-right search-bar">
+                            <form action="/SWP_391/staff" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm theo tên..." aria-label="Search" aria-describedby="search-addon" value="${txtSearch}" >
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-outline-primary">Tìm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -286,7 +299,7 @@
                             </c:forEach>
                         </tbody>
                     </table>      
-         
+
                     <div class="clearfix">
                         <ul class="pagination">
                             <c:choose>
