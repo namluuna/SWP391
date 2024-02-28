@@ -37,12 +37,12 @@
                             <th>NO</th>
                             <th>Mã Sản Phẩm</th>
                             <th>Tên Sản Phẩm</th>
-                            <th>Mô Tả Sản Phẩm</th>
+                            <th>Mô Tả</th>
                             <th>Giá Tiền</th>
                             <th>Loại Giày</th>
                             <th>Kiểu Dáng</th>
                             <th>Hãng Giày</th>
-                            <th>Dòng Sản Phẩm</th>
+                            <th>Chất Liệu</th>
                             <th>Trạng Thái</th>
                             <th>Ngày Tạo</th>
                             <th>Ngày Chỉnh Sửa</th>

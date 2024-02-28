@@ -107,27 +107,23 @@
                         <span id="error-message-inventory" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="image1" class="form-label">Image 1:</label>
+                        <label for="image1" class="form-label">Ảnh 1:</label>
                         <input type="file" class="form-control" id="image1" name="image1" accept="image/*">
-                        <img src="images/${pDetail.getImage_url_1()}" alt="Current Image 1" style="max-width: 100px; max-height: 100px;">
                     </div>
                     <div class="mb-3">
-                        <label for="image2" class="form-label">Image 2:</label>
+                        <label for="image2" class="form-label">Ảnh 2:</label>
                         <input type="file" class="form-control" id="image2" name="image2" accept="image/*">
-                        <img src="images/${pDetail.getImage_url_2()}" alt="Current Image 2" style="max-width: 100px; max-height: 100px;">
                     </div>
                     <div class="mb-3">
-                        <label for="image3" class="form-label">Image 3:</label>
+                        <label for="image3" class="form-label">Ảnh 3:</label>
                         <input type="file" class="form-control" id="image3" name="image3" accept="image/*">
-                        <img src="images/${pDetail.getImage_url_3()}" alt="Current Image 3" style="max-width: 100px; max-height: 100px;">
                     </div>
                     <div class="mb-3">
-                        <label for="image4" class="form-label">Image 4:</label>
+                        <label for="image4" class="form-label">Ảnh 4:</label>
                         <input type="file" class="form-control" id="image4" name="image4" accept="image/*">
-                        <img src="images/${pDetail.getImage_url_4()}" alt="Current Image 4" style="max-width: 100px; max-height: 100px;">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="update">Save</button>
-                    <a href="productdetails" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" name="update">Lưu</button>
+                    <a href="productdetails" class="btn btn-secondary">Hủy</a>
                 </form>
             </div>
         </div>
@@ -167,6 +163,29 @@
                         }
                         return true;
                     }
+        </script>
+        <!-- Đoạn mã JavaScript để thay đổi văn bản "No file chosen" -->
+        <script>
+            // Lắng nghe sự kiện change trên tất cả các trường input file
+            document.addEventListener("DOMContentLoaded", function () {
+                var fileInputs = document.querySelectorAll('input[type="file"]');
+                fileInputs.forEach(function (input) {
+                    input.addEventListener('change', function (e) {
+                        var fileName = '';
+                        if (this.files && this.files.length > 1) {
+                            fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+                        } else {
+                            fileName = e.target.value.split('\\').pop();
+                        }
+
+                        // Lấy label tương ứng với input và cập nhật văn bản
+                        var label = this.nextElementSibling;
+                        if (label) {
+                            label.innerHTML = fileName;
+                        }
+                    });
+                });
+            });
         </script>
 
     </body>
