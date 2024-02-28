@@ -10,7 +10,7 @@ import DAO.Common.ProvinceDAO;
 import DAO.Common.UserAddressDAO;
 import DAO.Common.UserDAO;
 import DAO.Common.WardDAO;
-import Service.MailService;
+import Service.SendMailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -172,7 +172,7 @@ public class RegisterController extends HttpServlet {
             AccountActiveTokenDAO accountActiveTokenDAO = new AccountActiveTokenDAO();
             accountActiveTokenDAO.createAccountActiveToken(accountAtiveToken);
             // send the account active url to the via emailuser
-            MailService mailService = new MailService();
+            SendMailService mailService = new SendMailService();
             mailService.sendVerifyAccount(newUser.getEmail(), activeToken);
             // redirect to thank page
             response.sendRedirect("view\\customer\\thankpage.jsp");
