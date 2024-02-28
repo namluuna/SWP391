@@ -197,8 +197,8 @@
                         <c:forEach items="${addresses}" var="c">
                             <div class="col-md-20 address-container">
                                 <label class="label">${c.showAddress()}</label>
-                                <a href="http://localhost:8080/SWP_391/editAddressController?id=${c.id}" class="edit-link">Chỉnh Sửa</a>
-                                <a href="http://localhost:8080/SWP_391/deleteUserAddress?id=${c.id}" class="edit-link">Xóa</a>
+                                <a href="editAddressController?id=${c.id}" class="edit-link">Chỉnh Sửa</a>
+                                <a href="deleteUserAddress?id=${c.id}" class="edit-link">Xóa</a>
                             </div>
                         </c:forEach>
                     </div>
