@@ -83,40 +83,42 @@ public class UpdateStaffController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         int sid = Integer.parseInt(request.getParameter("id"));
         String sName = request.getParameter("name");
         String sEmail = request.getParameter("email");
-        String sPassword = request.getParameter("password");
         String sPhone = request.getParameter("phone");
         String sRole = request.getParameter("role");
         String sStatus = request.getParameter("status");
         UserDAO udao = new UserDAO();
-        if (sStatus.equals("1")) {
-            if (sRole.equals("2")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
-                udao.update(user);
-                response.sendRedirect("staff");
-            } else if (sRole.equals("3")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
-                udao.update(user);
-                response.sendRedirect("staff");
-            }
-        } else if (sStatus.equals("0")) {
-            if (sRole.equals("2")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 2, 0);
-                udao.update(user);
-                response.sendRedirect("staff");
-            } else if (sRole.equals("3")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                User user = new User(sid, sName, sEmail, encodedPassword, sPhone, 0, 3, 0);
-                udao.update(user);
-                response.sendRedirect("staff");
-            }
-        }
 
+        
+            if (sStatus.equals("1")) {
+                if (sRole.equals("2")) {
+                   
+                    User user = new User(sid, sName, sEmail, sPhone, 0, 2, 1);
+                    udao.update(user);
+                    response.sendRedirect("staff");
+                } else if (sRole.equals("3")) {
+                   
+                    User user = new User(sid, sName, sEmail, sPhone, 0, 3, 1);
+                    udao.update(user);
+                    response.sendRedirect("staff");
+                }
+            } else if (sStatus.equals("0")) {
+                if (sRole.equals("2")) {
+                   
+                    User user = new User(sid, sName, sEmail, sPhone, 0, 2, 0);
+                    udao.update(user);
+                    response.sendRedirect("staff");
+                } else if (sRole.equals("3")) {
+                  
+                    User user = new User(sid, sName, sEmail, sPhone, 0, 3, 0);
+                    udao.update(user);
+                    response.sendRedirect("staff");
+                }
+            }
+        
     }
 
     /**

@@ -5,6 +5,7 @@
 package controller.admin;
 
 import DAO.Common.UserDAO;
+import Service.SendMailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -97,12 +98,16 @@ public class CreateStaffController extends HttpServlet {
                 UserDAO udao = new UserDAO();
                 User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
                 udao.addNewUser(user);
+                SendMailService sm = new SendMailService();
+                sm.sendNewAccount(user.getEmail(), sPassword);
                 response.sendRedirect("staff");
             } else if (sRole.equals("3")) {
                 String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
                 UserDAO udao = new UserDAO();
                 User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
                 udao.addNewUser(user);
+                SendMailService sm = new SendMailService();
+                sm.sendNewAccount(user.getEmail(), sPassword);
                 response.sendRedirect("staff");
             }
         }
