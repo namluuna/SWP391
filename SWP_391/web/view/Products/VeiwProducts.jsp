@@ -6,7 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -88,22 +87,12 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>NO</th>
-                                <th>Mã Sản Phẩm</th>
-                                <th>Tên Sản Phẩm</th>
-                                <th>Mô Tả</th>
-                                <th>Thông Tin Sản Phẩm</th>
-                                <!--                            <th>Giá Tiền</th>
-                                                            <th>Loại Giày</th>
-                                                            <th>Kiểu Dáng</th>
-                                                            <th>Hãng Giày</th>
-                                                            <th>Chất Liệu</th>
-                                                            <th>Trạng Thái Sản Phẩm</th>
-                                                            <th>Trạng Thái Hoạt Động</th>
-                                                            <th>Ngày Tạo</th>
-                                                            <th>Ngày Chỉnh Sửa</th>
-                                                            <th>Ngày xóa</th>-->
-                                <th>Chức Năng</th>
+                                <th style="text-align: center;">NO</th>
+                                <th style="text-align: center; white-space: nowrap">Mã Sản Phẩm</th>
+                                <th style="text-align: center;">Tên Sản Phẩm</th>
+                                <th style="text-align: center;">Mô Tả</th>
+                                <th style="text-align: center;">Thông Tin Sản Phẩm</th>
+                                <th style="text-align: center; white-space: nowrap">Chức Năng</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -116,7 +105,7 @@
                                     <tr>
                                         <td>${product.id}</td>
                                         <td>${product.code}</td>
-                                        <td>${product.name}</td>
+                                        <td style="white-space: nowrap">${product.name}</td>
                                         <td class="description">
                                             <span class="short-description">${fn:substring(product.description, 0, 100)}</span>
                                             <span class="full-description" style="display: none;">${product.description}</span>
