@@ -17,6 +17,12 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <style>
+            .modal-title {
+                color: #000 !important; /* Đặt màu chữ */
+                font-size: 1.25rem !important; /* Đặt font size */
+            }
+
+
             td.description {
                 max-width: 350px; /* Đặt độ rộng tối đa là 200px */
             }
@@ -168,20 +174,34 @@
                                         <td>${product.id}</td>
                                         <td>${product.code}</td>
                                         <td>${product.name}</td>
-                                        <td>${product.description}</td>
-                                        <td>${product.price}</td>
-                                        <td>${product.getCategory().getName()}</td>
-                                        <td>${product.getForm().getName()}</td>
-                                        <td>${product.getBrand().getName()}</td>
-                                        <td>${product.getMaterial().getName()}</td>
-                                        <td>${product.getGroup().getName()}</td>
-                                        <td>${product.created_at}</td>
-                                        <td>${product.edited_at}</td>
-                                        <td>${product.deleted_at}</td>
+                                        <td class="description">
+                                            <span class="short-description">${fn:substring(product.description, 0, 100)}</span>
+                                            <span class="full-description" style="display: none;">${product.description}</span>
+                                            <span class="ellipsis" style="display: none;">...</span>
+                                            <button class="btn btn-sm view-description"><i class="fas fa-eye"></i></button>
+
+                                        </td>
+
+
                                         <td>
-                                            <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                            <div>
+                                                <strong>Giá Tiền:</strong> <fmt:formatNumber type="currency" currencySymbol="₫" value="${product.price}" maxFractionDigits="0" /><br>
+                                                <strong>Loại Giày:</strong> ${product.getCategory().getName()}<br>
+                                                <strong>Kiểu Dáng:</strong> ${product.getForm().getName()}<br>
+                                                <strong>Hãng Giày:</strong> ${product.getBrand().getName()}<br>
+                                                <strong>Chất Liệu:</strong> ${product.getMaterial().getName()}<br>
+                                                <strong>Trạng Thái Sản Phẩm:</strong>${product.getGroup().getName()}<br>
+                                                <strong>Trạng Thái Hoạt Động:</strong> ${empty product.deleted_at ? 'Hoạt động' : 'Không hoạt động'}<br>
+                                                <strong>Ngày Tạo:</strong> ${product.created_at}<br>
+                                                <strong>Ngày Chỉnh Sửa:</strong> ${product.edited_at}<br>
+                                                <strong>Ngày Xóa:</strong> ${product.deleted_at}<br>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
-                                                Delete
+                                                <i class="fas fa-trash-alt"></i>
                                             </button>
                                             <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -211,20 +231,34 @@
                                         <td>${product.id}</td>
                                         <td>${product.code}</td>
                                         <td>${product.name}</td>
-                                        <td>${product.description}</td>
-                                        <td>${product.price}</td>
-                                        <td>${product.getCategory().getName()}</td>
-                                        <td>${product.getForm().getName()}</td>
-                                        <td>${product.getBrand().getName()}</td>
-                                        <td>${product.getMaterial().getName()}</td>
-                                        <td>${product.getGroup().getName()}</td>
-                                        <td>${product.created_at}</td>
-                                        <td>${product.edited_at}</td>
-                                        <td>${product.deleted_at}</td><!-- comment -->
+                                        <td class="description">
+                                            <span class="short-description">${fn:substring(product.description, 0, 100)}</span>
+                                            <span class="full-description" style="display: none;">${product.description}</span>
+                                            <span class="ellipsis" style="display: none;">...</span>
+                                            <button class="btn btn-sm view-description"><i class="fas fa-eye"></i></button>
+
+                                        </td>
+
+
                                         <td>
-                                            <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                            <div>
+                                                <strong>Giá Tiền:</strong> <fmt:formatNumber type="currency" currencySymbol="₫" value="${product.price}" maxFractionDigits="0" /><br>
+                                                <strong>Loại Giày:</strong> ${product.getCategory().getName()}<br>
+                                                <strong>Kiểu Dáng:</strong> ${product.getForm().getName()}<br>
+                                                <strong>Hãng Giày:</strong> ${product.getBrand().getName()}<br>
+                                                <strong>Chất Liệu:</strong> ${product.getMaterial().getName()}<br>
+                                                <strong>Trạng Thái Sản Phẩm:</strong>${product.getGroup().getName()}<br>
+                                                <strong>Trạng Thái Hoạt Động:</strong> ${empty product.deleted_at ? 'Hoạt động' : 'Không hoạt động'}<br>
+                                                <strong>Ngày Tạo:</strong> ${product.created_at}<br>
+                                                <strong>Ngày Chỉnh Sửa:</strong> ${product.edited_at}<br>
+                                                <strong>Ngày Xóa:</strong> ${product.deleted_at}<br>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="products?mod=2&id=${product.getId()}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${product.getId()}">
-                                                Delete
+                                                <i class="fas fa-trash-alt"></i>
                                             </button>
                                             <div class="modal fade" id="confirmDeleteModal${product.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -254,27 +288,40 @@
                                         <td>${product.id}</td>
                                         <td>${product.code}</td>
                                         <td>${product.name}</td>
-                                        <td>${product.description}</td>
-                                        <td>${product.price}</td>
-                                        <td>${product.getCategory().getName()}</td>
-                                        <td>${product.getForm().getName()}</td>
-                                        <td>${product.getBrand().getName()}</td>
-                                        <td>${product.getMaterial().getName()}</td>
-                                        <td>${product.getGroup().getName()}</td>
-                                        <td>${product.created_at}</td>
-                                        <td>${product.edited_at}</td>
-                                        <td>${product.deleted_at}</td>
+                                        <td class="description">
+                                            <span class="short-description">${fn:substring(product.description, 0, 100)}</span>
+                                            <span class="full-description" style="display: none;">${product.description}</span>
+                                            <span class="ellipsis" style="display: none;">...</span>
+                                            <button class="btn btn-sm view-description"><i class="fas fa-eye"></i></button>
+
+                                        </td>
+
+
+                                        <td>
+                                            <div>
+                                                <strong>Giá Tiền:</strong> <fmt:formatNumber type="currency" currencySymbol="₫" value="${product.price}" maxFractionDigits="0" /><br>
+                                                <strong>Loại Giày:</strong> ${product.getCategory().getName()}<br>
+                                                <strong>Kiểu Dáng:</strong> ${product.getForm().getName()}<br>
+                                                <strong>Hãng Giày:</strong> ${product.getBrand().getName()}<br>
+                                                <strong>Chất Liệu:</strong> ${product.getMaterial().getName()}<br>
+                                                <strong>Trạng Thái Sản Phẩm:</strong>${product.getGroup().getName()}<br>
+                                                <strong>Trạng Thái Hoạt Động:</strong> ${empty product.deleted_at ? 'Hoạt động' : 'Không hoạt động'}<br>
+                                                <strong>Ngày Tạo:</strong> ${product.created_at}<br>
+                                                <strong>Ngày Chỉnh Sửa:</strong> ${product.edited_at}<br>
+                                                <strong>Ngày Xóa:</strong> ${product.deleted_at}<br>
+                                            </div>
+                                        </td>
                                         <td>
                                             <!-- Add a button to restore the product -->
                                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${product.id}">
-                                                Restore
+                                                <i class="fas fa-undo-alt"></i>
                                             </button>
                                             <!-- Restore Confirmation Modal -->
                                             <div class="modal fade" id="confirmRestoreModal${product.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="confirmRestoreModalLabel">Confirm Restore</h5>
+                                                            <h5 class="modal-title" id="confirmRestoreModalLabel">Xác nhận Khôi phục</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
