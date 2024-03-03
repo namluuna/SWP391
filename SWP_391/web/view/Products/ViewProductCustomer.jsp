@@ -62,19 +62,19 @@
 
                 <div class="col-sm-9">
                     <div class="row">
-                        <c:forEach items="${data}" var="o">
+                        <c:forEach var="product" items="${data}" >
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="${o.image}" alt="Card image cap">
+                                    <img class="card-img-top" src="images/${data0[data.indexOf(product)].getImage_url_1()}" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title show_txt"><a href="detail?pid=${o.id}" title="View Product">${o.name}</a></h4>
-                                        <p class="card-text show_txt">${o.title}</p>
+                                        <h4 class="card-title show_txt"><a href="" title="View Product">${product.name}</a></h4>
+                                        <p class="card-text show_txt"></p>
                                         <div class="row">
                                             <div class="col">
-                                                <p class="btn btn-danger btn-block">${o.price} $</p>
+                                                <p class="btn btn-danger btn-block">${product.price}VNÐ</p>
                                             </div>
                                             <div class="col">
-                                                <a href="cart?productId=${o.id}" class="btn btn-success btn-block">Add to cart</a>
+                                                <a href="" class="btn btn-success btn-block">Add to cart</a>
                                             </div>
                                         </div>
                                     </div>

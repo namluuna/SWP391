@@ -6,6 +6,7 @@ package controller.ProductsController;
 
 import DAO.GroupsDAO.BrandsDAO;
 import DAO.GroupsDAO.CategoryDAO;
+import DAO.ProductDAO.ProductDetailDAO;
 import DAO.ProductDAO.ProductsDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Categories.Category;
 import model.Groups.Brands;
+import model.Product.ProductDetails;
 import model.Product.Products;
 
 /**
@@ -66,9 +68,13 @@ public class CustomerProductsController extends HttpServlet {
         ProductsDAO p = new ProductsDAO();
         CategoryDAO g = new CategoryDAO();
         BrandsDAO b = new BrandsDAO();
+        ProductDetailDAO pd  = new ProductDetailDAO();
         List<Category> data1 = g.selectAllCategory();
+        List<ProductDetails> data0 = pd.selectAllProductDetails();
         request.setAttribute("data1", data1);
-
+        
+        request.setAttribute("data0", data0);
+        
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
 
             request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
