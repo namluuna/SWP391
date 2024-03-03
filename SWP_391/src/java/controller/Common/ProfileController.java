@@ -42,7 +42,7 @@ public class ProfileController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileController</title>");            
+            out.println("<title>Servlet ProfileController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProfileController at " + request.getContextPath() + "</h1>");
@@ -66,20 +66,24 @@ public class ProfileController extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         // Check if user have loged in
-        if(user == null){
+        if (user == null) {
             request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
             return;
-        }else{
+        } else {
             ProvinceDAO pdao = new ProvinceDAO();
             List<Province> provinces = pdao.selectAllProvince();
             request.setAttribute("provinces", provinces);
             UserAddressDAO userAddressDAO = new UserAddressDAO();
             ArrayList<UserAddress> addresses = userAddressDAO.sellectallUserAddress(user.getId());
+            int isDefaultAddress = userAddressDAO.isHavingDefaultAddress(user.getId());
+            int totalAddressNumber = userAddressDAO.totalUserAddreesNumber(user.getId());
+            request.setAttribute("totalAddressNumber", totalAddressNumber);
+            request.setAttribute("isDefaultAddress", isDefaultAddress);
             request.setAttribute("addresses", addresses);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
-        
+
     }
 
     /**

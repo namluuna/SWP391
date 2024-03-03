@@ -153,17 +153,17 @@
                     <div class="col-md-3 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-<!--                            <form id="uploadForm" action="/SWP_391/uploadImageServlet" method="POST" enctype='multipart/form-data'>
-                                <div class="input-image">
-                                    <label for="input">
-                                        Choose Image <br>
-                                        <input class="field image-name" id="input" type="file" name="image"
-                                               style="display: none">
-                                    </label>
-                                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Sửa ảnh đại diện</button></div>
-                                </div>
-                            </form>
-                            <br/>-->
+                            <!--                            <form id="uploadForm" action="/SWP_391/uploadImageServlet" method="POST" enctype='multipart/form-data'>
+                                                            <div class="input-image">
+                                                                <label for="input">
+                                                                    Choose Image <br>
+                                                                    <input class="field image-name" id="input" type="file" name="image"
+                                                                           style="display: none">
+                                                                </label>
+                                                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Sửa ảnh đại diện</button></div>
+                                                            </div>
+                                                        </form>
+                                                        <br/>-->
                             <span class="font-weight-bold">${user.name}</span><span class="text-black-50"></span>
                         <a href="/SWP_391/changePassword" class="edit-link">Đổi mật khẩu</a>
                     </div>
@@ -196,9 +196,23 @@
                         <br>
                         <c:forEach items="${addresses}" var="c">
                             <div class="col-md-20 address-container">
-                                <label class="label">${c.showAddress()}</label>
+                                <c:choose>
+                                    <c:when test="${c.is_default == 1}">
+                                        <label class="label">${c.showAddress()}(Địa chỉ mặc định)</label>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <label class="label">${c.showAddress()}</label>
+                                    </c:otherwise>
+                                </c:choose>  
                                 <a href="editAddressController?id=${c.id}" class="edit-link">Chỉnh Sửa</a>
-                                <a href="deleteUserAddress?id=${c.id}" class="edit-link">Xóa</a>
+                                <c:choose>
+                                    <c:when test="${totalAddressNumber != 1}">
+                                        <a href="deleteUserAddress?id=${c.id}" class="edit-link">Xóa</a>
+                                    </c:when>
+                                    <c:otherwise>
+
+                                    </c:otherwise>
+                                </c:choose>  
                             </div>
                         </c:forEach>
                     </div>
@@ -238,6 +252,10 @@
                         </select>
                         <label for="address"><span style="color: red;">*</span>Địa Chỉ:</label>
                         <textarea id="address" name="address" rows="4" value="${address}" required></textarea>
+                        <div class="form-field">
+                            <input type="checkbox" name="defaultAddress">
+                            <label>Đặt làm địa chỉ mặc định</label>
+                        </div> 
                         <button type="submit">Đăng Ký</button>
                         <br>
                     </form>

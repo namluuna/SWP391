@@ -116,9 +116,18 @@ public class EditAddressController extends HttpServlet {
         String districtCode = request.getParameter("district");
         String wardCode = request.getParameter("ward");
         String address = request.getParameter("address");
-        UserAddressDAO userAddressDAO = new UserAddressDAO();
-
-        userAddressDAO.editUserAddress(id, provinceCode, districtCode, wardCode, address);
+        String is_default = request.getParameter("defaultAddress");
+        int isDefaultNum;
+        if (is_default != null) {
+            isDefaultNum = 1;
+            UserAddressDAO userAddressDAO = new UserAddressDAO();
+            userAddressDAO.setDefaultAddressToZero(String.valueOf(user.getId()));
+            userAddressDAO.editUserAddress(id, provinceCode, districtCode, wardCode, address, isDefaultNum);
+        } else {
+            isDefaultNum = 0;
+            UserAddressDAO userAddressDAO = new UserAddressDAO();
+            userAddressDAO.editUserAddress(id, provinceCode, districtCode, wardCode, address, isDefaultNum);
+        }
         response.sendRedirect("profile");
     }
 

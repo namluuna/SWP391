@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Common.User;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -73,37 +74,47 @@ public class CreateStaffController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // processRequest(request, response);
-        String sName = request.getParameter("name");
-        String sEmail = request.getParameter("email");
-        String sPassword = request.getParameter("password");
-        String sPhone = request.getParameter("phone");
-        String sRole = request.getParameter("role");
-
-        UserDAO userDAO = new UserDAO();
-        User checkUser = userDAO.searchUserByEmail(sEmail);
-        // if an user have used entered email
-        if (checkUser != null) {
-            String errorEmailMessage = "Địa chỉ email này đã tồn tại!";
-            request.setAttribute("name", sName);
-            request.setAttribute("email", sEmail);
-            request.setAttribute("password", sPassword);
-            request.setAttribute("phone", sPhone);
-            request.setAttribute("role", sRole);
-            request.setAttribute("errorEmailMessage", errorEmailMessage);
-            request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
+            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
+            return;
+        } else if (user.getRole() != 1) {
+            response.sendRedirect("404.jsp");
         } else {
-            if (sRole.equals("2")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                UserDAO udao = new UserDAO();
-                User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
-                udao.addNewUser(user);
-                response.sendRedirect("staff");
-            } else if (sRole.equals("3")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                UserDAO udao = new UserDAO();
-                User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
-                udao.addNewUser(user);
-                response.sendRedirect("staff");
+            String sName = request.getParameter("name");
+            String sEmail = request.getParameter("email");
+            String sPassword = request.getParameter("password");
+            String sPhone = request.getParameter("phone");
+            String sRole = request.getParameter("role");
+
+            UserDAO userDAO = new UserDAO();
+            User checkUser = userDAO.searchUserByEmail(sEmail);
+            // if an user have used entered email
+            if (checkUser != null) {
+                String errorEmailMessage = "Địa chỉ email này đã tồn tại!";
+                request.setAttribute("name", sName);
+                request.setAttribute("email", sEmail);
+                request.setAttribute("password", sPassword);
+                request.setAttribute("phone", sPhone);
+                request.setAttribute("role", sRole);
+                request.setAttribute("errorEmailMessage", errorEmailMessage);
+                request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
+            } else {
+                if (sRole.equals("2")) {
+                    String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                    UserDAO udao = new UserDAO();
+                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                    udao.addNewUser(newUser);
+                    response.sendRedirect("staff");
+                } else if (sRole.equals("3")) {
+                    String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                    UserDAO udao = new UserDAO();
+                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
+                    udao.addNewUser(newUser);
+                    response.sendRedirect("staff");
+                }
             }
         }
 

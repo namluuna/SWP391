@@ -321,22 +321,22 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        String encodedPassword = BCrypt.hashpw("LB@123456", BCrypt.gensalt(10));
-        udao.changePassword("ifyouwant9612@gmail.com", encodedPassword);
-        ArrayList<User> u = udao.sellectallStaffByPaging(1);
-        for (User o : u) {
-            System.out.println(o);
-        }
-        int count = udao.getTotalUsers();
-        System.out.println(count);
-        System.out.println(udao.getUserByID("83"));
-
-        ArrayList<User> user = udao.SearchUserByName("h", 1);
-        for (User o : user) {
-            System.out.println(o);
-        }
-        
-        int count2 =udao.getTotalUsersByName("j");
-        System.out.println(count2);
+        String encodedPassword = BCrypt.hashpw("admin", BCrypt.gensalt(10));
+        udao.changePassword("khangnh@landbridge.vn", encodedPassword);
+//        ArrayList<User> u = udao.sellectallStaffByPaging(1);
+//        for (User o : u) {
+//            System.out.println(o);
+//        }
+//        int count = udao.getTotalUsers();
+//        System.out.println(count);
+//        System.out.println(udao.getUserByID("83"));
+//
+//        ArrayList<User> user = udao.SearchUserByName("h", 1);
+//        for (User o : user) {
+//            System.out.println(o);
+//        }
+//        
+//        int count2 =udao.getTotalUsersByName("j");
+//        System.out.println(count2);
     }
 }

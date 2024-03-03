@@ -82,10 +82,10 @@ public class LoginController extends HttpServlet {
                             response.sendRedirect("view\\admin\\DashBoard.jsp");
                             break;
                         case 2:
-                            response.sendRedirect("view\\sale\\Dashboard.jsp");
+                            response.sendRedirect("view\\sale\\DashBoard.jsp");
                             break;
                         case 3:
-                            response.sendRedirect("view\\shipper\\Dashboard.jsp");
+                            response.sendRedirect("view\\shipper\\DashBoard.jsp");
                             break;
                         default:
                             response.sendRedirect("view\\customer\\Home.jsp");

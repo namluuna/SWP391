@@ -90,9 +90,20 @@ public class AddUserAddressController extends HttpServlet {
             String districtCode = request.getParameter("district");
             String wardCode = request.getParameter("ward");
             String address = request.getParameter("address");
-            UserAddress userAddress = new UserAddress(user.getId(), provinceCode, districtCode, wardCode, address);
-            UserAddressDAO userAddressDAO = new UserAddressDAO();
-            userAddressDAO.addNewUserAddress(userAddress);
+            String isDefault = request.getParameter("defaultAddress");
+            int isDefaultNum;
+            if (isDefault != null) {
+                isDefaultNum = 1;
+                UserAddress userAddress = new UserAddress(user.getId(), provinceCode, districtCode, wardCode, address, isDefaultNum);
+                UserAddressDAO userAddressDAO = new UserAddressDAO();
+                userAddressDAO.setDefaultAddressToZero(String.valueOf(user.getId()));
+                userAddressDAO.addNewUserAddress(userAddress);
+            } else {
+                isDefaultNum = 0;
+                UserAddress userAddress = new UserAddress(user.getId(), provinceCode, districtCode, wardCode, address, isDefaultNum);
+                UserAddressDAO userAddressDAO = new UserAddressDAO();
+                userAddressDAO.addNewUserAddress(userAddress);
+            }
             response.sendRedirect("profile");
         }
     }

@@ -24,8 +24,9 @@ public class UserAddress {
     private String address;
     private Timestamp created_at;
     private Timestamp deleted_at;
+    private int is_default;
 
-    public UserAddress(int id, int user_id, String province_name, String province_code, String district_name, String district_code, String ward_name, String ward_code, String address, Timestamp created_at, Timestamp deleted_at) {
+    public UserAddress(int id, int user_id, String province_name, String province_code, String district_name, String district_code, String ward_name, String ward_code, String address, Timestamp created_at, Timestamp deleted_at, int is_default) {
         this.id = id;
         this.user_id = user_id;
         this.province_name = province_name;
@@ -37,12 +38,13 @@ public class UserAddress {
         this.address = address;
         this.created_at = created_at;
         this.deleted_at = deleted_at;
+        this.is_default = is_default;
     }
 
     public UserAddress() {
     }
 
-    public UserAddress(int id, int user_id, String province_name, String province_code, String district_name, String district_code, String ward_name, String ward_code, String address) {
+    public UserAddress(int id, int user_id, String province_name, String province_code, String district_name, String district_code, String ward_name, String ward_code, String address, int is_default) {
         this.id = id;
         this.user_id = user_id;
         this.province_name = province_name;
@@ -52,14 +54,16 @@ public class UserAddress {
         this.ward_name = ward_name;
         this.ward_code = ward_code;
         this.address = address;
+        this.is_default = is_default;
     }
 
-    public UserAddress(int user_id, String province_code, String district_code, String ward_code, String address) {
+    public UserAddress(int user_id, String province_code, String district_code, String ward_code, String address, int is_default) {
         this.user_id = user_id;
         this.province_code = province_code;
         this.district_code = district_code;
         this.ward_code = ward_code;
         this.address = address;
+        this.is_default = is_default;
     }
 
     public int getId() {
@@ -153,10 +157,18 @@ public class UserAddress {
     public String showAddress(){
         return address + " " + ward_name + " " + district_name + " " + province_name ; 
     }
+
+    public int getIs_default() {
+        return is_default;
+    }
+
+    public void setIs_default(int is_default) {
+        this.is_default = is_default;
+    }
     
     @Override
     public String toString() {
-        return "UserAddress{" + "id=" + id + ", user_id=" + user_id + ", province_name=" + province_name + ", province_code=" + province_code + ", district_name=" + district_name + ", district_code=" + district_code + ", ward_name=" + ward_name + ", ward_code=" + ward_code + ", address=" + address + ", created_at=" + created_at + '}';
+        return "UserAddress{" + "id=" + id + ", user_id=" + user_id + ", province_name=" + province_name + ", province_code=" + province_code + ", district_name=" + district_name + ", district_code=" + district_code + ", ward_name=" + ward_name + ", ward_code=" + ward_code + ", address=" + address + ", created_at=" + created_at + ", is_default=" + is_default +'}';
     }
     
 }
