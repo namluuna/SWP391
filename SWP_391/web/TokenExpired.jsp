@@ -13,7 +13,6 @@
     </head>
     <style>
             body {
-                font-family: "Comic Sans MS", cursive;
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -107,10 +106,10 @@
         </style>
     <body>
         <div class="thank-container">
-            <h1>Your password reset token have been expired</h1>
-            <p>Please reset password again!</p>
+            <h1>Mã dùng để đặt lại mật khẩu của bạn đã hết hạn</h1>
+            <p>Xin hãy đặt lại mật khẩu 1 lần nữa!</p>
             <div class="btn-container">
-                <a href="index.jsp" class="btn">Go to Home Page</a>
+                <a href="index.jsp" class="btn">Trang chủ</a>
             </div>
         </div>
     </body>

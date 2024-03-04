@@ -97,7 +97,7 @@ public class ResetPasswordController extends HttpServlet {
         }else{
          // the email is not exist
          request.setAttribute("email", email);
-         request.setAttribute("message", "This email is not exist");
+         request.setAttribute("message", "Địa chỉ email này không tồn tại");
          request.getRequestDispatcher("view\\customer\\fogotpassword.jsp").forward(request, response);
         }
     }

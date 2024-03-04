@@ -221,7 +221,7 @@
                                             </div>
 
                                             <button type="button" class="btn btn-dark btn-block btn-lg"
-                                                    data-mdb-ripple-color="dark">Register</button>
+                                                    data-mdb-ripple-color="dark">Đặt hàng</button>
 
                                         </div>
                                     </div>
