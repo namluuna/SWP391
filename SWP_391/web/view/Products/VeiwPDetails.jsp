@@ -143,6 +143,7 @@
                                                      <br>
                                                      <strong>Kích Thước:</strong> ${pd.getSize().getName()}<br>
                                                      <strong>Số Lượng Hàng:</strong> ${pd.getInventory_number()}<br>
+                                                     <strong>Trạng Thái Hoạt Động:</strong> ${empty product.deleted_at ? 'Hoạt động' : 'Không hoạt động'}<br>
                                                      <strong>Ngày Tạo:</strong> ${pd.created_at}<br>
                                                      <strong>Ngày Cập Nhật:</strong> ${pd.edited_at}<br>
                                                      <strong>Ngày Dừng Hoạt Động:</strong> ${pd.deleted_at}
