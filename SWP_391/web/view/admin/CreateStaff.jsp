@@ -74,8 +74,8 @@
 
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary" >ADD</button>
-                    <a href="/SWP_391/staff" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" >Tạo mới</button>
+                    <a href="/SWP_391/staff" class="btn btn-secondary">hủy bỏ</a>
                 </form>
             </div>
         </div>
@@ -93,6 +93,39 @@
 
                 return true;
             }
+
+
+
         </script>
+
+        <script>
+            document.getElementById('email').addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Kiểm tra nếu kí tự đầu tiên là khoảng trắng
+                if (inputValue.charAt(0) === ' ') {
+                    // Loại bỏ khoảng trắng đầu tiên
+                    event.target.value = inputValue.trimStart();
+                }
+            });
+
+            document.getElementById('email').addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Kiểm tra nếu kí tự cuối cùng là khoảng trắng
+                if (inputValue.charAt(inputValue.length - 1) === ' ') {
+                    // Loại bỏ khoảng trắng cuối cùng
+                    event.target.value = inputValue.slice(0, -1);
+                }
+            });
+            
+            document.getElementById('email').addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Loại bỏ khoảng trắng giữa các kí tự
+                event.target.value = inputValue.replace(/\s+/g, '');
+            });
+        </script>
+
     </body>
 </html>

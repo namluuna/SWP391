@@ -71,7 +71,6 @@ public class UserDAO extends DBContext {
     public void update(User user) {
         String sql = "update users SET [name]=?,"
                 + " [email] =?,"
-                + " [password] = ?,"
                 + "[phone] = ?,"
                 + "[role]= ?,"
                 + "[status]=? where id = ?";
@@ -79,11 +78,10 @@ public class UserDAO extends DBContext {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
-            statement.setString(4, user.getPhone());
-            statement.setInt(5, user.getRole());
-            statement.setInt(6, user.getStatus());
-            statement.setInt(7, user.getId());
+            statement.setString(3, user.getPhone());
+            statement.setInt(4, user.getRole());
+            statement.setInt(5, user.getStatus());
+            statement.setInt(6, user.getId());
             statement.executeUpdate();
         } catch (Exception e) {
         }

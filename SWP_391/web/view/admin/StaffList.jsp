@@ -302,14 +302,7 @@
 
                     <div class="clearfix">
                         <ul class="pagination">
-                            <c:choose>
-                                <c:when test="${param.index == 1}">
-                                    <li class="page-item disabled"><span class="page-link"><</span></li>
-                                    </c:when>
-                                    <c:otherwise>
-                                    <li class="page-item"><a href="staff?index=${param.index - 1}" class="page-link"><</a></li>
-                                    </c:otherwise>
-                                </c:choose>
+                      
 
                             <c:forEach begin="1" end="${endPage}" var="i">
                                 <c:choose>
@@ -321,14 +314,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
-                                <c:choose>
-                                    <c:when test="${param.index == endPage}">
-                                    <li class="page-item disabled"><a href="#" class="page-link">></a></li>
-                                    </c:when>
-                                    <c:otherwise>
-                                    <li class="page-item"><a href="staff?index=${param.index + 1}" class="page-link">></a></li>
-                                    </c:otherwise>
-                                </c:choose>
+                              
 
                         </ul>
                     </div>              

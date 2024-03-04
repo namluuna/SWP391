@@ -78,6 +78,16 @@ public class User {
         this.address = address;
     }
 
+    public User(int id, String name, String email, String phone, int is_deleted, int role, int status) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.is_deleted = is_deleted;
+        this.role = role;
+        this.status = status;
+    }
+
   
     
     

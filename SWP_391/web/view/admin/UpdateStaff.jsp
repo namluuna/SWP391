@@ -46,7 +46,7 @@
     <body>
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Tạo nhân viên mới</h1>
+                <h1 class="text-center mb-4">Cập nhật nhân viên</h1>
                 <c:set var="c" value="${getStaffId}" />
                 <form  action="/SWP_391/updateStaff" method="POST" onsubmit="return validateEmail();" >
                     <div class="mb-3">
@@ -57,10 +57,7 @@
                     </div>
                     <div class="mb-3">
                         Email: <input type="text" name="email"  value="${c.email}"  id="email" class="form-control" required readonly/><br>                    
-                    </div>
-                    <div class="mb-3">
-                        Cập nhật mật khẩu: <input type="password" name="password"  value="${c.password}" class="form-control" required/><br>
-                    </div>
+                    </div>               
                     <div class="mb-3">
                         Cập nhật số điện thoại: <input type="number" name="phone" value="${c.phone}" class="form-control" required /><br>
                     </div>
@@ -82,7 +79,7 @@
 
                         </select>
                     </div>
-                            <br>
+                    <br>
                     <button type="submit" class="btn btn-primary" >Cập nhật</button>
                     <a href="/SWP_391/staff" class="btn btn-secondary">Hủy bỏ</a>
                 </form>
@@ -93,7 +90,7 @@
                 var emailInput = document.getElementById("email");
                 var emailValue = emailInput.value.trim(); // Remove leading and trailing spaces
 
-                 // Check if the email is not empty and matches the required format
+                // Check if the email is not empty and matches the required format
                 if (emailValue === "" || !/(^|\s)[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn)\s*$/.test(emailValue)) {
                     alert("Email phải được định dạng có'@gmail.com' hoặc '@fpt.edu.vn'.");
                     emailInput.focus();
@@ -102,6 +99,33 @@
 
                 return true;
             }
+            document.getElementById('email').addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Kiểm tra nếu kí tự đầu tiên là khoảng trắng
+                if (inputValue.charAt(0) === ' ') {
+                    // Loại bỏ khoảng trắng đầu tiên
+                    event.target.value = inputValue.trimStart();
+                }
+            });
+
+            document.getElementById('email').addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Kiểm tra nếu kí tự cuối cùng là khoảng trắng
+                if (inputValue.charAt(inputValue.length - 1) === ' ') {
+                    // Loại bỏ khoảng trắng cuối cùng
+                    event.target.value = inputValue.slice(0, -1);
+                }
+            });
+
+            document.getElementById('email').addEventListener('input', function (event) {
+                var inputValue = event.target.value;
+
+                // Loại bỏ khoảng trắng giữa các kí tự
+                event.target.value = inputValue.replace(/\s+/g, '');
+            });
+
         </script>
     </body>
 </html>
