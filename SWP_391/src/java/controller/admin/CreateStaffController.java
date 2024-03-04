@@ -5,7 +5,6 @@
 package controller.admin;
 
 import DAO.Common.UserDAO;
-import Service.SendMailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -84,22 +83,38 @@ public class CreateStaffController extends HttpServlet {
         } else if (user.getRole() != 1) {
             response.sendRedirect("404.jsp");
         } else {
-            if (sRole.equals("2")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                UserDAO udao = new UserDAO();
-                User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
-                udao.addNewUser(user);
-                SendMailService sm = new SendMailService();
-                sm.sendNewAccount(user.getEmail(), sPassword);
-                response.sendRedirect("staff");
-            } else if (sRole.equals("3")) {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                UserDAO udao = new UserDAO();
-                User user = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
-                udao.addNewUser(user);
-                SendMailService sm = new SendMailService();
-                sm.sendNewAccount(user.getEmail(), sPassword);
-                response.sendRedirect("staff");
+            String sName = request.getParameter("name");
+            String sEmail = request.getParameter("email");
+            String sPassword = request.getParameter("password");
+            String sPhone = request.getParameter("phone");
+            String sRole = request.getParameter("role");
+
+            UserDAO userDAO = new UserDAO();
+            User checkUser = userDAO.searchUserByEmail(sEmail);
+            // if an user have used entered email
+            if (checkUser != null) {
+                String errorEmailMessage = "Địa chỉ email này đã tồn tại!";
+                request.setAttribute("name", sName);
+                request.setAttribute("email", sEmail);
+                request.setAttribute("password", sPassword);
+                request.setAttribute("phone", sPhone);
+                request.setAttribute("role", sRole);
+                request.setAttribute("errorEmailMessage", errorEmailMessage);
+                request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
+            } else {
+                if (sRole.equals("2")) {
+                    String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                    UserDAO udao = new UserDAO();
+                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                    udao.addNewUser(newUser);
+                    response.sendRedirect("staff");
+                } else if (sRole.equals("3")) {
+                    String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                    UserDAO udao = new UserDAO();
+                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
+                    udao.addNewUser(newUser);
+                    response.sendRedirect("staff");
+                }
             }
         }
 
