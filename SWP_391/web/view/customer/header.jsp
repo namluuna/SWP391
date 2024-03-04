@@ -94,7 +94,7 @@
                                     </div>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="#" style="display: inline-flex; align-items: center; margin-left: 30px"><i class="fa fa-login" style="color: white"></i>
+                                    <a href="login" style="display: inline-flex; align-items: center; margin-left: 30px"><i class="fa fa-login" style="color: white"></i>
                                         <span style="padding-left: 10px; align-items: center; color: white">Đăng nhập</span>
                                     </a>
                                 </c:otherwise>
@@ -117,13 +117,10 @@
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
                                             <!--                                            <li class="active"> <a href="index.html">Home</a> </li>-->
-                                            <li> <a href="groups">Groups</a> </li>
-                                            <li> <a href="Forms">Form</a> </li>
-                                            <li> <a href="materials"> Material</a> </li>
-                                            <li> <a href="loadcategory">Categories</a> </li>
-                                            <li> <a href="colors">Colors</a> </li>
-                                            <li> <a href="brands">Brands</a> </li>
-                                            <li> <a href="products">Products</a> </li>
+                                            <li> <a href="#">Trang chủ</a> </li>
+                                            <li> <a href="#">Giỏ hàng</a> </li>
+                                            <li> <a href="#">Thông tin cá nhân</a> </li>
+                                            <li> <a href="#">Tra cứu đơn hàng</a> </li>
                                             <!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>
