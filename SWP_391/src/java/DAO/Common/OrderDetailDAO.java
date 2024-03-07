@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import model.Common.Order;
 import model.Common.OrderDetail;
 import model.Common.User;
 import model.Common.UserAddress;
@@ -45,6 +46,8 @@ public class OrderDetailDAO extends DBContext{
         }
         return orderDetails;
     }
+    
+    
     public static void main(String[] args) {
         OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
         ArrayList<OrderDetail> orderDetails = orderDetailDAO.selectByOrderId(1);
