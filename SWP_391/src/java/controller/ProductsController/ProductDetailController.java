@@ -162,7 +162,7 @@ public class ProductDetailController extends HttpServlet {
             return;
         }
         if (request.getParameter("restore") != null) {
-            pd.restoreProductDetail(id);
+           pd.restoreProductDetail(id);
             response.sendRedirect("productdetails");
             return;
         }

@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                 <div class="top-box">
-                                    <p>Shoe shop will launch soon</p>
+                                    <p>Sẽ Sớm Ra Mắt</p>
                                 </div>
                             </div>
                         </div>
@@ -84,15 +84,15 @@
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
 <!--                                            <li class="active"> <a href="index.html">Home</a> </li>-->
-                                            <li> <a href="groups">Groups</a> </li>
-                                            <li> <a href="Forms">Form</a> </li>
-                                            <li> <a href="materials"> Material</a> </li>
-                                            <li> <a href="loadcategory">Categories</a> </li>
-                                            <li> <a href="colors">Colors</a> </li>
-                                            <li> <a href="brands">Brands</a> </li>
-                                            <li> <a href="products">Products</a> </li>
-                                            <li> <a href="sizes">Sizes</a> </li>
-                                            <li> <a href="productdetails">Product Details</a> </li>
+                                            <li> <a href="groups">Trạng Thái</a> </li>
+                                            <li> <a href="Forms">Kiểu Dáng</a> </li>
+                                            <li> <a href="materials"> Chát Liệu</a> </li>
+                                            <li> <a href="loadcategory">Loại Giày</a> </li>
+                                            <li> <a href="colors">Màu</a> </li>
+                                            <li> <a href="brands">Hãng Giày</a> </li>
+                                            <li> <a href="products">Sản Phẩm</a> </li>
+                                            <li> <a href="sizes">Kích Thước</a> </li>
+                                            <li> <a href="productdetails">Chi Tiết Sản Phẩm</a> </li>
 <!--                                            <li class="mean-last"> <a href="#contact">signup</a> </li>-->
                                         </ul>
                                     </nav>
