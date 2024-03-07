@@ -322,7 +322,7 @@ public class UserDAO extends DBContext {
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
         String encodedPassword = BCrypt.hashpw("LB@123456", BCrypt.gensalt(10));
-        udao.changePassword("khangnhhe160625@fpt.edu.vn", encodedPassword);
+        udao.changePassword("khangnh+2@gmail.com", encodedPassword);
 //        ArrayList<User> u = udao.sellectallStaffByPaging(1);
 //        for (User o : u) {
 //            System.out.println(o);

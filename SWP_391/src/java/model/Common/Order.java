@@ -5,6 +5,7 @@
 package model.Common;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,9 +21,10 @@ public class Order {
     private User shipper;
     private Timestamp deliveryDate;
     private int paymentMethod;
+    private ArrayList<OrderDetail> orderDetail;
     private String note;
 
-    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, User shipper, Timestamp deliveryDate, int paymentMethod, String note) {
+    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, User shipper, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note) {
         this.id = id;
         this.orderCode = orderCode;
         this.customer = customer;
@@ -32,9 +34,20 @@ public class Order {
         this.shipper = shipper;
         this.deliveryDate = deliveryDate;
         this.paymentMethod = paymentMethod;
+        this.orderDetail = orderDetail;
         this.note = note;
     }
 
+    public ArrayList<OrderDetail> getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(ArrayList<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
+    }
+    
+    
+    
     public int getId() {
         return id;
     }
@@ -117,7 +130,9 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", orderCode=" + orderCode + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", deliveryAddress=" + deliveryAddress + ", shipper=" + shipper + ", deliveryDate=" + deliveryDate + ", paymentMethod=" + paymentMethod + ", note=" + note + '}';
+        return "Order{" + "id=" + id + ", orderCode=" + orderCode + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", deliveryAddress=" + deliveryAddress + ", shipper=" + shipper + ", deliveryDate=" + deliveryDate + ", paymentMethod=" + paymentMethod + ", orderDetail=" + orderDetail + ", note=" + note + '}';
     }
+    
+    
     
 }

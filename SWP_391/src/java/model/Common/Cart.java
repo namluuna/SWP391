@@ -10,12 +10,11 @@ import model.Product.ProductDetails;
  *
  * @author ifyou
  */
-public class OrderDetail {
+public class Cart {
     private int id;
-    private int order_id;
+    private User customer;
     private ProductDetails productDetail;
     private int quantity;
-    private int unitPrice;
 
     public int getId() {
         return id;
@@ -25,12 +24,12 @@ public class OrderDetail {
         this.id = id;
     }
 
-    public int getOrder_id() {
-        return order_id;
+    public User getCustomer() {
+        return customer;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
+    public void setCustomer(User customer) {
+        this.customer = customer;
     }
 
     public ProductDetails getProductDetail() {
@@ -49,25 +48,16 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public int getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(int unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public OrderDetail(int id, int order_id, ProductDetails productDetail, int quantity, int unitPrice) {
+    public Cart(int id, User customer, ProductDetails productDetail, int quantity) {
         this.id = id;
-        this.order_id = order_id;
+        this.customer = customer;
         this.productDetail = productDetail;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
     }
 
     @Override
     public String toString() {
-        return "OrderDetail{" + "id=" + id + ", order_id=" + order_id + ", productDetail=" + productDetail + ", quantity=" + quantity + ", unitPrice=" + unitPrice + '}';
+        return "Cart{" + "id=" + id + ", customer=" + customer + ", productDetail=" + productDetail + ", quantity=" + quantity + '}';
     }
     
 }
