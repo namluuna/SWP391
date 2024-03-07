@@ -222,7 +222,7 @@
         <div id="addAddressModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>Add Address</h2>
+                    <h2>Thêm mới địa chỉ</h2>
                     <span class="close" onclick="closeModal()">&times;</span>
                 </div>
                 <div class="modal-body">

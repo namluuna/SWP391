@@ -100,7 +100,7 @@ public class SetNewPasswordController extends HttpServlet {
             userDAO.changePassword(user.getEmail(), encodedPassword);
             // delete the token
             passwordResetTokenDAO.deletePasswordResetToken(user.getEmail());          
-            request.setAttribute("passwordChange", "Your password has been successfully changed. Please login to continue using the service!");
+            request.setAttribute("passwordChange", "Mật khẩu của bạn đã được thay đổi thành công. Vui lòng đăng nhập để tiếp tục sử dụng dịch vụ!");
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
         }else{
             // password and confirm password is not match

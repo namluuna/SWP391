@@ -119,6 +119,37 @@ public class UserAddressDAO extends DBContext {
         return null;
     }
     
+    public UserAddress searchByUserId(String userId){
+        try {
+            // Select address from user with user id
+            String sql = "SELECT ua.[id] AS [id], ua.[user_id] AS [user_id], ua.[province_code] AS [province_code], p.[name] as [province_name], ua.[district_code] AS [district_code], d.name as [district_name], ua.[ward_code] as [ward_code], w.[name] as [ward_name], ua.[address], ua.[is_default]"
+                    + " FROM [users] AS u JOIN [user_addresses] AS ua ON u.[id] = ua.[user_id]"
+                    + "JOIN [provinces] AS p ON ua.[province_code] = p.[code] JOIN [districts] AS d ON ua.[district_code] = d.[code] JOIN [wards] AS w ON ua.[ward_code] = w.[code]"
+                    + "WHERE ua.[user_id] = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, userId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int addressId = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                String province_code = rs.getString("province_code");
+                String province_name = rs.getString("province_name");
+                String district_code = rs.getString("district_code");
+                String district_name = rs.getString("district_name");
+                String ward_code = rs.getString("ward_code");
+                String ward_name = rs.getString("ward_name");
+                String address = rs.getString("address");
+                int is_default = rs.getInt("is_default");
+                UserAddress ua = new UserAddress(addressId, user_id, province_name, province_code, district_name, district_code, ward_name, ward_code, address, is_default);
+                return ua;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
     public void editUserAddress(String id, String provineCode, String districtCode, String wardCode, String address, int is_default){
         try {
             String sql = "UPDATE user_addresses SET [province_code] = ?, [district_code] = ?, [ward_code] = ?, [address] = ? , [is_default] = ? WHERE [id] = ?";
