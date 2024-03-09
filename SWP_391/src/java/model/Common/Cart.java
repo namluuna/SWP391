@@ -15,6 +15,15 @@ public class Cart {
     private User customer;
     private ProductDetails productDetail;
     private int quantity;
+    private int isSelected;
+
+    public int getIsSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(int isSelected) {
+        this.isSelected = isSelected;
+    }
 
     public int getId() {
         return id;
@@ -48,16 +57,19 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public Cart(int id, User customer, ProductDetails productDetail, int quantity) {
+    public Cart(int id, User customer, ProductDetails productDetail, int quantity, int isSeletected) {
         this.id = id;
         this.customer = customer;
         this.productDetail = productDetail;
         this.quantity = quantity;
+        this.isSelected = isSeletected;
     }
 
     @Override
     public String toString() {
-        return "Cart{" + "id=" + id + ", customer=" + customer + ", productDetail=" + productDetail + ", quantity=" + quantity + '}';
+        return "Cart{" + "id=" + id + ", customer=" + customer + ", productDetail=" + productDetail + ", quantity=" + quantity + ", isSelected=" + isSelected + '}';
     }
+
+    
     
 }
