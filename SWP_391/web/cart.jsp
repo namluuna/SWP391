@@ -4,6 +4,8 @@
     Author     : ifyou
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -59,7 +61,7 @@
         </style>
     </head>
     <body>
-
+        <jsp:include page="view/customer/header.jsp"></jsp:include>
         <section class="h-100 h-custom" style="background-color: #FAFAFA;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -85,13 +87,13 @@
                                                     <h6 class="text-muted">Áo phông</h6>
                                                     <h6 class="text-black mb-0">Size M</h6>
                                                 </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex" >
                                                     <button class="btn btn-link px-2"
                                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                         <i class="fa fa-minus"></i>
                                                     </button>
 
-                                                    <input id="form1" min="0" name="quantity" value="1" type="number" style="width:64px"
+                                                    <input id="form1" min="0" name="quantity" value="1" type="number" style="width:75px; margin-top: 20px"
                                                            class="form-control form-control-sm" />
 
                                                     <button class="btn btn-link px-2"
@@ -256,6 +258,7 @@
         <script src="js/main.js"></script>
 
     </body>
+    <jsp:include page="view/customer/footer.jsp"></jsp:include>
 </html>
 
 
