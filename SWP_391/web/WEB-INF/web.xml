@@ -48,6 +48,10 @@
         <servlet-name>EditAddressController</servlet-name>
         <servlet-class>controller.Common.EditAddressController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchOrderController</servlet-name>
+        <servlet-class>controller.customer.SearchOrderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -252,7 +256,7 @@
         <servlet-name>CustomerProductsController</servlet-name>
         <servlet-class>controller.ProductsController.CustomerProductsController</servlet-class>
     </servlet>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CustomerProductsController</servlet-name>
         <url-pattern>/CustomerProducts</url-pattern>
     </servlet-mapping>
@@ -268,7 +272,7 @@
         <servlet-name>SizesController</servlet-name>
         <servlet-class>controller.ProductsController.SizesController</servlet-class>
     </servlet>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SizesController</servlet-name>
         <url-pattern>/sizes</url-pattern>
     </servlet-mapping>
@@ -280,7 +284,7 @@
         <servlet-name>ListStaffController</servlet-name>
         <url-pattern>/staff</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <servlet-name>DeleteStaffController</servlet-name>
         <servlet-class>controller.admin.DeleteStaffController</servlet-class>
     </servlet>
@@ -312,11 +316,13 @@
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/searchStaff</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchOrderController</servlet-name>
+        <url-pattern>/searchOrder</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             3000
         </session-timeout>
     </session-config>
-    
-    
 </web-app>
