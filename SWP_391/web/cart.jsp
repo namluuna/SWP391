@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -62,169 +63,106 @@
     </head>
     <body>
         <jsp:include page="view/customer/header.jsp"></jsp:include>
-        <section class="h-100 h-custom" style="background-color: #FAFAFA;">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12">
-                        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-                            <div class="card-body p-0">
-                                <div class="row g-0">
-                                    <div class="col-lg-8">
-                                        <div class="p-5">
-                                            <div class="d-flex justify-content-between align-items-center mb-5">
-                                                <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
-                                                <h6 class="mb-0 text-muted">3 sản phẩm</h6>
+            <section class="h-100 h-custom" style="background-color: #FAFAFA;">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12">
+                            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                                <div class="card-body p-0">
+                                    <div class="row g-0">
+                                        <div class="col-lg-8">
+                                            <div class="p-5">
+                                                <div class="d-flex justify-content-between align-items-center mb-5">
+                                                    <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
+                                                    <h6 class="mb-0 text-muted">${total} sản phẩm</h6>
                                             </div>
+                                            <c:forEach items="${cartItems}" var="c">
+                                                <hr class="my-4">
+
+                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <img
+                                                            src="images/${c.productDetail.image_url_1}"
+                                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                        <h6 class="text-muted">${c.productDetail.product.name}</h6>
+                                                        <h6 class="text-black mb-0">Size: ${c.productDetail.size.name}</h6>
+                                                        <h6 class="text-black mb-0">Màu sắc: ${c.productDetail.color.name}</h6>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                        <a class="btn btn-link px-2" href="ReduceQuantityCartItem?id=${c.id}">
+                                                            <i class="fa fa-minus" style="margin-top: 34px"></i>
+                                                        </a>
+                                                        <input id="form1" min="0" name="quantity" value="${c.quantity}" type="number" style="width:75px; margin-top: 20px; background-color: white"
+                                                               class="form-control form-control-sm" readonly />
+                                                        <a class="btn btn-link px-2" href="AddQuantityCartNumber?id=${c.id}">
+                                                            <i class="fa fa-plus" style="margin-top: 34px"></i>
+                                                        </a>
+                                                        
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                        <h6 class="mb-0">VND</h6>
+                                                        <h6 class="mb-0">
+                                                            <fmt:formatNumber value="${c.productDetail.product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
+                                                        </h6>
+                                                    </div>
+
+                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                        <a href="RemoveItemServlet?id=${c.id}" class="text-muted"><i class="fa fa-times"></i></a>
+                                                    </div>
+                                                    <c:choose>
+                                                        <c:when test="${c.isSelected == 1}">
+                                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                                <a href="RemoveSelectCartItem?id=${c.id}" class="text-muted"><input type="checkbox" checked></a>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                                <a href="SelectCartItem?id=${c.id}" class="text-muted"><input type="checkbox"></a>
+                                                            </div>
+                                                        </c:otherwise>
+                                                    </c:choose>  
+
+                                                </div>
+
+                                            </c:forEach>
                                             <hr class="my-4">
+                                            <h6 class="mb-0">Tổng tiền: <fmt:formatNumber value="${sumPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /> VND</h6>
 
-                                            <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                                    <img
-                                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
-                                                        class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                                    <h6 class="text-muted">Áo phông</h6>
-                                                    <h6 class="text-black mb-0">Size M</h6>
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex" >
-                                                    <button class="btn btn-link px-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-
-                                                    <input id="form1" min="0" name="quantity" value="1" type="number" style="width:75px; margin-top: 20px"
-                                                           class="form-control form-control-sm" />
-
-                                                    <button class="btn btn-link px-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">100000 VND</h6>
-                                                </div>
-                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                    <a href="#!" class="text-muted"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </div>
-
-                                            <hr class="my-4">
-
-                                            <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                                    <img
-                                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img6.webp"
-                                                        class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                                    <h6 class="text-muted">Shirt</h6>
-                                                    <h6 class="text-black mb-0">Cotton T-shirt</h6>
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <button class="btn btn-link px-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-
-                                                    <input id="form1" min="0" name="quantity" value="1" type="number" style="width:64px"
-                                                           class="form-control form-control-sm" />
-
-                                                    <button class="btn btn-link px-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">€ 44.00</h6>
-                                                </div>
-                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                    <a href="#!" class="text-muted"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </div>
-
-                                            <hr class="my-4">
-
-                                            <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                                    <img
-                                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img7.webp"
-                                                        class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                                    <h6 class="text-muted">Shirt</h6>
-                                                    <h6 class="text-black mb-0">Cotton T-shirt</h6>
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <button class="btn btn-link px-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-
-                                                    <input id="form1" min="0" name="quantity" value="1" type="number" style="width:64px"
-                                                           class="form-control form-control-sm" />
-
-                                                    <button class="btn btn-link px-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">€ 44.00</h6>
-                                                </div>
-                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                    <a href="#!" class="text-muted"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </div>
-
-                                            <hr class="my-4">
 
                                             <div class="pt-5">
-                                                <h6 class="mb-0"><a href="#!" class="text-body"><i
-                                                            class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                                <h6 class="mb-0"><a href="#!" ><i
+                                                            class="fa fa-long-arrow-left me-2"></i>Về trang chủ</a></h6>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 bg-grey">
                                         <div class="p-5">
-                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Tổng cộng</h3>
                                             <hr class="my-4">
 
                                             <div class="d-flex justify-content-between mb-4">
-                                                <h5 class="text-uppercase">items 3</h5>
-                                                <h5>€ 132.00</h5>
+                                                <h5 class="text-uppercase">Số lượng sản phẩm: ${checkoutNumber}</h5>
                                             </div>
 
-                                            <h5 class="text-uppercase mb-3">Shipping</h5>
+                                            <h5 class="text-uppercase mb-3">Phí vận chuyển</h5>
+                                            <h6 class="mb-0">Miễn phí</h6>
 
-                                            <div class="mb-4 pb-2">
-                                                <select class="select">
-                                                    <option value="1">Standard-Delivery- €5.00</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                    <option value="4">Four</option>
-                                                </select>
-                                            </div>
 
-                                            <h5 class="text-uppercase mb-3">Give code</h5>
-
-                                            <div class="mb-5">
-                                                <div class="form-outline">
-                                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                                    <label class="form-label" for="form3Examplea2">Enter your code</label>
-                                                </div>
-                                            </div>
 
                                             <hr class="my-4">
 
                                             <div class="d-flex justify-content-between mb-5">
-                                                <h5 class="text-uppercase">Total price</h5>
-                                                <h5>€ 137.00</h5>
+                                                <h5 class="text-uppercase">Tổng tiền</h5>
+                                                <h5>
+                                                    <fmt:formatNumber value="${checkoutPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /> VND
+                                                </h5>
                                             </div>
-
-                                            <button type="button" class="btn btn-dark btn-block btn-lg"
+                                                <a href="CheckoutController">
+                                                    <button type="button" class="btn btn-dark btn-block btn-lg"
                                                     data-mdb-ripple-color="dark">Đặt hàng</button>
-
+                                                </a>
                                         </div>
                                     </div>
                                 </div>
