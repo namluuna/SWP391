@@ -56,6 +56,41 @@ public class OrderDAO extends DBContext {
 
     }
 
+    public ArrayList<Order> selectOrderOfShipper(int ShipperId) {
+        ArrayList<Order> orders = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from orders WHERE shiper_id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, ShipperId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String orderCode = rs.getString("order_code");
+                int customerId = rs.getInt("customer_id");
+                Timestamp orderDate = rs.getTimestamp("oder_date");
+                int orderStatus = rs.getInt("order_status");
+                int deliveryAddressId = rs.getInt("delivery_address_id");
+                int shipperId = rs.getInt("shiper_id");
+                Timestamp deliveryDate = rs.getTimestamp("delivery_date");
+                int paymentMethod = rs.getInt("payment_method");
+                String note = rs.getString("note");
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(customerId));
+                User shipper = udao.getUserByID(String.valueOf(shipperId));
+                UserAddressDAO usDAO = new UserAddressDAO();
+                UserAddress shippingAddress = usDAO.searchByUserId(String.valueOf(customer.getId()));
+                OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+                ArrayList<OrderDetail> orderDetails = orderDetailDAO.selectByOrderId(id);
+                Order order = new Order(id, orderCode, customer, orderDate, orderStatus, shippingAddress, shipper, deliveryDate, paymentMethod, orderDetails, note);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orders;
+
+    }
     public Order searchOrderByCode(String code) {
         try {
             // Select address from user with user id
@@ -112,14 +147,14 @@ public class OrderDAO extends DBContext {
     public static void main(String[] args) {
         OrderDAO orderDAO = new OrderDAO();
         
-        System.out.println("fuc 1");
-        ArrayList<Order> orders = orderDAO.selectAllOrder();
+//        System.out.println("fuc 1");
+        ArrayList<Order> orders = orderDAO.selectOrderOfShipper(1);
         for (Order order : orders) {
             System.out.println(order.toString());
         }
         
-         System.out.println("fuc 2");
-        Order order = orderDAO.searchOrderByCode("1234");
-        System.out.println(order.toString());
+////         System.out.println("fuc 2");
+//        Order order = orderDAO.searchOrderByCode("1234");
+//        System.out.println(order.toString());
     }
 }
