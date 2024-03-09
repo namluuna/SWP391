@@ -11,6 +11,16 @@
             </c:forEach>
 
         </ul>
+        
+        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Brands</div>
+        <ul class="list-group category_block">
+            <c:forEach items="${data2}" var="o">
+                <li class="list-group-item text-white ${tag == o.id ? "bg-warning":""}"><a href="CustomerProducts?filter=brand&id=${o.id}">${o.name}</a></li>
+            </c:forEach>
+
+        </ul>
+        
+        
     </div>
     <div class="card bg-light mb-3">
         <div class="card-header bg-success text-white text-uppercase">Last product</div>

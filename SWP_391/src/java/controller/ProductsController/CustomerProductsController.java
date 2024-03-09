@@ -4,10 +4,12 @@
  */
 package controller.ProductsController;
 
+import DAO.ColorsDAO.ColorsDAO;
 import DAO.GroupsDAO.BrandsDAO;
 import DAO.GroupsDAO.CategoryDAO;
 import DAO.ProductDAO.ProductDetailDAO;
 import DAO.ProductDAO.ProductsDAO;
+import DAO.ProductDAO.SizeDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -17,9 +19,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Categories.Category;
+import model.Colors.Colors;
 import model.Groups.Brands;
 import model.Product.ProductDetails;
 import model.Product.Products;
+import model.Product.Sizes;
 
 /**
  *
@@ -68,12 +72,20 @@ public class CustomerProductsController extends HttpServlet {
         ProductsDAO p = new ProductsDAO();
         CategoryDAO g = new CategoryDAO();
         BrandsDAO b = new BrandsDAO();
+        ColorsDAO cdao = new ColorsDAO();
+        SizeDAO sdao = new SizeDAO();
         ProductDetailDAO pd  = new ProductDetailDAO();
         List<Category> data1 = g.selectAllCategory();
         List<ProductDetails> data0 = pd.selectAllProductDetails();
+        List<Colors>data3 = cdao.getAll();
+        List<Sizes> data4 = sdao.selectAllSizes();
+        
         request.setAttribute("data1", data1);
         
         request.setAttribute("data0", data0);
+        
+        request.setAttribute("data3", data3);
+        request.setAttribute("data4", data4);
         
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
 
