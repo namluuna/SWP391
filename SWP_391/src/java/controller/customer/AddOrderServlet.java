@@ -4,12 +4,23 @@
  */
 package controller.customer;
 
+import DAO.Common.CartDAO;
+import DAO.Common.OrderDAO;
+import DAO.Common.OrderDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.UUID;
+import model.Common.Cart;
+import model.Common.Order;
+import model.Common.OrderDetail;
+import model.Common.User;
+import model.Product.ProductDetails;
 
 /**
  *
@@ -29,19 +40,35 @@ public class AddOrderServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String addressId = request.getParameter("address");
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddOrderServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddOrderServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet AddOrderServlet at " + addressId + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        // Check if user have loged in
+        if (user == null) {
+            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
+            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
+            return;
+        } else {
+            OrderDAO orderDAO = new OrderDAO();
+            String orderCode = UUID.randomUUID().toString();
+            orderDAO.addNewOrder(orderCode, user.getId(), Integer.parseInt(addressId), 1);
+            Order order = orderDAO.searchOrderByCode(orderCode);
+            CartDAO cartDAO = new CartDAO();
+            ArrayList<Cart> orderItems = cartDAO.selectCheckoutItem(user.getId());
+            OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+            for (Cart orderItem : orderItems) {
+                orderDetailDAO.addNewOrderDetail(order.getId(), Integer.parseInt(orderItem.getProductDetail().getId()), orderItem.getQuantity(), Integer.parseInt(orderItem.getProductDetail().getProduct().getPrice()));
+                cartDAO.removeItem(String.valueOf(orderItem.getId()));
+            }
+            Order newOrder = orderDAO.searchOrderByCode(orderCode);
+            ArrayList<OrderDetail> orderDetails = newOrder.getOrderDetail();
+            int total = 0;
+            for (OrderDetail orderDetail : orderDetails) {
+                total += orderDetail.getUnitPrice() * orderDetail.getQuantity();
+            }
+            request.setAttribute("total", total);
+            request.setAttribute("orderDetails", orderDetails);
+            request.setAttribute("newOrder", newOrder);
+            request.getRequestDispatcher("ThankPage.jsp").forward(request, response);
         }
     }
 

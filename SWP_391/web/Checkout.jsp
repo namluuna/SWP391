@@ -103,7 +103,7 @@
                                                 <li>
                                                     <ul>
                                                         <c:forEach items="${checkoutItems}" var="c">
-                                                            <li><span>1 x ${c.productDetail.product.name}: </span> <span>   <fmt:formatNumber value="${c.productDetail.product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></span></li>
+                                                            <li><span>${c.quantity} x ${c.productDetail.product.name}: </span> <span>   <fmt:formatNumber value="${c.productDetail.product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></span></li>
                                                             </c:forEach>
                                                     </ul>
                                                 </li>

@@ -90,14 +90,35 @@ public class OrderDAO extends DBContext {
 
         return null;
     }
-
+    
+    public void addNewOrder(String orderCode, int customerId, int deliveryAddressId, int paymentMethod){
+        try {
+            // SQL INSERT query
+            String sql = "INSERT INTO [orders] (order_code, customer_id, oder_date, order_status, delivery_address_id, payment_method) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, orderCode);
+            st.setInt(2, customerId);
+            st.setTimestamp(3, new java.sql.Timestamp(new java.util.Date().getTime()));
+            st.setInt(4, 1);
+            st.setInt(5, deliveryAddressId);
+            st.setInt(6, paymentMethod);
+            // Execute INSERT
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
         OrderDAO orderDAO = new OrderDAO();
 //        ArrayList<Order> orders = orderDAO.selectAllOrder();
 //        for (Order order : orders) {
-//            System.out.println(order.toString());
+//            for (OrderDetail orderDetail : order.getOrderDetail()) {
+//                System.out.println(orderDetail.getProductDetail().toString());
+//            }
 //        }
-        Order order = orderDAO.searchOrderByCode("abcdefg");
-        System.out.println(order.toString());
+        Order order = orderDAO.searchOrderByCode("884a6194-b347-4b5b-b4c4-459ae8e8fd5a");
+        System.out.println(order.getOrderDetail());
+//        orderDAO.addNewOrder("abcdef", 16, 9, 1);
     }
 }

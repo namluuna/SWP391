@@ -77,9 +77,9 @@ public class CartController extends HttpServlet {
             int checkoutPrice = 0;
             int sumPrice = 0;
             for (Cart cartItem : cartItems) {
-                sumPrice += Integer.parseInt(cartItem.getProductDetail().getProduct().getPrice());
+                sumPrice += Integer.parseInt(cartItem.getProductDetail().getProduct().getPrice()) * cartItem.getQuantity();
                 if (cartItem.getIsSelected() == 1) {
-                    checkoutPrice += Integer.parseInt(cartItem.getProductDetail().getProduct().getPrice());
+                    checkoutPrice += Integer.parseInt(cartItem.getProductDetail().getProduct().getPrice()) * cartItem.getQuantity();
                 }
             }
             int checkoutNumber = cartDAO.getCheckoutNumber(user.getId());
@@ -87,18 +87,6 @@ public class CartController extends HttpServlet {
             request.setAttribute("checkoutPrice", checkoutPrice);
             request.setAttribute("sumPrice", sumPrice);
             request.getRequestDispatcher("cart.jsp").forward(request, response);
-        }
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-            CartDAO cartDAO = new CartDAO();
-            String id = request.getParameter("id");
-            cartDAO.selectedItem(id);
-            response.sendRedirect("CartController");
-        }
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
-            CartDAO cartDAO = new CartDAO();
-            String id = request.getParameter("id");
-            cartDAO.removeSelected(id);
-            response.sendRedirect("CartController");
         }
     }
 

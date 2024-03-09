@@ -47,12 +47,27 @@ public class OrderDetailDAO extends DBContext{
         return orderDetails;
     }
     
+    public void addNewOrderDetail(int orderid, int productDetailId, int quantity, int unitPrice){
+        try {
+            // SQL INSERT query
+            String sql = "INSERT INTO [order_details] (order_id, product_detail_id, quantity, unit_price) VALUES (?, ?, ?, ?)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, orderid);
+            st.setInt(2, productDetailId);
+            st.setInt(3, quantity);
+            st.setInt(4, unitPrice);
+            // Execute INSERT
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     public static void main(String[] args) {
         OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
-        ArrayList<OrderDetail> orderDetails = orderDetailDAO.selectByOrderId(1);
+        ArrayList<OrderDetail> orderDetails = orderDetailDAO.selectByOrderId(3);
         for (OrderDetail orderDetail : orderDetails) {
-            System.out.println(orderDetail.toString());
+            System.out.println(orderDetail.getQuantity());
         }
     }
 }

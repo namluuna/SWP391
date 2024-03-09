@@ -74,7 +74,7 @@ public class CheckoutController extends HttpServlet {
             ArrayList<Cart> checkoutItems = cartDAO.selectCheckoutItem(user.getId());
             int total = 0;
             for (Cart checkoutItem : checkoutItems) {
-                total += Integer.parseInt(checkoutItem.getProductDetail().getProduct().getPrice());
+                total += Integer.parseInt(checkoutItem.getProductDetail().getProduct().getPrice()) * checkoutItem.getQuantity();
             }
             UserAddressDAO userAddressDAO = new UserAddressDAO();
             ArrayList<UserAddress> addresses = userAddressDAO.sellectallPersonalAddress(user.getId());

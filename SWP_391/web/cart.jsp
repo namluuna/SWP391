@@ -11,7 +11,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+        <title>Giỏ hàng</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -74,7 +74,6 @@
                                             <div class="p-5">
                                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                                     <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
-                                                    <h6 class="mb-0 text-muted">${total} sản phẩm</h6>
                                             </div>
                                             <c:forEach items="${cartItems}" var="c">
                                                 <hr class="my-4">
@@ -139,12 +138,15 @@
                                     </div>
                                     <div class="col-lg-4 bg-grey">
                                         <div class="p-5">
-                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Tổng cộng</h3>
+                                            <div class="d-flex justify-content-between mb-5">
+                                                <h3 class="text-uppercase">Tổng Cộng</h3>
+                                                <h5>
+                                                    <fmt:formatNumber value="${checkoutPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /> VND
+                                                </h5>
+                                            </div>
                                             <hr class="my-4">
 
-                                            <div class="d-flex justify-content-between mb-4">
-                                                <h5 class="text-uppercase">Số lượng sản phẩm: ${checkoutNumber}</h5>
-                                            </div>
+                                            
 
                                             <h5 class="text-uppercase mb-3">Phí vận chuyển</h5>
                                             <h6 class="mb-0">Miễn phí</h6>
@@ -153,12 +155,7 @@
 
                                             <hr class="my-4">
 
-                                            <div class="d-flex justify-content-between mb-5">
-                                                <h5 class="text-uppercase">Tổng tiền</h5>
-                                                <h5>
-                                                    <fmt:formatNumber value="${checkoutPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /> VND
-                                                </h5>
-                                            </div>
+                                            
                                                 <a href="CheckoutController">
                                                     <button type="button" class="btn btn-dark btn-block btn-lg"
                                                     data-mdb-ripple-color="dark">Đặt hàng</button>
