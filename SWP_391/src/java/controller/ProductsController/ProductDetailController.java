@@ -92,6 +92,11 @@ public class ProductDetailController extends HttpServlet {
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
             pd.softDeleteProductDetail(request.getParameter("id"));
         }
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("4")) {
+            ProductDetails pDetail = pd.selectProductDetailById(request.getParameter("id"));
+            request.setAttribute("pDetail", pDetail);
+            request.getRequestDispatcher("view\\ProductCustomer\\ProductDetail.jsp").forward(request, response);
+        }
         ArrayList<ProductDetails> data = pd.selectAllProductDetails();
         request.setAttribute("data", data);
         request.getRequestDispatcher("view\\Products\\VeiwPDetails.jsp").forward(request, response);
