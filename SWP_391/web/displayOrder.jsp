@@ -184,7 +184,20 @@
         <p>Shipper Phone: ${order.shipper.getPhone()}</p>
         <p>Payment Method: ${order.paymentMethod}</p>
         <p>Note: ${order.note}</p>     
-        
+        <p>Address: ${order.getDeliveryAddress().showAddress()}</p> 
+
+
+        <c:forEach items="${NewOrderDetails}" var="c">
+            <hr class="my-4">                                               
+            <h6>Tên sản phẩm: ${c.getProductDetail().getProduct().getName()}</h6>
+            <h6>Màu sắc: ${c.getProductDetail().getColor().getName()}</h6>
+            <h6>Size: ${c.getProductDetail().getSize().getName()}</h6>
+            <h6>Số lượng: ${c.getQuantity()}</h6>
+            <h6>Giá: ${c.getProductDetail().getProduct().getPrice()}</h6>
+        </c:forEach>
+
+        <h6>Tổng Cộng:  ${total} VND
+           </h6>
         <br>
         <br>
         <br>
