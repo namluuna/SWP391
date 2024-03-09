@@ -93,11 +93,15 @@ public class OrderDAO extends DBContext {
 
     public static void main(String[] args) {
         OrderDAO orderDAO = new OrderDAO();
-//        ArrayList<Order> orders = orderDAO.selectAllOrder();
-//        for (Order order : orders) {
-//            System.out.println(order.toString());
-//        }
-        Order order = orderDAO.searchOrderByCode("abcdefg");
+        
+        System.out.println("fuc 1");
+        ArrayList<Order> orders = orderDAO.selectAllOrder();
+        for (Order order : orders) {
+            System.out.println(order.toString());
+        }
+        
+         System.out.println("fuc 2");
+        Order order = orderDAO.searchOrderByCode("1234");
         System.out.println(order.toString());
     }
 }

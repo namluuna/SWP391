@@ -171,23 +171,20 @@
             <br>
             <br>
             <br>
-            <form action="searchOrder" method="post">
-                <div class="row ">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                        <h1>TRA CỨU ĐƠN HÀNG</h1>
-                        <br>
-                        <div class="has-feedback">
-                            <input type="text" name="orderCode" class="form-control text-uppercase" placeholder="Mã đơn hàng" id="order-code" required="" style="height: 40px;" value="${order}">
-                        <span></span>
-                        <p style="color: red;">${errorMessage}</p> 
-                    </div>
-                </div>       
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 title-3">
-                    <button type="submit" class="btn btn-search-order" data-usersearchorder="" data-action="user-search-order">TRA CỨU ĐƠN HÀNG</button>
-                </div>
+            <h2>ĐƠN HÀNG CỦA BẠN LÀ : </h2>
 
-            </div>
-        </form>
+            <p>ID: ${order.id}</p>
+        <p>Order Code: ${order.orderCode}</p>
+        <p>Customer name: ${order.customer.getName()}</p>
+        <p>Customer email: ${order.customer.getEmail()}</p>
+        <p>Order Date: ${order.orderDate}</p>
+        <p>Delivery Date: ${order.deliveryDate}</p>
+        <p>Order Status: ${order.orderStatus}</p>
+        <p>Shipper name: ${order.shipper.getName()}</p>
+        <p>Shipper Phone: ${order.shipper.getPhone()}</p>
+        <p>Payment Method: ${order.paymentMethod}</p>
+        <p>Note: ${order.note}</p>     
+        
         <br>
         <br>
         <br>
