@@ -23,6 +23,7 @@ public class Order {
     private int paymentMethod;
     private ArrayList<OrderDetail> orderDetail;
     private String note;
+    private int total;
 
     public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, User shipper, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note) {
         this.id = id;
@@ -38,6 +39,29 @@ public class Order {
         this.note = note;
     }
 
+    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, User shipper, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note, int total) {
+        this.id = id;
+        this.orderCode = orderCode;
+        this.customer = customer;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
+        this.deliveryAddress = deliveryAddress;
+        this.shipper = shipper;
+        this.deliveryDate = deliveryDate;
+        this.paymentMethod = paymentMethod;
+        this.orderDetail = orderDetail;
+        this.note = note;
+        this.total = total;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
     public ArrayList<OrderDetail> getOrderDetail() {
         return orderDetail;
     }
@@ -130,8 +154,10 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", orderCode=" + orderCode + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", deliveryAddress=" + deliveryAddress + ", shipper=" + shipper + ", deliveryDate=" + deliveryDate + ", paymentMethod=" + paymentMethod + ", orderDetail=" + orderDetail + ", note=" + note + '}';
+        return "Order{" + "id=" + id + ", orderCode=" + orderCode + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", deliveryAddress=" + deliveryAddress + ", shipper=" + shipper + ", deliveryDate=" + deliveryDate + ", paymentMethod=" + paymentMethod + ", orderDetail=" + orderDetail + ", note=" + note + ", total=" + total + '}';
     }
+
+    
     
     
     
