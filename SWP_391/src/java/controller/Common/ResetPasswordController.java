@@ -6,7 +6,7 @@ package controller.Common;
 
 import DAO.Common.PasswordResetTokenDAO;
 import DAO.Common.UserDAO;
-import Service.MailService;
+import Service.SendMailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -91,13 +91,13 @@ public class ResetPasswordController extends HttpServlet {
             PasswordResetToken passwordResetToken = new PasswordResetToken(email, resetToken, timeStamp);
             passwordResetTokenDAO.createPasswordResetToken(passwordResetToken);
             // send the reset password email to the user
-            MailService mailService = new MailService();
+            SendMailService mailService = new SendMailService();
             mailService.sendResetPassword(user.getEmail(), resetToken);
             response.sendRedirect("ResetPasswordSuccess.jsp");
         }else{
          // the email is not exist
          request.setAttribute("email", email);
-         request.setAttribute("message", "This email is not exist");
+         request.setAttribute("message", "Địa chỉ email này không tồn tại");
          request.getRequestDispatcher("view\\customer\\fogotpassword.jsp").forward(request, response);
         }
     }

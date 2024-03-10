@@ -52,8 +52,8 @@
     <body>
         <div class="container">
             <h1>404</h1>
-            <p>Oops! Page not found.</p>
-            <p>Go back to <a href="index.html">home</a>.</p>
+            <p>Xin lỗi! Không thể tìm thấy trang.</p>
+            <p>Về lại <a href="index.html">trang chủ</a>.</p>
         </div>
     </body>
 </html>

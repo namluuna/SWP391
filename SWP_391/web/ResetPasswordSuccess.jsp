@@ -12,7 +12,6 @@
         <title>Reset Password Success</title>
         <style>
             body {
-                font-family: "Comic Sans MS", cursive;
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -107,10 +106,10 @@
     </head>
     <body>
         <div class="thank-container">
-            <h1>Your password has been successfully reset</h1>
-            <p>An email to reset password was sent to your email. Please check and click the button to change your password!</p>
+            <h1>Mật khẩu của bạn đã được đặt lại thành công</h1>
+            <p>Xin hãy kiểm tra email của bạn để đặt lại mật khẩu</p>
             <div class="btn-container">
-                <a href="/SWP_391/login" class="btn">Login Now</a>
+                <a href="/SWP_391/login" class="btn">Đăng nhập</a>
             </div>
         </div>
     </body>

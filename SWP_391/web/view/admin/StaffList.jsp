@@ -4,6 +4,7 @@
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +35,7 @@
             }
             .table-title {
                 padding-bottom: 15px;
-                background: #299be4;
+                background:  #ffc221;
                 color: #fff;
                 padding: 16px 30px;
                 margin: -20px -25px 10px;

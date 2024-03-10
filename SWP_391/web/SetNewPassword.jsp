@@ -13,7 +13,6 @@
         
         <style>
             body {
-                font-family: "Comic Sans MS", cursive;
                 margin: 0;
                 display: flex;
                 align-items: center;
@@ -107,23 +106,23 @@
     <body>
         <div class="container">
             <div class="card">
-                <h2>Set New Password</h2>
+                <h2>Đặt mật khẩu mới</h2>
                 <form action="/SWP_391/SetNewPassword" method="post">
                     <input type="password" id="password" name="password" placeholder="Enter new password" value="${password}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showPassword()">
-                        <label>Show Password</label>
+                        <label>Hiển thị mật khẩu</label>
                     </div>
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter password(confirm)"  value="${confirmPassword}" required>
                     <div class="form-field">
                         <input type="checkbox" onclick="showConfirmPassword()">
-                        <label>Show Confirm Password</label>
+                        <label>Hiển thị xác nhận mật khẩu</label>
                     </div>
                     <c:if test="${not empty message}">
                         <p style="color: red;">${message}</p> 
                     </c:if>
                     <input type="hidden" name="token" value="${token}">
-                    <button type="submit">Reset Password</button>
+                    <button type="submit">Đặt lại mật khẩu</button>
                     <br>
                 </form>
             </div>

@@ -11,6 +11,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Common.User;
 
 /**
  *
@@ -35,7 +37,7 @@ public class DeleteStaffController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteStaffController</title>");            
+            out.println("<title>Servlet DeleteStaffController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DeleteStaffController at " + request.getContextPath() + "</h1>");
@@ -56,16 +58,27 @@ public class DeleteStaffController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String id_raw = request.getParameter("id");
-       int id;
-        try {
-            id =Integer.parseInt(id_raw);
-            UserDAO udao = new UserDAO();
-            udao.deleteUser(id);
-            response.sendRedirect("staff");
-        } catch (NumberFormatException e) {
-            
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
+            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
+            return;
+        } else if (user.getRole() != 1) {
+            response.sendRedirect("404.jsp");
+        } else {
+            String id_raw = request.getParameter("id");
+            int id;
+            try {
+                id = Integer.parseInt(id_raw);
+                UserDAO udao = new UserDAO();
+                udao.deleteUser(id);
+                response.sendRedirect("staff");
+            } catch (NumberFormatException e) {
+
+            }
         }
+
     }
 
     /**

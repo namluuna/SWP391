@@ -151,6 +151,10 @@
                     </select>
                     <label for="address"><span style="color: red;">*</span>Địa Chỉ:</label>
                     <textarea id="address" name="address" rows="4" value="" required>${userAddress.getAddress()}</textarea>
+                    <div class="form-field">
+                        <input type="checkbox" name="defaultAddress">
+                        <label>Đặt làm địa chỉ mặc định</label>
+                    </div>
                     <button type="submit">Lưu địa chỉ</button>
                     <br>
                 </form>

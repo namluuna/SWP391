@@ -46,7 +46,7 @@
     <body>
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Tạo nhân viên mới</h1>
+                <h1 class="text-center mb-4">Cập nhật nhân viên</h1>
                 <c:set var="c" value="${getStaffId}" />
                 <form  action="/SWP_391/updateStaff" method="POST" onsubmit="return validateEmail();" >
                     <div class="mb-3">
@@ -57,9 +57,6 @@
                     </div>
                     <div class="mb-3">
                         Email: <input type="text" name="email"  value="${c.email}"  id="email" class="form-control" required readonly/><br>                    
-                    </div>
-                    <div class="mb-3">
-                        Cập nhật mật khẩu: <input type="password" name="password"  value="${c.password}" class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
                         Cập nhật số điện thoại: <input type="number" name="phone" value="${c.phone}" class="form-control" required /><br>

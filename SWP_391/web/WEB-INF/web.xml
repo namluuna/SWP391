@@ -48,6 +48,38 @@
         <servlet-name>EditAddressController</servlet-name>
         <servlet-class>controller.Common.EditAddressController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchOrderController</servlet-name>
+        <servlet-class>controller.customer.SearchOrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveSelectCartItem</servlet-name>
+        <servlet-class>controller.customer.RemoveSelectCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectCartItem</servlet-name>
+        <servlet-class>controller.customer.SelectCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddQuantityCartNumber</servlet-name>
+        <servlet-class>controller.customer.AddQuantityCartNumber</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReduceQuantityCartItem</servlet-name>
+        <servlet-class>controller.customer.ReduceQuantityCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckoutController</servlet-name>
+        <servlet-class>controller.customer.CheckoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveItemServlet</servlet-name>
+        <servlet-class>controller.customer.RemoveItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddOrderServlet</servlet-name>
+        <servlet-class>controller.customer.AddOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -252,7 +284,7 @@
         <servlet-name>CustomerProductsController</servlet-name>
         <servlet-class>controller.ProductsController.CustomerProductsController</servlet-class>
     </servlet>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CustomerProductsController</servlet-name>
         <url-pattern>/CustomerProducts</url-pattern>
     </servlet-mapping>
@@ -268,7 +300,7 @@
         <servlet-name>SizesController</servlet-name>
         <servlet-class>controller.ProductsController.SizesController</servlet-class>
     </servlet>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SizesController</servlet-name>
         <url-pattern>/sizes</url-pattern>
     </servlet-mapping>
@@ -280,7 +312,7 @@
         <servlet-name>ListStaffController</servlet-name>
         <url-pattern>/staff</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <servlet-name>DeleteStaffController</servlet-name>
         <servlet-class>controller.admin.DeleteStaffController</servlet-class>
     </servlet>
@@ -312,11 +344,41 @@
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/searchStaff</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchOrderController</servlet-name>
+        <url-pattern>/searchOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveSelectCartItem</servlet-name>
+        <url-pattern>/RemoveSelectCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectCartItem</servlet-name>
+        <url-pattern>/SelectCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuantityCartNumber</servlet-name>
+        <url-pattern>/AddQuantityCartNumber</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReduceQuantityCartItem</servlet-name>
+        <url-pattern>/ReduceQuantityCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutController</servlet-name>
+        <url-pattern>/CheckoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveItemServlet</servlet-name>
+        <url-pattern>/RemoveItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddOrderServlet</servlet-name>
+        <url-pattern>/AddOrderServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            3000
         </session-timeout>
     </session-config>
-    
-    
 </web-app>
