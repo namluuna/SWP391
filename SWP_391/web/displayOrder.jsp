@@ -273,19 +273,22 @@
                 <h4 class="text-muted"><strong>ngày vận chuyển:</strong> ${order.deliveryDate}</h4> 
                 <c:choose>
                     <c:when test="${order.orderStatus eq 1}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đơn hàng đang được đóng gói để vận chuyển</h4>
+                        <h4 class="text-muted"><strong>Trạng thái:</strong>  Đang chờ xử lý </h4>
                     </c:when>
                     <c:when test="${order.orderStatus eq 2}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đơn hàng đang được chuyển đi cho khách hàng</h4>
+                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đóng gói xong và đang giao cho người vận chuyển</h4>
                     </c:when>
                     <c:when test="${order.orderStatus eq 3}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đơn hàng đã được giao thành công cho khách hàng</h4>
+                        <h4 class="text-muted"><strong>Trạng thái:</strong> Người vận chuyển đã nhận đơn và đang giao hàng</h4>
                     </c:when>
                     <c:when test="${order.orderStatus eq 4}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong>  Đơn hàng chưa giao được cho khách hàng (Có thể vì khách hàng bận, đi vắng, khách hẹn lại thời điểm khác giao hàng...)</h4>
+                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đơn hàng được giao thành công  </h4>
                     </c:when>
                     <c:when test="${order.orderStatus eq 5}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Khách hàng hủy không lấy đơn hàng </h4>
+                        <h4 class="text-muted"><strong>Trạng thái:</strong> Khách hàng không nhận hàng </h4>
+                    </c:when>
+                    <c:when test="${order.orderStatus eq 6}">
+                        <h4 class="text-muted"><strong>Trạng thái:</strong> Khách hàng hủy đơn hàng </h4>
                     </c:when>
                     <c:otherwise>
                         <h4 class="text-muted"><strong>Trạng thái:</strong> Không xác định</h4>
@@ -295,13 +298,10 @@
                 <h4 class="text-muted"><strong>Số điện thoại:</strong> ${order.shipper.getPhone()}</h4> 
                 <c:choose>
                     <c:when test="${order.paymentMethod eq 1}">
-                        <h4 class="text-muted"><strong>Cách thức trả tiền:</strong> Trả online</h4> 
-                    </c:when>
-                    <c:when test="${order.paymentMethod eq 2}">
-                        <h4 class="text-muted"><strong>Cách thức trả tiền:</strong> Trả tiền mặt</h4> 
-                    </c:when>
+                        <h4 class="text-muted"><strong>Cách thức thanh toán:</strong>  Thanh toán khi nhận hàng</h4> 
+                    </c:when>               
                     <c:otherwise>
-                       <h4 class="text-muted"><strong>Cách thức trả tiền:</strong> Không xác định</h4> 
+                        <h4 class="text-muted"><strong>Cách thức trả tiền:</strong> Không xác định</h4> 
                     </c:otherwise>
                 </c:choose>
                 <h4 class="text-muted"><strong>Ghi chú:</strong> ${order.note}</h4> 
