@@ -8,6 +8,7 @@ import DAO.ColorsDAO.ColorsDAO;
 import DAO.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import model.Colors.Colors;
@@ -157,7 +158,31 @@ public class ProductDetailDAO extends DBContext {
         }
         return false;
     }
-
+    
+    public void addQuantity(String id, String quantity) {
+        try {
+            String sql = "UPDATE [product_details] SET inventory_number = inventory_number + ? WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, quantity);
+            statement.setString(2, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void reduceQuantity(String id, String quantity) {
+        try {
+            String sql = "UPDATE [product_details] SET inventory_number = inventory_number - ? WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, quantity);
+            statement.setString(2, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public boolean restoreProductDetail(String id) {
         try {
             String sql = "UPDATE product_details SET deleted_at = NULL WHERE id = ?";
