@@ -1545,11 +1545,11 @@
                                     </div>
                                     <div class="button">
                                         <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                           href="">MUA
+                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">MUA
                                             NGAY</a>
                                         <a class="btn btn-prd1-heart addToWishList"
-                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
-                                           data-liked="false" data-action="transferCartToWishList"                                   data-idProduct="962345"></a>
+                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}"
+                                           data-liked="false" data-action="transferCartToWishList"data-idProduct="962345"></a>
                                     </div>
                                     <div class="caption">
                                         <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
