@@ -310,10 +310,19 @@
                     </table>      
 
                     <div class="clearfix">
-                        <ul class="pagination">                      
-                            <c:forEach begin="1" end="${endPage}" var="i">
-                                <c:choose>
-                                    <c:when test="${param.index == i}">
+                        <ul class="pagination">  
+                            <c:choose>
+                                <c:when test="${endPage > 1 && param.index != 1}">
+                                    <li class="page-item"><a href="staff?index=${param.index - 1}&txtSearch=${txtSearch}" class="page-link"><</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <li class="page-item disabled"><span class="page-link"><</span></li>
+                                    </c:otherwise>
+                                </c:choose>
+                                    
+                                <c:forEach begin="1" end="${endPage}" var="i">
+                                    <c:choose>
+                                        <c:when test="${param.index == i}">
                                         <li class="page-item active"><a href="staff?index=${i}&&txtSearch=${txtSearch}" class="page-link selected">${i}</a></li>
                                         </c:when>
                                         <c:otherwise>
@@ -324,7 +333,7 @@
 
 
                             <c:choose>
-                                <c:when test="${endPageSearch > 1 && param.index != endPageSearch}">
+                                <c:when test="${endPage > 1 && param.index != endPage}">
                                     <li class="page-item"><a href="staff?index=${param.index + 1}&txtSearch=${txtSearch}" class="page-link">></a></li>
                                     </c:when>
                                     <c:otherwise>
