@@ -218,6 +218,10 @@
                 background-color: #f2f2f2; /* Màu nền để phân biệt */
                 padding: 20px; /* Khoảng cách giữa nội dung và viền */
             }
+            .img-fluid {
+                width: 50%; /* Thay đổi kích thước theo nhu cầu của bạn */
+                height: auto;
+            }
         </style>
 
     </head>
@@ -248,7 +252,9 @@
                         </thead>
                         <tr>
                         <c:forEach items="${NewOrderDetails}" var="c">
-                            <td> ${c.getProductDetail().getImage_url_1()} ${c.getProductDetail().getProduct().getName()}</td>
+                            <td> <img
+                                    src="images/${c.getProductDetail().getImage_url_2()}"
+                                    class="img-fluid rounded-3" alt="Cotton T-shirt" >${c.getProductDetail().getProduct().getName()}</td>
                             <td>${c.getProductDetail().getColor().getName()}</td>
                             <td>${c.getProductDetail().getSize().getName()}</td>
                             <td>${c.getQuantity()}</td>
