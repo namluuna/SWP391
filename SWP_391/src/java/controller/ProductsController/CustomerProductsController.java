@@ -4,10 +4,14 @@
  */
 package controller.ProductsController;
 
+import DAO.ColorsDAO.ColorsDAO;
 import DAO.GroupsDAO.BrandsDAO;
 import DAO.GroupsDAO.CategoryDAO;
+import DAO.GroupsDAO.FormDAO;
+import DAO.MaterialsDAO.MaterialsDAO;
 import DAO.ProductDAO.ProductDetailDAO;
 import DAO.ProductDAO.ProductsDAO;
+import DAO.ProductDAO.SizeDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -17,9 +21,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Categories.Category;
+import model.Colors.Colors;
 import model.Groups.Brands;
+import model.Materials.materials;
 import model.Product.ProductDetails;
 import model.Product.Products;
+import model.Product.Sizes;
+import model.Sale.Form;
 
 /**
  *
@@ -68,13 +76,24 @@ public class CustomerProductsController extends HttpServlet {
         ProductsDAO p = new ProductsDAO();
         CategoryDAO g = new CategoryDAO();
         BrandsDAO b = new BrandsDAO();
+        ColorsDAO cdao = new ColorsDAO();
+        SizeDAO sdao = new SizeDAO();
+        FormDAO fdao = new FormDAO();
+        MaterialsDAO mdao = new MaterialsDAO();
         ProductDetailDAO pd  = new ProductDetailDAO();
         List<Category> data1 = g.selectAllCategory();
         List<ProductDetails> data0 = pd.selectAllProductDetails();
+        List<Colors>data3 = cdao.getAll();
+        List<Sizes> data4 = sdao.selectAllSizes();
+        List<Form> data5 = fdao.selectAllForm();
+        List<materials> data6 = mdao.getAll();
         request.setAttribute("data1", data1);
         
         request.setAttribute("data0", data0);
-        
+        request.setAttribute("data3", data3);
+        request.setAttribute("data4", data4);
+        request.setAttribute("data5", data5);
+        request.setAttribute("data6", data6);
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
 
             request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
@@ -90,6 +109,7 @@ public class CustomerProductsController extends HttpServlet {
         //------------------------------------------------------------------------------------------------------------------
         List<Brands> data2 = b.selectAllBrands();
         request.setAttribute("data2", data2);
+        
         ArrayList<Products> data = null;
         if (request.getParameter("filter") != null) {
             if (request.getParameter("filter").contains("brand")) {
@@ -97,6 +117,14 @@ public class CustomerProductsController extends HttpServlet {
             }
             if (request.getParameter("filter").contains("category")) {
                 data = p.selectProductbyCategory(request.getParameter("id"));
+            }
+            if (request.getParameter("filter").contains("color"))
+            {
+                
+            }
+            if (request.getParameter("filter").contains("size"))
+            {
+                
             }
         } else {
             data = p.selectAllProducts();
