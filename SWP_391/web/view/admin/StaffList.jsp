@@ -4,7 +4,7 @@
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+    
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -197,16 +197,8 @@
         <script>
             window.onload = function () {
                 var currentUrl = window.location.href;
-
                 if (currentUrl.indexOf('?') === -1) {
-                    window.location.href = currentUrl + '?index=1&txtSearch=${txtSearch}';
-                } else {
-                    var params = new URLSearchParams(window.location.search);
-                    if (!params.has('index')) {
-                        params.set('index', '1');
-                        params.set('txtSearch', '${txtSearch}');
-                        window.location.href = currentUrl.split('?')[0] + '?' + params.toString();
-                    }
+                    window.location.href = currentUrl + '?index=1';
                 }
             }
         </script>
@@ -310,27 +302,35 @@
                     </table>      
 
                     <div class="clearfix">
-                        <ul class="pagination">                      
+                        <ul class="pagination">
+                            <c:choose>
+                                <c:when test="${param.index == 1}">
+                                    <li class="page-item disabled"><span class="page-link"><</span></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <li class="page-item"><a href="staff?index=${param.index - 1}" class="page-link"><</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+
                             <c:forEach begin="1" end="${endPage}" var="i">
                                 <c:choose>
                                     <c:when test="${param.index == i}">
-                                        <li class="page-item active"><a href="staff?index=${i}&&txtSearch=${txtSearch}" class="page-link selected">${i}</a></li>
+                                        <li class="page-item active"><a href="staff?index=${i}" class="page-link selected">${i}</a></li>
                                         </c:when>
                                         <c:otherwise>
-                                        <li class="page-item"><a href="staff?index=${i}&&txtSearch=${txtSearch}" class="page-link">${i}</a></li>
+                                        <li class="page-item"><a href="staff?index=${i}" class="page-link">${i}</a></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
-
-
-                            <c:choose>
-                                <c:when test="${endPageSearch > 1 && param.index != endPageSearch}">
-                                    <li class="page-item"><a href="staff?index=${param.index + 1}&txtSearch=${txtSearch}" class="page-link">></a></li>
+                                <c:choose>
+                                    <c:when test="${param.index == endPage}">
+                                    <li class="page-item disabled"><a href="#" class="page-link">></a></li>
                                     </c:when>
                                     <c:otherwise>
-                                    <li class="page-item disabled"><span class="page-link">></span></li>
+                                    <li class="page-item"><a href="staff?index=${param.index + 1}" class="page-link">></a></li>
                                     </c:otherwise>
                                 </c:choose>
+
                         </ul>
                     </div>              
                 </div>
