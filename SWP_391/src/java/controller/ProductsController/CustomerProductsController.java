@@ -126,12 +126,22 @@ public class CustomerProductsController extends HttpServlet {
             {
                 
             }
-        } else {
-            data = p.selectAllProducts();
-        }
-        request.setAttribute("data", data);
+            request.setAttribute("data", data);
 
         request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+        } if (request.getParameter("detail") != null)
+        {
+            request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
+            request.getRequestDispatcher("view\\ProductCustomer\\ProductDetail.jsp").forward(request, response);
+            return;
+        }
+        else {
+            data = p.selectAllProducts();
+            request.setAttribute("data", data);
+
+        request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+        }
+        
     }
 
     /**

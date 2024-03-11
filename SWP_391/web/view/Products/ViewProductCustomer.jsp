@@ -212,7 +212,7 @@
                 <div class="navbar center ">
 
                     <div class="navbar-header">
-                        <div class="navbar-brand"><a href="ananas.vn/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a></div>
+                        <div class="navbar-brand"><a href="./"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a></div>
                     </div>
 
                     <div class="collapse navbar-collapse">
@@ -1536,7 +1536,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
                                 <div class="thumbnail">
                                     <div class="cont-item">
-                                        <a href="ananas.vn/product-detail/av00207/index.html">
+                                        <a href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
                                             <img class="inormal"
                                                  src="images/${data0[data.indexOf(product)].getImage_url_1()}">
                                             <img class="ihover"
@@ -1545,10 +1545,10 @@
                                     </div>
                                     <div class="button">
                                         <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                           href="ananas.vn/product-detail/av00207/index.html">MUA
+                                           href="">MUA
                                             NGAY</a>
                                         <a class="btn btn-prd1-heart addToWishList"
-                                           href="javascript:void(0)"
+                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
                                            data-liked="false" data-action="transferCartToWishList"                                   data-idProduct="962345"></a>
                                     </div>
                                     <div class="caption">
