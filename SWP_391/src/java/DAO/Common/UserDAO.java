@@ -222,6 +222,35 @@ public class UserDAO extends DBContext {
         return users;
     }
 
+    public ArrayList<User> sellectallShipper() {
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from [users] WHERE is_deleted = 0 AND role = 3";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int user_id = rs.getInt("id");
+                String user_name = rs.getString("name");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String phone = rs.getString("phone");
+                int is_deleted = rs.getInt("is_deleted");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                Timestamp created_at = rs.getTimestamp("created_at");
+                UserAddressDAO uadao = new UserAddressDAO();
+                ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
+                String image = rs.getString("image_url");
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, user_addresses, image);
+                users.add(u);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+    
     public ArrayList<User> sellectallStaffByPaging(int index) {
         ArrayList<User> users = new ArrayList<>();
         try {
@@ -319,8 +348,12 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO udao = new UserDAO();
-        String encodedPassword = BCrypt.hashpw("hieu1810", BCrypt.gensalt(10));
-        udao.changePassword("ball221@gmail.com", encodedPassword);
+        ArrayList<User> shippers = udao.sellectallShipper();
+        for (User shipper : shippers) {
+            System.out.println(shipper.toString());
+        }
+//        String encodedPassword = BCrypt.hashpw("LB@123456", BCrypt.gensalt(10));
+//        udao.changePassword("khangnhhe160625@fpt.edu.vn", encodedPassword);
 //        ArrayList<User> u = udao.sellectallStaffByPaging(1);
 //        for (User o : u) {
 //            System.out.println(o);
