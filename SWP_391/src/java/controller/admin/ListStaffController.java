@@ -84,9 +84,10 @@ public class ListStaffController extends HttpServlet {
                     endPage++;
                 }
                 ArrayList<User> selectStaff = userDAO.SearchUserByName(txtSearch, index);
-
+                
                 request.setAttribute("endPage", endPage);
                 request.setAttribute("selectStaff", selectStaff);
+                request.setAttribute("txtSearch", txtSearch);
             } else {
                 int count = userDAO.getTotalUsers();
                 int endPage = count / 15;
