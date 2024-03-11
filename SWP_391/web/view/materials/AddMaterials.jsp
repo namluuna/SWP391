@@ -56,7 +56,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description:</label>
-                        <input type="text" class="form-control" id="description" name="description">
+                       <textarea class="form-control" id="description" name="description"></textarea>
+
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add">ADD</button>
