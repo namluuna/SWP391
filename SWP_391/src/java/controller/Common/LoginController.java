@@ -4,6 +4,7 @@
  */
 package controller.Common;
 
+import DAO.Common.CartDAO;
 import DAO.Common.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -91,7 +92,10 @@ public class LoginController extends HttpServlet {
                             response.sendRedirect("view\\shipper\\DashBoard.jsp");
                             break;
                         default:
-                            response.sendRedirect("view\\customer\\Home.jsp");
+                            CartDAO cDAO = new CartDAO();
+                            int total = cDAO.getCartQuantity(user.getId());
+                            request.getSession().setAttribute("total", total);
+                            response.sendRedirect("CustomerProducts");
                             break;
                     }
                 }

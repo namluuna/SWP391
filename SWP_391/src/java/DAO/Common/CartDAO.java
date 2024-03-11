@@ -46,7 +46,24 @@ public class CartDAO extends DBContext {
         }
         return cartItems;
     }
-
+    
+    public int getCartQuantity(int userId){
+        try {
+            // Select address from user with user id
+            String sql = "SELECT COUNT(*) AS quantity from cart_items WHERE customer_id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, userId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int total = rs.getInt("quantity");
+                return total;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
     public ArrayList<Cart> selectCheckoutItem(int userId) {
         ArrayList<Cart> cartItems = new ArrayList<>();
         try {
@@ -182,7 +199,7 @@ public class CartDAO extends DBContext {
     public static void main(String[] args) {
         ArrayList<Cart> cartItems = new ArrayList<>();
         CartDAO cDAO = new CartDAO();
-        cDAO.addTocart(16, 28, 2);
+        System.out.println(cDAO.getCartQuantity(16));
 //        cartItems = cDAO.selectAllCartItem(16);
 //        for (Cart cartItem : cartItems) {
 //            System.out.println(cartItem.getIsSelected());
