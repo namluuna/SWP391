@@ -155,7 +155,8 @@
     <body>
 
         <div class="container">
-            <div class="row">
+            
+            <div class="row"><jsp:forward page="../Header and footer/HeaderCustomer.jsp" />
                 <div class="col-md-6 column-margin">
                     <div class="pro-img-details">
                         <div class="arrow left" onclick="prevImage()">&#10094;</div>
