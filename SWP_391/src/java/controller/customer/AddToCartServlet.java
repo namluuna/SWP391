@@ -5,26 +5,20 @@
 package controller.customer;
 
 import DAO.Common.CartDAO;
-import DAO.Common.OrderDAO;
-import DAO.Common.OrderDetailDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.UUID;
-import model.Common.Cart;
-import model.Common.Order;
-import model.Common.OrderDetail;
 import model.Common.User;
 
 /**
  *
  * @author ifyou
  */
-public class AddOrderServlet extends HttpServlet {
+public class AddToCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +31,6 @@ public class AddOrderServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String addressId = request.getParameter("address");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         // Check if user have loged in
@@ -46,27 +39,12 @@ public class AddOrderServlet extends HttpServlet {
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
             return;
         } else {
-            OrderDAO orderDAO = new OrderDAO();
-            String orderCode = UUID.randomUUID().toString();
-            orderDAO.addNewOrder(orderCode, user.getId(), Integer.parseInt(addressId), 1);
-            Order order = orderDAO.searchOrderByCode(orderCode);
+            String id = request.getParameter("id");
+            String quantity = request.getParameter("quantity");
             CartDAO cartDAO = new CartDAO();
-            ArrayList<Cart> orderItems = cartDAO.selectCheckoutItem(user.getId());
-            OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
-            for (Cart orderItem : orderItems) {
-                orderDetailDAO.addNewOrderDetail(order.getId(), Integer.parseInt(orderItem.getProductDetail().getId()), orderItem.getQuantity(), Integer.parseInt(orderItem.getProductDetail().getProduct().getPrice()));
-                cartDAO.removeItem(String.valueOf(orderItem.getId()));
-            }
-            Order newOrder = orderDAO.searchOrderByCode(orderCode);
-            ArrayList<OrderDetail> orderDetails = newOrder.getOrderDetail();
-            int total = 0;
-            for (OrderDetail orderDetail : orderDetails) {
-                total += orderDetail.getUnitPrice() * orderDetail.getQuantity();
-            }
-            request.setAttribute("total", total);
-            request.setAttribute("orderDetails", orderDetails);
-            request.setAttribute("newOrder", newOrder);
-            request.getRequestDispatcher("ThankPage.jsp").forward(request, response);
+            cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));
+            request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
+            response.sendRedirect("CustomerProducts?detail=" + id);
         }
     }
 
