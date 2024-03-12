@@ -47,21 +47,21 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Create New Materials</h1>
+                <h1 class="text-center mb-4">Thêm chất liệu mới</h1>
                 <form name="form" action="materials" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name:</label>
+                        <label for="name" class="form-label">Nhập tên:</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description:</label>
+                        <label for="description" class="form-label">Nhập mô tả: </label>
                        <textarea class="form-control" id="description" name="description"></textarea>
 
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
-                    <a href="materials" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" name="add">Tạo mới</button>
+                    <a href="materials" class="btn btn-secondary">Hủy bỏ</a>
                 </form>
             </div>
         </div>
@@ -80,12 +80,12 @@
                         errorMessageDescription.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Please enter a name";
+                            errorMessageName.innerHTML = "Hãy nhập tên chất liệu";
                             return false;
                         }
 
                         if (description === "") {
-                            errorMessageDescription.innerHTML = "Please enter a description";
+                            errorMessageDescription.innerHTML = "Hãy nhập phần mô tả";
                             return false;
                         }
 
