@@ -7,6 +7,7 @@ package controller.customer;
 import DAO.Common.CartDAO;
 import DAO.Common.OrderDAO;
 import DAO.Common.OrderDetailDAO;
+import DAO.ProductDAO.ProductDetailDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -53,17 +54,22 @@ public class AddOrderServlet extends HttpServlet {
             CartDAO cartDAO = new CartDAO();
             ArrayList<Cart> orderItems = cartDAO.selectCheckoutItem(user.getId());
             OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+            ProductDetailDAO pdDAO = new ProductDetailDAO();
             for (Cart orderItem : orderItems) {
                 orderDetailDAO.addNewOrderDetail(order.getId(), Integer.parseInt(orderItem.getProductDetail().getId()), orderItem.getQuantity(), Integer.parseInt(orderItem.getProductDetail().getProduct().getPrice()));
                 cartDAO.removeItem(String.valueOf(orderItem.getId()));
+                pdDAO.reduceQuantity(orderItem.getProductDetail().getId(), String.valueOf(orderItem.getQuantity()));
             }
             Order newOrder = orderDAO.searchOrderByCode(orderCode);
             ArrayList<OrderDetail> orderDetails = newOrder.getOrderDetail();
-            int total = 0;
+            int totalAmount = 0;
             for (OrderDetail orderDetail : orderDetails) {
-                total += orderDetail.getUnitPrice() * orderDetail.getQuantity();
-            }
-            request.setAttribute("total", total);
+                totalAmount += orderDetail.getUnitPrice() * orderDetail.getQuantity();
+            }          
+            session.removeAttribute("total");
+            int total = cartDAO.getCartQuantity(user.getId());
+            session.setAttribute("total", total);
+            request.setAttribute("totalAmount", totalAmount);
             request.setAttribute("orderDetails", orderDetails);
             request.setAttribute("newOrder", newOrder);
             request.getRequestDispatcher("ThankPage.jsp").forward(request, response);

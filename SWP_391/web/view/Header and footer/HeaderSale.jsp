@@ -1,8 +1,10 @@
 <%-- 
-    Document   : HeaderCustomer
-    Created on : Mar 11, 2024, 11:33:28 AM
-    Author     : lucdu
+    Document   : HearderSale
+    Created on : Mar 12, 2024, 11:25:58 AM
+    Author     : ifyou
 --%>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -102,12 +104,11 @@
         <div class="header container-fluid hidden-xs hidden-sm">
             <div class="row">
                 <ul class="menu">
-                    <li><a href="SearchOrder.jsp"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
-                            <c:choose>
-                                <c:when test="${not empty user}">
+
+                    <c:choose>
+                        <c:when test="${not empty user}">
                             <li><a href="profile"><img
                                         src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
-                            <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
                             <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
                                 </c:when>
                                 <c:otherwise>
@@ -123,30 +124,54 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
-                                <a href="" class="">TRANG CHỦ</a>
+                                <a href="groups" class="">TRẠNG THÁI</a>
                             </li>
 
                             <li class="line"></li>
                             <li class="dropdown">
-                                <a href="" class="">SẢN PHẨM MỚI</a>
+                                <a href="Forms" class="">KIỂU DÁNG</a>
                             </li>
 
                             <li class="line"></li>
                             <li class="dropdown">
-                                <a href="" class="">BÁN CHẠY</a>
+                                <a href="materials" class="">CHẤT LIỆU</a>
+
+                            </li>
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="loadcategory" class="">LOẠI GIÀY</a>
+
+                            </li>
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="colors" class="">MÀU</a>
+
+                            </li>
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="brands" class="">HÃNG GIÀY</a>
+
+                            </li>
+
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="products" class="">SẢN PHẨM</a>
+
+                            </li>
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="sizes" class="">KÍCH THƯỚC</a>
+
+                            </li>
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="productdetails" class="">CHI TIẾT SẢN PHẨM</a>
 
                             </li>
                         </ul>
-                        <form action="" class="navbar-form navbar-right">
-                            <div class="form-group" style="align-items: center">
-                                <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg" >
-                                <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm">
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
-
         </div>
         <script>
             const ajaxUrl = 'ananas.vn/wp-admin/admin-ajax.html';
@@ -187,3 +212,4 @@
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/lib/fe-controllers/userController261b.js?ver=20233105'></script>
     </body>
 </html>
+

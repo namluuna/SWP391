@@ -17,7 +17,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="../Groups/header.jsp"></jsp:include>
+        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
             <div class="container mt-5">
 
                 <h1>Bảng màu sắc</h1>

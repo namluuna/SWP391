@@ -72,15 +72,15 @@ public class CheckoutController extends HttpServlet {
         else{
             CartDAO cartDAO = new CartDAO();
             ArrayList<Cart> checkoutItems = cartDAO.selectCheckoutItem(user.getId());
-            int total = 0;
+            int totalAmount = 0;
             for (Cart checkoutItem : checkoutItems) {
-                total += Integer.parseInt(checkoutItem.getProductDetail().getProduct().getPrice()) * checkoutItem.getQuantity();
+                totalAmount += Integer.parseInt(checkoutItem.getProductDetail().getProduct().getPrice()) * checkoutItem.getQuantity();
             }
             UserAddressDAO userAddressDAO = new UserAddressDAO();
             ArrayList<UserAddress> addresses = userAddressDAO.sellectallPersonalAddress(user.getId());
             request.setAttribute("addresses", addresses);
             request.setAttribute("checkoutItems", checkoutItems);
-            request.setAttribute("total", total);            
+            request.setAttribute("totalAmount", totalAmount);            
             request.getRequestDispatcher("Checkout.jsp").forward(request, response);
         }
     }

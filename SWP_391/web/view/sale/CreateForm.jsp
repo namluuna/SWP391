@@ -44,7 +44,7 @@
         </style>
     </head>
     <body>
-
+        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
         <div class="container">
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Create New Forms</h1>

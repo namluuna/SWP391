@@ -5,8 +5,10 @@
 package controller.Common;
 
 import DAO.Common.OrderDAO;
+import DAO.Common.OrderDetailDAO;
 import DAO.Common.OrderStatusDAO;
 import DAO.Common.UserDAO;
+import DAO.ProductDAO.ProductDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,6 +19,7 @@ import jakarta.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import model.Common.Order;
+import model.Common.OrderDetail;
 import model.Common.OrderStatus;
 import model.Common.User;
 
@@ -122,7 +125,16 @@ public class EditOrderController extends HttpServlet {
             String expectedDeliveryDate = request.getParameter("expectedDeliveryDate");
             expectedDeliveryDate += " 00:00:00";
             OrderDAO orderDAO = new OrderDAO();
-            orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shiperId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate));
+            ProductDetailDAO pdDAO = new ProductDetailDAO();
+            if(status.equals("5") || status.equals("6")){
+                Order o = orderDAO.searchOrderById(id);
+                OrderDetailDAO odDAO = new OrderDetailDAO();
+                ArrayList<OrderDetail> orderDetails = odDAO.selectByOrderId(o.getId());
+                for (OrderDetail orderDetail : orderDetails) {
+                    pdDAO.addQuantity(orderDetail.getProductDetail().getId(), String.valueOf(orderDetail.getQuantity()));
+                }
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shiperId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate));                
+            }
             response.sendRedirect("OrderController");
         }
 

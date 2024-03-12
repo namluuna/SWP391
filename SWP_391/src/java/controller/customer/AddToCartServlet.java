@@ -42,9 +42,19 @@ public class AddToCartServlet extends HttpServlet {
             String id = request.getParameter("id");
             String quantity = request.getParameter("quantity");
             CartDAO cartDAO = new CartDAO();
-            cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));
-            request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
-            response.sendRedirect("CustomerProducts?detail=" + id);
+            int isExist = cartDAO.isExistItem(user.getId(), Integer.parseInt(id));
+            if (isExist != 0) {
+                request.getSession().setAttribute("itemIsExist", "Sản phẩm này đã có trong giỏ hàng!");
+                response.sendRedirect("CustomerProducts?detail=" + id);
+            } else {
+                cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));
+                request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
+                session.removeAttribute("total");
+                int total = cartDAO.getCartQuantity(user.getId());
+                session.setAttribute("total", total);
+                response.sendRedirect("CustomerProducts?detail=" + id);
+            }
+
         }
     }
 
