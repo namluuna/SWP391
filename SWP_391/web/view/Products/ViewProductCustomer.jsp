@@ -34,7 +34,7 @@
                 s = b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t, s)
             }(window,
-                    document, 'script', 'ananas.vn/ananas.vn/connect.facebook.net/en_US/fbevents.js');
+                    document, 'script', 'connect.facebook.net/en_US/fbevents.js');
             // Insert Your Facebook Pixel ID below.
             fbq('init', '548729748652125');
             fbq('track', 'PageView');
@@ -49,7 +49,7 @@
                         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
                 j.async = true;
                 j.src =
-                        'ananas.vn/ananas.vn/www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+                        'www.googletagmanager.com/gtm5445.html?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
             })(window, document, 'script', 'dataLayer', 'GTM-P4C43VC');</script>
         <!-- End Google Tag Manager -->
@@ -135,7 +135,7 @@
                 margin:0 !important;
             }</style>
         <meta name="onesignal" content="wordpress-plugin"/>
-        <script src="ananas.vn/ananas.vn/cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>    <script>
+        <script src="cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>    <script>
 
             window.OneSignal = window.OneSignal || [];
 
@@ -178,7 +178,17 @@
                     documentInitOneSignal();
                 });
             }
+            document.getElementById("searchInput").addEventListener("keydown", function (event) {
+                // Kiểm tra xem phím được nhấn có phải là Enter không (mã phím 13)
+                if (event.keyCode === 13) {
+                    // Ngăn chặn hành động mặc định của form (không gửi dữ liệu đi)
+                    event.preventDefault();
+                    // Submit form
+                    document.getElementById("searchForm").submit();
+                }
+            });
         </script>
+
 
         <style type="text/css">/** Mega Menu CSS Disabled **/</style>
     </head>
@@ -192,664 +202,20 @@
                        src="https://www.facebook.com/tr?id=548729748652125&amp;ev=PageView&amp;noscript=1"
                        /></noscript>
         <!-- End Facebook Pixel Code --><!-- HEADER -->
-        <div class="header container-fluid hidden-xs hidden-sm">
-            <div class="row">
-                <ul class="menu">
-                    <li><a href="SearchOrder.jsp"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
-                            <c:choose>
-                                <c:when test="${not empty user}">
-                            <li><a href="profile"><img
-                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
-                            <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
-                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
-                                </c:when>
-                                <c:otherwise>
-                            <li><a href="login"><img
-                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
-                                </c:otherwise>
-                            </c:choose> 
-                </ul>
-            </div>
-            <div class="row">
-                <div class="navbar center ">
+        <jsp:include page="../Header and footer/HeaderCustomer.jsp"></jsp:include>
+            <!-- END HEADER MOBILE--><!-- CONTENT -->
+            <div class="prd1-cont container-fluid">
+                <div class="row">
 
-                    <div class="navbar-header">
-                        <div class="navbar-brand"><a href="./"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a></div>
-                    </div>
-
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="index.html" class="dropdown-toggle">SẢN PHẨM <span class="caret"></span></a>
-                                <ul class="dropdown-menu style1">
-                                    <li><a href="index07a0.html?gender=men"><img src="ananas.vn/wp-content/uploads/Menu_Nam.jpg"></a><a class="style1-title" href="index07a0.html?gender=men">CHO NAM</a></li>
-                                    <li><a href="indexd5c6.html?gender=women"><img src="ananas.vn/wp-content/uploads/Menu_Nu.jpg"></a><a class="style1-title" href="indexd5c6.html?gender=women">CHO NỮ</a></li>
-                                    <li><a href="ananas.vn/promotion/clearance-sale/index.html"><img src="ananas.vn/wp-content/uploads/Menu_Sale-off.jpg"></a><a class="style1-title" href="ananas.vn/promotion/clearance-sale/index.html">OUTLET SALE</a></li>
-                                    <li><a href="indexd8a8.html?gender=men,women&amp;category=top,bottom,accessories&amp;attribute="><img src="ananas.vn/wp-content/uploads/Menu_Phu-kien.jpg"></a><a class="style1-title" href="indexd8a8.html?gender=men,women&amp;category=top,bottom,accessories&amp;attribute=">THỜI TRANG & PHỤ KIỆN</a></li>
-                                    <div class="style1-des"><a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a></div>
-                                </ul>
-
-                            </li>
-
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="index07a0.html?gender=men" class="dropdown-toggle">NAM <span class="caret"></span></a>
-                                <ul class="dropdown-menu style2">
-                                    <li>
-                                        <a href="#" class="title">NỔI BẬT</a>
-
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#"></a>
-                                        <a href="indexf29d.html?gender=men&amp;category=&amp;attribute=best-seller">Best Seller</a>
-                                        <a href="index3b57.html?gender=men&amp;category=&amp;attribute=new-arrival">New Arrival</a>
-                                        <a href="indexd23c.html?gender=men&amp;category=&amp;attribute=sale-off">Sale off</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Bộ sản phẩm</a>
-                                        <a href="index07f1.html?gender=&amp;category=&amp;attribute=living-journey">Pattas Living Journey</a>
-                                        <a href="indexce3d.html?gender=&amp;category=&amp;attribute=polka-dots">Pattas Polka Dots</a>
-                                        <a href="index01c1.html?gender=&amp;category=&amp;attribute=evergreen-pack">Basas Evergreen</a>
-                                        <a href="indexdde7.html?gender=&amp;category=&amp;attribute=ruler">Urbas Ruler</a>
-                                        <a href="index23fd.html?gender=&amp;category=&amp;attribute=track-6-class-e">Track 6 Class E</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Collaboration</a>
-                                        <a class="blank">&nbsp;</a>
-                                    </li>
-                                    <li class="style2-divider"></li>
-                                    <li>
-                                        <a href="#" class="title">GIÀY</a>
-
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Dòng sản phẩm</a>
-                                        <a href="indexe37d.html?gender=men&amp;category=&amp;attribute=basas">Basas</a>
-                                        <a href="indexcfab.html?gender=men&amp;category=&amp;attribute=vintas">Vintas</a>
-                                        <a href="indexbea3.html?gender=men&amp;category=&amp;attribute=urbas">Urbas</a>
-                                        <a href="index1842.html?gender=men&amp;category=&amp;attribute=pattas">Pattas</a>
-                                        <a href="index6c02.html?gender=men&amp;category=&amp;attribute=creas">Creas</a>
-                                        <a href="index34df.html?gender=men&amp;category=&amp;attribute=track-6">Track 6</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Style</a>
-                                        <a href="index24ab.html?gender=men&amp;category=&amp;attribute=high-top?gender=men&amp;category=&amp;attribute=high-top">High Top</a>
-                                        <a href="index.html">Low Top</a>
-                                        <a href="indexeed1.html?gender=men&amp;category=&amp;attribute=slip-on">Slip-on</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="index97bd.html?gender=men&amp;category=shoes&amp;attribute=">Tất cả giày</a>
-                                        <a class="blank">&nbsp;</a>
-                                    </li>
-                                    <li>
-                                        <a href="index0b87.html?gender=men&amp;category=top,bottom,accessories&amp;attribute=" class="title">THỜI TRANG & PHỤ KIỆN</a>
-
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Nửa trên</a>
-                                        <a href="index9441.html?gender=men&amp;category=&amp;attribute=basic-tee-tron">Basic Tee</a>
-                                        <a href="indexf251.html?gender=&amp;category=&amp;attribute=graphic-tee">Graphic tee</a>
-                                        <a href="indexeaf8.html?gender=&amp;category=&amp;attribute=sweatshirt">Sweatshirt</a>
-                                        <a href="indexeb23.html?gender=&amp;category=&amp;attribute=hoodie">Hoodie</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Phụ kiện</a>
-                                        <a href="index9a2f.html?gender=men&amp;category=&amp;attribute=hat">Nón</a>
-                                        <a href="indexc9b1.html?gender=men&amp;category=&amp;attribute=shoelaces">Dây giày</a>
-                                        <a href="index4762.html?gender=men&amp;category=&amp;attribute=socks">Vớ</a>
-                                        <a href="index8485.html?gender=men&amp;category=&amp;attribute=tote-bag">Túi Tote</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="index0b87.html?gender=men&amp;category=top,bottom,accessories&amp;attribute=">Xem tất cả</a>
-                                        <a class="blank">&nbsp;</a>
-                                    </li>
-                                    <div class="style2-des"><a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a></div>
-                                </ul>
-                            </li>
-
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="indexd5c6.html?gender=women" class="dropdown-toggle">NỮ <span class="caret"></span></a>
-                                <ul class="dropdown-menu style2">
-                                    <li>
-                                        <a href="#" class="title">NỔI BẬT</a>
-
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#"></a>
-                                        <a href="index7b5e.html?gender=women&amp;category=&amp;attribute=best-seller">Best Seller</a>
-                                        <a href="index78a3.html?gender=women&amp;category=&amp;attribute=new-arrival">New Arrival</a>
-                                        <a href="index63b7.html?gender=women&amp;category=&amp;attribute=sale-off">Sale-off</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Bộ sản phẩm</a>
-                                        <a href="index07f1.html?gender=&amp;category=&amp;attribute=living-journey">Pattas Living Journey</a>
-                                        <a href="indexce3d.html?gender=&amp;category=&amp;attribute=polka-dots">Pattas Polka Dots</a>
-                                        <a href="index01c1.html?gender=&amp;category=&amp;attribute=evergreen-pack">Basas Evergreen</a>
-                                        <a href="indexdde7.html?gender=&amp;category=&amp;attribute=ruler">Urbas Ruler</a>
-                                        <a href="index23fd.html?gender=&amp;category=&amp;attribute=track-6-class-e">Track 6 Class E</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Collaboration</a>
-                                        <a class="blank">&nbsp;</a>
-                                    </li>
-                                    <li class="style2-divider"></li>
-                                    <li>
-                                        <a href="#" class="title">GIÀY</a>
-
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Dòng sản phẩm</a>
-                                        <a href="index487c.html?gender=women&amp;category=&amp;attribute=basas">Basas</a>
-                                        <a href="indexe86f.html?gender=women&amp;category=&amp;attribute=vintas">Vintas</a>
-                                        <a href="index7097.html?gender=women&amp;category=&amp;attribute=urbas">Urbas</a>
-                                        <a href="index5054.html?gender=women&amp;category=&amp;attribute=pattas">Pattas</a>
-                                        <a href="indexe2e2.html?gender=women&amp;category=&amp;attribute=creas">Creas</a>
-                                        <a href="indexd2a6.html?gender=women&amp;category=&amp;attribute=track-6">Track 6</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Style</a>
-                                        <a href="index9233.html?gender=men&amp;category=&amp;attribute=high-top?gender=women&amp;category=&amp;attribute=high-top">High Top</a>
-                                        <a href="indexa1d4.html?gender=men&amp;category=&amp;attribute=high-top?gender=women&amp;category=&amp;attribute=low-top">Low Top</a>
-                                        <a href="indexe160.html?gender=men&amp;category=&amp;attribute=high-top?gender=women&amp;category=&amp;attribute=slip-on">Slip-on</a>
-                                        <a class="blank">&nbsp;</a>
-                                    </li>
-                                    <li>
-                                        <a href="indexef24.html?gender=women&amp;category=top,bottom,accessories&amp;attribute=" class="title">THỜI TRANG & PHỤ KIỆN</a>
-
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Nửa trên</a>
-                                        <a href="index222d.html?gender=women&amp;category=&amp;attribute=basic-tee-tron">Basic Tee</a>
-                                        <a href="indexf251.html?gender=&amp;category=&amp;attribute=graphic-tee">Graphic Tee</a>
-                                        <a href="indexeaf8.html?gender=&amp;category=&amp;attribute=sweatshirt">Sweatshirt</a>
-                                        <a href="indexeb23.html?gender=&amp;category=&amp;attribute=hoodie">Hoodie</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="#">Phụ kiện</a>
-                                        <a href="index71a4.html?gender=women&amp;category=&amp;attribute=hat">Nón</a>
-                                        <a href="indexeb1a.html?gender=women&amp;category=&amp;attribute=shoelaces">Dây giày</a>
-                                        <a href="index4762.html?gender=men&amp;category=&amp;attribute=socks">Vớ</a>
-                                        <a href="index8a94.html?gender=women&amp;category=&amp;attribute=tote-bag">Túi Tote</a>
-                                        <a class="blank">&nbsp;</a>
-                                        <a class="title1" href="indexef24.html?gender=women&amp;category=top,bottom,accessories&amp;attribute=">Xem tất cả</a>
-                                        <a class="blank">&nbsp;</a>
-                                    </li>
-                                    <div class="style2-des"><a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a></div>
-                                </ul>
-                            </li>
-
-                            <li class="line"></li>
-                            <li><a href="ananas.vn/promotion/clearance-sale/index.html">SALE OFF</a></li>
-                            <li class="line"></li>
-                            <li><a href="ananas.vn/discoveryou/index.html"><img
-                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/DiscoverYOU.svg"></a></li>
-                        </ul>
-                        <form action="https://ananas.vn/search-results/?" class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg" >
-                                <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="hot-news-cont">
-                    <div class="hot-news-slide">
-                        <div class="cont-item"><a href="ananas.vn/faqs/index.html">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 900K !</a></div>
-                        <div class="cont-item"><a href="ananas.vn/policy/index.html">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a></div>
-                        <div class="cont-item"><a href="ananas.vn/faqs/index.html">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a></div>
-                        <div class="cont-item"><a href="ananas.vn/faqs/index.html">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END HEADER -->
-
-        <!-- HEADER MOBILE-->
-        <div class="header-mobile container-fluid visible-xs visible-sm">
-            <div class="row">
-                <div class="navbar center">
-
-                    <div class="navbar-header">
-                        <div class="col-xs-4 col-sm-4 navbar-brand"><a href="ananas.vn/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a>
-                        </div>
-                        <div class="col-xs-5 col-sm-6 navbar-menu">
-                            <a data-toggle="collapse" data-target=".group-search"><img
-                                    src="ananas.vn/wp-content/themes/ananas/fe-assets/images/mobile/mb_search.png"></a>
-                            <a href="ananas.vn/stores/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/mobile/mb_location.png"></a>
-                            <a href="ananas.vn/your-cart/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/mobile/mb_cart.png"><span class="navbar-menu-count">(<span class="countProduct">0</span>)</span></a>
-                        </div>
-                        <div class="col-xs-3 col-sm-2"></div>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse group-search">
-                    <form id="formSearchAll" action="https://ananas.vn/search-results/?">
-                        <div class="input-group">
-                            <input type="text" name="key" value="" class="form-control" placeholder="Tìm kiếm">
-                            <span class="input-group-btn">
-                                <button class="btn btn-search btn-search-all" type="button"><img
-                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/mobile/arrow_right.png"></button>
-                            </span>
-                        </div>
-                    </form>
-                    <div class="black-rect-bg"></div>
-                </div>
+                    <!-- FILTER ON PC VERSION (will be hidden on mobile)-->
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 prd1-left hidden-xs hidden-sm">
 
 
-                <div class="collapse navbar-collapse">
-                    <ul class="mobile_menu">
-                        <li>
-                            <a href="index.html">SẢN PHẨM</a>
-                            <ul class="submenu">
-                                <div class="header-divider-1"></div>
-                                <li>
-                                    <a href="index07a0.html?gender=men">CHO NAM</a>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="indexd5c6.html?gender=women">CHO NỮ</a>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="ananas.vn/promotion/clearance-sale/index.html">OUTLET SALE</a>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="indexd8a8.html?gender=men,women&amp;category=top,bottom,accessories&amp;attribute=">THỜI TRANG & PHỤ KIỆN</a>
-                                    <div class="header-divider-1"></div>
-                                </li>
-                                <li class="aboutus">
-                                    <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                </li>
-                            </ul>
-                            <div class="header-divider"></div>
-                        </li>
-
-                        <li>
-                            <a href="index07a0.html?gender=men">NAM</a>
-                            <ul class="submenu">
-                                <div class="header-divider-1"></div>
-                                <li>
-                                    <a href="#">NỔI BẬT</a>
-                                    <ul class="submenu">
-                                        <div class="header-divider-1"></div>
-                                        <li>
-                                            <a href="indexf29d.html?gender=men&amp;category=&amp;attribute=best-seller">Best Seller</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index3b57.html?gender=men&amp;category=&amp;attribute=new-arrival">New Arrival</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexd23c.html?gender=men&amp;category=&amp;attribute=sale-off">Sale off</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Bộ sản phẩm</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index07f1.html?gender=&amp;category=&amp;attribute=living-journey">Pattas Living Journey</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexce3d.html?gender=&amp;category=&amp;attribute=polka-dots">Pattas Polka Dots</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index01c1.html?gender=&amp;category=&amp;attribute=evergreen-pack">Basas Evergreen</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexdde7.html?gender=&amp;category=&amp;attribute=ruler">Urbas Ruler</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index23fd.html?gender=&amp;category=&amp;attribute=track-6-class-e">Track 6 Class E</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Collaboration</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="aboutus">
-                                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                        </li>
-                                    </ul>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="#">GIÀY</a>
-                                    <ul class="submenu">
-                                        <div class="header-divider-1"></div>
-                                        <li class="inactive">
-                                            <a href="#">Dòng sản phẩm</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexe37d.html?gender=men&amp;category=&amp;attribute=basas">Basas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexcfab.html?gender=men&amp;category=&amp;attribute=vintas">Vintas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexbea3.html?gender=men&amp;category=&amp;attribute=urbas">Urbas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index1842.html?gender=men&amp;category=&amp;attribute=pattas">Pattas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index6c02.html?gender=men&amp;category=&amp;attribute=creas">Creas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index34df.html?gender=men&amp;category=&amp;attribute=track-6">Track 6</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Style</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index24ab.html?gender=men&amp;category=&amp;attribute=high-top?gender=men&amp;category=&amp;attribute=high-top">High Top</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index.html">Low Top</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexeed1.html?gender=men&amp;category=&amp;attribute=slip-on">Slip-on</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Tất cả giày</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="aboutus">
-                                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                        </li>
-                                    </ul>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="#">THỜI TRANG & PHỤ KIỆN</a>
-                                    <ul class="submenu">
-                                        <div class="header-divider-1"></div>
-                                        <li class="inactive">
-                                            <a href="#">Nửa trên</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index9441.html?gender=men&amp;category=&amp;attribute=basic-tee-tron">Basic Tee</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexf251.html?gender=&amp;category=&amp;attribute=graphic-tee">Graphic tee</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexeaf8.html?gender=&amp;category=&amp;attribute=sweatshirt">Sweatshirt</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexeb23.html?gender=&amp;category=&amp;attribute=hoodie">Hoodie</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Phụ kiện</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index9a2f.html?gender=men&amp;category=&amp;attribute=hat">Nón</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexc9b1.html?gender=men&amp;category=&amp;attribute=shoelaces">Dây giày</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index4762.html?gender=men&amp;category=&amp;attribute=socks">Vớ</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index8485.html?gender=men&amp;category=&amp;attribute=tote-bag">Túi Tote</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Xem tất cả</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="aboutus">
-                                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                        </li>
-                                    </ul>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li class="aboutus">
-                                    <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                </li>
-                            </ul>
-                            <div class="header-divider"></div>
-                        </li>
-
-                        <li>
-                            <a href="indexd5c6.html?gender=women">NỮ</a>
-                            <ul class="submenu">
-                                <div class="header-divider-1"></div>
-                                <li>
-                                    <a href="#">NỔI BẬT</a>
-                                    <ul class="submenu">
-                                        <div class="header-divider-1"></div>
-                                        <li>
-                                            <a href="index7b5e.html?gender=women&amp;category=&amp;attribute=best-seller">Best Seller</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index78a3.html?gender=women&amp;category=&amp;attribute=new-arrival">New Arrival</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index63b7.html?gender=women&amp;category=&amp;attribute=sale-off">Sale-off</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Bộ sản phẩm</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index07f1.html?gender=&amp;category=&amp;attribute=living-journey">Pattas Living Journey</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexce3d.html?gender=&amp;category=&amp;attribute=polka-dots">Pattas Polka Dots</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index01c1.html?gender=&amp;category=&amp;attribute=evergreen-pack">Basas Evergreen</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexdde7.html?gender=&amp;category=&amp;attribute=ruler">Urbas Ruler</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index23fd.html?gender=&amp;category=&amp;attribute=track-6-class-e">Track 6 Class E</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Collaboration</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="aboutus">
-                                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                        </li>
-                                    </ul>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="#">GIÀY</a>
-                                    <ul class="submenu">
-                                        <div class="header-divider-1"></div>
-                                        <li class="inactive">
-                                            <a href="#">Dòng sản phẩm</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index487c.html?gender=women&amp;category=&amp;attribute=basas">Basas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexe86f.html?gender=women&amp;category=&amp;attribute=vintas">Vintas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index7097.html?gender=women&amp;category=&amp;attribute=urbas">Urbas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index5054.html?gender=women&amp;category=&amp;attribute=pattas">Pattas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexe2e2.html?gender=women&amp;category=&amp;attribute=creas">Creas</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexd2a6.html?gender=women&amp;category=&amp;attribute=track-6">Track 6</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Style</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index9233.html?gender=men&amp;category=&amp;attribute=high-top?gender=women&amp;category=&amp;attribute=high-top">High Top</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexa1d4.html?gender=men&amp;category=&amp;attribute=high-top?gender=women&amp;category=&amp;attribute=low-top">Low Top</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexe160.html?gender=men&amp;category=&amp;attribute=high-top?gender=women&amp;category=&amp;attribute=slip-on">Slip-on</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="aboutus">
-                                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                        </li>
-                                    </ul>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li>
-                                    <a href="#">THỜI TRANG & PHỤ KIỆN</a>
-                                    <ul class="submenu">
-                                        <div class="header-divider-1"></div>
-                                        <li class="inactive">
-                                            <a href="#">Nửa trên</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index222d.html?gender=women&amp;category=&amp;attribute=basic-tee-tron">Basic Tee</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexf251.html?gender=&amp;category=&amp;attribute=graphic-tee">Graphic Tee</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexeaf8.html?gender=&amp;category=&amp;attribute=sweatshirt">Sweatshirt</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexeb23.html?gender=&amp;category=&amp;attribute=hoodie">Hoodie</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Phụ kiện</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index71a4.html?gender=women&amp;category=&amp;attribute=hat">Nón</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="indexeb1a.html?gender=women&amp;category=&amp;attribute=shoelaces">Dây giày</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index4762.html?gender=men&amp;category=&amp;attribute=socks">Vớ</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li>
-                                            <a href="index8a94.html?gender=women&amp;category=&amp;attribute=tote-bag">Túi Tote</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="inactive">
-                                            <a href="#">Xem tất cả</a>
-                                            <div class="header-divider"></div>
-                                        </li>
-                                        <li class="aboutus">
-                                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                        </li>
-                                    </ul>
-                                    <div class="header-divider"></div>
-                                </li>
-                                <li class="aboutus">
-                                    <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a>
-                                </li>
-                            </ul>
-                            <div class="header-divider"></div>
-                        </li>
-
-                        <li>
-                            <a href="ananas.vn/promotion/clearance-sale/index.html">SALE OFF</a>
-                            <div class="header-divider"></div>
-                        </li>
-                        <li>
-                            <a href="ananas.vn/discoveryou/index.html">DiscoverYOU</a>
-                            <div class="header-divider-1"></div>
-                        </li>
-
-                        <li class="settingmenu"><a href="ananas.vn/login/index.html"><img
-                                    src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a>
-                        </li>
-                        <li class="settingmenu">
-                            <a href="ananas.vn/your-wishlist/index.html"><img
-                                    src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_heart_header.svg"> Yêu thích</a>
-                        </li>
-                        <li class="settingmenu">
-                            <a href="ananas.vn/stores/index.html"><img
-                                    src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_cua_hang.svg"> Tìm cửa
-                                hàng</a>
-                        </li>
-                        <li class="settingmenu">
-                            <a href="ananas.vn/search-order/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a>
-                            <div class="header-divider-1"></div>
-                        </li>
-                        <li class="aboutus">
-                            <a href="ananas.vn/coming-soon/index.html">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span
-                                    class="highlight">DỨA</span> !</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="hot-news-cont">
-                    <div class="hot-news-slide">
-                        <div class="cont-item"><a href="ananas.vn/faqs/index.html">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 900K !</a></div>
-                        <div class="cont-item"><a href="ananas.vn/policy/index.html">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a></div>
-                        <div class="cont-item"><a href="ananas.vn/faqs/index.html">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a></div>
-                        <div class="cont-item"><a href="ananas.vn/faqs/index.html">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END HEADER MOBILE--><!-- CONTENT -->
-        <div class="prd1-cont container-fluid">
-            <div class="row">
-
-                <!-- FILTER ON PC VERSION (will be hidden on mobile)-->
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 prd1-left hidden-xs hidden-sm">
-
-
-                    <div class="row left-tree">
-                        <ul class="nav">
-                            <li class="first-lvl">
-                                <label label-default="" class="tree-toggle nav-header orange">TRẠNG THÁI  <span class="caret caret-active"></span></label>
-                                <ul class="nav tree">
-
+                        <div class="row left-tree">
+                            <ul class="nav">
+                                <li class="first-lvl">
+                                    <label label-default="" class="tree-toggle nav-header orange">Hãng  <span class="caret caret-active"></span></label>
+                                    <ul class="nav tree">
                                     <c:forEach items="${data1}" var="o">
                                         <li>
                                             <label >
@@ -857,7 +223,6 @@
                                             </label>
                                         </li>
                                     </c:forEach>
-
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
@@ -867,7 +232,7 @@
                                     <c:forEach items="${data5}" var="o">
                                         <li>
                                             <label >
-                                                <input  name="cbStatus" class="cb-item" type="checkbox" value="low-top" hidden>${o.getName()}                                           <span class="glyphicon"></span>
+                                                <a href="CustomerProducts?filter=form&id=${o.id}">${o.name}</a>                                          <span class="glyphicon"></span>
                                             </label>
                                         </li>
                                     </c:forEach>
@@ -880,32 +245,38 @@
                                 <ul class="nav tree">
                                     <li>
                                         <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="500-599k" hidden>500k - 599k                                            <span class="glyphicon"></span>
+                                            <a href="CustomerProducts?filter=price&min=600000&max=9999999">&gt; 600k       </a> 
+                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="600k" hidden>&gt; 600k                                            <span class="glyphicon"></span>
+                                            <a href="CustomerProducts?filter=price&min=500000&max=599000">500k - 599k      </a>  
+                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="400-499k" hidden>400k - 499k                                            <span class="glyphicon"></span>
+                                            <a href="CustomerProducts?filter=price&min=400000&max=499000">400k - 499k      </a>  
+                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="300-399k" hidden>300k - 399k                                            <span class="glyphicon"></span>
+                                            <a href="CustomerProducts?filter=price&min=300000&max=399000">300k - 399k      </a>
+                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="200-299k" hidden>200k - 299k                                            <span class="glyphicon"></span>
+                                            <a href="CustomerProducts?filter=price&min=200000&max=299000">200k - 299k      </a>
+                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="200k-range-price" hidden>&lt; 200k                                            <span class="glyphicon"></span>
+                                            <a href="CustomerProducts?filter=price&min=0&max=200000">&lt; 200k      </a>
+                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                 </ul>
@@ -918,7 +289,7 @@
                                     <c:forEach items="${data6}" var="o">
                                         <li>
                                             <label >
-                                                <input  name="cbStatus" class="cb-item" type="checkbox" value="canvas" hidden>${o.getName()}                                            <span class="glyphicon"></span>
+                                                <a href="CustomerProducts?filter=material&id=${o.id}">${o.name}</a>                                        <span class="glyphicon"></span>
                                             </label>
                                         </li>
                                     </c:forEach>
@@ -929,14 +300,15 @@
                                 <label label-default="" class="tree-toggle nav-header orange">MÀU SẮC  <span
                                         class="caret caret-active"></span></label>
                                 <ul class="nav tree">
-                                    <c:forEach items="${data3}" var="o">
-                                        <li class="cb-color">
-                                            <label ><span class="bg-color" style="background-color: ${o.getColor_code()}"></span>
-                                                <input                                                     name="cbColor"
-                                                                                                           type="checkbox"
-                                                                                                           value="goat" hidden></label>
-                                        </li>
-                                    </c:forEach>
+
+                                    <li class="cb-color">
+                                        <c:forEach items="${data3}" var="o">
+                                            <label >
+                                                <a href="CustomerProducts?filter=color&id=${o.getId()}"><span class="bg-color" style="background-color: ${o.getColor_code()}"></span> </a>
+                                            </label>
+
+                                        </c:forEach>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
@@ -1534,40 +906,45 @@
                     </div>            <!-- END FILTER ON MOBILE VERSION -->
                     <div class="row prd1-right-items">
 
-                        <c:forEach var="product" items="${data}" >
-                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
-                                <div class="thumbnail">
-                                    <div class="cont-item">
-                                        <a href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
-                                            <img class="inormal"
-                                                 src="images/${data0[data.indexOf(product)].getImage_url_1()}">
-                                            <img class="ihover"
-                                                 src="images/${data0[data.indexOf(product)].getImage_url_2()}">
-                                        </a>
+                        <c:choose>
+                            <c:when test="${empty data}">
+                                <h2>Không có sản phẩm nào phù hợp.</h2>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="product" items="${data}" >
+                                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
+                                        <div class="thumbnail">
+                                            <div class="cont-item">
+                                                <a href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
+                                                    <img class="inormal"
+                                                         src="images/${data0[data.indexOf(product)].getImage_url_1()}">
+                                                    <img class="ihover"
+                                                         src="images/${data0[data.indexOf(product)].getImage_url_2()}">
+                                                </a>
+                                            </div>
+                                            <div class="button">
+                                                <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
+                                                   href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">MUA
+                                                    NGAY</a>
+                                                <a class="btn btn-prd1-heart addToWishList"
+                                                   href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}"
+                                                   data-liked="false" data-action="transferCartToWishList"data-idProduct="962345"></a>
+                                            </div>
+                                            <div class="caption">
+                                                <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
+                                                <h3 class="divider"></h3>
+                                                <h3 class="name"><a
+                                                        href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">${product.name}</a>
+                                                </h3>
+                                                <h3 class="price">
+                                                    ${product.price} VND                                                                    </h3>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="button">
-                                        <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">MUA
-                                            NGAY</a>
-                                        <a class="btn btn-prd1-heart addToWishList"
-                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}"
-                                           data-liked="false" data-action="transferCartToWishList"data-idProduct="962345"></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
-                                        <h3 class="divider"></h3>
-                                        <h3 class="name"><a
-                                                href="ananas.vn/product-detail/av00207/index.html">${product.name}</a>
-                                        </h3>
-                                        <h3 class="price">
-                                            ${product.price} VND                                                                    </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
 
-
-
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
 
 
 
@@ -1861,7 +1238,7 @@
             const ajaxUrl = 'ananas.vn/wp-admin/admin-ajax.html';
         </script>
         <noscript><img height="1" width="1" style="display: none;" src="https://www.facebook.com/tr?id=2709053429141470&amp;ev=PageView&amp;noscript=1&amp;cd%5Bpage_title%5D=S%E1%BA%A3n+Ph%E1%BA%A9m&amp;cd%5Bpost_type%5D=page&amp;cd%5Bpost_id%5D=3135&amp;cd%5Bplugin%5D=PixelYourSite&amp;cd%5Buser_role%5D=guest&amp;cd%5Bevent_url%5D=ananas.vn%2Fproduct-list%2F" alt=""></noscript>
-        <script type='text/javascript' src='ananas.vn/ananas.vn/ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min261b.js?ver=20233105'></script>
+        <script type='text/javascript' src='ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/bootstrap.min261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/ie10-viewport-bug-workaround261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/slick261b.js?ver=20233105'></script>
@@ -1874,10 +1251,10 @@
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/bootstrap-select.min261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/anascript261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/lib/fe-controllers/ananas-validations261b.js?ver=20233105'></script>
-        <script type='text/javascript' src='ananas.vn/ananas.vn/s7.addthis.com/js/300/addthis_widget.js?ver=20233105#pubid=ra-5c45e3051805c44d'></script>
+        <script type='text/javascript' src='s7.addthis.com/js/300/addthis_widget.js?ver=20233105#pubid=ra-5c45e3051805c44d'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/fe-controllers/cartController261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/fe-controllers/cartDetailController261b.js?ver=20233105'></script>
-        <script type='text/javascript' src='ananas.vn/ananas.vn/unpkg.com/sweetalert%402.1.2/dist/sweetalert.min.js?ver=20233105'></script>
+        <script type='text/javascript' src='unpkg.com/sweetalert%402.1.2/dist/sweetalert.min.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/lib/fe-controllers/userController261b.js?ver=20233105'></script>
 
     </body>

@@ -258,14 +258,17 @@
                                 <th>Số điện thoại</th>
                                 <th>Vai trò</th>
                                 <th>Trạng thái</th>
-                                <th>Ngày tạo</th>                          
+                                <th>Ngày tạo</th>  
+                                <th>Giới tính</th>  
+                                <th>Ca làm</th>  
+                                <th>Lương</th>  
                                 <th>Hoạt động</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${selectStaff}" var="user">
-                                <tr>
 
+                                <tr>
                                     <td>${user.id}</td>
                                     <td>${user.name}</td>
                                     <td>${user.email}</td>
@@ -298,6 +301,7 @@
                                     </td>
                                     <td>${user.created_at}</td>
 
+
                                     <td>
                                         <a href="updateStaff?id=${user.id}" class="settings" title="Cập nhật" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                                         <a href="#" onclick="doDelete('${user.id}')" class="delete" title="Xóa" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
@@ -305,10 +309,10 @@
 
                                 </tr>
 
+
                             </c:forEach>
                         </tbody>
-                    </table>      
-
+                    </table>     
                     <div class="clearfix">
                         <ul class="pagination">  
                             <c:choose>
@@ -319,10 +323,10 @@
                                     <li class="page-item disabled"><span class="page-link"><</span></li>
                                     </c:otherwise>
                                 </c:choose>
-                                    
-                                <c:forEach begin="1" end="${endPage}" var="i">
-                                    <c:choose>
-                                        <c:when test="${param.index == i}">
+
+                            <c:forEach begin="1" end="${endPage}" var="i">
+                                <c:choose>
+                                    <c:when test="${param.index == i}">
                                         <li class="page-item active"><a href="staff?index=${i}&&txtSearch=${txtSearch}" class="page-link selected">${i}</a></li>
                                         </c:when>
                                         <c:otherwise>
