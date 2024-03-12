@@ -17,7 +17,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
         <div class="container mt-5">
             
             <h1>Quản Lý Trạng Thái</h1>

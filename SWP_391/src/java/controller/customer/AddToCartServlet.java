@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.sale;
+package controller.customer;
 
-import DAO.GroupsDAO.CategoryDAO;
+import DAO.Common.CartDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,9 +16,9 @@ import model.Common.User;
 
 /**
  *
- * @author MTD
+ * @author ifyou
  */
-public class DeleteCategoryController extends HttpServlet {
+public class AddToCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +33,29 @@ public class DeleteCategoryController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        // Check if user have loged in
         if (user == null) {
             request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
             return;
-        } else if (user.getRole() != 2) {
-            response.sendRedirect("404.jsp");
         } else {
-            response.setContentType("text/html;charset=UTF-8");
-            String ccid = request.getParameter("cid");
-            CategoryDAO dao = new CategoryDAO();
-            dao.deleteCategory(ccid);
-            response.sendRedirect("loadcategory");
-        }
+            String id = request.getParameter("id");
+            String quantity = request.getParameter("quantity");
+            CartDAO cartDAO = new CartDAO();
+            int isExist = cartDAO.isExistItem(user.getId(), Integer.parseInt(id));
+            if (isExist != 0) {
+                request.getSession().setAttribute("itemIsExist", "Sản phẩm này đã có trong giỏ hàng!");
+                response.sendRedirect("CustomerProducts?detail=" + id);
+            } else {
+                cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));
+                request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
+                session.removeAttribute("total");
+                int total = cartDAO.getCartQuantity(user.getId());
+                session.setAttribute("total", total);
+                response.sendRedirect("CustomerProducts?detail=" + id);
+            }
 
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
