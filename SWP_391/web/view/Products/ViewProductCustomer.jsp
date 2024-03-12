@@ -34,7 +34,7 @@
                 s = b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t, s)
             }(window,
-                    document, 'script', 'connect.facebook.net/en_US/fbevents.js');
+                    document, 'script', 'ananas.vn/ananas.vn/connect.facebook.net/en_US/fbevents.js');
             // Insert Your Facebook Pixel ID below.
             fbq('init', '548729748652125');
             fbq('track', 'PageView');
@@ -49,7 +49,7 @@
                         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
                 j.async = true;
                 j.src =
-                        'www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+                        'ananas.vn/ananas.vn/www.googletagmanager.com/gtm5445.html?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
             })(window, document, 'script', 'dataLayer', 'GTM-P4C43VC');</script>
         <!-- End Google Tag Manager -->
@@ -135,7 +135,7 @@
                 margin:0 !important;
             }</style>
         <meta name="onesignal" content="wordpress-plugin"/>
-        <script src="cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>    <script>
+        <script src="ananas.vn/ananas.vn/cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>    <script>
 
             window.OneSignal = window.OneSignal || [];
 
@@ -195,24 +195,26 @@
         <div class="header container-fluid hidden-xs hidden-sm">
             <div class="row">
                 <ul class="menu">
-                    <li><a href="ananas.vn/search-order/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
-                    <li><a href="ananas.vn/stores/index.html"><img
-                                src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_cua_hang.svg"> Tìm cửa hàng</a></li>
-                    <li><a href="ananas.vn/your-wishlist/index.html"><img
-                                src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_heart_header.svg"> Yêu thích</a></li>
-                    <!--                <li><a href="--><!--"><img-->
-                    <!--                                src="--><!--/icon_login.png"> Đăng nhập</a></li>-->
-                    <li><a href="ananas.vn/coming-soon/index.html"><img
-                                src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
-                    <li><a href="ananas.vn/your-cart/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">
-                            Giỏ hàng (<span class="countProduct">0</span>)</a></li>
+                    <li><a href="SearchOrder.jsp"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
+                            <c:choose>
+                                <c:when test="${not empty user}">
+                            <li><a href="profile"><img
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
+                            <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
+                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
+                                </c:when>
+                                <c:otherwise>
+                            <li><a href="login"><img
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
+                                </c:otherwise>
+                            </c:choose> 
                 </ul>
             </div>
             <div class="row">
                 <div class="navbar center ">
 
                     <div class="navbar-header">
-                        <div class="navbar-brand"><a href="ananas.vn/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a></div>
+                        <div class="navbar-brand"><a href="./"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a></div>
                     </div>
 
                     <div class="collapse navbar-collapse">
@@ -865,7 +867,7 @@
                                     <c:forEach items="${data5}" var="o">
                                         <li>
                                             <label >
-                                                <a href="CustomerProducts?filter=form&id=${o.id}">${o.name}</a>                                         <span class="glyphicon"></span>
+                                                <input  name="cbStatus" class="cb-item" type="checkbox" value="low-top" hidden>${o.getName()}                                           <span class="glyphicon"></span>
                                             </label>
                                         </li>
                                     </c:forEach>
@@ -878,32 +880,32 @@
                                 <ul class="nav tree">
                                     <li>
                                         <label >
-                                            <a href="CustomerProducts?filter=price&min=500000&max=590000">${o.name}</a>500k - 599k                                            <span class="glyphicon"></span>
+                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="500-599k" hidden>500k - 599k                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <a href="CustomerProducts?filter=price&min=600000&max=99999999">&gt; 600k                                            <span class="glyphicon"></span>
+                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="600k" hidden>&gt; 600k                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <a href="CustomerProducts?filter=price&min=400000&max=499000">400k - 499k                                            <span class="glyphicon"></span>
+                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="400-499k" hidden>400k - 499k                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <a href="CustomerProducts?filter=price&min=300000&max=399000">300k - 399k                                            <span class="glyphicon"></span>
+                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="300-399k" hidden>300k - 399k                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <a href="CustomerProducts?filter=price&min=200000&max=299000">200k - 299k                                            <span class="glyphicon"></span>
+                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="200-299k" hidden>200k - 299k                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                     <li>
                                         <label >
-                                            <a href="CustomerProducts?filter=price&min=0&max=200000">&lt; 200k                                            <span class="glyphicon"></span>
+                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="200k-range-price" hidden>&lt; 200k                                            <span class="glyphicon"></span>
                                         </label>
                                     </li>
                                 </ul>
@@ -927,16 +929,14 @@
                                 <label label-default="" class="tree-toggle nav-header orange">MÀU SẮC  <span
                                         class="caret caret-active"></span></label>
                                 <ul class="nav tree">
-
-                                    <li class="cb-color">
-                                        <c:forEach items="${data3}" var="o">
+                                    <c:forEach items="${data3}" var="o">
+                                        <li class="cb-color">
                                             <label ><span class="bg-color" style="background-color: ${o.getColor_code()}"></span>
                                                 <input                                                     name="cbColor"
                                                                                                            type="checkbox"
                                                                                                            value="goat" hidden></label>
-                                            </c:forEach>
-
-                                    </li>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
@@ -1538,7 +1538,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
                                 <div class="thumbnail">
                                     <div class="cont-item">
-                                        <a href="ananas.vn/product-detail/av00207/index.html">
+                                        <a href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
                                             <img class="inormal"
                                                  src="images/${data0[data.indexOf(product)].getImage_url_1()}">
                                             <img class="ihover"
@@ -1547,11 +1547,11 @@
                                     </div>
                                     <div class="button">
                                         <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                           href="ananas.vn/product-detail/av00207/index.html">MUA
+                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">MUA
                                             NGAY</a>
                                         <a class="btn btn-prd1-heart addToWishList"
-                                           href="javascript:void(0)"
-                                           data-liked="false" data-action="transferCartToWishList"                                   data-idProduct="962345"></a>
+                                           href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}"
+                                           data-liked="false" data-action="transferCartToWishList"data-idProduct="962345"></a>
                                     </div>
                                     <div class="caption">
                                         <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
@@ -1861,7 +1861,7 @@
             const ajaxUrl = 'ananas.vn/wp-admin/admin-ajax.html';
         </script>
         <noscript><img height="1" width="1" style="display: none;" src="https://www.facebook.com/tr?id=2709053429141470&amp;ev=PageView&amp;noscript=1&amp;cd%5Bpage_title%5D=S%E1%BA%A3n+Ph%E1%BA%A9m&amp;cd%5Bpost_type%5D=page&amp;cd%5Bpost_id%5D=3135&amp;cd%5Bplugin%5D=PixelYourSite&amp;cd%5Buser_role%5D=guest&amp;cd%5Bevent_url%5D=ananas.vn%2Fproduct-list%2F" alt=""></noscript>
-        <script type='text/javascript' src='ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min261b.js?ver=20233105'></script>
+        <script type='text/javascript' src='ananas.vn/ananas.vn/ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/bootstrap.min261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/ie10-viewport-bug-workaround261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/slick261b.js?ver=20233105'></script>
@@ -1874,10 +1874,10 @@
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/bootstrap-select.min261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/anascript261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/lib/fe-controllers/ananas-validations261b.js?ver=20233105'></script>
-        <script type='text/javascript' src='s7.addthis.com/js/300/addthis_widget.js?ver=20233105#pubid=ra-5c45e3051805c44d'></script>
+        <script type='text/javascript' src='ananas.vn/ananas.vn/s7.addthis.com/js/300/addthis_widget.js?ver=20233105#pubid=ra-5c45e3051805c44d'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/fe-controllers/cartController261b.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/fe-controllers/cartDetailController261b.js?ver=20233105'></script>
-        <script type='text/javascript' src='unpkg.com/sweetalert%402.1.2/dist/sweetalert.min.js?ver=20233105'></script>
+        <script type='text/javascript' src='ananas.vn/ananas.vn/unpkg.com/sweetalert%402.1.2/dist/sweetalert.min.js?ver=20233105'></script>
         <script type='text/javascript' src='ananas.vn/wp-content/themes/ananas/fe-assets/js/lib/fe-controllers/userController261b.js?ver=20233105'></script>
 
     </body>

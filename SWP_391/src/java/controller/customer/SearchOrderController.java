@@ -4,12 +4,17 @@
  */
 package controller.customer;
 
+import DAO.Common.OrderDAO;
+import DAO.Common.OrderDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import model.Common.Order;
+import model.Common.OrderDetail;
 
 /**
  *
@@ -29,7 +34,6 @@ public class SearchOrderController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("SearchOrder.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +62,27 @@ public class SearchOrderController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //    processRequest(request, response);
+        String orderCode = request.getParameter("orderCode");
+        OrderDAO orderDAO = new OrderDAO();
+        Order order = orderDAO.searchOrderByCode(orderCode);
+
+        if (order != null && order.getOrderCode().equals(orderCode)) {
+            ArrayList<OrderDetail> NewOrderDetails = order.getOrderDetail();
+            int total = 0;
+            for (OrderDetail orderDetail : NewOrderDetails) {
+                total += orderDetail.getUnitPrice() * orderDetail.getQuantity();
+            }
+            request.setAttribute("total", total);
+            request.setAttribute("order", order);
+            request.setAttribute("NewOrderDetails", NewOrderDetails);
+            request.getRequestDispatcher("/displayOrder.jsp").forward(request, response);
+        } else {
+            String errorMessage = "Mã đặt hàng không hợp lệ, vui lòng nhập lại mã";
+            request.setAttribute("errorMessage", errorMessage);
+            request.getRequestDispatcher("/SearchOrder.jsp").forward(request, response);
+        }
+
     }
 
     /**

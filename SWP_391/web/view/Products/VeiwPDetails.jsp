@@ -151,6 +151,7 @@
                                             </td>
                                             <td>
                                                 <a href="productdetails?mod=2&id=${pd.getId()}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                                <a href="productdetails?mod=4&id=${pd.getId()}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${pd.getId()}">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>

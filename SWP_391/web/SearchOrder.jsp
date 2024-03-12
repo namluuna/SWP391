@@ -3,7 +3,6 @@
     Created on : Feb 18, 2024, 12:53:12 PM
     Author     : ifyou
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -167,33 +166,32 @@
     </head>
 
     <body>
-        <jsp:include page="view/customer/header.jsp"></jsp:include>
+        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
             <br>
             <br>
             <br>
             <br>
-            <div class="row ">
-
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                    <h1>TRA CỨU ĐƠN HÀNG</h1>
-                    <br>
-                    <div class="has-feedback">
-                        <input required="" type="text" class="form-control text-uppercase" placeholder="Mã đơn hàng" id="order-code">
+            <form action="searchOrder" method="post">
+                <div class="row ">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <h1>TRA CỨU ĐƠN HÀNG</h1>
+                        <br>
+                        <div class="has-feedback">
+                            <input type="text" name="orderCode" class="form-control text-uppercase" placeholder="Mã đơn hàng" id="order-code" required="" style="height: 40px;" value="${order}">
                         <span></span>
+                        <p style="color: red;">${errorMessage}</p> 
                     </div>
-                </div>
-                <br>
-                <br>
+                </div>       
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 title-3">
-                    <button class="btn btn-search-order" data-usersearchorder="" data-action="user-search-order">TRA CỨU ĐƠN HÀNG</button>
+                    <button type="submit" class="btn btn-search-order" data-usersearchorder="" data-action="user-search-order">TRA CỨU ĐƠN HÀNG</button>
                 </div>
-
 
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <jsp:include page="view/customer/footer.jsp"></jsp:include>
     </body>

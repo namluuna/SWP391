@@ -52,6 +52,46 @@
         <servlet-name>SearchOrderController</servlet-name>
         <servlet-class>controller.customer.SearchOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveSelectCartItem</servlet-name>
+        <servlet-class>controller.customer.RemoveSelectCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectCartItem</servlet-name>
+        <servlet-class>controller.customer.SelectCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddQuantityCartNumber</servlet-name>
+        <servlet-class>controller.customer.AddQuantityCartNumber</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReduceQuantityCartItem</servlet-name>
+        <servlet-class>controller.customer.ReduceQuantityCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckoutController</servlet-name>
+        <servlet-class>controller.customer.CheckoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveItemServlet</servlet-name>
+        <servlet-class>controller.customer.RemoveItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddOrderServlet</servlet-name>
+        <servlet-class>controller.customer.AddOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>controller.Common.OrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditOrderController</servlet-name>
+        <servlet-class>controller.Common.EditOrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>controller.customer.AddToCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -319,6 +359,46 @@
     <servlet-mapping>
         <servlet-name>SearchOrderController</servlet-name>
         <url-pattern>/searchOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveSelectCartItem</servlet-name>
+        <url-pattern>/RemoveSelectCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectCartItem</servlet-name>
+        <url-pattern>/SelectCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuantityCartNumber</servlet-name>
+        <url-pattern>/AddQuantityCartNumber</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReduceQuantityCartItem</servlet-name>
+        <url-pattern>/ReduceQuantityCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutController</servlet-name>
+        <url-pattern>/CheckoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveItemServlet</servlet-name>
+        <url-pattern>/RemoveItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddOrderServlet</servlet-name>
+        <url-pattern>/AddOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/OrderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditOrderController</servlet-name>
+        <url-pattern>/EditOrderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/AddToCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

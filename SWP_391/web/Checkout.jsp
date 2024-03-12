@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -47,99 +48,95 @@
     </head>
     <body>
         <jsp:include page="view/customer/header.jsp"></jsp:include>
-        <div class="colorlib-loader"></div>
-        <div id="page" style="margin-top: 32px">
-            <div class="colorlib-product">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <form method="post" class="colorlib-form">
-                                <h2>Thông tin đơn hàng</h2>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="country">Chọn địa chỉ giao hàng</label>
+            <div class="colorlib-loader"></div>
+            <div id="page" style="margin-top: 32px">
+                <form action="/SWP_391/AddOrderServlet" method="post">
+                    <div class="colorlib-product">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <form method="post" class="colorlib-form">
+                                        <h2>Thông tin đơn hàng</h2>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="country">Chọn địa chỉ giao hàng</label>
+                                                    <div class="form-group">
+                                                        <select name="address" id="address" class="form-control" style="height:60px;">
+                                                        <c:forEach items="${addresses}" var="c">
+                                                            <option value="${c.id}">${c.showAddress()}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <select name="people" id="people" class="form-control" style="height:60px;">
-                                                    <option value="#">Địa chỉ giao hàng</option>
-                                                    <option value="#">Alaska</option>
-                                                    <option value="#">China</option>
-                                                    <option value="#">Japan</option>
-                                                    <option value="#">Korea</option>
-                                                    <option value="#">Philippines</option>
-                                                </select>
+                                                <label for="companyname">Người nhận hàng</label>
+                                                <input type="text" id="companyname" class="form-control" value="${user.name}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="fname">Địa chỉ Email</label>
+                                                <input type="text" id="address" class="form-control" value="${user.email}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="companyname">Số điện thoại</label>
+                                                <input type="text" id="towncity" class="form-control" value="${user.phone}" disabled>
                                             </div>
                                         </div>
                                     </div>
+                                </form>
+                            </div>
 
-
+                            <div class="col-lg-4" >
+                                <div class="row" style="margin-left: 16px">
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="companyname">Người nhận hàng</label>
-                                            <input type="text" id="companyname" class="form-control" value="${user.name}" disabled>
+                                        <div class="cart-detail">
+                                            <h2>Chi tiết đơn hàng</h2>
+                                            <ul>
+                                                <li>
+                                                    <ul>
+                                                        <c:forEach items="${checkoutItems}" var="c">
+                                                            <li><span>${c.quantity} x ${c.productDetail.product.name}: </span> <span>   <fmt:formatNumber value="${c.productDetail.product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></span></li>
+                                                            </c:forEach>
+                                                    </ul>
+                                                </li>
+                                                <li><span>Phí vận chuyển:</span> <span>Miễn phí</span></li>
+                                                <li><span>Tổng tiền: </span> <span><fmt:formatNumber value="${total}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></span></li>
+                                            </ul>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="fname">Địa chỉ Email</label>
-                                            <input type="text" id="address" class="form-control" value="${user.email}" disabled>
-                                        </div>
-                                    </div>
+                                    <div class="w-100"></div>
 
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="companyname">Số điện thoại</label>
-                                            <input type="text" id="towncity" class="form-control" value="${user.phone}" disabled>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-lg-4" >
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="cart-detail">
-                                        <h2>Chi tiết đơn hàng</h2>
-                                        <ul>
-                                            <li>
-                                                <ul>
-                                                    <li><span>1 x Product Name</span> <span>$99.00</span></li>
-                                                    <li><span>1 x Product Name</span> <span>$78.00</span></li>
-                                                </ul>
-                                            </li>
-                                            <li><span>Phí vận chuyển:</span> <span>Miễn phí</span></li>
-                                            <li><span>Tổng tiền: </span> <span>$180.00</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="w-100"></div>
-
-                                <div class="col-md-12">
-                                    <div class="cart-detail">
-                                        <h2>Phương thức thanh toán</h2>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <div class="radio">
-                                                    <label><input type="radio" name="optradio" checked="true"> Thanh toán khi nhận hàng</label>
+                                        <div class="cart-detail">
+                                            <h2>Phương thức thanh toán</h2>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="radio">
+                                                        <label><input type="radio" name="optradio" checked="true"> Thanh toán khi nhận hàng</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <p><a href="#" class="btn btn-primary">Đặt hàng</a></p>
+                                <div class="row" style="margin-left: 32px">
+                                    <button type="submit" class="btn btn-dark btn-block btn-lg" style="width: 200px"
+                                                    data-mdb-ripple-color="dark">Đặt hàng</button>                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </form>
         </div>
 
         <div class="gototop js-top">
