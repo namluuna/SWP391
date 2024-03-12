@@ -80,22 +80,24 @@ public class CustomerProductsController extends HttpServlet {
         SizeDAO sdao = new SizeDAO();
         FormDAO fdao = new FormDAO();
         MaterialsDAO mdao = new MaterialsDAO();
-        ProductDetailDAO pd  = new ProductDetailDAO();
+        ProductDetailDAO pd = new ProductDetailDAO();
         List<Category> data1 = g.selectAllCategory();
         List<ProductDetails> data0 = pd.selectAllProductDetails();
-        List<Colors>data3 = cdao.getAll();
+        List<Colors> data3 = cdao.getAll();
         List<Sizes> data4 = sdao.selectAllSizes();
         List<Form> data5 = fdao.selectAllForm();
         List<materials> data6 = mdao.getAll();
-        request.setAttribute("data1", data1);
-        
+        List<Brands> data2 = b.selectAllBrands();
+
         request.setAttribute("data0", data0);
+        request.setAttribute("data1", data1);
+        request.setAttribute("data2", data2);
         request.setAttribute("data3", data3);
         request.setAttribute("data4", data4);
         request.setAttribute("data5", data5);
         request.setAttribute("data6", data6);
-        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
 
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
             request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
         }
 //        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
@@ -107,9 +109,7 @@ public class CustomerProductsController extends HttpServlet {
 //            g.softDeleteGroups(request.getParameter("id"));
 //        }
         //------------------------------------------------------------------------------------------------------------------
-        List<Brands> data2 = b.selectAllBrands();
-        request.setAttribute("data2", data2);
-        
+
         ArrayList<Products> data = null;
         if (request.getParameter("filter") != null) {
             if (request.getParameter("filter").contains("brand")) {
@@ -118,14 +118,25 @@ public class CustomerProductsController extends HttpServlet {
             if (request.getParameter("filter").contains("category")) {
                 data = p.selectProductbyCategory(request.getParameter("id"));
             }
-            if (request.getParameter("filter").contains("color"))
-            {
-                
+            if (request.getParameter("filter").contains("color")) {
+                data = p.selectProductbyCategory(request.getParameter("id"));
             }
-            if (request.getParameter("filter").contains("size"))
-            {
-                
+            if (request.getParameter("filter").contains("size")) {
+                data = p.selectProductbyCategory(request.getParameter("id"));
             }
+            if (request.getParameter("filter").contains("form")) {
+                data = p.selectProductbyForm(request.getParameter("id"));
+            }
+            if (request.getParameter("filter").contains("price")) {
+                data = p.selectProductbyPrice(request.getParameter("min"), request.getParameter("max"));
+            }
+            request.setAttribute("data", data);
+
+            request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+        }
+        if (request.getParameter("detail") != null) {
+            request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
+            request.getRequestDispatcher("view\\ProductCustomer\\ProductDetail.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();
         }
