@@ -147,24 +147,34 @@
     </head>
 
     <body>
-        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
-            <div class="container rounded bg-white mt-5 mb-5">
-                <div class="row">
-                    <div class="col-md-3 border-right">
-                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                            <!--                            <form id="uploadForm" action="/SWP_391/uploadImageServlet" method="POST" enctype='multipart/form-data'>
-                                                            <div class="input-image">
-                                                                <label for="input">
-                                                                    Choose Image <br>
-                                                                    <input class="field image-name" id="input" type="file" name="image"
-                                                                           style="display: none">
-                                                                </label>
-                                                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Sửa ảnh đại diện</button></div>
-                                                            </div>
-                                                        </form>
-                                                        <br/>-->
-                            <span class="font-weight-bold">${user.name}</span><span class="text-black-50"></span>
+        <c:choose>
+            <c:when test="${user.role == 4}">
+                <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
+            </c:when>
+            <c:when test="${user.role == 2}">
+                <jsp:include page="view/Header and footer/HeaderSale.jsp"></jsp:include>
+            </c:when>
+            <c:otherwise>
+                <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
+            </c:otherwise>
+        </c:choose> 
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                        <!--                            <form id="uploadForm" action="/SWP_391/uploadImageServlet" method="POST" enctype='multipart/form-data'>
+                                                        <div class="input-image">
+                                                            <label for="input">
+                                                                Choose Image <br>
+                                                                <input class="field image-name" id="input" type="file" name="image"
+                                                                       style="display: none">
+                                                            </label>
+                                                             <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Sửa ảnh đại diện</button></div>
+                                                        </div>
+                                                    </form>
+                                                    <br/>-->
+                        <span class="font-weight-bold">${user.name}</span><span class="text-black-50"></span>
                         <a href="/SWP_391/changePassword" class="edit-link">Đổi mật khẩu</a>
                     </div>
                 </div>

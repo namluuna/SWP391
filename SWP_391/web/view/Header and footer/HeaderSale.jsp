@@ -118,54 +118,59 @@
                             </c:choose> 
                 </ul>
             </div>
-            <div class="row"　style="display: inline-flex; align-items: center">
+            <div class="row d-flex justify-content-center align-items-center">
                 <div class="navbar center" >
 
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="groups" class="">TRẠNG THÁI</a>
+                            <li class="dropdown mt-0">
+                                <a href="OrderController" class="py-0 d-flex align-items-center">QUẢN LÝ ĐƠN HÀNG</a>
                             </li>
 
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="Forms" class="">KIỂU DÁNG</a>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="groups" class="py-0 d-flex align-items-center">TRẠNG THÁI</a>
                             </li>
 
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="materials" class="">CHẤT LIỆU</a>
-
-                            </li>
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="loadcategory" class="">LOẠI GIÀY</a>
-
-                            </li>
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="colors" class="">MÀU</a>
-
-                            </li>
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="brands" class="">HÃNG GIÀY</a>
-
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="Forms" class="py-0 d-flex align-items-center">KIỂU DÁNG</a>
                             </li>
 
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="products" class="">SẢN PHẨM</a>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="materials" class="py-0 d-flex align-items-center">CHẤT LIỆU</a>
 
                             </li>
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="sizes" class="">KÍCH THƯỚC</a>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="loadcategory" class="py-0 d-flex align-items-center">LOẠI GIÀY</a>
 
                             </li>
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="productdetails" class="">CHI TIẾT SẢN PHẨM</a>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="colors" class="py-0 d-flex align-items-center">MÀU</a>
+
+                            </li>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="brands" class="py-0 d-flex align-items-center">HÃNG GIÀY</a>
+
+                            </li>
+
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="products" class="py-0 d-flex align-items-center">SẢN PHẨM</a>
+
+                            </li>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="sizes" class="py-0 d-flex align-items-center">KÍCH THƯỚC</a>
+
+                            </li>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="productdetails" class="py-0 d-flex align-items-center">CHI TIẾT SẢN PHẨM</a>
 
                             </li>
                         </ul>

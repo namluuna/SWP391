@@ -117,30 +117,33 @@
                             </c:choose> 
                 </ul>
             </div>
-            <div class="row"　style="display: inline-flex; align-items: center">
+            <div class="row d-flex justify-content-center align-items-center">
                 <div class="navbar center" >
 
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="" class="">TRANG CHỦ</a>
+                            <li class="dropdown mt-0">
+                                <a href="" class="py-0 d-flex align-items-center">TRANG CHỦ</a>
                             </li>
 
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="" class="">SẢN PHẨM MỚI</a>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="" class="py-0 d-flex align-items-center">SẢN PHẨM MỚI</a>
                             </li>
 
-                            <li class="line"></li>
-                            <li class="dropdown">
-                                <a href="" class="">BÁN CHẠY</a>
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="" class="py-0 d-flex align-items-center">BÁN CHẠY</a>
 
                             </li>
                         </ul>
                         <form action="" class="navbar-form navbar-right">
                             <div class="form-group" style="align-items: center">
                                 <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg" >
-                                <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm">
+                                <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm" style="
+                                       margin-bottom: 0;
+                                       border: #ffc221 solid 2px !important;
+                                       ">
                             </div>
                         </form>
                     </div>
