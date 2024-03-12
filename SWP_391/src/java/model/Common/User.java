@@ -6,6 +6,7 @@ package model.Common;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author ifyou
@@ -21,6 +22,21 @@ public class User {
     private int status;
     private Timestamp created_at;
     ArrayList<UserAddress> address;
+    ArrayList<UserContract> contract;
+
+    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, Timestamp created_at, ArrayList<UserAddress> address, ArrayList<UserContract> contract) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.is_deleted = is_deleted;
+        this.role = role;
+        this.status = status;
+        this.created_at = created_at;
+        this.address = address;
+        this.contract = contract;
+    }
     private String image;
 
     public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, ArrayList<UserAddress> address, String image) {
@@ -53,6 +69,8 @@ public class User {
         this.role = role;
         this.status = status;
     }
+    
+    
 
     public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status) {
         this.id = id;

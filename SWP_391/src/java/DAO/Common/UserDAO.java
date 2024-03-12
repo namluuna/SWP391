@@ -113,6 +113,7 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+
     public User searchUserByEmailAndPassword(String email) {
 
         try {
@@ -141,7 +142,7 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
-    
+
     public User searchUserByEmail(String email) {
 
         try {
@@ -278,7 +279,7 @@ public class UserDAO extends DBContext {
         }
         return users;
     }
-    
+
     public ArrayList<User> sellectallStaffByPaging(int index) {
         ArrayList<User> users = new ArrayList<>();
         try {
@@ -299,10 +300,11 @@ public class UserDAO extends DBContext {
                 int role = rs.getInt("role");
                 int status = rs.getInt("status");
                 Timestamp created_at = rs.getTimestamp("created_at");
-                String image = rs.getString("image_url");
                 UserAddressDAO uadao = new UserAddressDAO();
+                UserContractDAO ucdao = new UserContractDAO();
+                ArrayList user_contract = ucdao.sellectAllUserContract(user_id);
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
-                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses, user_contract);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -334,8 +336,10 @@ public class UserDAO extends DBContext {
                 int status = rs.getInt("status");
                 Timestamp created_at = rs.getTimestamp("created_at");
                 UserAddressDAO uadao = new UserAddressDAO();
+                UserContractDAO ucdao = new UserContractDAO();
+                ArrayList user_contract = ucdao.sellectAllUserContract(user_id);
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
-                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses);
+                User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses, user_contract);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -358,8 +362,9 @@ public class UserDAO extends DBContext {
         }
         return 0;
     }
+
     //
-    public int getTotalUsersByName(String txtSearch ) {
+    public int getTotalUsersByName(String txtSearch) {
         String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] IN (2,3) AND [Name] like ? ";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
