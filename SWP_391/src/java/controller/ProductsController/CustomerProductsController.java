@@ -119,16 +119,21 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbyCategory(request.getParameter("id"));
             }
             if (request.getParameter("filter").contains("color")) {
-                data = p.selectProductbyCategory(request.getParameter("id"));
+                
+                data = pd.selectProductDetailsbyColor(request.getParameter("id"));
             }
-            if (request.getParameter("filter").contains("size")) {
-                data = p.selectProductbyCategory(request.getParameter("id"));
-            }
+            
             if (request.getParameter("filter").contains("form")) {
                 data = p.selectProductbyForm(request.getParameter("id"));
             }
             if (request.getParameter("filter").contains("price")) {
                 data = p.selectProductbyPrice(request.getParameter("min"), request.getParameter("max"));
+            }
+            if (request.getParameter("filter").contains("material")) {
+                data = p.selectProductbyMaterial(request.getParameter("id"));
+            }
+            if (request.getParameter("filter").contains("search")) {
+                data = p.selectProductbySearch(request.getParameter("id"));
             }
             request.setAttribute("data", data);
 
