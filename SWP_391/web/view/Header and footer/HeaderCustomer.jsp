@@ -99,6 +99,7 @@
 
     </head>
     <body>
+
         <div class="header container-fluid hidden-xs hidden-sm">
             <div class="row">
                 <ul class="menu">
@@ -123,28 +124,29 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li class="dropdown mt-0">
-                                <a href="" class="py-0 d-flex align-items-center">TRANG CHỦ</a>
+                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">TRANG CHỦ</a>
                             </li>
 
                             <li class="line" style="margin-top:28px"></li>
                             <li class="dropdown mt-0">
-                                <a href="" class="py-0 d-flex align-items-center">SẢN PHẨM MỚI</a>
+                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">SẢN PHẨM MỚI</a>
                             </li>
 
                             <li class="line" style="margin-top:28px"></li>
                             <li class="dropdown mt-0">
-                                <a href="" class="py-0 d-flex align-items-center">BÁN CHẠY</a>
+                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">BÁN CHẠY</a>
 
                             </li>
                         </ul>
                         <form action="" class="navbar-form navbar-right">
-                            <div class="form-group" style="align-items: center">
-                                <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg" >
-                                <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm" style="
-                                       margin-bottom: 0;
-                                       border: #ffc221 solid 2px !important;
-                                       ">
+                            <form action="CustomerProducts" method="get" class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg">
+                                <input type="hidden" name="filter" value="search">
+                                <input type="text" name="id" class="form-control" value="" placeholder="Tìm kiếm" onkeydown="if (event.keyCode == 13)
+                                            this.form.submit();">
                             </div>
+                        </form>
                         </form>
                     </div>
                 </div>
