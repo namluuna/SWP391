@@ -134,6 +134,8 @@ public class EditOrderController extends HttpServlet {
                     pdDAO.addQuantity(orderDetail.getProductDetail().getId(), String.valueOf(orderDetail.getQuantity()));
                 }
                 orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shiperId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate));                
+            }else{
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shiperId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate));
             }
             response.sendRedirect("OrderController");
         }

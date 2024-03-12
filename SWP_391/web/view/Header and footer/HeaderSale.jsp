@@ -124,7 +124,7 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li class="dropdown mt-0">
-                                <a href="OrderController" class="py-0 d-flex align-items-center">QUẢN LÝ ĐƠN HÀNG</a>
+                                <a href="OrderController" class="py-0 d-flex align-items-center">ĐƠN HÀNG</a>
                             </li>
 
                             <li class="line" style="margin-top:28px"></li>
