@@ -15,17 +15,29 @@ public class UserContract {
     private String start_date;
     private int slot;
     private int salary;
+    private int gender;
 
     public UserContract() {
     }
 
-    public UserContract(int id, int user_id, String start_date, int slot, int salary) {
+    public UserContract(int id, int user_id, String start_date, int slot, int salary, int gender) {
         this.id = id;
         this.user_id = user_id;
         this.start_date = start_date;
         this.slot = slot;
         this.salary = salary;
+        this.gender = gender;
     }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+  
 
     public int getId() {
         return id;
