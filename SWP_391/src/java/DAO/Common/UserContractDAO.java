@@ -33,7 +33,8 @@ public class UserContractDAO extends DBContext {
                 String start_date = rs.getString("start_date");
                 int slot = rs.getInt("slot");
                 int salary = rs.getInt("salary");
-                UserContract uc = new UserContract(id, user_id, start_date, slot, salary);
+                 int gender = rs.getInt("gender");
+                UserContract uc = new UserContract(id, user_id, start_date, slot, salary, gender);
                 userContract.add(uc);
             }
         } catch (Exception e) {
@@ -45,7 +46,7 @@ public class UserContractDAO extends DBContext {
     public static void main(String[] args) {
         UserContractDAO udao = new UserContractDAO();
           // Gọi hàm selectAllUserContract với một userID cụ thể (thay userID bằng giá trị thích hợp)
-            ArrayList<UserContract> userContracts = udao.sellectAllUserContract(37);
+            ArrayList<UserContract> userContracts = udao.sellectAllUserContract(19);
 
             // In ra kết quả
             for (UserContract userContract : userContracts) {

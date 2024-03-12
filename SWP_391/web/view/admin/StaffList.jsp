@@ -258,14 +258,16 @@
                                 <th>Số điện thoại</th>
                                 <th>Vai trò</th>
                                 <th>Trạng thái</th>
-                                <th>Ngày tạo</th>                          
+                                <th>Ngày tạo</th>  
+                                <th>Giới tính</th>  
+                                <th>Ca làm</th>  
+                                <th>Lương</th>  
                                 <th>Hoạt động</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${selectStaff}" var="user">
                                 <tr>
-
                                     <td>${user.id}</td>
                                     <td>${user.name}</td>
                                     <td>${user.email}</td>
@@ -319,10 +321,10 @@
                                     <li class="page-item disabled"><span class="page-link"><</span></li>
                                     </c:otherwise>
                                 </c:choose>
-                                    
-                                <c:forEach begin="1" end="${endPage}" var="i">
-                                    <c:choose>
-                                        <c:when test="${param.index == i}">
+
+                            <c:forEach begin="1" end="${endPage}" var="i">
+                                <c:choose>
+                                    <c:when test="${param.index == i}">
                                         <li class="page-item active"><a href="staff?index=${i}&&txtSearch=${txtSearch}" class="page-link selected">${i}</a></li>
                                         </c:when>
                                         <c:otherwise>
