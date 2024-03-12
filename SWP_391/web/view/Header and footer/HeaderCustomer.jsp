@@ -112,185 +112,41 @@
                                 </c:when>
                                 <c:otherwise>
                             <li><a href="login"><img
-                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/ananas.vn/wp-content/themes/ananas/fe-assets/images/svg"> Đăng nhập</a></li>
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
                                 </c:otherwise>
                             </c:choose> 
                 </ul>
             </div>
-            <!--            <div class="row">
-                            <div class="navbar center ">
-            
-                                <div class="navbar-header">
-                                    <div class="navbar-brand"><a href=""><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Header.svg"></a></div>
-                                </div>
-            
-            
-                                <div class="collapse navbar-collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li class="dropdown">
-                                            <a href="" class="dropdown-toggle">SẢN PHẨM <span class="caret"></span></a>
-                                            <ul class="dropdown-menu style1">
-                                                <li><a href=""><img src="../../wp-content/uploads/Menu_Nam.jpg"></a><a class="style1-title" href="">CHO NAM</a></li>
-                                                <li><a href=""><img src="../../wp-content/uploads/Menu_Nu.jpg"></a><a class="style1-title" href="">CHO NỮ</a></li>
-                                                <li><a href=""><img src="../../wp-content/uploads/Menu_Sale-off.jpg"></a><a class="style1-title" href="">OUTLET SALE</a></li>
-                                                <li><a href=""><img src="../../wp-content/uploads/Menu_Phu-kien.jpg"></a><a class="style1-title" href="">THỜI TRANG & PHỤ KIỆN</a></li>
-                                                <div class="style1-des"><a href="">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a></div>
-                                            </ul>
-            
-                                        </li>
-            
-                                        <li class="line"></li>
-                                        <li class="dropdown">
-                                            <a href="" class="dropdown-toggle">NAM <span class="caret"></span></a>
-                                            <ul class="dropdown-menu style2">
-                                                <li>
-                                                    <a href="#" class="title">NỔI BẬT</a>
-            
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#"></a>
-                                                    <a href="">Best Seller</a>
-                                                    <a href="">New Arrival</a>
-                                                    <a href="">Sale off</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Bộ sản phẩm</a>
-                                                    <a href="">Pattas Living Journey</a>
-                                                    <a href="">Pattas Polka Dots</a>
-                                                    <a href="">Basas Evergreen</a>
-                                                    <a href="">Urbas Ruler</a>
-                                                    <a href="">Track 6 Class E</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Collaboration</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                </li>
-                                                <li class="style2-divider"></li>
-                                                <li>
-                                                    <a href="#" class="title">GIÀY</a>
-            
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Dòng sản phẩm</a>
-                                                    <a href="">Basas</a>
-                                                    <a href="">Vintas</a>
-                                                    <a href="">Urbas</a>
-                                                    <a href="">Pattas</a>
-                                                    <a href="">Creas</a>
-                                                    <a href="">Track 6</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Style</a>
-                                                    <a href="">High Top</a>
-                                                    <a href="">Low Top</a>
-                                                    <a href="">Slip-on</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="">Tất cả giày</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">THỜI TRANG & PHỤ KIỆN</a>
-            
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Nửa trên</a>
-                                                    <a href="">Basic Tee</a>
-                                                    <a href="">Graphic tee</a>
-                                                    <a href="">Sweatshirt</a>
-                                                    <a href="">Hoodie</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Phụ kiện</a>
-                                                    <a href="">Nón</a>
-                                                    <a href="">Dây giày</a>
-                                                    <a href="">Vớ</a>
-                                                    <a href="">Túi Tote</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="">Xem tất cả</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                </li>
-                                                <div class="style2-des"><a href="">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a></div>
-                                            </ul>
-                                        </li>
-            
-                                        <li class="line"></li>
-                                        <li class="dropdown">
-                                            <a href="" class="dropdown-toggle">NỮ <span class="caret"></span></a>
-                                            <ul class="dropdown-menu style2">
-                                                <li>
-                                                    <a href="#" class="title">NỔI BẬT</a>
-            
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#"></a>
-                                                    <a href="">Best Seller</a>
-                                                    <a href="">New Arrival</a>
-                                                    <a href="">Sale-off</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Bộ sản phẩm</a>
-                                                    <a href="">Pattas Living Journey</a>
-                                                    <a href="">Pattas Polka Dots</a>
-                                                    <a href="">Basas Evergreen</a>
-                                                    <a href="">Urbas Ruler</a>
-                                                    <a href="">Track 6 Class E</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Collaboration</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                </li>
-                                                <li class="style2-divider"></li>
-                                                <li>
-                                                    <a href="#" class="title">GIÀY</a>
-            
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Dòng sản phẩm</a>
-                                                    <a href="">Basas</a>
-                                                    <a href="">Vintas</a>
-                                                    <a href="">Urbas</a>
-                                                    <a href="">Pattas</a>
-                                                    <a href="">Creas</a>
-                                                    <a href="">Track 6</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Style</a>
-                                                    <a href="">High Top</a>
-                                                    <a href="">Low Top</a>
-                                                    <a href="">Slip-on</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="title">THỜI TRANG & PHỤ KIỆN</a>
-            
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Nửa trên</a>
-                                                    <a href="">Basic Tee</a>
-                                                    <a href="">Graphic Tee</a>
-                                                    <a href="">Sweatshirt</a>
-                                                    <a href="">Hoodie</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="#">Phụ kiện</a>
-                                                    <a href="">Nón</a>
-                                                    <a href="">Dây giày</a>
-                                                    <a href="">Vớ</a>
-                                                    <a href="">Túi Tote</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                    <a class="title1" href="">Xem tất cả</a>
-                                                    <a class="blank">&nbsp;</a>
-                                                </li>
-                                                <div class="style2-des"><a href="">MỌI NGƯỜI THƯỜNG GỌI CHÚNG TÔI LÀ <span class="highlight">DỨA</span> !</a></div>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <form action="" class="navbar-form navbar-right">
-                                        <div class="form-group">
-                                            <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg" >
-            
-                                            <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm">
-                                        </div>
-                                    </form>
-                                </div>
+            <div class="row"　style="display: inline-flex; align-items: center">
+                <div class="navbar center" >
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="" class="">TRANG CHỦ</a>
+                            </li>
+
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="" class="">SẢN PHẨM MỚI</a>
+                            </li>
+
+                            <li class="line"></li>
+                            <li class="dropdown">
+                                <a href="" class="">BÁN CHẠY</a>
+
+                            </li>
+                        </ul>
+                        <form action="" class="navbar-form navbar-right">
+                            <div class="form-group" >
+                                <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg" >
+                                <input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm">
                             </div>
-                        </div>-->
-            <div class="row">
-                <div class="hot-news-cont">
-                    <div class="hot-news-slide">
-                        <div class="cont-item"><a href="">Bước Vào Phong Cách: Nơi Mỗi Đôi Giày Kể Một Câu Chuyện</a></div>
-                        <div class="cont-item"><a href="">Bước Đi Đúng Bước Xu Hướng Với Sự Lựa Chọn Đa Dạng Của Chúng Tôi</a></div>
-                        <div class="cont-item"><a href="">Bước Chân Tự Tin Với Những Đôi Giày Phản Ánh Phong Cách Của Bạn</a></div>
-                        <div class="cont-item"><a href="">Từ Sự Đầm Áp Đến Sang Trọng, Chúng Tôi Có Đôi Giày Hoàn Hảo Cho Bạn</a></div>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
         <script>
             const ajaxUrl = 'ananas.vn/wp-admin/admin-ajax.html';

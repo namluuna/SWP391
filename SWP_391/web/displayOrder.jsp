@@ -227,7 +227,7 @@
     </head>
 
     <body>
-        <jsp:include page="view/customer/header.jsp"></jsp:include>
+        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
             <br>
             <br>
             <br>

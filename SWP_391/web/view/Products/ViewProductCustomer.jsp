@@ -195,17 +195,19 @@
         <div class="header container-fluid hidden-xs hidden-sm">
             <div class="row">
                 <ul class="menu">
-                    <li><a href="ananas.vn/search-order/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
-                    <li><a href="ananas.vn/stores/index.html"><img
-                                src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_cua_hang.svg"> Tìm cửa hàng</a></li>
-                    <li><a href="ananas.vn/your-wishlist/index.html"><img
-                                src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_heart_header.svg"> Yêu thích</a></li>
-                    <!--                <li><a href="--><!--"><img-->
-                    <!--                                src="--><!--/icon_login.png"> Đăng nhập</a></li>-->
-                    <li><a href="ananas.vn/coming-soon/index.html"><img
-                                src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
-                    <li><a href="ananas.vn/your-cart/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">
-                            Giỏ hàng (<span class="countProduct">0</span>)</a></li>
+                    <li><a href="SearchOrder.jsp"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
+                            <c:choose>
+                                <c:when test="${not empty user}">
+                            <li><a href="profile"><img
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
+                            <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
+                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
+                                </c:when>
+                                <c:otherwise>
+                            <li><a href="login"><img
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
+                                </c:otherwise>
+                            </c:choose> 
                 </ul>
             </div>
             <div class="row">
@@ -840,38 +842,38 @@
 
                 <!-- FILTER ON PC VERSION (will be hidden on mobile)-->
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 prd1-left hidden-xs hidden-sm">
-                    
+
 
                     <div class="row left-tree">
                         <ul class="nav">
                             <li class="first-lvl">
                                 <label label-default="" class="tree-toggle nav-header orange">TRẠNG THÁI  <span class="caret caret-active"></span></label>
                                 <ul class="nav tree">
-                                    
+
                                     <c:forEach items="${data1}" var="o">
-                                    <li>
-                                        <label >
-                                            <a href="CustomerProducts?filter=brand&id=${o.id}">${o.name}</a>                                           <span class="glyphicon"></span>
-                                        </label>
-                                    </li>
+                                        <li>
+                                            <label >
+                                                <a href="CustomerProducts?filter=brand&id=${o.id}">${o.name}</a>                                           <span class="glyphicon"></span>
+                                            </label>
+                                        </li>
                                     </c:forEach>
-                                   
+
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
                             <li class="first-lvl">
                                 <label label-default="" class="tree-toggle nav-header orange">KIỂU DÁNG  <span class="caret caret-active"></span></label>
                                 <ul class="nav tree">
-                                     <c:forEach items="${data5}" var="o">
-                                    <li>
-                                        <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="low-top" hidden>${o.getName()}                                           <span class="glyphicon"></span>
-                                        </label>
-                                    </li>
+                                    <c:forEach items="${data5}" var="o">
+                                        <li>
+                                            <label >
+                                                <input  name="cbStatus" class="cb-item" type="checkbox" value="low-top" hidden>${o.getName()}                                           <span class="glyphicon"></span>
+                                            </label>
+                                        </li>
                                     </c:forEach>
                                 </ul>
                             </li>
-                            
+
                             <li class="nav-divider"></li>
                             <li class="first-lvl">
                                 <label label-default="" class="tree-toggle nav-header orange">GIÁ  <span class="caret caret-active"></span></label>
@@ -908,17 +910,17 @@
                                     </li>
                                 </ul>
                             </li>
-                           
+
                             <li class="nav-divider"></li>
                             <li class="first-lvl">
                                 <label label-default="" class="tree-toggle nav-header orange">CHẤT LIỆU  <span class="caret caret-active"></span></label>
                                 <ul class="nav tree">
                                     <c:forEach items="${data6}" var="o">
-                                    <li>
-                                        <label >
-                                            <input  name="cbStatus" class="cb-item" type="checkbox" value="canvas" hidden>${o.getName()}                                            <span class="glyphicon"></span>
-                                        </label>
-                                    </li>
+                                        <li>
+                                            <label >
+                                                <input  name="cbStatus" class="cb-item" type="checkbox" value="canvas" hidden>${o.getName()}                                            <span class="glyphicon"></span>
+                                            </label>
+                                        </li>
                                     </c:forEach>
                                 </ul>
                             </li>
@@ -928,12 +930,12 @@
                                         class="caret caret-active"></span></label>
                                 <ul class="nav tree">
                                     <c:forEach items="${data3}" var="o">
-                                    <li class="cb-color">
-                                        <label ><span class="bg-color" style="background-color: ${o.getColor_code()}"></span>
-                                            <input                                                     name="cbColor"
-                                                                                                       type="checkbox"
-                                                                                                       value="goat" hidden></label>
-                                    </li>
+                                        <li class="cb-color">
+                                            <label ><span class="bg-color" style="background-color: ${o.getColor_code()}"></span>
+                                                <input                                                     name="cbColor"
+                                                                                                           type="checkbox"
+                                                                                                           value="goat" hidden></label>
+                                        </li>
                                     </c:forEach>
                                 </ul>
                             </li>
@@ -1515,7 +1517,7 @@
                                                         <li class="cb-color">
                                                             <label><span class="bg-color" style="background-color: #a49c8e;"></span><input
                                                                     name="cbColor"  type="checkbox" value="goat" hidden></label>
-                                                            
+
                                                         </li>
                                                     </ul>
                                                 </li>
