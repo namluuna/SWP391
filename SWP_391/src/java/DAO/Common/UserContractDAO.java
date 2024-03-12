@@ -21,42 +21,40 @@ public class UserContractDAO extends DBContext {
         ArrayList<UserContract> userContract = new ArrayList<>();
 
         try {
-            String sql = "SELECT uc.[id] AS [id], uc.[user_id] AS [user_id], uc.[start_date], uc.[slot], uc.[salary] \n"
+            String sql = "SELECT uc.[id] AS [id], uc.[user_id] AS [user_id], uc.[start_date], uc.[slot], uc.[salary] ,uc.[gender] \n"
                     + "FROM [users] AS u JOIN [user_contracts] AS uc ON u.[id] = uc.[user_id]\n"
                     + "WHERE u.[id] = ? AND u.[role] IN (2,3) AND u.[is_deleted] = 0 ";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, userID);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 String start_date = rs.getString("start_date");
                 int slot = rs.getInt("slot");
                 int salary = rs.getInt("salary");
-                 int gender = rs.getInt("gender");
+                int gender = rs.getInt("gender");
                 UserContract uc = new UserContract(id, user_id, start_date, slot, salary, gender);
                 userContract.add(uc);
             }
         } catch (Exception e) {
-            
+
         }
         return userContract;
     }
-    
+
     public static void main(String[] args) {
         UserContractDAO udao = new UserContractDAO();
-          // Gọi hàm selectAllUserContract với một userID cụ thể (thay userID bằng giá trị thích hợp)
-            ArrayList<UserContract> userContracts = udao.sellectAllUserContract(19);
+        ArrayList<UserContract> userContracts = udao.sellectAllUserContract(19);
+        for (UserContract userContract : userContracts) {
+            System.out.println("UserContract ID: " + userContract.getId());
+            System.out.println("User ID: " + userContract.getUser_id());
+            System.out.println("Start Date: " + userContract.getStart_date());
+            System.out.println("Slot: " + userContract.getSlot());
+            System.out.println("Salary: " + userContract.getSalary());
+            System.out.println("Gender: " + userContract.getGender());
+            System.out.println("------------------------------");
+        }
 
-            // In ra kết quả
-            for (UserContract userContract : userContracts) {
-                System.out.println("UserContract ID: " + userContract.getId());
-                System.out.println("User ID: " + userContract.getUser_id());
-                System.out.println("Start Date: " + userContract.getStart_date());
-                System.out.println("Slot: " + userContract.getSlot());
-                System.out.println("Salary: " + userContract.getSalary());
-                System.out.println("------------------------------");
-            }
-        
     }
 }

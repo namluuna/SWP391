@@ -267,6 +267,7 @@
                         </thead>
                         <tbody>
                             <c:forEach items="${selectStaff}" var="user">
+
                                 <tr>
                                     <td>${user.id}</td>
                                     <td>${user.name}</td>
@@ -300,6 +301,7 @@
                                     </td>
                                     <td>${user.created_at}</td>
 
+
                                     <td>
                                         <a href="updateStaff?id=${user.id}" class="settings" title="Cập nhật" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                                         <a href="#" onclick="doDelete('${user.id}')" class="delete" title="Xóa" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
@@ -307,10 +309,10 @@
 
                                 </tr>
 
+
                             </c:forEach>
                         </tbody>
-                    </table>      
-
+                    </table>     
                     <div class="clearfix">
                         <ul class="pagination">  
                             <c:choose>

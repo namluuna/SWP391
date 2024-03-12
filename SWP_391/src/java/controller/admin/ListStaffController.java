@@ -4,6 +4,7 @@
  */
 package controller.admin;
 
+import DAO.Common.UserContractDAO;
 import DAO.Common.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import model.Common.User;
+import model.Common.UserContract;
 
 /**
  *
@@ -83,11 +85,14 @@ public class ListStaffController extends HttpServlet {
                 if (countName % 15 != 0) {
                     endPage++;
                 }
+                UserContractDAO ucdao = new UserContractDAO();
+                ArrayList<UserContract> contract = ucdao.sellectAllUserContract(user.getId());
                 ArrayList<User> selectStaff = userDAO.SearchUserByName(txtSearch, index);
-                
+                request.setAttribute("contract", contract);
                 request.setAttribute("endPage", endPage);
                 request.setAttribute("selectStaff", selectStaff);
                 request.setAttribute("txtSearch", txtSearch);
+                request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
             } else {
                 int count = userDAO.getTotalUsers();
                 int endPage = count / 15;
@@ -95,11 +100,15 @@ public class ListStaffController extends HttpServlet {
                     endPage++;
                 }
                 ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
+                UserContractDAO ucdao = new UserContractDAO();
+                ArrayList<UserContract> contract = ucdao.sellectAllUserContract(user.getId());
                 request.setAttribute("txtSearch", txtSearch);
                 request.setAttribute("endPage", endPage);
+                request.setAttribute("contract", contract);
                 request.setAttribute("selectStaff", selectStaff);
+                request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
+            
         }
 
     }
