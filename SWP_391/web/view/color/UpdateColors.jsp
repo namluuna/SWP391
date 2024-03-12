@@ -47,7 +47,7 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Update Color</h1>
+                <h1 class="text-center mb-4">Cập nhật màu sắc</h1>
                 <form name="form" action="colors" method="POST" onsubmit="return validateForm();">
                     <input type="hidden" class="form-control" id="id" name="id" value="${colors.getId()}" readonly>
                     <div class="mb-3">
@@ -60,8 +60,8 @@
                         <input type="text" class="form-control" id="color_code" name="color_code" value="${colors.getColor_code()}">
                         <span id="error-message-colorcode" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
-                    <a href="colors" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" name="update">Cập nhật</button>
+                    <a href="colors" class="btn btn-secondary">Hủy bỏ</a>
                 </form>
             </div>
         </div>
@@ -80,12 +80,12 @@
                         errorMessageColorCode.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Please enter a name";
+                            errorMessageName.innerHTML = "Hãy nhập tên màu";
                             return false;
                         }
 
                         if (colorcode === "") {
-                            errorMessageColorCode.innerHTML = "Please enter a description";
+                            errorMessageColorCode.innerHTML = "Hãy nhập mã màu";
                             return false;
                         }
 
