@@ -97,6 +97,7 @@ public class CustomerProductsController extends HttpServlet {
         request.setAttribute("data5", data5);
         request.setAttribute("data6", data6);
 
+        
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
             request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
         }
@@ -145,6 +146,7 @@ public class CustomerProductsController extends HttpServlet {
         } else {
             data = p.selectAllProducts();
         }
+        
         request.setAttribute("data", data);
 
         request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
