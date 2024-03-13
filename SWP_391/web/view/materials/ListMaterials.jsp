@@ -13,38 +13,41 @@
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            /* Optional: Add custom styles here */
+            .modal-title {
+                color: #000 !important; /* Đặt màu chữ */
+                font-size: 1.25rem !important; /* Đặt font size */
+            }
         </style>
     </head>
     <body>
         <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
-         
-        <div class="container mt-5">
 
-            <h1>Quản lí chất liệu</h1>
-            <div><a href="materials?mod=1" class="btn btn-primary mb-3">Thêm chất liệu mới</a></div>
+            <div class="container mt-5">
 
-            <div class="btn-group mb-3">
-                <a href="materials" class="btn btn-secondary">Tất cả các chất liệu</a>
-                <a href="materials?show=active" class="btn btn-success">Chất liệu đang được sử dụng</a>
-                <a href="materials?show=updated" class="btn btn-warning">Chất liệu đã cập nhật</a>
-                <a href="materials?show=deleted" class="btn btn-danger">Chất liệu đã xóa</a>
-            </div>
+                <h1>Quản lí chất liệu</h1>
+                <div><a href="materials?mod=1" class="btn btn-primary mb-3">Thêm chất liệu mới</a></div>
 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Chất liệu</th>
-                        <th>Mô tả chất liệu</th>
-                        <th>Ngày tạo</th>
-                        <th>Ngày cập nhật</th>
-                        <th>Ngày xóa</th>
-                        <th>Hoạt động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Loop through the groups and display their information -->
+                <div class="btn-group mb-3">
+                    <a href="materials" class="btn btn-secondary">Tất cả các chất liệu</a>
+                    <a href="materials?show=active" class="btn btn-success">Chất liệu đang được sử dụng</a>
+                    <a href="materials?show=updated" class="btn btn-warning">Chất liệu đã cập nhật</a>
+                    <a href="materials?show=deleted" class="btn btn-danger">Chất liệu đã xóa</a>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Chất liệu</th>
+                            <th>Mô tả chất liệu</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Ngày xóa</th>
+                            <th>Hoạt động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the groups and display their information -->
                     <c:forEach var="material" items="${Mdata}">
                         <!-- Check if the group should be displayed based on the 'show' parameter -->
                         <c:choose>
@@ -72,7 +75,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                       Bạn có chắc muốn xóa chất liệu này ?
+                                                        Bạn có chắc muốn xóa chất liệu này ?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
@@ -132,7 +135,7 @@
                                     <td>
                                         <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
-                                           Xóa
+                                            Xóa
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -181,7 +184,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                       Bạn có chắc muốn phục hồi chất liệu này ?
+                                                        Bạn có chắc muốn phục hồi chất liệu này ?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
@@ -201,10 +204,10 @@
                 </tbody>
             </table>
         </div>
-         <jsp:include page="../Groups/footer.jsp"></jsp:include>
+        <jsp:include page="../Groups/footer.jsp"></jsp:include>
         <!-- Include Bootstrap's JavaScript and Popper.js (optional) -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+    </body>
 </html>
