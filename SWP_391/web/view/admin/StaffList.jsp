@@ -35,7 +35,7 @@
             }
             .table-title {
                 padding-bottom: 15px;
-                background:  #ffc221;
+                background:  #808080;
                 color: #fff;
                 padding: 16px 30px;
                 margin: -20px -25px 10px;
@@ -218,26 +218,27 @@
                 }
             }
         </style>
-        <div class="container-xl">
-            <div class="table-responsive">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <h2>Quản lí nhân viên</h2>
-                            </div>
-                            <div class="col-sm-7">
-                                <a href="view\\admin\\CreateStaff.jsp" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Thêm nhân viên</span></a>               						
+        <jsp:include page="../Header and footer/HeaderAdmin.jsp"></jsp:include>
+            <div class="container-xl">
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h2>Quản lí nhân viên</h2>
+                                </div>
+                                <div class="col-sm-7">
+                                    <a href="view\\admin\\CreateStaff.jsp" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Thêm nhân viên</span></a>               						
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <table class="table table-striped table-hover">
-                        <div class="float-right search-bar">
-                            <form action="/SWP_391/staff" method="get">
-                                <div class="input-group">
-                                    <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm theo tên..." aria-label="Search" aria-describedby="search-addon" value="${txtSearch}" >
+                        <table class="table table-striped table-hover">
+                            <div class="float-right search-bar">
+                                <form action="/SWP_391/staff" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm theo tên..." aria-label="Search" aria-describedby="search-addon" value="${txtSearch}" >                                                                           
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-outline-primary">Tìm</button>
+                                        <button type="submit" class="btn btn-outline-primary">Tìm</button> 
                                     </div>
                                 </div>
                             </form>

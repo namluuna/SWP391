@@ -13,33 +13,36 @@
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            /* Optional: Add custom styles here */
+            .modal-title {
+                color: #000 !important; /* Đặt màu chữ */
+                font-size: 1.25rem !important; /* Đặt font size */
+            }
         </style>
     </head>
     <body>
         <jsp:include page="../Groups/header.jsp"></jsp:include>
         <div class="container mt-5">
             
-            <h1>Forms Management</h1>
-            <div><a href="Forms?mod=1" class="btn btn-primary mb-3">Create New Forms</a></div>
+            <h1>Quản lí kiểu dáng</h1>
+            <div><a href="Forms?mod=1" class="btn btn-primary mb-3">Tạo kiểu dáng</a></div>
             
             <div class="btn-group mb-3">
-                <a href="Forms" class="btn btn-secondary">All Forms</a>
-                <a href="Forms?show=active" class="btn btn-success">Active Forms</a>
-                <a href="Forms?show=updated" class="btn btn-warning">Updated Forms</a>
-                <a href="Forms?show=deleted" class="btn btn-danger">Deleted Forms</a>
+                <a href="Forms" class="btn btn-secondary">Tất cả kiểu dáng</a>
+                <a href="Forms?show=active" class="btn btn-success">Kiểu dáng đang hoạt động</a>
+                <a href="Forms?show=updated" class="btn btn-warning">Kiểu dáng đã cập nhật</a>
+                <a href="Forms?show=deleted" class="btn btn-danger">Kiểu dáng không hoạt động</a>
             </div>
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Created_at</th>
-                        <th>Updated_at</th>
-                        <th>Deleted_at</th>
-                        <th>Actions</th>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật</th>
+                        <th>Ngày xóa</th>
+                        <th>Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,25 +60,25 @@
                                     <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
-                                        <a href="Forms?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="Forms?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${group.getId()}">
-                                            Delete
+                                            Xóa
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${group.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this form?
+                                                        Bạn có chắc chắn muốn xóa kiểu dáng này không ?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Xóa</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,25 +96,25 @@
                                     <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
-                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="groups?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${group.getId()}">
-                                            Delete
+                                            Xóa
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${group.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this form?
+                                                        Bạn có chắc chắn muốn xóa kiểu dáng này không ?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Xóa</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,25 +132,25 @@
                                     <td>${group.updated_at}</td>
                                     <td>${group.deleted_at}</td>
                                     <td>
-                                        <a href="Forms?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="Forms?mod=2&id=${group.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${group.getId()}">
-                                            Delete
+                                            Xóa
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${group.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this group?
+                                                        Bạn có chắc chắn muốn xóa kiểu dáng này không ?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Delete</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                        <a href="Forms?mod=3&id=${group.getId()}" class="btn btn-danger">Xóa</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,26 +170,26 @@
                                     <td>
                                         <!-- Add a button to restore the group -->
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${group.id}">
-                                            Restore
+                                            Khôi phục
                                         </button>
                                         <!-- Restore Confirmation Modal -->
                                         <div class="modal fade" id="confirmRestoreModal${group.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmRestoreModalLabel">Confirm Restore</h5>
+                                                        <h5 class="modal-title" id="confirmRestoreModalLabel">Xác nhận khôi phục</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to restore this group?
+                                                        Bạn có chắc chắn muốn khôi phục kiểu dáng này không ?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                                         <form method="POST" action="Forms">
                                                             <input type="hidden" name="id" value="${group.id}">
-                                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
+                                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Khôi phục</button>
                                                         </form>
                                                     </div>
                                                 </div>

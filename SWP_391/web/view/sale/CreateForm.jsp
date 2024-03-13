@@ -44,23 +44,23 @@
         </style>
     </head>
     <body>
-
+      
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Create New Forms</h1>
+                <h1 class="text-center mb-4">Tạo kiểu dáng mới</h1>
                 <form name="form" action="Forms" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name:</label>
+                        <label for="name" class="form-label">Nhập tên kiểu dáng:</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description:</label>
+                        <label for="description" class="form-label">Nhập mô tả kiểu dáng:</label>
                         <input type="text" class="form-control" id="description" name="description">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
-                    <a href="Forms" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" name="add">Tạo</button>
+                    <a href="Forms" class="btn btn-secondary">Hủy</a>
                 </form>
             </div>
         </div>
@@ -79,12 +79,12 @@
                         errorMessageDescription.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Please enter a name";
+                            errorMessageName.innerHTML = "Hãy nhập tên kiểu dáng";
                             return false;
                         }
 
                         if (description === "") {
-                            errorMessageDescription.innerHTML = "Please enter a description";
+                            errorMessageDescription.innerHTML = "Hãy nhập mô tả kiểu dáng";
                             return false;
                         }
 

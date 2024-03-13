@@ -131,7 +131,7 @@
                     <button type="submit">Đăng Nhập</button>
                     <br>
                     <div class="links">
-                        <a href="fogotpassword.jsp">Quên mật khẩu?</a>
+                        <a href="/SWP_391/ForgotPasswordController">Quên mật khẩu?</a>
                         <a href="/SWP_391/register">Đăng ký</a>
                     </div>
                 </form>
