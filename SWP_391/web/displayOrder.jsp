@@ -258,8 +258,9 @@
                                 <td><strong>Tổng tiền</strong></td>
                             </tr>
                         </thead>
-                        <tr>
+                        
                         <c:forEach items="${NewOrderDetails}" var="c">
+                            <tr>
                             <td> <img
                                     src="images/${c.getProductDetail().getImage_url_2()}"
                                     class="img-fluid rounded-3" alt="Cotton T-shirt" >${c.getProductDetail().getProduct().getName()}</td>
@@ -268,8 +269,9 @@
                             <td>${c.getQuantity()}</td>
                             <td>${c.getProductDetail().getProduct().getPrice()}</td>
                             <td>${total} VND</td> 
+                            </tr>
                         </c:forEach>
-                    </tr>
+                    
                 </table>
 
                 <hr class="custom-hr">
