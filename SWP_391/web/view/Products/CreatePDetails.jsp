@@ -83,24 +83,24 @@
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="inventory" class="form-label">Nhập Số Lượng Sản Phẩm:</label>
+                        <label for="inventory" class="form-label"><span style="color: red;">*</span>Nhập Số Lượng Sản Phẩm:</label>
                         <input type="text" class="form-control" id="inventory" name="inventory">
                         <span id="error-message-price" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="image1" class="form-label">Ảnh 1</label>
+                        <label for="image1" class="form-label"><span style="color: red;">*</span>Ảnh 1</label>
                         <input type="file" class="form-control" id="image1" name="image1" accept="image/*" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image2" class="form-label">Ảnh 2</label>
+                        <label for="image2" class="form-label"><span style="color: red;">*</span>Ảnh 2</label>
                         <input type="file" class="form-control" id="image2" name="image2" accept="image/*" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image3" class="form-label">Ảnh 3</label>
+                        <label for="image3" class="form-label"><span style="color: red;">*</span>Ảnh 3</label>
                         <input type="file" class="form-control" id="image3" name="image3" accept="image/*" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image4" class="form-label">Ảnh 4</label>
+                        <label for="image4" class="form-label"><span style="color: red;">*</span>Ảnh 4</label>
                         <input type="file" class="form-control" id="image4" name="image4" accept="image/*" required>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add">Lưu</button>

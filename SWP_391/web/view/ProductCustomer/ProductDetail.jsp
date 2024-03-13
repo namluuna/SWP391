@@ -210,6 +210,12 @@
                         <% session.removeAttribute("addToCartSuccess"); %>
                         <div id="snackbar" style="color:green"><%= message %></div>
                         <% } %>
+                        
+                        <% String message1 = (String) session.getAttribute("itemIsExist"); %>
+                        <% if(message1 != null){ %>
+                        <% session.removeAttribute("itemIsExist"); %>
+                        <div id="snackbar" style="color:red"><%= message1 %></div>
+                        <% } %>
                     </form>
 
                     <strong class="toggle-btn" onclick="toggleDescription()">Thông tin sản phẩm</strong>
