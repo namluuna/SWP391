@@ -74,7 +74,7 @@
             </style>
         </head>
         <body>
-        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+            <jsp:include page="../Groups/header.jsp"></jsp:include>
                 <div class="container mt-5">
                     <h1>Quản lý đơn hàng</h1>
                     <div>
@@ -152,9 +152,9 @@
                                     <td>
                                         <a href="EditOrderController?id=${c.id}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
 
-<!--                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal">
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal">
                                             <i class="fas fa-trash-alt"></i>
-                                        </button>-->
+                                        </button>
 
                                     </td>
                                 </tr>

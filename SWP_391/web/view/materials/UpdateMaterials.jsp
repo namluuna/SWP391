@@ -47,21 +47,21 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Cập nhật chất liệu</h1>
+                <h1 class="text-center mb-4">Update Materials</h1>
                 <form name="form" action="materials" method="POST" onsubmit="return validateForm();">
                      <input type="hidden" class="form-control" id="id" name="id" value="${materials.getId()}" readonly>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Tên: </label>
+                        <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" value="${materials.getName()}">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Mô tả:</label>
-                       <textarea class="form-control" id="description" name="description" >${materials.getDescription()}</textarea>
+                        <label for="description" class="form-label">Description:</label>
+                        <input type="text" class="form-control" id="description" name="description" value="${materials.getDescription()}">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="update">Cập nhật</button>
-                    <a href="materials" class="btn btn-secondary">Hủy bỏ</a>
+                    <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
+                    <a href="materials" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>
@@ -80,12 +80,12 @@
                         errorMessageDescription.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Hãy nhập tên chất liệu";
+                            errorMessageName.innerHTML = "Please enter a name";
                             return false;
                         }
 
                         if (description === "") {
-                            errorMessageDescription.innerHTML = "Hãy nhập phần mô tả";
+                            errorMessageDescription.innerHTML = "Please enter a description";
                             return false;
                         }
 

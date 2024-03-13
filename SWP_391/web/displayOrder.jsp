@@ -161,169 +161,35 @@
                 margin: 0 auto; /* Lùi vào giữa theo chiều ngang */
             }
 
-            body {
-                font-family: Arial, sans-serif;
-            }
-
-            .order-header {
-                background-color: #ffc221;
-                padding: 10px;
-                margin: 0;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            h2 {
-                margin: 0;
-            }
-            hr.custom-hr {
-                border: 0;
-                height: 2px;
-                background-color: #ffc221;
-                width: 70px;
-                margin: 20px 0;
-            }
-
-            hr.custom-hr::after {
-                content: '';
-                display: block;
-                margin-top: -2px;
-                height: 2px;
-                background-color: #ffc221;
-                width: 749px;
-            }
-            .btn.btn-cont {
-                background-color: #303030;
-                color: white; /* Đặt màu chữ trắng để nổi bật trên nền đen */
-                padding: 10px 20px; /* Tùy chỉnh kích thước và khoảng cách nút */
-                border: none; /* Loại bỏ viền nút */
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            .order-container {
-                width: calc(50% - 10px); /* 50% của chiều rộng màn hình trừ đi khoảng trắng */
-                margin-right: 10px; /* Khoảng trắng giữa div và cạnh phải màn hình */
-                box-sizing: border-box; /* Kích thước tính cả padding và border */
-                background-color: #f2f2f2; /* Màu nền để phân biệt */
-            }
-            .order-details,
-            .additional-details {
-                width: calc(50% - 10px); /* 50% của chiều rộng màn hình trừ đi khoảng trắng */
-                box-sizing: border-box; /* Kích thước tính cả padding và border */
-                background-color: #f2f2f2; /* Màu nền để phân biệt */
-                padding: 20px; /* Khoảng cách giữa nội dung và viền */
-            }
-            .img-fluid {
-                width: 50%; /* Thay đổi kích thước theo nhu cầu của bạn */
-                height: auto;
-            }
         </style>
-        <script>
-            function quayLaiMuaHang() {
-                // Đường dẫn bạn muốn chuyển hướng đến
-                var href = 'CustomerProducts';
 
-                // Chuyển hướng đến trang mua hàng
-                window.location.href = href;
-            }
-        </script>
     </head>
 
     <body>
-        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
+        <jsp:include page="view/customer/header.jsp"></jsp:include>
             <br>
             <br>
             <br>
             <br>
+            <h2>ĐƠN HÀNG CỦA BẠN LÀ : </h2>
 
-            <div class="d-flex justify-content-between align-items-center mb-5">
-                <div class="order-container">
-                    <div class="order-header">
-                        <h2>ĐƠN HÀNG CỦA BẠN</h2>
-                    </div>
-                    <hr class="custom-hr">
-                    <table class="table table-striped table-hover">    
-                        <thead>
-                            <tr>
-                                <td><strong>Tên sản phẩm</strong></td>
-                                <td><strong>Màu sắc</strong></td>
-                                <td><strong>Kích thước</strong></td>
-                                <td><strong>Số lượng</strong></td>
-                                <td><strong>giá sản phẩm</strong></td>
-                                <td><strong>Tổng tiền</strong></td>
-                            </tr>
-                        </thead>
-                        <tr>
-                        <c:forEach items="${NewOrderDetails}" var="c">
-                            <td> <img
-                                    src="images/${c.getProductDetail().getImage_url_2()}"
-                                    class="img-fluid rounded-3" alt="Cotton T-shirt" >${c.getProductDetail().getProduct().getName()}</td>
-                            <td>${c.getProductDetail().getColor().getName()}</td>
-                            <td>${c.getProductDetail().getSize().getName()}</td>
-                            <td>${c.getQuantity()}</td>
-                            <td>${c.getProductDetail().getProduct().getPrice()}</td>
-                            <td>${total} VND</td> 
-                        </c:forEach>
-                    </tr>
-                </table>
-
-                <hr class="custom-hr">
-                <button onclick="quayLaiMuaHang()" class="btn btn-cont" >QUAY LẠI MUA HÀNG</button>
-            </div>
-            <br>
-            <br>
-            <div class="order-container">  
-                <div class="order-header">
-                    <h2>THÔNG TIN KHÁCH HÀNG</h2>
-                </div>
-                <h4 class="text-muted"><strong>Tên khách hàng:</strong> ${order.customer.getName()}</h4> 
-                <h4 class="text-muted"><strong>Số điện khách hàng:</strong> ${order.customer.getPhone()}</h4> 
-                <h4 class="text-muted"><strong>ngày đặt hàng:</strong> ${order.orderDate}</h4> 
-                <h4 class="text-muted"><strong>ngày vận chuyển:</strong> ${order.deliveryDate}</h4> 
-                <c:choose>
-                    <c:when test="${order.orderStatus eq 1}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong>  Đang chờ xử lý </h4>
-                    </c:when>
-                    <c:when test="${order.orderStatus eq 2}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đóng gói xong và đang giao cho người vận chuyển</h4>
-                    </c:when>
-                    <c:when test="${order.orderStatus eq 3}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Người vận chuyển đã nhận đơn và đang giao hàng</h4>
-                    </c:when>
-                    <c:when test="${order.orderStatus eq 4}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Đơn hàng được giao thành công  </h4>
-                    </c:when>
-                    <c:when test="${order.orderStatus eq 5}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Khách hàng không nhận hàng </h4>
-                    </c:when>
-                    <c:when test="${order.orderStatus eq 6}">
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Khách hàng hủy đơn hàng </h4>
-                    </c:when>
-                    <c:otherwise>
-                        <h4 class="text-muted"><strong>Trạng thái:</strong> Không xác định</h4>
-                    </c:otherwise>
-                </c:choose>
-                <h4 class="text-muted"><strong>Người vận chuyển:</strong> ${order.shipper.getName()}</h4> 
-                <h4 class="text-muted"><strong>Số điện thoại:</strong> ${order.shipper.getPhone()}</h4> 
-                <c:choose>
-                    <c:when test="${order.paymentMethod eq 1}">
-                        <h4 class="text-muted"><strong>Cách thức thanh toán:</strong>  Thanh toán khi nhận hàng</h4> 
-                    </c:when>               
-                    <c:otherwise>
-                        <h4 class="text-muted"><strong>Cách thức trả tiền:</strong> Không xác định</h4> 
-                    </c:otherwise>
-                </c:choose>
-                <h4 class="text-muted"><strong>Ghi chú:</strong> ${order.note}</h4> 
-                <h4 class="text-muted"><strong>Địa chỉ khách hàng:</strong> ${order.getDeliveryAddress().showAddress()}</h4> 
-            </div>
-        </div>    
+            <p>ID: ${order.id}</p>
+        <p>Order Code: ${order.orderCode}</p>
+        <p>Customer name: ${order.customer.getName()}</p>
+        <p>Customer email: ${order.customer.getEmail()}</p>
+        <p>Order Date: ${order.orderDate}</p>
+        <p>Delivery Date: ${order.deliveryDate}</p>
+        <p>Order Status: ${order.orderStatus}</p>
+        <p>Shipper name: ${order.shipper.getName()}</p>
+        <p>Shipper Phone: ${order.shipper.getPhone()}</p>
+        <p>Payment Method: ${order.paymentMethod}</p>
+        <p>Note: ${order.note}</p>     
+        
         <br>
         <br>
+        <br>
+        <br>
+
         <jsp:include page="view/customer/footer.jsp"></jsp:include>
     </body>
 

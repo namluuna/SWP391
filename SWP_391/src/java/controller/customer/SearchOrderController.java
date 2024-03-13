@@ -68,14 +68,10 @@ public class SearchOrderController extends HttpServlet {
         Order order = orderDAO.searchOrderByCode(orderCode);
 
         if (order != null && order.getOrderCode().equals(orderCode)) {
-            ArrayList<OrderDetail> NewOrderDetails = order.getOrderDetail();
-            int total = 0;
-            for (OrderDetail orderDetail : NewOrderDetails) {
-                total += orderDetail.getUnitPrice() * orderDetail.getQuantity();
-            }
-            request.setAttribute("total", total);
+            OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+            ArrayList<OrderDetail> orderDetails = orderDetailDAO.selectByOrderId(order.getId());
             request.setAttribute("order", order);
-            request.setAttribute("NewOrderDetails", NewOrderDetails);
+            request.setAttribute("orderDetails", orderDetails);
             request.getRequestDispatcher("/displayOrder.jsp").forward(request, response);
         } else {
             String errorMessage = "Mã đặt hàng không hợp lệ, vui lòng nhập lại mã";

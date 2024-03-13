@@ -11,8 +11,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Common.User;
 
 /**
  *
@@ -31,22 +29,10 @@ public class RemoveItemServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        // Check if user have loged in
-        if (user == null) {
-            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
-            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
-            return;
-        } else {
-            CartDAO cartDAO = new CartDAO();
-            String id = request.getParameter("id");
-            cartDAO.removeItem(id);
-            session.removeAttribute("total");
-            int total = cartDAO.getCartQuantity(user.getId());
-            session.setAttribute("total", total);
-            response.sendRedirect("CartController");
-        }
+        CartDAO cartDAO = new CartDAO();
+        String id = request.getParameter("id");
+        cartDAO.removeItem(id);
+        response.sendRedirect("CartController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

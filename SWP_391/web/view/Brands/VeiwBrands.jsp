@@ -18,7 +18,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+        <jsp:include page="../Groups/header.jsp"></jsp:include>
         
         <div class="container mt-5">
             

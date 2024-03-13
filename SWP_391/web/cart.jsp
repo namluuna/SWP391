@@ -62,7 +62,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
+        <jsp:include page="view/customer/header.jsp"></jsp:include>
             <section class="h-100 h-custom" style="background-color: #FAFAFA;">
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">

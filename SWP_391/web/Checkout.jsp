@@ -47,7 +47,7 @@
 
     </head>
     <body>
-        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
+        <jsp:include page="view/customer/header.jsp"></jsp:include>
             <div class="colorlib-loader"></div>
             <div id="page" style="margin-top: 32px">
                 <form action="/SWP_391/AddOrderServlet" method="post">
@@ -62,7 +62,7 @@
                                                 <div class="form-group">
                                                     <label for="country">Chọn địa chỉ giao hàng</label>
                                                     <div class="form-group">
-                                                        <select name="address" id="address" class="form-control" style="height:60px; font-size: 14px">
+                                                        <select name="address" id="address" class="form-control" style="height:60px;">
                                                         <c:forEach items="${addresses}" var="c">
                                                             <option value="${c.id}">${c.showAddress()}</option>
                                                         </c:forEach>
@@ -73,21 +73,21 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="companyname">Người nhận hàng</label>
-                                                <input type="text" id="companyname" class="form-control" value="${user.name}" disabled style="height: 50px; font-size: 14px">
+                                                <input type="text" id="companyname" class="form-control" value="${user.name}" disabled>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Địa chỉ Email</label>
-                                                <input type="text" id="address" class="form-control" value="${user.email}" disabled style="height: 50px; font-size: 14px">
+                                                <input type="text" id="address" class="form-control" value="${user.email}" disabled>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="companyname">Số điện thoại</label>
-                                                <input type="text" id="towncity" class="form-control" value="${user.phone}" disabled style="height: 50px; font-size: 14px">
+                                                <input type="text" id="towncity" class="form-control" value="${user.phone}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><span>Phí vận chuyển:</span> <span>Miễn phí</span></li>
-                                                <li><span>Tổng tiền: </span> <span><fmt:formatNumber value="${totalAmount}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></span></li>
+                                                <li><span>Tổng tiền: </span> <span><fmt:formatNumber value="${total}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -129,8 +129,8 @@
                                     </div>
                                 </div>
                                 <div class="row" style="margin-left: 32px">
-                                    <button type="submit" class="btn btn-dark btn-block btn-lg" style="width: 200px; font-size:16px"
-                                            data-mdb-ripple-color="dark">Đặt hàng</button>                                    
+                                    <button type="submit" class="btn btn-dark btn-block btn-lg" style="width: 200px"
+                                                    data-mdb-ripple-color="dark">Đặt hàng</button>                                    
                                 </div>
                             </div>
                         </div>

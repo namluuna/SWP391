@@ -62,7 +62,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
+        <jsp:include page="view/customer/header.jsp"></jsp:include>
             <section class="h-100 h-custom" style="background-color: #FAFAFA;">
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -97,7 +97,7 @@
                                             </c:forEach>
                                             <hr class="my-4">
                                             <h6 class="mb-0">Tổng Cộng: 
-                                                <fmt:formatNumber value="${totalAmount}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
+                                                <fmt:formatNumber value="${total}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
                                                 VND</h6>
                                             <div class="pt-5">
                                                 <h6 class="mb-0"><a href="#!" ><i

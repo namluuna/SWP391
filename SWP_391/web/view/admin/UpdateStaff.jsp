@@ -50,7 +50,7 @@
                 <c:set var="c" value="${getStaffId}" />
                 <form  action="/SWP_391/updateStaff" method="POST" onsubmit="return validateEmail();" >
                     <div class="mb-3">
-                        <input type="hidden" name="id" value="${c.id}"  class="form-control" required readonly/><br>
+                        ID: <input type="text" name="id" value="${c.id}"  class="form-control" required readonly/><br>
                     </div>
                     <div class="mb-3">
                         Cập nhật tên: <input type="text" name="name" value="${c.name}"  class="form-control" required/><br>

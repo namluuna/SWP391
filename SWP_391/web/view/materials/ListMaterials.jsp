@@ -17,30 +17,30 @@
         </style>
     </head>
     <body>
-        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+         <jsp:include page="../Groups/header.jsp"></jsp:include>
          
         <div class="container mt-5">
 
-            <h1>Quản lí chất liệu</h1>
-            <div><a href="materials?mod=1" class="btn btn-primary mb-3">Thêm chất liệu mới</a></div>
+            <h1>Materials Management</h1>
+            <div><a href="materials?mod=1" class="btn btn-primary mb-3">Create New Materials</a></div>
 
             <div class="btn-group mb-3">
-                <a href="materials" class="btn btn-secondary">Tất cả các chất liệu</a>
-                <a href="materials?show=active" class="btn btn-success">Chất liệu đang được sử dụng</a>
-                <a href="materials?show=updated" class="btn btn-warning">Chất liệu đã cập nhật</a>
-                <a href="materials?show=deleted" class="btn btn-danger">Chất liệu đã xóa</a>
+                <a href="materials" class="btn btn-secondary">All materials</a>
+                <a href="materials?show=active" class="btn btn-success">Active materials</a>
+                <a href="materials?show=updated" class="btn btn-warning">Updated materials</a>
+                <a href="materials?show=deleted" class="btn btn-danger">Deleted materials</a>
             </div>
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Chất liệu</th>
-                        <th>Mô tả chất liệu</th>
-                        <th>Ngày tạo</th>
-                        <th>Ngày cập nhật</th>
-                        <th>Ngày xóa</th>
-                        <th>Hoạt động</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Created_at</th>
+                        <th>Updated_at</th>
+                        <th>Deleted_at</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,25 +58,25 @@
                                     <td>${material.updated_at}</td>
                                     <td>${material.deleted_at}</td>
                                     <td>
-                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
+                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
-                                            Xóa
+                                            Delete
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                       Bạn có chắc muốn xóa chất liệu này ?
+                                                        Are you sure you want to delete this materials?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Xóa</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -94,25 +94,25 @@
                                     <td>${material.updated_at}</td>
                                     <td>${material.deleted_at}</td>
                                     <td>
-                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
+                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
-                                            Xóa
+                                            Delete
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Bạn có chắc muốn xóa chất liệu này ?
+                                                        Are you sure you want to delete this material?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Xóa</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,25 +130,25 @@
                                     <td>${material.updated_at}</td>
                                     <td>${material.deleted_at}</td>
                                     <td>
-                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
+                                        <a href="materials?mod=2&id=${material.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${material.getId()}">
-                                           Xóa
+                                            Delete
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${material.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Bạn có chắc muốn xóa chất liệu này ?
+                                                        Are you sure you want to delete this material?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Xóa</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="materials?mod=3&id=${material.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,26 +168,26 @@
                                     <td>
                                         <!-- Add a button to restore the group -->
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${material.id}">
-                                            Phục hồi
+                                            Restore
                                         </button>
                                         <!-- Restore Confirmation Modal -->
                                         <div class="modal fade" id="confirmRestoreModal${material.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmRestoreModalLabel">Xác nhận phục hồi</h5>
+                                                        <h5 class="modal-title" id="confirmRestoreModalLabel">Confirm Restore</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                       Bạn có chắc muốn phục hồi chất liệu này ?
+                                                        Are you sure you want to restore this material?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                         <form method="POST" action="materials">
                                                             <input type="hidden" name="id" value="${material.id}">
-                                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Phục hồi</button>
+                                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                         </form>
                                                     </div>
                                                 </div>

@@ -15,12 +15,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Categories.Category;
-import model.Common.User;
 import model.Groups.Brands;
 import model.Groups.Groups;
 import model.Materials.materials;
@@ -71,48 +69,37 @@ public class ProductsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
-            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
-            return;
-        } else if (user.getRole() != 2) {
-            response.sendRedirect("404.jsp");
-        } else {
-            ProductsDAO p = new ProductsDAO();
-            CategoryDAO cdao = new CategoryDAO();
-            FormDAO fdao = new FormDAO();
-            BrandsDAO bdao = new BrandsDAO();
-            MaterialsDAO mdao = new MaterialsDAO();
-            GroupsDAO gdao = new GroupsDAO();
-            ArrayList<Form> data2 = fdao.selectAllForm();
-            ArrayList<Brands> data3 = bdao.selectAllBrands();
-            ArrayList<materials> data4 = mdao.getAll();
-            ArrayList<Groups> data5 = gdao.selectAllGroups();
-            List<Category> data1 = cdao.selectAllCategory();
-            request.setAttribute("data1", data1);
-            request.setAttribute("data2", data2);
-            request.setAttribute("data3", data3);
-            request.setAttribute("data4", data4);
-            request.setAttribute("data5", data5);
-            if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
-                request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
-            }
-            if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
-                Products product = p.selectProductByID(request.getParameter("id"));
-                request.setAttribute("product", product);
-                request.getRequestDispatcher("view\\Products\\UpdateProduct.jsp").forward(request, response);
-            }
-            if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
-                p.softDeleteProduct(request.getParameter("id"));
-            }
-            //------------------------------------------------------------------------------------------------------------------
-            ArrayList<Products> data = p.selectAllProducts();
-            request.setAttribute("data", data);
-            request.getRequestDispatcher("view\\Products\\VeiwProducts.jsp").forward(request, response);
+        ProductsDAO p = new ProductsDAO();
+        CategoryDAO cdao = new CategoryDAO();
+        FormDAO fdao = new FormDAO();
+        BrandsDAO bdao = new BrandsDAO();
+        MaterialsDAO mdao = new MaterialsDAO();
+        GroupsDAO gdao = new GroupsDAO();
+        ArrayList<Form> data2 = fdao.selectAllForm();
+        ArrayList<Brands> data3 = bdao.selectAllBrands();
+        ArrayList<materials> data4 = mdao.getAll();
+        ArrayList<Groups> data5 = gdao.selectAllGroups();
+        List<Category> data1 = cdao.selectAllCategory();
+        request.setAttribute("data1", data1);
+        request.setAttribute("data2", data2);
+        request.setAttribute("data3", data3);
+        request.setAttribute("data4", data4);
+        request.setAttribute("data5", data5);
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
+            request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
         }
-
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("2")) {
+            Products product = p.selectProductByID(request.getParameter("id"));
+            request.setAttribute("product", product);
+            request.getRequestDispatcher("view\\Products\\UpdateProduct.jsp").forward(request, response);
+        }
+        if (request.getParameter("mod") != null && request.getParameter("mod").equals("3")) {
+            p.softDeleteProduct(request.getParameter("id"));
+        }
+        //------------------------------------------------------------------------------------------------------------------
+        ArrayList<Products> data = p.selectAllProducts();
+        request.setAttribute("data", data);
+        request.getRequestDispatcher("view\\Products\\VeiwProducts.jsp").forward(request, response);
     }
 
     /**
@@ -126,49 +113,38 @@ public class ProductsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
-            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
+        String id = request.getParameter("id");
+        String code = request.getParameter("code");
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String price = request.getParameter("price");
+        String category_id = request.getParameter("category_id");
+        String form_id = request.getParameter("form_id");
+        String brand_id = request.getParameter("brand_id");
+        String material_id = request.getParameter("material_id");
+        String group_id = request.getParameter("group_id");
+        ProductsDAO p = new ProductsDAO();
+
+        if (request.getParameter("add") != null) {
+            p.createNewProduct(code, name, description, price, category_id, form_id, brand_id, material_id, group_id);
+            response.sendRedirect("products");
             return;
-        } else if (user.getRole() != 2) {
-            response.sendRedirect("404.jsp");
-        } else {
-            String id = request.getParameter("id");
-            String code = request.getParameter("code");
-            String name = request.getParameter("name");
-            String description = request.getParameter("description");
-            String price = request.getParameter("price");
-            String category_id = request.getParameter("category_id");
-            String form_id = request.getParameter("form_id");
-            String brand_id = request.getParameter("brand_id");
-            String material_id = request.getParameter("material_id");
-            String group_id = request.getParameter("group_id");
-            ProductsDAO p = new ProductsDAO();
-
-            if (request.getParameter("add") != null) {
-                p.createNewProduct(code, name, description, price, category_id, form_id, brand_id, material_id, group_id);
-                response.sendRedirect("products");
-                return;
-            }
-            if (request.getParameter("delete") != null) {
-                p.softDeleteProduct(id);
-                response.sendRedirect("products");
-                return;
-            }
-            if (request.getParameter("update") != null) {
-                p.updateProduct(id, code, name, description, price, category_id, form_id, brand_id, material_id, group_id);
-                response.sendRedirect("products");
-                return;
-            }
-            if (request.getParameter("restore") != null) {
-                p.restoreProduct(id);
-                response.sendRedirect("products");
-                return;
-            }
         }
-
+        if (request.getParameter("delete") != null) {
+            p.softDeleteProduct(id);
+            response.sendRedirect("products");
+            return;
+        }
+        if (request.getParameter("update") != null) {
+            p.updateProduct(id, code, name, description, price, category_id, form_id, brand_id, material_id, group_id);
+            response.sendRedirect("products");
+            return;
+        }
+        if (request.getParameter("restore") != null) {
+            p.restoreProduct(id);
+            response.sendRedirect("products");
+            return;
+        }
     }
 
     /**

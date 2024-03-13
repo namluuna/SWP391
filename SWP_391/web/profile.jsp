@@ -147,59 +147,49 @@
     </head>
 
     <body>
-        <c:choose>
-            <c:when test="${user.role == 4}">
-                <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
-            </c:when>
-            <c:when test="${user.role == 2}">
-                <jsp:include page="view/Header and footer/HeaderSale.jsp"></jsp:include>
-            </c:when>
-            <c:otherwise>
-                <jsp:include page="view/Header and footer/HeaderCustomer.jsp"></jsp:include>
-            </c:otherwise>
-        </c:choose> 
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                        <!--                            <form id="uploadForm" action="/SWP_391/uploadImageServlet" method="POST" enctype='multipart/form-data'>
-                                                        <div class="input-image">
-                                                            <label for="input">
-                                                                Choose Image <br>
-                                                                <input class="field image-name" id="input" type="file" name="image"
-                                                                       style="display: none">
-                                                            </label>
-                                                             <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Sửa ảnh đại diện</button></div>
-                                                        </div>
-                                                    </form>
-                                                    <br/>-->
-                        <span class="font-weight-bold">${user.name}</span><span class="text-black-50"></span>
+        <jsp:include page="view/customer/header.jsp"></jsp:include>
+            <div class="container rounded bg-white mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-3 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                            <!--                            <form id="uploadForm" action="/SWP_391/uploadImageServlet" method="POST" enctype='multipart/form-data'>
+                                                            <div class="input-image">
+                                                                <label for="input">
+                                                                    Choose Image <br>
+                                                                    <input class="field image-name" id="input" type="file" name="image"
+                                                                           style="display: none">
+                                                                </label>
+                                                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Sửa ảnh đại diện</button></div>
+                                                            </div>
+                                                        </form>
+                                                        <br/>-->
+                            <span class="font-weight-bold">${user.name}</span><span class="text-black-50"></span>
                         <a href="/SWP_391/changePassword" class="edit-link">Đổi mật khẩu</a>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right" style="font-size: 25px; font-weight: bold">Chỉnh sửa thông tin cá nhân</h4>
+                            <h4 class="text-right">Chỉnh sửa thông tin cá nhân</h4>
                         </div>
                         <form action="/SWP_391/editUserProfile" method="post">
                             <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">Họ tên</label><input type="text" class="form-control" placeholder="Xin hãy nhập họ và tên" value="${user.name}" id="name" name="name" required style="height: 50px; font-size: 14px"></div>
+                                <div class="col-md-12"><label class="labels">Họ tên</label><input type="text" class="form-control" placeholder="Xin hãy nhập họ và tên" value="${user.name}" id="name" name="name" required></div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Địa chỉ email</label><input type="text" class="form-control" value="${user.email}" disabled style="height: 50px; font-size: 14px"></div>
-                                <div class="col-md-12"><label class="labels">Số điện thoại</label><input type="text" class="form-control" placeholder="Xin hãy nhập số điện thoại" value="${user.phone}" required id="phone" name="phone" pattern="[0-9]{10}" style="height: 50px; font-size: 14px"></div>
+                                <div class="col-md-12"><label class="labels">Địa chỉ email</label><input type="text" class="form-control" value="${user.email}" disabled></div>
+                                <div class="col-md-12"><label class="labels">Số điện thoại</label><input type="text" class="form-control" placeholder="Xin hãy nhập số điện thoại" value="${user.phone}" required id="phone" name="phone" pattern="[0-9]{10}"></div>
                             </div>   
-                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" style="height: 50px; width: 200px; font-size:16px">Lưu thông tin cá nhân</button></div>
+                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Lưu thông tin cá nhân</button></div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center experience"><span>Thông tin địa chỉ</span>
-                            <button class="btn btn-primary profile-button" type="button" style="height: 40px; width: 150px">
-                                <span style="font-size: 13px" class="px-1 p-1 add-experience" onclick="showModal()"><i class="fa fa-plus"></i>&nbsp;Thêm mới địa chỉ</span>
+                            <button class="btn btn-primary profile-button" type="button">
+                                <span class="px-1 p-1 add-experience" onclick="showModal()"><i class="fa fa-plus"></i>&nbsp;Thêm mới địa chỉ</span>
                             </button>
 
                         </div>
@@ -208,10 +198,10 @@
                             <div class="col-md-20 address-container">
                                 <c:choose>
                                     <c:when test="${c.is_default == 1}">
-                                        <label class="" style="font-weight: 400">${c.showAddress()}(Địa chỉ mặc định)</label>
+                                        <label class="label">${c.showAddress()}(Địa chỉ mặc định)</label>
                                     </c:when>
                                     <c:otherwise>
-                                        <label class="" style="font-weight: 400">${c.showAddress()}</label>
+                                        <label class="label">${c.showAddress()}</label>
                                     </c:otherwise>
                                 </c:choose>  
                                 <a href="editAddressController?id=${c.id}" class="edit-link">Chỉnh Sửa</a>

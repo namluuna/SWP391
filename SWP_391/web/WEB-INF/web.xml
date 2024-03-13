@@ -88,10 +88,6 @@
         <servlet-name>EditOrderController</servlet-name>
         <servlet-class>controller.Common.EditOrderController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>AddToCartServlet</servlet-name>
-        <servlet-class>controller.customer.AddToCartServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -395,10 +391,6 @@
     <servlet-mapping>
         <servlet-name>EditOrderController</servlet-name>
         <url-pattern>/EditOrderController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddToCartServlet</servlet-name>
-        <url-pattern>/AddToCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

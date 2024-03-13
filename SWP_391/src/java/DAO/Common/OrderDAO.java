@@ -25,7 +25,7 @@ public class OrderDAO extends DBContext {
         ArrayList<Order> orders = new ArrayList<>();
         try {
             // Select address from user with user id
-            String sql = "SELECT * from orders ORDER BY oder_date DESC";
+            String sql = "SELECT * from orders";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -79,7 +79,7 @@ public class OrderDAO extends DBContext {
         ArrayList<Order> orders = new ArrayList<>();
         try {
             // Select address from user with user id
-            String sql = "SELECT * from orders WHERE shiper_id = ? ORDER BY oder_date DESC";
+            String sql = "SELECT * from orders WHERE shiper_id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, ShipperId);
             ResultSet rs = st.executeQuery();

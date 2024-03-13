@@ -60,28 +60,17 @@ public class UpdateStaffController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // processRequest(request, response);
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
-            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
-            return;
-        } else if (user.getRole() != 1) {
-            response.sendRedirect("404.jsp");
-        } else {
-            String id_raw = request.getParameter("id");
-            int id;
-            UserDAO udao = new UserDAO();
-            try {
-                id = Integer.parseInt(id_raw);
-                User getStaffId = udao.getUserByID(id_raw);
-                request.setAttribute("getStaffId", getStaffId);
-                request.getRequestDispatcher("view\\admin\\UpdateStaff.jsp").forward(request, response);
-            } catch (NumberFormatException e) {
+        String id_raw = request.getParameter("id");
+        int id;
+        UserDAO udao = new UserDAO();
+        try {
+            id = Integer.parseInt(id_raw);
+            User getStaffId = udao.getUserByID(id_raw);
+            request.setAttribute("getStaffId", getStaffId);
+            request.getRequestDispatcher("view\\admin\\UpdateStaff.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
 
-            }
         }
-
     }
 
     /**
