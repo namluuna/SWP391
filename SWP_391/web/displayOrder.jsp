@@ -223,7 +223,15 @@
                 height: auto;
             }
         </style>
+        <script>
+            function quayLaiMuaHang() {
+                // Đường dẫn bạn muốn chuyển hướng đến
+                var href = 'CustomerProducts';
 
+                // Chuyển hướng đến trang mua hàng
+                window.location.href = href;
+            }
+        </script>
     </head>
 
     <body>
@@ -265,7 +273,7 @@
                 </table>
 
                 <hr class="custom-hr">
-                <button onclick="" class="btn btn-cont">QUAY LẠI MUA HÀNG</button>
+                <button onclick="quayLaiMuaHang()" class="btn btn-cont" >QUAY LẠI MUA HÀNG</button>
             </div>
             <br>
             <br>
