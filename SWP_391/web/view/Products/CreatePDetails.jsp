@@ -53,9 +53,9 @@
                 <h1 class="text-center mb-4">Tạo chi tiết sản phẩm mới</h1>
                 <form name="form" action="productdetails" method="POST" enctype="multipart/form-data" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="product_id" class="form-label">Tên Sản Phẩm:</label>
+                        <label for="product_id" class="form-label"><span style="color: red;">*</span>Tên Sản Phẩm:</label>
                         <select id="product_id" name="product_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn sản phẩm</option>                    
+                            <option value="0"><span style="color: red;">*</span>Xin hãy chọn sản phẩm</option>                    
                             <c:forEach items="${data1}" var="c">
                                 <option value="${c.getId()}">${c.getName()}</option>
                             </c:forEach>
@@ -63,7 +63,7 @@
                         <span id="error-message-code" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="color_id" class="form-label">Màu Sắc:</label>
+                        <label for="color_id" class="form-label"><span style="color: red;">*</span>Màu Sắc:</label>
                         <select id="color_id" name="color_id" class="form-select" required>
                             <option value="0">Xin hãy chọn màu sắc</option>                    
                             <c:forEach items="${data2}" var="c">
@@ -73,9 +73,9 @@
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="size_id" class="form-label">Kích Thước Sản Phẩm:</label>
+                        <label for="size_id" class="form-label"><span style="color: red;">*</span>Kích Thước Sản Phẩm:</label>
                         <select id="size_id" name="size_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn kích cỡ giày</option>                    
+                            <option value="0"><span style="color: red;">*</span>Xin hãy chọn kích cỡ giày</option>                    
                             <c:forEach items="${data3}" var="c">
                                 <option value="${c.getId()}">${c.getName()}</option>
                             </c:forEach>
