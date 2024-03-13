@@ -143,7 +143,10 @@
                             <div class="form-group">
                                 <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg">
                                 <input type="hidden" name="filter" value="search">
-                                <input type="text" name="id" class="form-control" value="" placeholder="Tìm kiếm" onkeydown="if (event.keyCode == 13)
+                                <input style="
+                                       margin-bottom: 0;
+                                       border: #ffc221 solid 2px !important;
+                                       " type="text" name="id" class="form-control" value="" placeholder="Tìm kiếm" onkeydown="if (event.keyCode == 13)
                                             this.form.submit();">
                             </div>
                         </form>
