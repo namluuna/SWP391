@@ -35,7 +35,7 @@
             }
             .table-title {
                 padding-bottom: 15px;
-                background:  #ffc221;
+                background:  #808080;
                 color: #fff;
                 padding: 16px 30px;
                 margin: -20px -25px 10px;
@@ -244,9 +244,9 @@
                             <div class="float-right search-bar">
                                 <form action="/SWP_391/staff" method="get">
                                     <div class="input-group">
-                                        <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm theo tên..." aria-label="Search" aria-describedby="search-addon" value="${txtSearch}" >
+                                        <input type="text" class="form-control rounded" name="txtSearch" placeholder="Tìm kiếm theo tên..." aria-label="Search" aria-describedby="search-addon" value="${txtSearch}" >                                                                           
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-outline-primary">Tìm</button>
+                                        <button type="submit" class="btn btn-outline-primary">Tìm</button> 
                                     </div>
                                 </div>
                             </form>
