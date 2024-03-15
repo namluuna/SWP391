@@ -6,14 +6,25 @@ package DAO.ProductDAO;
 
 import DAO.ColorsDAO.ColorsDAO;
 import DAO.DBContext;
+import DAO.GroupsDAO.BrandsDAO;
+import DAO.GroupsDAO.CategoryDAO;
+import DAO.GroupsDAO.FormDAO;
+import DAO.GroupsDAO.GroupsDAO;
+import DAO.MaterialsDAO.MaterialsDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import model.Categories.Category;
 import model.Colors.Colors;
+import model.Groups.Brands;
+import model.Groups.Groups;
+import model.Materials.materials;
 import model.Product.ProductDetails;
 import model.Product.Products;
 import model.Product.Sizes;
+import model.Sale.Form;
 
 /**
  *
@@ -55,6 +66,62 @@ public class ProductDetailDAO extends DBContext {
         }
         return ProductDetailsList;
     }
+
+    public ArrayList<Products> selectProductDetailsbyColor(String color_id) {
+        ArrayList<Products> ProductsList = new ArrayList<>();
+        try {
+            String sql = "SELECT TOP (1000) b.[id]\n"
+                    + "      ,b.[code]\n"
+                    + "      ,b.[name]\n"
+                    + "      ,b.[description]\n"
+                    + "      ,b.[price]\n"
+                    + "      ,b.[category_id]\n"
+                    + "      ,b.[form_id]\n"
+                    + "      ,b.[brand_id]\n"
+                    + "      ,b.[material_id]\n"
+                    + "      ,b.[group_id]\n"
+                    + "      ,b.[created_at]\n"
+                    + "      ,b.[edited_at]\n"
+                    + "      ,b.[deleted_at]\n"
+                    + "  FROM [OSS].[dbo].[product_details] as a \n"
+                    + "  INNER JOIN products as b ON a.product_id = b.id\n"
+                    + "  WHERE a.color_id = " + color_id;
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String Id = String.valueOf(rs.getInt("id"));
+                String Code = rs.getString("code");
+                String Name = rs.getString("name");
+                String Description = rs.getString("description");
+                String Price = String.valueOf(rs.getInt("price"));
+                String Category_id = String.valueOf(rs.getInt("category_id"));
+                CategoryDAO cDAO = new CategoryDAO();
+                Category category = cDAO.getCaByID(Category_id);
+                String Form_id = String.valueOf(rs.getInt("form_id"));
+                FormDAO fDAO = new FormDAO();
+                Form form = fDAO.selectFormByID(Form_id);
+                String Brand_id = String.valueOf(rs.getInt("brand_id"));
+                BrandsDAO bDAO = new BrandsDAO();
+                Brands brand = bDAO.selectbrandByID(Brand_id);
+                String Material_id = String.valueOf(rs.getInt("material_id"));
+                MaterialsDAO mDAO = new MaterialsDAO();
+                materials material = mDAO.selectMaterialsByID(Material_id);
+                String Group_id = String.valueOf(rs.getInt("group_id"));
+                GroupsDAO gDAO = new GroupsDAO();
+                Groups group = gDAO.selectGroupsByID(Group_id);
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp Edited_at = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
+                Products product = new Products(Id, Code, Name, Description, Price, category, form, brand, material, group, createdAt, Edited_at, deletedAt);
+                ProductsList.add(product);
+            }
+        } catch (Exception e) {
+            System.out.println("getProductsList: " + e.getMessage());
+        }
+        return ProductsList;
+    }
+    
+    
 
     public boolean createNewProductDetails(String productId, String colorId, String sizeId, String inventoryNumber, String imageUrl1, String imageUrl2, String imageUrl3, String imageUrl4) {
         try {
@@ -156,6 +223,30 @@ public class ProductDetailDAO extends DBContext {
             System.out.println("softDelete: " + e.getMessage());
         }
         return false;
+    }
+
+    public void addQuantity(String id, String quantity) {
+        try {
+            String sql = "UPDATE [product_details] SET inventory_number = inventory_number + ? WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, quantity);
+            statement.setString(2, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void reduceQuantity(String id, String quantity) {
+        try {
+            String sql = "UPDATE [product_details] SET inventory_number = inventory_number - ? WHERE [id] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, quantity);
+            statement.setString(2, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public boolean restoreProductDetail(String id) {

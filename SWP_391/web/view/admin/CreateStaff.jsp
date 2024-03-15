@@ -86,7 +86,7 @@
 
                 // Check if the email is not empty and matches the required format
                 if (emailValue === "" || !/(^|\s)[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn)\s*$/.test(emailValue)) {
-                    alert("Email phải được định dạng có'@gmail.com' hoặc '@fpt.edu.vn'.");
+                    alert("Định dạng email không đúng! Vui lòng nhập lại");
                     emailInput.focus();
                     return false;
                 }

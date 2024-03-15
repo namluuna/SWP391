@@ -4,6 +4,7 @@
  */
 package controller.Common;
 
+import DAO.Common.CartDAO;
 import DAO.Common.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,11 +65,11 @@ public class LoginController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         UserDAO userDAO = new UserDAO();
-        User user = userDAO.searchUserByEmail(email);
+        User user = userDAO.searchUserByEmailAndPassword(email);
         // check password
         if (user != null) {
             boolean is_true_password = BCrypt.checkpw(password, user.getPassword());
-             // if password is true
+            // if password is true
             if (is_true_password) {
                 request.getSession().setAttribute("user", user);
                 // check if account is not active
@@ -76,19 +77,25 @@ public class LoginController extends HttpServlet {
                     request.setAttribute("inactiveMessage", "Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email để kích hoạt tài khoản");
                     // send the message active account to customer
                     request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
+                } else if (user.getStatus() == 0 && user.getRole() == 2 || user.getStatus() == 0 && user.getRole() == 3) {
+                    request.setAttribute("wrongLoginInfo", "Tài khoản của bạn đã bị khóa!");
+                    request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
                 } else {
                     switch (user.getRole()) {
                         case 1:
-                            response.sendRedirect("view\\admin\\DashBoard.jsp");
+                            response.sendRedirect("staff");
                             break;
                         case 2:
-                            response.sendRedirect("view\\sale\\DashBoard.jsp");
+                            response.sendRedirect("OrderController");
                             break;
                         case 3:
-                            response.sendRedirect("view\\shipper\\DashBoard.jsp");
+                            response.sendRedirect("OrderController");
                             break;
                         default:
-                            response.sendRedirect("view\\customer\\Home.jsp");
+                            CartDAO cDAO = new CartDAO();
+                            int total = cDAO.getCartQuantity(user.getId());
+                            request.getSession().setAttribute("total", total);
+                            response.sendRedirect("CustomerProducts");
                             break;
                     }
                 }
@@ -108,7 +115,7 @@ public class LoginController extends HttpServlet {
             request.setAttribute("password", password);
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
         }
-        
+
     }
 
     /**
