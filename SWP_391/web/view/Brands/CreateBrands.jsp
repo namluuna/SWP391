@@ -47,20 +47,20 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Tạo nhãn hàng mới</h1>
+                <h1 class="text-center mb-4">Create New Groups</h1>
                 <form name="form" action="brands" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Tên:</label>
+                        <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Mô tả:</label>
+                        <label for="description" class="form-label">Description:</label>
                         <input type="text" class="form-control" id="description" name="description">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add">Tạo</button>
-                    <a href="brands" class="btn btn-secondary">Hủy</a>
+                    <button type="submit" class="btn btn-primary" name="add">ADD</button>
+                    <a href="brands" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>
@@ -79,12 +79,12 @@
                         errorMessageDescription.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Hãy nhập tên hãng giày";
+                            errorMessageName.innerHTML = "Please enter a name";
                             return false;
                         }
 
                         if (description === "") {
-                            errorMessageDescription.innerHTML = "Hãy nhập phần mô tả";
+                            errorMessageDescription.innerHTML = "Please enter a description";
                             return false;
                         }
 

@@ -53,27 +53,27 @@
                 <h1 class="text-center mb-4">Tạo sản phẩm mới</h1>
                 <form name="form" action="products" method="POST" onsubmit="return validateForm();">
                     <div class="mb-3">
-                        <label for="code" class="form-label"><span style="color: red;">*</span>Mã sản phẩm:</label>
+                        <label for="code" class="form-label">Mã sản phẩm:</label>
                         <input type="text" class="form-control" id="code" name="code">
                         <span id="error-message-code" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label"><span style="color: red;">*</span>Tên sản phẩm:</label>
+                        <label for="name" class="form-label">Tên sản phẩm:</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label"><span style="color: red;">*</span>Mô tả sản phẩm:</label>
+                        <label for="description" class="form-label">Mô tả sản phẩm:</label>
                         <textarea class="form-control form-control-lg" id="description" name="description"></textarea>
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label"><span style="color: red;">*</span>Giá tiền:</label>
+                        <label for="price" class="form-label">Giá tiền:</label>
                         <input type="text" class="form-control" id="price" name="price">
                         <span id="error-message-price" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="category_id" class="form-label"><span style="color: red;">*</span>Loại giày:</label>
+                        <label for="category_id" class="form-label">Loại giày:</label>
                         <select id="category_id" name="category_id" class="form-select" required>
                             <option value="0">Xin hãy chọn loại giày</option>                    
                             <c:forEach items="${data1}" var="c">
@@ -83,7 +83,7 @@
                         <span id="error-message-category" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="form_id" class="form-label"><span style="color: red;">*</span>Kiểu dáng:</label>
+                        <label for="form_id" class="form-label">Kiểu dáng:</label>
                         <select id="form_id" name="form_id" class="form-select" required>
                             <option value="0">Xin hãy chọn kiểu dáng</option>                    
                             <c:forEach items="${data2}" var="c">
@@ -93,7 +93,7 @@
                         <span id="error-message-form" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="brand_id" class="form-label"><span style="color: red;">*</span>Hãng giày:</label>
+                        <label for="brand_id" class="form-label">Hãng giày:</label>
                         <select id="brand_id" name="brand_id" class="form-select" required>
                             <option value="0">Xin hãy chọn hãng giày</option>                    
                             <c:forEach items="${data3}" var="c">
@@ -103,9 +103,9 @@
                         <span id="error-message-brand" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="material_id" class="form-label"><span style="color: red;">*</span>Chất liệu:</label>
+                        <label for="material_id" class="form-label">Dòng sản phẩm:</label>
                         <select id="material_id" name="material_id" class="form-select" required>
-                            <option value="0">Xin hãy chọn chất liệu</option>                    
+                            <option value="0">Xin hãy chọn dòng sản phẩm</option>                    
                             <c:forEach items="${data4}" var="c">
                                 <option value="${c.getId()}">${c.getName()}</option>
                             </c:forEach>
@@ -113,7 +113,7 @@
                         <span id="error-message-material" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="group_id" class="form-label"><span style="color: red;">*</span>Trạng thái sản phẩm:</label>
+                        <label for="group_id" class="form-label">Trạng thái sản phẩm:</label>
                         <select id="group_id" name="group_id" class="form-select" required>
                             <option value="0">Xin hãy chọn trạng thái sản phẩm</option>                    
                             <c:forEach items="${data5}" var="c">

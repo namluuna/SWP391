@@ -47,21 +47,21 @@
 
         <div class="container">
             <div class="card mx-auto p-4">
-                <h1 class="text-center mb-4">Cập nhật trạng thái</h1>
+                <h1 class="text-center mb-4">Update Groups</h1>
                 <form name="form" action="groups" method="POST" onsubmit="return validateForm();">
                         <input type="hidden" class="form-control" id="id" name="id" value="${group.getId()}" readonly>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Tên:</label>
+                        <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" value="${group.getName()}">
                         <span id="error-message-name" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Mô tả:</label>
+                        <label for="description" class="form-label">Description:</label>
                         <input type="text" class="form-control" id="description" name="description" value="${group.getDescription()}">
                         <span id="error-message-description" style="color: red;"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="update">Cập nhật</button>
-                    <a href="groups" class="btn btn-secondary">Hủy</a>
+                    <button type="submit" class="btn btn-primary" name="update">UPDATE</button>
+                    <a href="groups" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>
@@ -80,12 +80,12 @@
                         errorMessageDescription.innerHTML = "";
 
                         if (name === "") {
-                            errorMessageName.innerHTML = "Hãy nhập tên trạng thái";
+                            errorMessageName.innerHTML = "Please enter a name";
                             return false;
                         }
 
                         if (description === "") {
-                            errorMessageDescription.innerHTML = "Hãy nhập mô tả trạng thái";
+                            errorMessageDescription.innerHTML = "Please enter a description";
                             return false;
                         }
 

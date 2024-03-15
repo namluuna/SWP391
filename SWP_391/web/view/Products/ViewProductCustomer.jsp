@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="https://gmpg.org/xfn/11">
         <link rel="icon" href="ananas.vn/wp-content/themes/ananas/fe-assets/images/favicon.ico">
-        <title>Trang chủ</title>
+        <title>Sản Phẩm &#8211; Ananas</title>
         <!-- Facebook Pixel Code -->
         <script>
             !function (f, b, e, v, n, t, s) {

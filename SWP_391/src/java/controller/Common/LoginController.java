@@ -79,13 +79,13 @@ public class LoginController extends HttpServlet {
                 } else {
                     switch (user.getRole()) {
                         case 1:
-                            response.sendRedirect("staff");
+                            response.sendRedirect("view\\admin\\DashBoard.jsp");
                             break;
                         case 2:
-                            response.sendRedirect("OrderController");
+                            response.sendRedirect("view\\sale\\DashBoard.jsp");
                             break;
                         case 3:
-                            response.sendRedirect("OrderController");
+                            response.sendRedirect("view\\shipper\\DashBoard.jsp");
                             break;
                         default:
                             response.sendRedirect("view\\customer\\Home.jsp");

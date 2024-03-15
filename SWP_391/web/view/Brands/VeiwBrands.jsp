@@ -14,10 +14,7 @@
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
-           .modal-title {
-                color: #000 !important; /* Đặt màu chữ */
-                font-size: 1.25rem !important; /* Đặt font size */
-            }
+            /* Optional: Add custom styles here */
         </style>
     </head>
     <body>
@@ -25,22 +22,22 @@
         
         <div class="container mt-5">
             
-            <h1>Quản Lý hãng giày</h1>
-            <div><a href="brands?mod=1" class="btn btn-primary mb-3">Tạo nhãn hàng mới</a></div>
+            <h1>Quản Lý Trạng Thái</h1>
+            <div><a href="brands?mod=1" class="btn btn-primary mb-3">Tạo trạng thái mới</a></div>
             
             <div class="btn-group mb-3">
-                <a href="brands" class="btn btn-secondary">Tất cả nhãn hàng</a>
-                <a href="brands?show=active" class="btn btn-success">Nhãn hàng đang hoạt động</a>
-                <a href="brands?show=updated" class="btn btn-warning">Nhãn hàng vừa cập nhật</a>
-                <a href="brands?show=deleted" class="btn btn-danger">Nhãn hàng không hoạt động</a>
+                <a href="brands" class="btn btn-secondary">Tất cả trạng thái</a>
+                <a href="brands?show=active" class="btn btn-success">Trạng thái hoạt động</a>
+                <a href="brands?show=updated" class="btn btn-warning">Trạng thái vừa cập nhật</a>
+                <a href="brands?show=deleted" class="btn btn-danger">Trạng thái không hoạt động</a>
             </div>
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>Tên nhãn hàng</th>
-                        <th>Mô tả nhãn hàng</th>
+                        <th>Tên trạng thái</th>
+                        <th>Mô tả trạng thái</th>
                         <th>Ngày tạo</th>
                         <th>Ngày cập nhật</th>
                         <th>Ngày xóa</th>
@@ -62,25 +59,25 @@
                                     <td>${brand.updated_at}</td>
                                     <td>${brand.deleted_at}</td>
                                     <td>
-                                        <a href="brands?mod=2&id=${brand.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
+                                        <a href="brands?mod=2&id=${brand.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${brand.getId()}">
-                                            Xóa
+                                            Delete
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${brand.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Bạn có chắc chắn muốn xóa nhãn hàng này ?
+                                                        Are you sure you want to delete this brand?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                                                        <a href="brands?mod=3&id=${brand.getId()}" class="btn btn-danger">Xóa</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="brands?mod=3&id=${brand.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,25 +95,25 @@
                                     <td>${brand.updated_at}</td>
                                     <td>${brand.deleted_at}</td>
                                     <td>
-                                        <a href="brands?mod=2&id=${brand.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
+                                        <a href="brands?mod=2&id=${brand.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${brand.getId()}">
-                                            Xóa
+                                            Delete
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${brand.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Bạn có chắc chắn muốn xóa nhãn hàng này ?
+                                                        Are you sure you want to delete this brand?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                        <a href="brands?mod=3&id=${brand.getId()}" class="btn btn-danger">Xóa</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="brands?mod=3&id=${brand.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,25 +131,25 @@
                                     <td>${brand.updated_at}</td>
                                     <td>${brand.deleted_at}</td>
                                     <td>
-                                        <a href="brands?mod=2&id=${brand.getId()}" class="btn btn-info btn-sm">Cập nhật</a>
+                                        <a href="brands?mod=2&id=${brand.getId()}" class="btn btn-info btn-sm">Edit</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${brand.getId()}">
-                                            Xóa
+                                            Delete
                                         </button>
                                         <div class="modal fade" id="confirmDeleteModal${brand.getId()}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Bạn có chắc chắn muốn xóa nhãn hàng này ?
+                                                        Are you sure you want to delete this brand?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                        <a href="brands?mod=3&id=${brand.getId()}" class="btn btn-danger">Xóa</a>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="brands?mod=3&id=${brand.getId()}" class="btn btn-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -172,26 +169,26 @@
                                     <td>
                                         <!-- Add a button to restore the brand -->
                                         <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmRestoreModal${brand.id}">
-                                            Khôi phục
+                                            Restore
                                         </button>
                                         <!-- Restore Confirmation Modal -->
                                         <div class="modal fade" id="confirmRestoreModal${brand.id}" tabindex="-1" role="dialog" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="confirmRestoreModalLabel">Xác nhận khôi phục</h5>
+                                                        <h5 class="modal-title" id="confirmRestoreModalLabel">Confirm Restore</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Bạn có chắc chắn muốn khôi phục nhãn hàng này ?
+                                                        Are you sure you want to restore this brand?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                         <form method="POST" action="brands">
                                                             <input type="hidden" name="id" value="${brand.id}">
-                                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Khôi phục</button>
+                                                            <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                         </form>
                                                     </div>
                                                 </div>

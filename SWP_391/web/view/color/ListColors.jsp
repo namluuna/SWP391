@@ -13,10 +13,7 @@
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            .modal-title {
-                color: #000 !important; /* Đặt màu chữ */
-                font-size: 1.25rem !important; /* Đặt font size */
-            }
+            /* Optional: Add custom styles here */
         </style>
     </head>
     <body>

@@ -139,17 +139,17 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                             Bạn có muốn xóa sản phẩm này không ?
+                                                            Are you sure you want to delete this product?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Xóa</a>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,17 +196,17 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Bạn có muốn xóa sản phẩm này không ?
+                                                            Are you sure you want to delete this product?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Xóa</a>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -253,17 +253,17 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                          Bạn có muốn xóa sản phẩm này không ?
+                                                            Are you sure you want to delete this product?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Xóa</a>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <a href="products?mod=3&id=${product.getId()}" class="btn btn-danger">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -316,13 +316,13 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                           Bạn có muốn khôi phục sản phẩm này không ?
+                                                            Are you sure you want to restore this product?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                             <form method="POST" action="products">
                                                                 <input type="hidden" name="id" value="${product.id}">
-                                                                <button type="submit" class="btn btn-warning btn-sm" name="restore">Khôi phục</button>
+                                                                <button type="submit" class="btn btn-warning btn-sm" name="restore">Restore</button>
                                                             </form>
                                                         </div>
                                                     </div>

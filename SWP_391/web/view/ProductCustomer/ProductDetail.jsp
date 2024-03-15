@@ -4,7 +4,6 @@
     Author     : lucdu
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -153,11 +152,8 @@
         </style>
     </head>
     <body>
-
         <div class="container">
-            
             <div class="row">
-
                 <div class="col-md-6 column-margin">
                     <div class="pro-img-details">
                         <div class="arrow left" onclick="prevImage()">&#10094;</div>
@@ -195,29 +191,14 @@
                          margin-right: 5px;
                          border: 1px solid black"></div>
                     </p>
-                    <form action="AddToCartServlet">
-                        <input type="hidden" name="id" value="${pd.id}">
-                        <div class="quantity-controls">
-                            <button onclick="decreaseQuantity()" type="button">-</button>
-                            <input type="number" class="quantity-input" id="quantity" value="1" name="quantity">
-                            <button onclick="increaseQuantity()" type="button">+</button>
-                        </div>
-                        <p>
-                            <button class="btn btn-round btn-danger" type="submit"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                        </p>
-                        <% String message = (String) session.getAttribute("addToCartSuccess"); %>
-                        <% if(message != null){ %>
-                        <% session.removeAttribute("addToCartSuccess"); %>
-                        <div id="snackbar" style="color:green"><%= message %></div>
-                        <% } %>
-                        
-                        <% String message1 = (String) session.getAttribute("itemIsExist"); %>
-                        <% if(message1 != null){ %>
-                        <% session.removeAttribute("itemIsExist"); %>
-                        <div id="snackbar" style="color:red"><%= message1 %></div>
-                        <% } %>
-                    </form>
-
+                    <div class="quantity-controls">
+                        <button onclick="decreaseQuantity()">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1">
+                        <button onclick="increaseQuantity()">+</button>
+                    </div>
+                    <p>
+                        <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                    </p>
                     <strong class="toggle-btn" onclick="toggleDescription()">Thông tin sản phẩm</strong>
                     <div class="product-description">
                         ${pd.getProduct().getDescription()}
