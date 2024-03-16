@@ -70,13 +70,10 @@
 
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" >
                         <label for="role">Vai trò:</label>
-                        <select id="role" name="role" class="form-control" required>
-
-                            <option value="2" ${c.role == '2' ? 'selected' : ''}>Saler</option>
-                            <option value="3" ${c.role == '3' ? 'selected' : ''}>Shipper</option>
-
+                        <select id="role" name="role" class="form-control" required >
+                            <option value="2"${c.role == '2' ? 'selected' : ''}>Nhân viên bán hàng</option>
                         </select>
                     </div>
                             <br>

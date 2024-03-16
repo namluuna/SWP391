@@ -103,23 +103,13 @@ public class CreateStaffController extends HttpServlet {
                 request.setAttribute("errorEmailMessage", errorEmailMessage);
                 request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
             } else {
-                if (sRole.equals("2")) {
-                    String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+              String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
                     UserDAO udao = new UserDAO();
                     User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
                     udao.addNewUser(newUser);
                     SendMailService sm = new SendMailService();
                     sm.sendNewAccount(newUser.getEmail(), sPassword);
                     response.sendRedirect("staff");
-                } else if (sRole.equals("3")) {
-                    String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                    UserDAO udao = new UserDAO();
-                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 3, 1);
-                    udao.addNewUser(newUser);
-                    SendMailService sm = new SendMailService();
-                    sm.sendNewAccount(newUser.getEmail(), sPassword);
-                    response.sendRedirect("staff");
-                }
             }
         }
 

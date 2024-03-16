@@ -267,7 +267,7 @@
                             <td>${c.getProductDetail().getColor().getName()}</td>
                             <td>${c.getProductDetail().getSize().getName()}</td>
                             <td>${c.getQuantity()}</td>
-                            <td>${c.getProductDetail().getProduct().getPrice()}</td>
+                            <td>${c.getProductDetail().getProduct().getPrice()} VND</td>
                             <td>${total} VND</td> 
                             </tr>
                         </c:forEach>
@@ -309,15 +309,13 @@
                     <c:otherwise>
                         <h4 class="text-muted"><strong>Trạng thái:</strong> Không xác định</h4>
                     </c:otherwise>
-                </c:choose>
-                <h4 class="text-muted"><strong>Người vận chuyển:</strong> ${order.shipper.getName()}</h4> 
-                <h4 class="text-muted"><strong>Số điện thoại:</strong> ${order.shipper.getPhone()}</h4> 
+                </c:choose>            
                 <c:choose>
                     <c:when test="${order.paymentMethod eq 1}">
                         <h4 class="text-muted"><strong>Cách thức thanh toán:</strong>  Thanh toán khi nhận hàng</h4> 
                     </c:when>               
                     <c:otherwise>
-                        <h4 class="text-muted"><strong>Cách thức trả tiền:</strong> Không xác định</h4> 
+                        <h4 class="text-muted"><strong>Cách thức thanh toán:</strong> Không xác định</h4> 
                     </c:otherwise>
                 </c:choose>
                 <h4 class="text-muted"><strong>Ghi chú:</strong> ${order.note}</h4> 

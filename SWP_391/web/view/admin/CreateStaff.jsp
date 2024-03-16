@@ -67,8 +67,7 @@
                         <select id="role" name="role" class="form-control" required>
                             <c:choose>
                                 <option value="" disabled selected>Chọn vai trò</option>
-                                <option value="2" ${role == '2' ? 'selected' : ''}>Saler</option>
-                                <option value="3" ${role == '3' ? 'selected' : ''}>Shipper</option>
+                                <option value="2" ${role == '2' ? 'selected' : ''}>Nhân viên bán hàng</option>
                             </c:choose>
                         </select>
 
