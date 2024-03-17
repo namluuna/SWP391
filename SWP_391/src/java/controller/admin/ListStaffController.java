@@ -81,8 +81,8 @@ public class ListStaffController extends HttpServlet {
             String txtSearch = request.getParameter("txtSearch");
             if (txtSearch != null && !txtSearch.isEmpty()) {
                 int countName = userDAO.getTotalUsersByName(txtSearch);
-                int endPage = countName / 15;
-                if (countName % 15 != 0) {
+                int endPage = countName / 10;
+                if (countName % 10 != 0) {
                     endPage++;
                 }
                 UserContractDAO ucdao = new UserContractDAO();
@@ -95,8 +95,8 @@ public class ListStaffController extends HttpServlet {
                 request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
             } else {
                 int count = userDAO.getTotalUsers();
-                int endPage = count / 15;
-                if (count % 15 != 0) {
+                int endPage = count / 10;
+                if (count % 10 != 0) {
                     endPage++;
                 }
                 ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
