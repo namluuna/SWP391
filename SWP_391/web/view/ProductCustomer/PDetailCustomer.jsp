@@ -18,7 +18,7 @@
         <link rel='stylesheet' id='fe-slick-theme-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick-theme261b.css?ver=20233105' type='text/css' media='all' />
         <link rel='stylesheet' id='fe-bootstrap-select-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css?ver=20233105' type='text/css' media='all' />
         <link rel='stylesheet' id='fe-jBox-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jBox261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-style-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/style261b.css?ver=20233105' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-style-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/style261b.css' type='text/css' media='all' />
         <link rel='stylesheet' id='ananas-style-css'  href='ananas.vn/wp-content/themes/ananas/style5fba.css?ver=5.2' type='text/css' media='all' />
         <style type="text/css">
             img.wp-smiley,
@@ -36,6 +36,62 @@
         </style>
     </head>
     <body>
+        <div class="header container-fluid hidden-xs hidden-sm">
+            <div class="row">
+                <ul class="menu">
+                    <li><a href="SearchOrder.jsp"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
+                            <c:choose>
+                                <c:when test="${not empty user}">
+                            <li><a href="profile"><img
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
+                            <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
+                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
+                                </c:when>
+                                <c:otherwise>
+                            <li><a href="login"><img
+                                        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> Đăng nhập</a></li>
+                                </c:otherwise>
+                            </c:choose> 
+                </ul>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="navbar center" >
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown mt-0">
+                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">TRANG CHỦ</a>
+                            </li>
+
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">SẢN PHẨM MỚI</a>
+                            </li>
+
+                            <li class="line" style="margin-top:28px"></li>
+                            <li class="dropdown mt-0">
+                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">BÁN CHẠY</a>
+
+                            </li>
+                        </ul>
+                        <form action="" class="navbar-form navbar-right">
+                            <form action="CustomerProducts" method="get" class="navbar-form navbar-right">
+                                <div class="form-group">
+                                    <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg">
+                                    <input type="hidden" name="filter" value="search">
+                                    <input style="
+                                           margin-bottom: 0;
+                                           border: #ffc221 solid 2px !important;
+                                           " type="text" name="id" class="form-control" value="" placeholder="Tìm kiếm" onkeydown="if (event.keyCode == 13)
+                                                       this.form.submit();">
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <div class="prd-detail container-fluid">
 
             <div class="row">
@@ -46,25 +102,13 @@
                             <img id="zoom" class="zoom-img hidden-xs hidden-sm" src="../../ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_zoom.svg">
                         </div>
                         <div class="prd-detail-slide1 slick-initialized slick-slider"><button class="slick-prev slick-arrow slick-disabled" aria-label="Previous" type="button" aria-disabled="true" style="display: block;" control-id="ControlID-2">Previous</button><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1600px; transform: translate3d(0px, 0px, 0px);"><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 160px;"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../ananas.vn/wp-content/uploads/pro_A61112_1.jpg" data-img-normal="../../ananas.vn/wp-content/uploads/pro_A61112_1.jpg" data-img-large="../../ananas.vn/wp-content/uploads/pro_A61112_1.jpg"></div>
+                                                <div class="cont-item"><img src="images/${pd.getImage_url_1()}" data-img-normal="images/${pd.getImage_url_1()}" data-img-large="images/${pd.getImage_url_1()}"></div>
                                             </div></div></div><div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 160px;"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../ananas.vn/wp-content/uploads/pro_A61112_2.jpg" data-img-normal="../../ananas.vn/wp-content/uploads/pro_A61112_2.jpg" data-img-large="../../ananas.vn/wp-content/uploads/pro_A61112_2.jpg"></div>
+                                                <div class="cont-item"><img src="images/${pd.getImage_url_2()}" data-img-normal="images/${pd.getImage_url_2()}" data-img-large="images/${pd.getImage_url_2()}"></div>
                                             </div></div></div><div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 160px;"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../ananas.vn/wp-content/uploads/pro_A61112_3.jpg" data-img-normal="../../ananas.vn/wp-content/uploads/pro_A61112_3.jpg" data-img-large=../../ananas.vn/wp-content/uploads/pro_A61112_3.jpg"></div>
+                                                <div class="cont-item"><img src="images/${pd.getImage_url_3()}" data-img-normal="images/${pd.getImage_url_3()}" data-img-large=images/${pd.getImage_url_3()}"></div>
                                             </div></div></div><div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 160px;"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../ananas.vn/wp-content/uploads/pro_A61112_4.jpg" data-img-normal="../../ananas.vn/wp-content/uploads/pro_A61112_4.jpg" data-img-large="../../ananas.vn/wp-content/uploads/pro_A61112_4.jpg"></div>
-                                            </div></div></div><div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 160px;" tabindex="-1"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../wp-content/uploads/pro_A61112_5.jpg" data-img-normal="../../wp-content/uploads/pro_A61112_5.jpg" data-img-large="../../wp-content/uploads/pro_A61112_5.jpg"></div>
-                                            </div></div></div><div class="slick-slide" data-slick-index="5" aria-hidden="true" style="width: 160px;" tabindex="-1"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../wp-content/uploads/pro_A61112_6.jpg" data-img-normal="../../wp-content/uploads/pro_A61112_6.jpg" data-img-large="../../wp-content/uploads/pro_A61112_6.jpg"></div>
-                                            </div></div></div><div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 160px;" tabindex="-1"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../wp-content/uploads/pro_A61112_8.jpg" data-img-normal="../../wp-content/uploads/pro_A61112_8.jpg" data-img-large="../../wp-content/uploads/pro_A61112_8.jpg"></div>
-                                            </div></div></div><div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 160px;" tabindex="-1"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../wp-content/uploads/pro_A61112_11.jpg" data-img-normal="../../wp-content/uploads/pro_A61112_11.jpg" data-img-large="../../wp-content/uploads/pro_A61112_11.jpg"></div>
-                                            </div></div></div><div class="slick-slide" data-slick-index="8" aria-hidden="true" style="width: 160px;" tabindex="-1"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../wp-content/uploads/pro_A61112_9.jpg" data-img-normal="../../wp-content/uploads/pro_A61112_9.jpg" data-img-large="../../wp-content/uploads/pro_A61112_9.jpg"></div>
-                                            </div></div></div><div class="slick-slide" data-slick-index="9" aria-hidden="true" style="width: 160px;" tabindex="-1"><div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item"><img src="../../wp-content/uploads/pro_A61112_10.jpg" data-img-normal="../../wp-content/uploads/pro_A61112_10.jpg" data-img-large="../../wp-content/uploads/pro_A61112_10.jpg"></div>
+                                                <div class="cont-item"><img src="images/${pd.getImage_url_4()}" data-img-normal="images/${pd.getImage_url_4()}" data-img-large="images/${pd.getImage_url_4()}"></div>
                                             </div></div></div></div></div><button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;" aria-disabled="false" control-id="ControlID-3">Next</button>
                         </div>
                     </div>
@@ -78,23 +122,24 @@
                     <h4>${pd.getProduct().getName()}</h4>
                     <h6 class="detail1">
                         <input type="hidden" id="productId" value="25705">
-                        <span class="pull-left">Mã sản phẩm: <strong>A61039</strong></span>
-                        <span class="pull-right">Tình trạng: <strong>Sale off</strong></span>
+                        <span class="pull-left">Mã sản phẩm: <strong>${pd.getProduct().getCode()}</strong></span>
+                        <span class="pull-right">Tình trạng: <strong>${pd.getProduct().getGroup().getName()}</strong></span>
                     </h6>
 
                     <h5 class="detail1">
-                        <span class="saleprice">350.000 VND</span>
-                        <span class="realprice">580.000 VND</span>
+                        <span class="saleprice">${pd.getProduct().getPrice()}</span>
+                        <!--                        <span class="realprice">580.000 VND</span>-->
 
                     </h5>
                     <div class="divider"></div>
-                    <h6 class="detail1">Dáng Low Top truyền thống, kết hợp cùng phối màu gợi nét cổ điển, xưa cũ với chất liệu da Suede. Một sự lựa chọn của những ai muốn làm nổi bật lên sự chín chắn, tính điềm đạm cùng nét lịch thiệp cho bộ outfit của mình.</h6>
+                    <h6 class="detail1">${pd.getProduct().getForm().getDescription()}</h6>
                     <div class="divider"></div>
                     <div class="color">
                         <ul class="nav tree">
                             <li class="cb-color-fixed">
                                 <label data-link><span class="bg-color"
-                                                       style="background-color: #c6954a;"></span><input
+                                                       style="background-color: ${pd.getColor().getColor_code()};
+                                                       "></span><input
                                                        name="cbColor" type="checkbox" value="0" hidden></label>
                             </li>
                         </ul>
@@ -140,15 +185,6 @@
                     </div>
                     <div class="row grp-btn1">
                         <a href="javascript:void(0)" class="btn btn-addcart" id="addProductToCart" data-ananas-validations>THÊM VÀO GIỎ HÀNG</a>
-                        <a href="javascript:void(0)" data-idProduct="25705"
-                           class="btn btn-like addToWishList"
-                           data-isProductListPage="0"
-                           data-liked="false"
-                           data-action="transferCartToWishList"
-                           data-img = "../../wp-content/themes/ananas/fe-assets/images/svg/Heart_product_1.svg"
-                           data-img-like="https://ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Heart_product_2.svg ?" data-img-unlike="../../wp-content/themes/ananas/fe-assets/images/svg/Heart_product_1.svg"
-                           >
-                            <img id="image-heart" src="../../wp-content/themes/ananas/fe-assets/images/svg/Heart_product_1.svg"></a>
                     </div>
                     <div class="row">
                         <a data-url-cart="https://ananas.vn/your-cart" id="pickOrder" data-ananas-validations class="btn btn-checkout">THANH TOÁN</a>
@@ -176,6 +212,7 @@
                                                 &#8211; Upper: Suede<br />
                                                 &#8211; Outsole: Rubber</p>
                                             <p><a href="../../wp-content/uploads/Ananas_SizeChart.jpg"><img class="alignnone wp-image-886913" src="../../wp-content/uploads/Ananas_SizeChart.jpg" alt="" width="398" height="563" srcset="https://ananas.vn/wp-content/uploads/Ananas_SizeChart.jpg 481w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-212x300.jpg 212w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-184x260.jpg 184w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-353x500.jpg 353w" sizes="(max-width: 398px) 100vw, 398px" /></a></p>
+                                            <p>${pd.getProduct().getDescription()}</p>
                                         </h6>
                                     </div>
                                 </div>
