@@ -136,7 +136,7 @@
 
 
             .btn-search-order {
-                background-color: #ffc221;
+                background-color:#303030;
                 color: black;
             }
 
@@ -166,7 +166,7 @@
             }
 
             .order-header {
-                background-color: #ffc221;
+                background-color: #303030;
                 padding: 10px;
                 margin: 0;
                 width: 100%;
@@ -181,7 +181,7 @@
             hr.custom-hr {
                 border: 0;
                 height: 2px;
-                background-color: #ffc221;
+                background-color: #303030;
                 width: 70px;
                 margin: 20px 0;
             }
@@ -191,7 +191,7 @@
                 display: block;
                 margin-top: -2px;
                 height: 2px;
-                background-color: #ffc221;
+                background-color: #303030;
                 width: 749px;
             }
             .btn.btn-cont {
@@ -232,6 +232,23 @@
                 window.location.href = href;
             }
         </script>
+        <script>
+            window.onload = function () {
+                var containers = document.querySelectorAll('.order-container');
+                var maxHeight = 0;
+
+                containers.forEach(function (container) {
+                    var height = container.offsetHeight;
+                    if (height > maxHeight) {
+                        maxHeight = height;
+                    }
+                });
+
+                containers.forEach(function (container) {
+                    container.style.height = maxHeight + 'px';
+                });
+            };
+        </script>
     </head>
 
     <body>
@@ -244,7 +261,7 @@
             <div class="d-flex justify-content-between align-items-center mb-5">
                 <div class="order-container">
                     <div class="order-header">
-                        <h2>ĐƠN HÀNG CỦA BẠN</h2>
+                        <h2 style="color: white">ĐƠN HÀNG CỦA BẠN</h2>
                     </div>
                     <hr class="custom-hr">
                     <table class="table table-striped table-hover">    
@@ -255,12 +272,11 @@
                                 <td><strong>Kích thước</strong></td>
                                 <td><strong>Số lượng</strong></td>
                                 <td><strong>giá sản phẩm</strong></td>
-                                <td><strong>Tổng tiền</strong></td>
                             </tr>
                         </thead>
-                        
-                        <c:forEach items="${NewOrderDetails}" var="c">
-                            <tr>
+
+                    <c:forEach items="${NewOrderDetails}" var="c">
+                        <tr>
                             <td> <img
                                     src="images/${c.getProductDetail().getImage_url_2()}"
                                     class="img-fluid rounded-3" alt="Cotton T-shirt" >${c.getProductDetail().getProduct().getName()}</td>
@@ -268,11 +284,13 @@
                             <td>${c.getProductDetail().getSize().getName()}</td>
                             <td>${c.getQuantity()}</td>
                             <td>${c.getProductDetail().getProduct().getPrice()} VND</td>
-                            <td>${total} VND</td> 
-                            </tr>
-                        </c:forEach>
-                    
+                        </tr>
+                    </c:forEach>
+
                 </table>
+                <strong>
+                    <h1> Tổng số tiền cần thanh toán: ${total} VND</h1>
+                </strong>           
 
                 <hr class="custom-hr">
                 <button onclick="quayLaiMuaHang()" class="btn btn-cont" >QUAY LẠI MUA HÀNG</button>
@@ -281,7 +299,7 @@
             <br>
             <div class="order-container">  
                 <div class="order-header">
-                    <h2>THÔNG TIN KHÁCH HÀNG</h2>
+                    <h2 style="color: white">THÔNG TIN KHÁCH HÀNG</h2>
                 </div>
                 <h4 class="text-muted"><strong>Tên khách hàng:</strong> ${order.customer.getName()}</h4> 
                 <h4 class="text-muted"><strong>Số điện khách hàng:</strong> ${order.customer.getPhone()}</h4> 
@@ -309,7 +327,8 @@
                     <c:otherwise>
                         <h4 class="text-muted"><strong>Trạng thái:</strong> Không xác định</h4>
                     </c:otherwise>
-                </c:choose>            
+                </c:choose>                         
+                <h4 class="text-muted"><strong>Bên vận chuyển:</strong> ${order.shippingCompany.name}</h4>   
                 <c:choose>
                     <c:when test="${order.paymentMethod eq 1}">
                         <h4 class="text-muted"><strong>Cách thức thanh toán:</strong>  Thanh toán khi nhận hàng</h4> 
