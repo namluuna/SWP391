@@ -111,6 +111,11 @@ public class CustomerProductsController extends HttpServlet {
 //        }
         //------------------------------------------------------------------------------------------------------------------
 
+        String indexPage = request.getParameter("index");
+            if (indexPage == null) {
+                indexPage = "1";
+            }
+        int index = Integer.parseInt(indexPage);
         ArrayList<Products> data = null;
         if (request.getParameter("filter") != null) {
             if (request.getParameter("filter").contains("brand")) {
@@ -144,7 +149,7 @@ public class CustomerProductsController extends HttpServlet {
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
             request.getRequestDispatcher("view\\ProductCustomer\\ProductDetail.jsp").forward(request, response);
         } else {
-            data = p.selectAllProducts();
+            data = p.selectAllProducts(index);
         }
         
         request.setAttribute("data", data);

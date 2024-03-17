@@ -289,6 +289,7 @@
                                     <c:forEach items="${data6}" var="o">
                                         <li>
                                             <label >
+                                                
                                                 <a href="CustomerProducts?filter=material&id=${o.id}">${o.name}</a>                                        <span class="glyphicon"></span>
                                             </label>
                                         </li>
