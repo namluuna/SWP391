@@ -2883,8 +2883,6 @@ a:hover { color: #f15e2c; text-decoration: none;}
 }
 .prd-detail-right .btn-addcart {
   background-color: #000;
-  width: 75%;
-  float: left;
   height: 73px;
 }
 .prd-detail-right .btn-like {
