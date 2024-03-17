@@ -12,6 +12,7 @@ import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
+import model.Common.Order;
 
 /**
  *
@@ -25,9 +26,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -101,9 +102,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -170,16 +171,16 @@ public class SendMailService {
             throw new RuntimeException(e);
         }
     }
-    
+
     public void sendNewAccount(String toEmail, String newPassword) {
         //provide recipient's email ID
         String to = toEmail;
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -234,6 +235,380 @@ public class SendMailService {
                     + "        \"\n"
                     + "      >\n"
                     + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/login" + "\">Đăng nhập</a>\n"
+                    + "      </button>\n"
+                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "    </div>",
+                    "text/html");
+            //send the email message
+            Transport.send(message);
+            System.out.println("Email Message Sent Successfully");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void sendOrderNoti1(String toEmail, Order order) {
+        //provide recipient's email ID
+        String to = toEmail;
+        //provide sender's email
+        String from = "OnlineShoesStore@example.com";
+        //provide Mailtrap's username
+        final String username = "e63e649587e337";
+        //provide Mailtrap's password
+        final String password = "340e5584d2008f";
+        //provide Mailtrap's host address
+        String host = "smtp.mailtrap.io";
+        //configure Mailtrap's SMTP server details
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        //create the Session object
+        Session session = Session.getInstance(props,
+                new jakarta.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            //create a MimeMessage object
+            Message message = new MimeMessage(session);
+            //set From email field
+            message.setFrom(new InternetAddress(from));
+            //set To email field
+
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            //set email subject field
+            message.setSubject("Thông báo đơn hàng!");
+            //set the content of the email message
+//            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
+            message.setContent("<div\n"
+                    + "      style=\"\n"
+                    + "      width: 50vw;\n"
+                    + "      margin: 0 auto;\n"
+                    + "      padding: 20px 100px;\n"
+                    + "      text-align: center; \n"
+                    + "      border: 3px solid orange; \n"
+                    + "      border-radius: 10px\n"
+                    + "      \"\n"
+                    + "    >\n"
+                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
+                    + "      <h3>Đơn hàng của bạn đã được đặt thành công và đang chờ đóng gói!</h3>\n"
+                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "      <small\n"
+                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "      <small\n"
+                    + "      <button\n"
+                    + "        style=\"\n"
+                    + "          padding: 10px;\n"
+                    + "          border-radius: 10px;\n"
+                    + "          border-color: rgb(255,69,0);\n"
+                    + "          display: block;\n"
+                    + "          margin: 20px auto;\n"
+                    + "        \"\n"
+                    + "      >\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "      </button>\n"
+                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "    </div>",
+                    "text/html");
+            //send the email message
+            Transport.send(message);
+            System.out.println("Email Message Sent Successfully");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void sendOrderNoti2(String toEmail, Order order) {
+        //provide recipient's email ID
+        String to = toEmail;
+        //provide sender's email
+        String from = "OnlineShoesStore@example.com";
+        //provide Mailtrap's username
+        final String username = "e63e649587e337";
+        //provide Mailtrap's password
+        final String password = "340e5584d2008f";
+        //provide Mailtrap's host address
+        String host = "smtp.mailtrap.io";
+        //configure Mailtrap's SMTP server details
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        //create the Session object
+        Session session = Session.getInstance(props,
+                new jakarta.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            //create a MimeMessage object
+            Message message = new MimeMessage(session);
+            //set From email field
+            message.setFrom(new InternetAddress(from));
+            //set To email field
+
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            //set email subject field
+            message.setSubject("Thông báo đơn hàng!");
+            //set the content of the email message
+//            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
+            message.setContent("<div\n"
+                    + "      style=\"\n"
+                    + "      width: 50vw;\n"
+                    + "      margin: 0 auto;\n"
+                    + "      padding: 20px 100px;\n"
+                    + "      text-align: center; \n"
+                    + "      border: 3px solid orange; \n"
+                    + "      border-radius: 10px\n"
+                    + "      \"\n"
+                    + "    >\n"
+                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
+                    + "      <h3>Đơn hàng của bạn đã được đóng gói hoàn tất và đang chờ giao cho đơn vị vận chuyển!</h3>\n"
+                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "      <small\n"
+                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "      <small\n"
+                    + "      <button\n"
+                    + "        style=\"\n"
+                    + "          padding: 10px;\n"
+                    + "          border-radius: 10px;\n"
+                    + "          border-color: rgb(255,69,0);\n"
+                    + "          display: block;\n"
+                    + "          margin: 20px auto;\n"
+                    + "        \"\n"
+                    + "      >\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "      </button>\n"
+                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "    </div>",
+                    "text/html");
+            //send the email message
+            Transport.send(message);
+            System.out.println("Email Message Sent Successfully");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void sendOrderNoti3(String toEmail, Order order) {
+        //provide recipient's email ID
+        String to = toEmail;
+        //provide sender's email
+        String from = "OnlineShoesStore@example.com";
+        //provide Mailtrap's username
+        final String username = "e63e649587e337";
+        //provide Mailtrap's password
+        final String password = "340e5584d2008f";
+        //provide Mailtrap's host address
+        String host = "smtp.mailtrap.io";
+        //configure Mailtrap's SMTP server details
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        //create the Session object
+        Session session = Session.getInstance(props,
+                new jakarta.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            //create a MimeMessage object
+            Message message = new MimeMessage(session);
+            //set From email field
+            message.setFrom(new InternetAddress(from));
+            //set To email field
+
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            //set email subject field
+            message.setSubject("Thông báo đơn hàng!");
+            //set the content of the email message
+//            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
+            message.setContent("<div\n"
+                    + "      style=\"\n"
+                    + "      width: 50vw;\n"
+                    + "      margin: 0 auto;\n"
+                    + "      padding: 20px 100px;\n"
+                    + "      text-align: center; \n"
+                    + "      border: 3px solid orange; \n"
+                    + "      border-radius: 10px\n"
+                    + "      \"\n"
+                    + "    >\n"
+                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
+                    + "      <h3>Đơn vị vận chuyển đã tiếp nhận đơn hàng của bạn và đang tiến hành vận chuyển!</h3>\n"
+                    + "      <h3>Ngày giao hàng dự kiến là: " + order.getDeliveryDate() + "</h3>\n"
+                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "      <small\n"
+                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "      <small\n"
+                    + "      <button\n"
+                    + "        style=\"\n"
+                    + "          padding: 10px;\n"
+                    + "          border-radius: 10px;\n"
+                    + "          border-color: rgb(255,69,0);\n"
+                    + "          display: block;\n"
+                    + "          margin: 20px auto;\n"
+                    + "        \"\n"
+                    + "      >\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "      </button>\n"
+                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "    </div>",
+                    "text/html");
+            //send the email message
+            Transport.send(message);
+            System.out.println("Email Message Sent Successfully");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void sendOrderNoti4(String toEmail, Order order) {
+        //provide recipient's email ID
+        String to = toEmail;
+        //provide sender's email
+        String from = "OnlineShoesStore@example.com";
+        //provide Mailtrap's username
+        final String username = "e63e649587e337";
+        //provide Mailtrap's password
+        final String password = "340e5584d2008f";
+        //provide Mailtrap's host address
+        String host = "smtp.mailtrap.io";
+        //configure Mailtrap's SMTP server details
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        //create the Session object
+        Session session = Session.getInstance(props,
+                new jakarta.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            //create a MimeMessage object
+            Message message = new MimeMessage(session);
+            //set From email field
+            message.setFrom(new InternetAddress(from));
+            //set To email field
+
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            //set email subject field
+            message.setSubject("Thông báo đơn hàng!");
+            //set the content of the email message
+//            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
+            message.setContent("<div\n"
+                    + "      style=\"\n"
+                    + "      width: 50vw;\n"
+                    + "      margin: 0 auto;\n"
+                    + "      padding: 20px 100px;\n"
+                    + "      text-align: center; \n"
+                    + "      border: 3px solid orange; \n"
+                    + "      border-radius: 10px\n"
+                    + "      \"\n"
+                    + "    >\n"
+                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
+                    + "      <h3>Đơn hàng của bạn đã được giao hàng thành công!</h3>\n"
+                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "      <small\n"
+                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "      <small\n"
+                    + "      <button\n"
+                    + "        style=\"\n"
+                    + "          padding: 10px;\n"
+                    + "          border-radius: 10px;\n"
+                    + "          border-color: rgb(255,69,0);\n"
+                    + "          display: block;\n"
+                    + "          margin: 20px auto;\n"
+                    + "        \"\n"
+                    + "      >\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "      </button>\n"
+                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "    </div>",
+                    "text/html");
+            //send the email message
+            Transport.send(message);
+            System.out.println("Email Message Sent Successfully");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+        public void sendOrderNoti6(String toEmail, Order order) {
+        //provide recipient's email ID
+        String to = toEmail;
+        //provide sender's email
+        String from = "OnlineShoesStore@example.com";
+        //provide Mailtrap's username
+        final String username = "e63e649587e337";
+        //provide Mailtrap's password
+        final String password = "340e5584d2008f";
+        //provide Mailtrap's host address
+        String host = "smtp.mailtrap.io";
+        //configure Mailtrap's SMTP server details
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        //create the Session object
+        Session session = Session.getInstance(props,
+                new jakarta.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            //create a MimeMessage object
+            Message message = new MimeMessage(session);
+            //set From email field
+            message.setFrom(new InternetAddress(from));
+            //set To email field
+
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            //set email subject field
+            message.setSubject("Thông báo đơn hàng!");
+            //set the content of the email message
+//            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
+            message.setContent("<div\n"
+                    + "      style=\"\n"
+                    + "      width: 50vw;\n"
+                    + "      margin: 0 auto;\n"
+                    + "      padding: 20px 100px;\n"
+                    + "      text-align: center; \n"
+                    + "      border: 3px solid orange; \n"
+                    + "      border-radius: 10px\n"
+                    + "      \"\n"
+                    + "    >\n"
+                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
+                    + "      <h3>Đơn hàng của bạn đã được hủy thành công!</h3>\n"
+                    + "      <small\n"
+                    + "        >Vui lòng click vào nút bên dưới để tiếp tục mua sắm</small>\n"
+                    + "      <small\n"
+                    + "      <button\n"
+                    + "        style=\"\n"
+                    + "          padding: 10px;\n"
+                    + "          border-radius: 10px;\n"
+                    + "          border-color: rgb(255,69,0);\n"
+                    + "          display: block;\n"
+                    + "          margin: 20px auto;\n"
+                    + "        \"\n"
+                    + "      >\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/" + "\">Trang chủ</a>\n"
                     + "      </button>\n"
                     + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
                     + "    </div>",

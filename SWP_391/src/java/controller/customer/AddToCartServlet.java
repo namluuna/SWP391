@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Common.Cart;
 import model.Common.User;
 
 /**
@@ -40,11 +41,13 @@ public class AddToCartServlet extends HttpServlet {
             return;
         } else {
             String id = request.getParameter("id");
-            String quantity = request.getParameter("quantity");
+            String quantity = "1";
             CartDAO cartDAO = new CartDAO();
             int isExist = cartDAO.isExistItem(user.getId(), Integer.parseInt(id));
             if (isExist != 0) {
-                request.getSession().setAttribute("itemIsExist", "Sản phẩm này đã có trong giỏ hàng!");
+                Cart cartItem = cartDAO.getCartItem(user.getId(), Integer.parseInt(id));
+                cartDAO.addQuantity(String.valueOf(cartItem.getId()));
+                request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
                 response.sendRedirect("CustomerProducts?detail=" + id);
             } else {
                 cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));

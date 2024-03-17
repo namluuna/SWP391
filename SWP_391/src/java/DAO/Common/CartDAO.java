@@ -180,7 +180,34 @@ public class CartDAO extends DBContext {
         }
         return 0;
     }
-
+    
+    public Cart getCartItem(int userId, int productDetailId){
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from cart_items WHERE customer_id = ? AND product_detail_id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, userId);
+            st.setInt(2, productDetailId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int user_id = rs.getInt("customer_id");
+                int pdId = rs.getInt("product_detail_id");
+                int quantity = rs.getInt("quantity");
+                int isSelected = rs.getInt("is_selected");
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(user_id));
+                ProductDetailDAO productDetailDAO = new ProductDetailDAO();
+                ProductDetails productDetail = productDetailDAO.selectProductDetailById(String.valueOf(pdId));
+                Cart cartItem = new Cart(id, customer, productDetail, quantity, isSelected);
+                return cartItem;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public void addTocart(int userId, int productDetailId, int quantity) {
         try {
             // SQL INSERT query
@@ -189,7 +216,7 @@ public class CartDAO extends DBContext {
             st.setInt(1, userId);
             st.setInt(2, productDetailId);
             st.setInt(3, quantity);
-            st.setInt(4, 0);
+            st.setInt(4, 1);
             // Execute INSERT
             st.executeUpdate();
         } catch (SQLException e) {

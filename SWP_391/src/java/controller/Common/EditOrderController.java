@@ -7,8 +7,10 @@ package controller.Common;
 import DAO.Common.OrderDAO;
 import DAO.Common.OrderDetailDAO;
 import DAO.Common.OrderStatusDAO;
+import DAO.Common.ShippingCompanyDAO;
 import DAO.Common.UserDAO;
 import DAO.ProductDAO.ProductDetailDAO;
+import Service.SendMailService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import model.Common.Order;
 import model.Common.OrderDetail;
 import model.Common.OrderStatus;
+import model.Common.ShippingCompany;
 import model.Common.User;
 
 /**
@@ -81,14 +84,31 @@ public class EditOrderController extends HttpServlet {
             OrderDAO orderDAO = new OrderDAO();
             Order order = orderDAO.searchOrderById(orderId);
             request.setAttribute("order", order);
-            UserDAO userDAO = new UserDAO();
-            ArrayList<User> shippers = userDAO.sellectallShipper();
+            ShippingCompanyDAO spDAO = new ShippingCompanyDAO();
+            ArrayList<ShippingCompany> shippingCompanies = spDAO.getAllShippingCompany();
             OrderStatusDAO orderStatusDAO = new OrderStatusDAO();
             OrderStatus orderStatus = orderStatusDAO.searchById(order.getOrderStatus());
-            ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatusForSale();
+            if (orderStatus.getId() == 1) {
+                ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatus1();
+                request.setAttribute("orderStatusForSale", orderStatusForSale);
+            } else if (orderStatus.getId() == 2) {
+                ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatus2();
+                request.setAttribute("orderStatusForSale", orderStatusForSale);
+            } else if (orderStatus.getId() == 3) {
+                ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatus3();
+                request.setAttribute("orderStatusForSale", orderStatusForSale);
+            } else if (orderStatus.getId() == 4) {
+                ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatus4();
+                request.setAttribute("orderStatusForSale", orderStatusForSale);
+            } else if (orderStatus.getId() == 5) {
+                ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatus5();
+                request.setAttribute("orderStatusForSale", orderStatusForSale);
+            } else {
+                ArrayList<OrderStatus> orderStatusForSale = orderStatusDAO.getOrderStatus6();
+                request.setAttribute("orderStatusForSale", orderStatusForSale);
+            }
             ArrayList<OrderStatus> orderStatusForShipper = orderStatusDAO.getOrderStatusForShipper();
-            request.setAttribute("shippers", shippers);
-            request.setAttribute("orderStatusForSale", orderStatusForSale);
+            request.setAttribute("shippingCompanies", shippingCompanies);
             request.setAttribute("orderStatusForShipper", orderStatusForShipper);
             request.setAttribute("orderStatus", orderStatus);
             request.getRequestDispatcher("view\\sale\\UpdateOrder.jsp").forward(request, response);
@@ -119,24 +139,65 @@ public class EditOrderController extends HttpServlet {
             response.sendRedirect("404.jsp");
         } else {
             String id = request.getParameter("id");
-            String shiperId = request.getParameter("shipper");
+            String shippingCompanyId = request.getParameter("shippingCompany");
+            String shipping_code = request.getParameter("shippingCode");
             String status = request.getParameter("status");
             String note = request.getParameter("note");
             String expectedDeliveryDate = request.getParameter("expectedDeliveryDate");
             expectedDeliveryDate += " 00:00:00";
+
             OrderDAO orderDAO = new OrderDAO();
             ProductDetailDAO pdDAO = new ProductDetailDAO();
-            if(status.equals("5") || status.equals("6")){
+            if (status.equals("1")) {
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+                SendMailService sms = new SendMailService();
+                Order o = orderDAO.searchOrderById(id);
+                sms.sendOrderNoti1(user.getEmail(), o);
+            } else if (status.equals("2")) {
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+                SendMailService sms = new SendMailService();
+                Order o = orderDAO.searchOrderById(id);
+                sms.sendOrderNoti2(user.getEmail(), o);
+            } else if (status.equals("3")) {
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+                SendMailService sms = new SendMailService();
+                Order o = orderDAO.searchOrderById(id);
+                sms.sendOrderNoti3(user.getEmail(), o);
+            } else if (status.equals("4")) {
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+                SendMailService sms = new SendMailService();
+                Order o = orderDAO.searchOrderById(id);
+                sms.sendOrderNoti4(user.getEmail(), o);
+            } else if (status.equals("5")) {
                 Order o = orderDAO.searchOrderById(id);
                 OrderDetailDAO odDAO = new OrderDetailDAO();
                 ArrayList<OrderDetail> orderDetails = odDAO.selectByOrderId(o.getId());
                 for (OrderDetail orderDetail : orderDetails) {
                     pdDAO.addQuantity(orderDetail.getProductDetail().getId(), String.valueOf(orderDetail.getQuantity()));
                 }
-                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shiperId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate));                
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+                SendMailService sms = new SendMailService();
+                sms.sendOrderNoti4(user.getEmail(), o);
             }else{
-                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shiperId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate));
+                Order o = orderDAO.searchOrderById(id);
+                OrderDetailDAO odDAO = new OrderDetailDAO();
+                ArrayList<OrderDetail> orderDetails = odDAO.selectByOrderId(o.getId());
+                for (OrderDetail orderDetail : orderDetails) {
+                    pdDAO.addQuantity(orderDetail.getProductDetail().getId(), String.valueOf(orderDetail.getQuantity()));
+                }
+                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
             }
+//            if (status.equals("5") || status.equals("6")) {
+//                Order o = orderDAO.searchOrderById(id);
+//                OrderDetailDAO odDAO = new OrderDetailDAO();
+//                ArrayList<OrderDetail> orderDetails = odDAO.selectByOrderId(o.getId());
+//                for (OrderDetail orderDetail : orderDetails) {
+//                    pdDAO.addQuantity(orderDetail.getProductDetail().getId(), String.valueOf(orderDetail.getQuantity()));
+//                }
+//                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+//            } else {
+//                orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
+//            }
             response.sendRedirect("OrderController");
         }
 

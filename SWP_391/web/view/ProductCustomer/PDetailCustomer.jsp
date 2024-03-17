@@ -45,7 +45,7 @@
                             <li><a href="profile"><img
                                         src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
                             <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
-                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
+                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/logout.svg">Đăng xuất</a></li>
                                 </c:when>
                                 <c:otherwise>
                             <li><a href="login"><img
@@ -117,8 +117,9 @@
 
                     </div>
                 </div>
-
+                <form action="AddToCartServlet">
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 prd-detail-right">
+                    <input type="hidden" name="id" value="${pd.id}">
                     <h4>${pd.getProduct().getName()}</h4>
                     <h6 class="detail1">
                         <input type="hidden" id="productId" value="25705">
@@ -184,14 +185,18 @@
                         </div>
                     </div>
                     <div class="row grp-btn1">
-                        <a href="javascript:void(0)" class="btn btn-addcart" id="addProductToCart" data-ananas-validations>THÊM VÀO GIỎ HÀNG</a>
+                        <button class="btn btn-addcart" type="submit" style="width: 480px">THÊM VÀO GIỎ HÀNG</button>
+                        <% String message = (String) session.getAttribute("addToCartSuccess"); %>
+                        <% if(message != null){ %>
+                        <% session.removeAttribute("addToCartSuccess"); %>
+                        <br>
+                        <div id="snackbar" style="color:green !important;"><%= message %></div>
+                        <% } %>
                     </div>
-                    <div class="row">
-                        <a data-url-cart="https://ananas.vn/your-cart" id="pickOrder" data-ananas-validations class="btn btn-checkout">THANH TOÁN</a>
-                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="620b7f7537" /><input type="hidden" name="_wp_http_referer" value="/product-detail/a61039/" />            </div>
                     <div class="row info-validate empty-error" style="display: none;">
                         Vui lòng chọn Size/Số lượng phù hợp
                     </div>
+                    </form>
                     <div>
                         <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
