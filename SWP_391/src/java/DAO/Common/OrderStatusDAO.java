@@ -20,7 +20,121 @@ public class OrderStatusDAO extends DBContext{
         ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
         try {
             // Select address from user with user id
-            String sql = "SELECT * from order_status WHERE [id] IN (1,2,6)";
+            String sql = "SELECT * from order_status";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                OrderStatus orderStatus = new OrderStatus(id, status);
+                orderStatuses.add(orderStatus);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderStatuses;
+    }
+    
+    public ArrayList<OrderStatus> getOrderStatus1(){
+        ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from order_status WHERE id IN (1,2,6)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                OrderStatus orderStatus = new OrderStatus(id, status);
+                orderStatuses.add(orderStatus);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderStatuses;
+    }
+
+    public ArrayList<OrderStatus> getOrderStatus2(){
+        ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from order_status WHERE id IN (2,3,6)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                OrderStatus orderStatus = new OrderStatus(id, status);
+                orderStatuses.add(orderStatus);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderStatuses;
+    }
+    
+    public ArrayList<OrderStatus> getOrderStatus3(){
+        ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from order_status WHERE id IN (3,4,5,6)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                OrderStatus orderStatus = new OrderStatus(id, status);
+                orderStatuses.add(orderStatus);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderStatuses;
+    }
+    
+        public ArrayList<OrderStatus> getOrderStatus4(){
+        ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from order_status WHERE id IN (4)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                OrderStatus orderStatus = new OrderStatus(id, status);
+                orderStatuses.add(orderStatus);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderStatuses;
+    }
+    
+    public ArrayList<OrderStatus> getOrderStatus5(){
+        ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from order_status WHERE id IN (5)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String status = rs.getString("status");
+                OrderStatus orderStatus = new OrderStatus(id, status);
+                orderStatuses.add(orderStatus);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderStatuses;
+    }
+    
+    public ArrayList<OrderStatus> getOrderStatus6(){
+        ArrayList<OrderStatus> orderStatuses = new ArrayList<>();
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from order_status WHERE id IN (6)";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {

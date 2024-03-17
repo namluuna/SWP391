@@ -39,12 +39,11 @@
         <div class="header container-fluid hidden-xs hidden-sm">
             <div class="row">
                 <ul class="menu">
-
                     <c:choose>
                         <c:when test="${not empty user}">
                             <li><a href="profile"><img
                                         src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
-                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/svgviewer-output (1).svg">Đăng xuất</a></li>
+                            <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/logout.svg">Đăng xuất</a></li>
                                 </c:when>
                                 <c:otherwise>
                             <li><a href="login"><img

@@ -29,7 +29,7 @@ public class ShippingCompanyDAO extends DBContext{
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                int name = rs.getInt("name");
+                String name = rs.getString("name");
                 ShippingCompany shippingcompany = new ShippingCompany(id, name);
                 shippingCompanies.add(shippingcompany);
             }
@@ -38,7 +38,31 @@ public class ShippingCompanyDAO extends DBContext{
         }
         return shippingCompanies;
     }
+    
+    public ShippingCompany getById(int id){
+        try {
+            // Select address from user with user id
+            String sql = "SELECT * from shipping_companies WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int spId = rs.getInt("id");
+                String name = rs.getString("name");
+                ShippingCompany spCompany = new ShippingCompany(spId, name);
+                return spCompany;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void main(String[] args) {
+        ShippingCompanyDAO spDAO = new ShippingCompanyDAO();
+        ArrayList<ShippingCompany> sp = spDAO.getAllShippingCompany();
+        for (ShippingCompany shippingCompany : sp) {
+            System.out.println(shippingCompany.toString());
+        }
         
     }
 }

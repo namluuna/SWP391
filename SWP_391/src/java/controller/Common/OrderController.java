@@ -71,17 +71,10 @@ public class OrderController extends HttpServlet {
         } else if (user.getRole() == 4) {
             response.sendRedirect("404.jsp");
         } else {
-            if (user.getRole() == 3) {
-                OrderDAO orderDAO = new OrderDAO();
-                ArrayList<Order> orders = orderDAO.selectOrderOfShipper(user.getId());
-                request.setAttribute("orders", orders);
-                request.getRequestDispatcher("view\\sale\\ListOrder.jsp").forward(request, response);
-            }else{
                 OrderDAO orderDAO = new OrderDAO();
                 ArrayList<Order> orders = orderDAO.selectAllOrder();
                 request.setAttribute("orders", orders);
                 request.getRequestDispatcher("view\\sale\\ListOrder.jsp").forward(request, response);
-            }
         }
     }
 

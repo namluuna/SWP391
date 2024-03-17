@@ -10,9 +10,9 @@ package model.Common;
  */
 public class ShippingCompany {
     private int id;
-    private int name;
+    private String name;
 
-    public ShippingCompany(int id, int name) {
+    public ShippingCompany(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -25,11 +25,11 @@ public class ShippingCompany {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
