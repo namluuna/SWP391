@@ -119,10 +119,10 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbyCategory(request.getParameter("id"));
             }
             if (request.getParameter("filter").contains("color")) {
-                
+
                 data = pd.selectProductDetailsbyColor(request.getParameter("id"));
             }
-            
+
             if (request.getParameter("filter").contains("form")) {
                 data = p.selectProductbyForm(request.getParameter("id"));
             }
@@ -140,7 +140,11 @@ public class CustomerProductsController extends HttpServlet {
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
         if (request.getParameter("detail") != null) {
+
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
+            ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
+            String productId = productDetails.getId();
+            request.setAttribute("colors", pd.getAllColorsByProductID(productId));
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();
