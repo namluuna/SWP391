@@ -167,11 +167,11 @@
                         <div class="color">
     <ul class="nav tree">
         <c:forEach var="color" items="${colors}">
-            
-                
+            <li class="cb-color-fixed">
+                <a href="CustomerProducts?detail=${color.detailId}">
                     <span class="bg-color" style="background-color: ${color.colorCode};"></span>
-               
-           
+                </a>
+            </li>
         </c:forEach>
     </ul>
 </div>
