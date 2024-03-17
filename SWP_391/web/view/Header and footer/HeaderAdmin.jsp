@@ -1,8 +1,10 @@
 <%-- 
-    Document   : HeaderCustomer
-    Created on : Mar 11, 2024, 11:33:28 AM
-    Author     : lucdu
+    Document   : HearderSale
+    Created on : Mar 12, 2024, 11:25:58 AM
+    Author     : ifyou
 --%>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,16 +36,13 @@
 
         </head>
     <body>
-
         <div class="header container-fluid hidden-xs hidden-sm">
             <div class="row">
                 <ul class="menu">
-                    <li><a href="SearchOrder.jsp"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tra_cuu_don_hang.svg"> Tra cứu đơn hàng</a></li>
-                            <c:choose>
-                                <c:when test="${not empty user}">
+                    <c:choose>
+                        <c:when test="${not empty user}">
                             <li><a href="profile"><img
                                         src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_dang_nhap.svg"> ${user.name}</a></li>
-                            <li><a href="CartController"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">Giỏ hàng (<span class="countProduct">${total}</span>)</a></li>
                             <li><a href="logout"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/logout.svg">Đăng xuất</a></li>
                                 </c:when>
                                 <c:otherwise>
@@ -53,43 +52,7 @@
                             </c:choose> 
                 </ul>
             </div>
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="navbar center" >
-
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown mt-0">
-                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">TRANG CHỦ</a>
-                            </li>
-
-                            <li class="line" style="margin-top:28px"></li>
-                            <li class="dropdown mt-0">
-                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">SẢN PHẨM MỚI</a>
-                            </li>
-
-                            <li class="line" style="margin-top:28px"></li>
-                            <li class="dropdown mt-0">
-                                <a href="CustomerProducts" class="py-0 d-flex align-items-center">BÁN CHẠY</a>
-
-                            </li>
-                        </ul>
-                        <form action="" class="navbar-form navbar-right">
-                            <form action="CustomerProducts" method="get" class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <img class="icon-search" src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_tim_kiem.svg">
-                                <input type="hidden" name="filter" value="search">
-                                <input style="
-                                       margin-bottom: 0;
-                                       border: #ffc221 solid 2px !important;
-                                       " type="text" name="id" class="form-control" value="" placeholder="Tìm kiếm" onkeydown="if (event.keyCode == 13)
-                                            this.form.submit();">
-                            </div>
-                        </form>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
         </div>
         </body>
 </html>
+

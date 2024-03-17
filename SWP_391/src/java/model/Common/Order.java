@@ -18,35 +18,37 @@ public class Order {
     private Timestamp orderDate;
     private int orderStatus;
     private UserAddress deliveryAddress;
-    private User shipper;
     private Timestamp deliveryDate;
     private int paymentMethod;
     private ArrayList<OrderDetail> orderDetail;
     private String note;
     private int total;
+    private ShippingCompany shippingCompany;
+    private String shippingCode;
 
-    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, User shipper, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note) {
+    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note, ShippingCompany shippingCompany, String shippingCode, int total) {
         this.id = id;
         this.orderCode = orderCode;
         this.customer = customer;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.deliveryAddress = deliveryAddress;
-        this.shipper = shipper;
         this.deliveryDate = deliveryDate;
         this.paymentMethod = paymentMethod;
         this.orderDetail = orderDetail;
         this.note = note;
+        this.shippingCompany = shippingCompany;
+        this.shippingCode = shippingCode;
+        this.total = total;
     }
 
-    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, User shipper, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note, int total) {
+    public Order(int id, String orderCode, User customer, Timestamp orderDate, int orderStatus, UserAddress deliveryAddress, Timestamp deliveryDate, int paymentMethod, ArrayList<OrderDetail> orderDetail, String note, int total) {
         this.id = id;
         this.orderCode = orderCode;
         this.customer = customer;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.deliveryAddress = deliveryAddress;
-        this.shipper = shipper;
         this.deliveryDate = deliveryDate;
         this.paymentMethod = paymentMethod;
         this.orderDetail = orderDetail;
@@ -120,13 +122,6 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public User getShipper() {
-        return shipper;
-    }
-
-    public void setShipper(User shipper) {
-        this.shipper = shipper;
-    }
 
     public Timestamp getDeliveryDate() {
         return deliveryDate;
@@ -152,10 +147,27 @@ public class Order {
         this.note = note;
     }
 
+    public ShippingCompany getShippingCompany() {
+        return shippingCompany;
+    }
+
+    public void setShippingCompany(ShippingCompany shippingCompany) {
+        this.shippingCompany = shippingCompany;
+    }
+
+    public String getShippingCode() {
+        return shippingCode;
+    }
+
+    public void setShippingCode(String shippingCode) {
+        this.shippingCode = shippingCode;
+    }
+
     @Override
     public String toString() {
-        return "Order{" + "id=" + id + ", orderCode=" + orderCode + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", deliveryAddress=" + deliveryAddress + ", shipper=" + shipper + ", deliveryDate=" + deliveryDate + ", paymentMethod=" + paymentMethod + ", orderDetail=" + orderDetail + ", note=" + note + ", total=" + total + '}';
+        return "Order{" + "id=" + id + ", orderCode=" + orderCode + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", deliveryAddress=" + deliveryAddress + ", deliveryDate=" + deliveryDate + ", paymentMethod=" + paymentMethod + ", orderDetail=" + orderDetail + ", note=" + note + ", total=" + total + ", shippingCompany=" + shippingCompany + ", shippingCode=" + shippingCode + '}';
     }
+
 
     
     

@@ -105,20 +105,23 @@
                         <span id="error-message-category" style="color: red;"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="brand_id" class="form-label">Shipper</label>
-                        <select id="shipper" name="shipper" class="form-select" required>
+                        <label for="brand_id" class="form-label">Công ty vận chuyển</label>
+                        <select id="shippingCompany" name="shippingCompany" class="form-select" required>
                             <c:choose>
-                                <c:when test="${not empty order.shipper}">
-                                    <option value="${order.shipper.id}">${order.shipper.name}</option>
+                                <c:when test="${not empty order.shippingCompany}">
+                                    <option value="${order.shippingCompany.id}">${order.shippingCompany.name}</option>
                                 </c:when>
                                 <c:otherwise>
-                                    <c:forEach var="c" items="${shippers}">
+                                    <c:forEach var="c" items="${shippingCompanies}">
                                         <option value="${c.id}">${c.name}</option>
                                     </c:forEach>
                                 </c:otherwise>
                             </c:choose> 
                         </select>
-                        <span id="error-message-brand" style="color: red;"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shippingCode" class="form-label">Mã vận đơn:</label>
+                        <input type="text" class="form-control" id="shippingCode" name="shippingCode" value="${order.shippingCode}">
                     </div>
                     <div class="mb-3">
                         <label for="brand_id" class="form-label">Trạng thái đơn hàng</label>
@@ -169,7 +172,7 @@
                         <span id="error-message-description" style="color: red;"></span>
                     </div>    
                     <button type="submit" class="btn btn-primary" name="update">Lưu</button>
-                    <a href="products" class="btn btn-secondary">Hủy</a>
+                    <a href="OrderController" class="btn btn-secondary">Hủy</a>
             </div>
 
         </form>

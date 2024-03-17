@@ -147,7 +147,7 @@ public class CustomerProductsController extends HttpServlet {
         }
         if (request.getParameter("detail") != null) {
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
-            request.getRequestDispatcher("view\\ProductCustomer\\ProductDetail.jsp").forward(request, response);
+            request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts(index);
         }

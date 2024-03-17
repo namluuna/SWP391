@@ -2,24 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.customer;
+package controller.Common;
 
-import DAO.Common.CartDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Common.Cart;
-import model.Common.User;
 
 /**
  *
  * @author ifyou
  */
-public class AddToCartServlet extends HttpServlet {
+public class ForgotPasswordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,32 +28,18 @@ public class AddToCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        // Check if user have loged in
-        if (user == null) {
-            request.setAttribute("loginMessage", "Vui lòng đăng nhập để sử dụng dịch vụ!");
-            request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
-            return;
-        } else {
-            String id = request.getParameter("id");
-            String quantity = "1";
-            CartDAO cartDAO = new CartDAO();
-            int isExist = cartDAO.isExistItem(user.getId(), Integer.parseInt(id));
-            if (isExist != 0) {
-                Cart cartItem = cartDAO.getCartItem(user.getId(), Integer.parseInt(id));
-                cartDAO.addQuantity(String.valueOf(cartItem.getId()));
-                request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
-                response.sendRedirect("CustomerProducts?detail=" + id);
-            } else {
-                cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));
-                request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
-                session.removeAttribute("total");
-                int total = cartDAO.getCartQuantity(user.getId());
-                session.setAttribute("total", total);
-                response.sendRedirect("CustomerProducts?detail=" + id);
-            }
-
+        response.setContentType("text/html;charset=UTF-8");
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ForgotPasswordController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ForgotPasswordController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -73,7 +55,7 @@ public class AddToCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect("view\\customer\\fogotpassword.jsp");
     }
 
     /**

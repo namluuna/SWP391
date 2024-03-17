@@ -47,6 +47,7 @@ public class AddOrderServlet extends HttpServlet {
             request.getRequestDispatcher("view\\customer\\login.jsp").forward(request, response);
             return;
         } else {
+            
             OrderDAO orderDAO = new OrderDAO();
             String orderCode = UUID.randomUUID().toString();
             orderDAO.addNewOrder(orderCode, user.getId(), Integer.parseInt(addressId), 1);

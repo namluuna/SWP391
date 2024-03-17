@@ -3,8 +3,8 @@
     Created on : Mar 11, 2024, 11:22:54 AM
     Author     : lucdu
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en-US">
 
@@ -14,7 +14,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-    <link rel="icon" href="../../wp-content/themes/ananas/fe-assets/images/favicon.ico">
+    <link rel="icon" href="../../ananas.vn/wp-content/themes/ananas/fe-assets/images/favicon.ico">
     <title>Vintas Mister - Low Top</title>
     <!-- Facebook Pixel Code -->
     <script>
@@ -70,7 +70,8 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
-	<link rel='stylesheet' id='wp-block-library-css'  href='../../wp-includes/css/dist/block-library/style.min5fba.css?ver=5.2' type='text/css' media='all' />
+
+<link rel='stylesheet' id='wp-block-library-css'  href='../../wp-includes/css/dist/block-library/style.min5fba.css?ver=5.2' type='text/css' media='all' />
 <link rel='stylesheet' id='dashicons-css'  href='../../wp-includes/css/dashicons.min5fba.css?ver=5.2' type='text/css' media='all' />
 <link rel='stylesheet' id='fe-bootstrap-css-css'  href='../../wp-content/themes/ananas/fe-assets/css/bootstrap.min261b.css?ver=20233105' type='text/css' media='all' />
 <link rel='stylesheet' id='fe-ie10-viewport-bug-workaround-css-css'  href='../../wp-content/themes/ananas/fe-assets/css/ie10-viewport-bug-workaround261b.css?ver=20233105' type='text/css' media='all' />
@@ -2959,3 +2960,4 @@ Hotline: 028 2211 0067</p>
 
 <!-- Mirrored from ananas.vn/product-detail/a61039/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Mar 2024 18:03:41 GMT -->
 </html>
+

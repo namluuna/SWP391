@@ -156,7 +156,8 @@
 
         <div class="container">
             
-            <div class="row"><jsp:forward page="../Header and footer/HeaderCustomer.jsp" />
+            <div class="row">
+
                 <div class="col-md-6 column-margin">
                     <div class="pro-img-details">
                         <div class="arrow left" onclick="prevImage()">&#10094;</div>
@@ -208,6 +209,12 @@
                         <% if(message != null){ %>
                         <% session.removeAttribute("addToCartSuccess"); %>
                         <div id="snackbar" style="color:green"><%= message %></div>
+                        <% } %>
+                        
+                        <% String message1 = (String) session.getAttribute("itemIsExist"); %>
+                        <% if(message1 != null){ %>
+                        <% session.removeAttribute("itemIsExist"); %>
+                        <div id="snackbar" style="color:red"><%= message1 %></div>
                         <% } %>
                     </form>
 
