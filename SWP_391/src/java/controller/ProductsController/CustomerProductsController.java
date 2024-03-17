@@ -97,7 +97,6 @@ public class CustomerProductsController extends HttpServlet {
         request.setAttribute("data5", data5);
         request.setAttribute("data6", data6);
 
-        
         if (request.getParameter("mod") != null && request.getParameter("mod").equals("1")) {
             request.getRequestDispatcher("view\\Products\\CreateProducts.jsp").forward(request, response);
         }
@@ -111,12 +110,14 @@ public class CustomerProductsController extends HttpServlet {
 //        }
         //------------------------------------------------------------------------------------------------------------------
 
-        String indexPage = request.getParameter("index");
-            if (indexPage == null) {
-                indexPage = "1";
-            }
-        int index = Integer.parseInt(indexPage);
         ArrayList<Products> data = null;
+        if (request.getParameter("page") != null) {
+            int page = Integer.parseInt(request.getParameter("page"));
+            request.setAttribute("page", page);
+        } else {
+            request.setAttribute("page", 1);
+        }
+
         if (request.getParameter("filter") != null) {
             if (request.getParameter("filter").contains("brand")) {
                 data = p.selectProductbyBrand(request.getParameter("id"));
@@ -125,10 +126,10 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbyCategory(request.getParameter("id"));
             }
             if (request.getParameter("filter").contains("color")) {
-                
+
                 data = pd.selectProductDetailsbyColor(request.getParameter("id"));
             }
-            
+
             if (request.getParameter("filter").contains("form")) {
                 data = p.selectProductbyForm(request.getParameter("id"));
             }
@@ -142,19 +143,30 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbySearch(request.getParameter("id"));
             }
             request.setAttribute("data", data);
+            
+            if(Math.ceil(data.size() / 10) == 0)
+            {
+                request.setAttribute("max_page", 1);
+            }else
+            {
+                 request.setAttribute("max_page", Math.ceil(data.size() / 10));
+            }
+            
 
+            
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
         if (request.getParameter("detail") != null) {
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
-            data = p.selectAllProducts(index);
-        }
-        
-        request.setAttribute("data", data);
+            data = p.selectAllProducts();
 
-        request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+            request.setAttribute("data", data);
+
+            request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+        }
+
     }
 
     /**

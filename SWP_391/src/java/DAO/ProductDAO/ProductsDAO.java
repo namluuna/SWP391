@@ -27,16 +27,11 @@ import model.Sale.Form;
  */
 public class ProductsDAO extends DBContext {
 
-    
-    
-    public ArrayList<Products> selectAllProducts(int index) {
+    public ArrayList<Products> selectAllProducts() {
         ArrayList<Products> ProductsList = new ArrayList<>();
         try {
-            String sql = "select * from products "
-                    + "order by id  desc\n"
-                    + "offset ? rows fetch  next 15 rows only";
+            String sql = "select * from products";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, (index - 1) * 15);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String Id = String.valueOf(rs.getInt("id"));
@@ -443,7 +438,7 @@ public class ProductsDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductsDAO p = new ProductsDAO();
-        
+        ArrayList<Products> data = p.selectAllProducts();
         //System.out.println(data);
 //        Products pro = p.selectProductByID("3");
 //        System.out.println(pro);
