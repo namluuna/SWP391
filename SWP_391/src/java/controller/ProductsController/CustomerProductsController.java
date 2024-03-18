@@ -140,7 +140,6 @@ public class CustomerProductsController extends HttpServlet {
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
         if (request.getParameter("detail") != null) {
-
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
             ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
             String productId = productDetails.getId();

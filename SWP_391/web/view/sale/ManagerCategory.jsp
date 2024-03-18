@@ -24,17 +24,29 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            .modal-title {
+                color: #000 !important; /* Đặt màu chữ */
+                font-size: 1.25rem !important; /* Đặt font size */
+            }
+            /* Đảm bảo rằng các thuộc tính modal không bị ẩn bởi CSS chồng lên */
+            .modal.fade.show {
+                display: block !important;
+                opacity: 1 !important;
+            }
+        </style>
 
     <body>
         <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+        <div class="row prd-detail-img hidden-xs hidden-sm"></div>
             <div class="container mt-5">
                 <div >
 
                     <div>
 
-                        <h1>Category Management</h1>
+                        <h1>Quản lý loại giày</h1>
 
-                        <div><a href="#addcategory" class="btn btn-primary mb-3" data-toggle="modal"> Create New Group</a></div>
+                        <div><a href="#addcategory" class="btn btn-primary mb-3" data-toggle="modal"> Tạo Mới</a></div>
                         <!--                        <div class="btn-group mb-3">
                                                     <a href="groups" class="btn btn-secondary">All Groups</a>
                                                     <a href="groups?show=active" class="btn btn-success">Active Groups</a>
@@ -52,10 +64,10 @@
                             <tr>
 
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>created_at</th>
-                                <th>Actions</th>
+                                <th>Tên</th>
+                                <th>Mô tả</th>
+                                <th>Ngà tạo</th>
+                                <th>Hoạt động</th>
                             </tr>
                         </thead>
                         <tbody >
@@ -68,11 +80,11 @@
                                 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                                 <td><fmt:formatDate value="${o.created_at}" pattern="yyyy-MM-dd" /></td>
                                 <td>
-                                    <a href="loadedit?cid=${o.id}" class="btn btn-info btn-sm">Edit</a>
+                                    <a href="loadedit?cid=${o.id}" class="btn btn-info btn-sm">Sửa</a>
                                     <!--                                        <a href="deletecategory?cid=" class="btn btn-danger" >Delete</a>-->
 
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${o.id}">
-                                        Delete
+                                        Xóa
                                     </button>
                                     <div class="modal fade" id="confirmDeleteModal${o.id}" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -84,11 +96,11 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Are you sure you want to delete this category?
+                                                    Bạn có chắc chắn muốn xóa sản phẩm?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                    <a href="deletecategory?cid=${o.id}" class="btn btn-danger">Delete</a>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                    <a href="deletecategory?cid=${o.id}" class="btn btn-danger">Xóa</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,23 +118,17 @@
                     <div class="modal-content">
                         <form action="addcategory" method="post">
                             <div class="modal-header">						
-                                <h4 class="modal-title">Add Product</h4>
+                                <h4 class="modal-title">Tạo mới loại giày</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">					
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label>Tên</label>
                                     <input name="name" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>Mô tả</label>
                                     <textarea name="description" class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Create_at</label>
-                                    <input name="create" type="text" class="form-control" required readonly value="${create_at}" >
-                                    <!--                                <fmt:formatDate value="" type="both" timeStyle="long" 
-                                                    dateStyle="long" /> -->
                                 </div>
                                 <!--                            <div class="form-group">
                                                                 <label>Price</label>
@@ -140,8 +146,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
+                                <input type="submit" class="btn btn-success" value="Lưu">
                             </div>
                         </form>
                     </div>

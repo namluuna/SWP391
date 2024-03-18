@@ -84,7 +84,7 @@
                 </c:when>
             </c:choose>
 
-
+            <div class="row prd-detail-img hidden-xs hidden-sm"></div>
 
             <div class="container mt-5">
                 <h1>Quản lý đơn hàng</h1>
