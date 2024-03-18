@@ -111,6 +111,13 @@ public class CustomerProductsController extends HttpServlet {
         //------------------------------------------------------------------------------------------------------------------
 
         ArrayList<Products> data = null;
+        if (request.getParameter("page") != null) {
+            int page = Integer.parseInt(request.getParameter("page"));
+            request.setAttribute("page", page);
+        } else {
+            request.setAttribute("page", 1);
+        }
+
         if (request.getParameter("filter") != null) {
             if (request.getParameter("filter").contains("brand")) {
                 data = p.selectProductbyBrand(request.getParameter("id"));
@@ -136,7 +143,17 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbySearch(request.getParameter("id"));
             }
             request.setAttribute("data", data);
+            
+            if(Math.ceil(data.size() / 10) == 0)
+            {
+                request.setAttribute("max_page", 1);
+            }else
+            {
+                 request.setAttribute("max_page", Math.ceil(data.size() / 10));
+            }
+            
 
+            
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
         if (request.getParameter("detail") != null) {
@@ -147,10 +164,12 @@ public class CustomerProductsController extends HttpServlet {
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();
-        }
-        request.setAttribute("data", data);
 
-        request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+            request.setAttribute("data", data);
+
+            request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
+        }
+
     }
 
     /**

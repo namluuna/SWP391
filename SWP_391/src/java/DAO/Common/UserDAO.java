@@ -284,11 +284,11 @@ public class UserDAO extends DBContext {
         ArrayList<User> users = new ArrayList<>();
         try {
             // Select address from user with user id
-            String sql = "select * from users  WHERE is_deleted = 0 AND [role] IN (2,3)\n"
+            String sql = "select * from users  WHERE is_deleted = 0 AND [role] = 2\n"
                     + "order by id  desc\n"
-                    + "offset ? rows fetch  next 15 rows only";
+                    + "offset ? rows fetch  next 10 rows only";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, (index - 1) * 15);
+            st.setInt(1, (index - 1) * 10);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int user_id = rs.getInt("id");
@@ -316,14 +316,14 @@ public class UserDAO extends DBContext {
     // ham search user by name
     public ArrayList<User> SearchUserByName(String txtSearch, int index) {
         ArrayList<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE is_deleted = 0 AND [role] IN (2,3) AND[name] LIKE ? order by id  desc\n"
-                + "offset ? rows fetch  next 15 rows only";
+        String sql = "SELECT * FROM users WHERE is_deleted = 0 AND [role] = 2 AND[name] LIKE ? order by id  desc\n"
+                + "offset ? rows fetch  next 10 rows only";
         try {
             // Select address from user with user id
 
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, "%" + txtSearch + "%");
-            st.setInt(2, (index - 1) * 15);
+            st.setInt(2, (index - 1) * 10);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int user_id = rs.getInt("id");
@@ -350,7 +350,7 @@ public class UserDAO extends DBContext {
 
     // ham dem so luong user trong database
     public int getTotalUsers() {
-        String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] IN (2,3)";
+        String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] = 2";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -365,7 +365,7 @@ public class UserDAO extends DBContext {
 
     //
     public int getTotalUsersByName(String txtSearch) {
-        String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] IN (2,3) AND [Name] like ? ";
+        String sql = "select count(*) from users WHERE is_deleted = 0 AND [role] = 2 AND [Name] like ? ";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, "%" + txtSearch + "%");
