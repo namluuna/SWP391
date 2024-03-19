@@ -166,19 +166,18 @@
                         <div class="divider"></div>
                         <div class="color">
                             <ul class="nav tree">
-                                <c:forEach var="color" items="${colors}">
+                                <c:forEach var="c" items="${cls}">
                                     <li class="cb-color-fixed">
-                                        <label data-link>
-                                        <a href="CustomerProducts?detail=${color.detailId}">
-                                            <span class="bg-color" style="background-color: ${color.colorCode};"></span>
+                                        <a href="CustomerProducts?detail=${c.id}">
+                                            <span class="bg-color" style="background-color: ${c.color_code};"></span>
+                                            <span>${color.color_code}</span>
                                         </a>
-                                        </label>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
 
-<!--                        <div class="color">
+                        <div class="color">
                             <ul class="nav tree">
                                 <li class="cb-color-fixed">
                                     <label data-link><span class="bg-color"
@@ -187,7 +186,7 @@
                                                            name="cbColor" type="checkbox" value="0" hidden></label>
                                 </li>
                             </ul>
-                        </div>-->
+                        </div>
                         <div class="divider"></div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -247,7 +246,7 @@
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
                                        href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        MÔ TẢ SẢN PHẨM <span class="caret"></span>
+                                        THÔNG TIN SẢN PHẨM <span class="caret"></span>
                                     </a>
                                 </h4>
                             </div>
@@ -255,71 +254,74 @@
                                  aria-labelledby="headingOne">
                                 <div class="divider-1"></div>
                                 <div class="panel-body">
-                                    <h6>
-                                        <!--                                        <p><a href="../../wp-content/uploads/Ananas_SizeChart.jpg"><img class="alignnone wp-image-886913" src="../../wp-content/uploads/Ananas_SizeChart.jpg" alt="" width="398" height="563" srcset="https://ananas.vn/wp-content/uploads/Ananas_SizeChart.jpg 481w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-212x300.jpg 212w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-184x260.jpg 184w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-353x500.jpg 353w" sizes="(max-width: 398px) 100vw, 398px" /></a></p>-->
+                                    <h6><p>&#8211; Gender: Unisex<br />
+                                            &#8211; Size run: 35 &#8211; 46<br />
+                                            &#8211; Upper: Suede<br />
+                                            &#8211; Outsole: Rubber</p>
+                                        <p><a href="../../wp-content/uploads/Ananas_SizeChart.jpg"><img class="alignnone wp-image-886913" src="../../wp-content/uploads/Ananas_SizeChart.jpg" alt="" width="398" height="563" srcset="https://ananas.vn/wp-content/uploads/Ananas_SizeChart.jpg 481w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-212x300.jpg 212w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-184x260.jpg 184w, https://ananas.vn/wp-content/uploads/Ananas_SizeChart-353x500.jpg 353w" sizes="(max-width: 398px) 100vw, 398px" /></a></p>
                                         <p>${pd.getProduct().getDescription()}</p>
                                     </h6>
                                 </div>
                             </div>
                             <div class="divider-1"></div>
                         </div>
-                        <!--                        <div class="panel panel-default">
-                                                    <div class="panel-heading" role="tab" id="headingTwo">
-                                                        <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse"
-                                                               data-parent="#prdDetailInfor"
-                                                               href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                QUY ĐỊNH ĐỔI SẢN PHẨM <span class="caret"></span>
-                                                            </a>
-                        
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                                         aria-labelledby="headingTwo">
-                                                        <div class="divider-1"></div>
-                                                        <div class="panel-body">
-                                                            <h6><ul>
-                                                                    <li>Chỉ đổi hàng 1 lần duy nhất, mong bạn cân nhắc kĩ trước khi quyết định.</li>
-                                                                    <li>Thời hạn đổi sản phẩm khi mua trực tiếp tại cửa hàng là 07 ngày, kể từ ngày mua. Đổi sản phẩm khi mua online là 14 ngày, kể từ ngày nhận hàng.</li>
-                                                                    <li>Sản phẩm đổi phải kèm hóa đơn. Bắt buộc phải còn nguyên tem, hộp, nhãn mác.</li>
-                                                                    <li>Sản phẩm đổi không có dấu hiệu đã qua sử dụng, không giặt tẩy, bám bẩn, biến dạng.</li>
-                                                                    <li>Ananas chỉ ưu tiên hỗ trợ đổi size. Trong trường hợp sản phẩm hết size cần đổi, bạn có thể đổi sang 01 sản phẩm khác:<br />
-                                                                        - Nếu sản phẩm muốn đổi ngang giá trị hoặc có giá trị cao hơn, bạn sẽ cần bù khoảng chênh lệch tại thời điểm đổi (nếu có).<br />
-                                                                        - Nếu bạn mong muốn đổi sản phẩm có giá trị thấp hơn, chúng tôi sẽ không hoàn lại tiền.</li>
-                                                                    <li>Trong trường hợp sản phẩm - size bạn muốn đổi không còn hàng trong hệ thống. Vui lòng chọn sản phẩm khác.</li>
-                                                                    <li>Không hoàn trả bằng tiền mặt dù bất cứ trong trường hợp nào. Mong bạn thông cảm.</li>
-                                                                </ul>
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="divider-1"></div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading" role="tab" id="headingThree">
-                                                        <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse"
-                                                               data-parent="#prdDetailInfor"
-                                                               href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                BẢO HÀNH THẾ NÀO ? <span class="caret"></span>
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                                                         aria-labelledby="headingThree">
-                                                        <div class="divider-1"></div>
-                                                        <div class="panel-body">
-                                                            <h6><p>Mỗi đôi giày Ananas trước khi xuất xưởng đều trải qua nhiều khâu kiểm tra. Tuy vậy, trong quá trình sử dụng, nếu nhận thấy các lỗi: gãy đế, hở đế, đứt chỉ may,...trong thời gian 6 tháng từ ngày mua hàng, mong bạn sớm gửi sản phẩm về Ananas nhằm giúp chúng tôi có cơ hội phục vụ bạn tốt hơn. Vui lòng gửi sản phẩm về bất kỳ cửa hàng Ananas nào, hoặc gửi đến trung tâm bảo hành Ananas ngay trong trung tâm TP.HCM trong giờ hành chính:</p>
-                                                                <p>Địa chỉ: 5C Tân Cảng, P.25, Q.Bình Thạnh , TP. Hồ Chí Minh.<br />
-                                                                    Hotline: 028 2211 0067</p>
-                                                            </h6>
-                                                        </div>
-                                                    </div>-->
-                        <div class="divider-1 hidden-xs hidden-sm"></div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse"
+                                       data-parent="#prdDetailInfor"
+                                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        QUY ĐỊNH ĐỔI SẢN PHẨM <span class="caret"></span>
+                                    </a>
+
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingTwo">
+                                <div class="divider-1"></div>
+                                <div class="panel-body">
+                                    <h6><ul>
+                                            <li>Chỉ đổi hàng 1 lần duy nhất, mong bạn cân nhắc kĩ trước khi quyết định.</li>
+                                            <li>Thời hạn đổi sản phẩm khi mua trực tiếp tại cửa hàng là 07 ngày, kể từ ngày mua. Đổi sản phẩm khi mua online là 14 ngày, kể từ ngày nhận hàng.</li>
+                                            <li>Sản phẩm đổi phải kèm hóa đơn. Bắt buộc phải còn nguyên tem, hộp, nhãn mác.</li>
+                                            <li>Sản phẩm đổi không có dấu hiệu đã qua sử dụng, không giặt tẩy, bám bẩn, biến dạng.</li>
+                                            <li>Ananas chỉ ưu tiên hỗ trợ đổi size. Trong trường hợp sản phẩm hết size cần đổi, bạn có thể đổi sang 01 sản phẩm khác:<br />
+                                                - Nếu sản phẩm muốn đổi ngang giá trị hoặc có giá trị cao hơn, bạn sẽ cần bù khoảng chênh lệch tại thời điểm đổi (nếu có).<br />
+                                                - Nếu bạn mong muốn đổi sản phẩm có giá trị thấp hơn, chúng tôi sẽ không hoàn lại tiền.</li>
+                                            <li>Trong trường hợp sản phẩm - size bạn muốn đổi không còn hàng trong hệ thống. Vui lòng chọn sản phẩm khác.</li>
+                                            <li>Không hoàn trả bằng tiền mặt dù bất cứ trong trường hợp nào. Mong bạn thông cảm.</li>
+                                        </ul>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="divider-1"></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse"
+                                       data-parent="#prdDetailInfor"
+                                       href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        BẢO HÀNH THẾ NÀO ? <span class="caret"></span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingThree">
+                                <div class="divider-1"></div>
+                                <div class="panel-body">
+                                    <h6><p>Mỗi đôi giày Ananas trước khi xuất xưởng đều trải qua nhiều khâu kiểm tra. Tuy vậy, trong quá trình sử dụng, nếu nhận thấy các lỗi: gãy đế, hở đế, đứt chỉ may,...trong thời gian 6 tháng từ ngày mua hàng, mong bạn sớm gửi sản phẩm về Ananas nhằm giúp chúng tôi có cơ hội phục vụ bạn tốt hơn. Vui lòng gửi sản phẩm về bất kỳ cửa hàng Ananas nào, hoặc gửi đến trung tâm bảo hành Ananas ngay trong trung tâm TP.HCM trong giờ hành chính:</p>
+                                        <p>Địa chỉ: 5C Tân Cảng, P.25, Q.Bình Thạnh , TP. Hồ Chí Minh.<br />
+                                            Hotline: 028 2211 0067</p>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="divider-1 hidden-xs hidden-sm"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
