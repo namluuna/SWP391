@@ -160,7 +160,8 @@ public class CustomerProductsController extends HttpServlet {
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
             ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
             String productId = productDetails.getId();
-            request.setAttribute("colors", pd.getAllColorsByProductID(productId));
+            ArrayList<Colors> colors = pd.getAllColorsByProductID(productId);
+            request.setAttribute("cls", colors);
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();

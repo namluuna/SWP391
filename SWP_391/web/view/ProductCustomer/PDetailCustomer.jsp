@@ -164,18 +164,18 @@
                         <div class="divider"></div>
                         <h6 class="detail1">${pd.getProduct().getForm().getDescription()}</h6>
                         <div class="divider"></div>
-<!--                        <div class="color">
-    <ul class="nav tree">
-        <c:forEach var="color" items="${colors}">
-            <li class="cb-color-fixed">
-                <a href="CustomerProducts?detail=${color.detailId}">
-                    <span class="bg-color" style="background-color: ${color.getColor_code()};"></span>
-                    <span>${color.getColor_code()}</span>
-                </a>
-            </li>
-        </c:forEach>
-    </ul>
-</div>-->
+                        <div class="color">
+                            <ul class="nav tree">
+                                <c:forEach var="c" items="${cls}">
+                                    <li class="cb-color-fixed">
+                                        <a href="CustomerProducts?detail=${c.id}">
+                                            <span class="bg-color" style="background-color: ${c.color_code};"></span>
+                                            <span>${color.color_code}</span>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
 
                         <div class="color">
                             <ul class="nav tree">
