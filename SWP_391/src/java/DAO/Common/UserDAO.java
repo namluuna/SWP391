@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Common.User;
 import model.Common.UserAddress;
+import model.Common.UserContract;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -302,7 +303,7 @@ public class UserDAO extends DBContext {
                 Timestamp created_at = rs.getTimestamp("created_at");
                 UserAddressDAO uadao = new UserAddressDAO();
                 UserContractDAO ucdao = new UserContractDAO();
-                ArrayList user_contract = ucdao.sellectAllUserContract(user_id);
+                UserContract user_contract = ucdao.sellectAllUserContract(user_id);
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
                 User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses, user_contract);
                 users.add(u);
@@ -337,7 +338,7 @@ public class UserDAO extends DBContext {
                 Timestamp created_at = rs.getTimestamp("created_at");
                 UserAddressDAO uadao = new UserAddressDAO();
                 UserContractDAO ucdao = new UserContractDAO();
-                ArrayList user_contract = ucdao.sellectAllUserContract(user_id);
+                UserContract user_contract = ucdao.sellectAllUserContract(user_id);
                 ArrayList user_addresses = uadao.sellectallUserAddress(user_id);
                 User u = new User(user_id, user_name, email, password, phone, is_deleted, role, status, created_at, user_addresses, user_contract);
                 users.add(u);

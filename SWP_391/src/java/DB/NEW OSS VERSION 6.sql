@@ -396,6 +396,7 @@ CREATE TABLE [dbo].[user_contracts](
 	[salary] [int] NULL,
 	[start_date] [datetime] NULL,
 	[slot] [int] NULL,
+        [gender] [int] Null,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

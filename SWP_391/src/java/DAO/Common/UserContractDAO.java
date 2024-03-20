@@ -17,8 +17,7 @@ import model.Common.UserContract;
  */
 public class UserContractDAO extends DBContext {
 
-    public ArrayList<UserContract> sellectAllUserContract(int userID) {
-        ArrayList<UserContract> userContract = new ArrayList<>();
+    public UserContract sellectAllUserContract(int userID) {
 
         try {
             String sql = "SELECT uc.[id] AS [id], uc.[user_id] AS [user_id], uc.[start_date], uc.[slot], uc.[salary] ,uc.[gender] \n"
@@ -32,29 +31,52 @@ public class UserContractDAO extends DBContext {
                 int user_id = rs.getInt("user_id");
                 String start_date = rs.getString("start_date");
                 int slot = rs.getInt("slot");
-                int salary = rs.getInt("salary");
+                String salary = rs.getString("salary");
                 int gender = rs.getInt("gender");
                 UserContract uc = new UserContract(id, user_id, start_date, slot, salary, gender);
-                userContract.add(uc);
+                return uc;
             }
         } catch (Exception e) {
 
         }
-        return userContract;
+        return null;
+    }
+
+    public void addNewUserContract(UserContract usercontract) {
+        try {
+            // SQL INSERT query
+            String sql = "INSERT INTO user_contracts (user_id, salary, slot, gender) VALUES (?, ?, ?, ?)";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, usercontract.getUser_id());
+            st.setString(2, usercontract.getSalary());
+            st.setInt(3, usercontract.getSlot());
+            st.setInt(4, usercontract.getGender());
+            // Thực hiện truy vấn INSERT
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(UserContract user) {
+        String sql = "update user_contracts SET [salary]=?,"
+                + " [slot] =?,"
+                + "[gender] = ?,"
+                + "where id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(4, user.getSalary());
+            statement.setInt(4, user.getSlot());
+            statement.setInt(5, user.getGender());
+            statement.setInt(6, user.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+        }
+
     }
 
     public static void main(String[] args) {
         UserContractDAO udao = new UserContractDAO();
-        ArrayList<UserContract> userContracts = udao.sellectAllUserContract(19);
-        for (UserContract userContract : userContracts) {
-            System.out.println("UserContract ID: " + userContract.getId());
-            System.out.println("User ID: " + userContract.getUser_id());
-            System.out.println("Start Date: " + userContract.getStart_date());
-            System.out.println("Slot: " + userContract.getSlot());
-            System.out.println("Salary: " + userContract.getSalary());
-            System.out.println("Gender: " + userContract.getGender());
-            System.out.println("------------------------------");
-        }
 
     }
 }

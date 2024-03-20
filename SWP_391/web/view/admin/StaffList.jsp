@@ -233,7 +233,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <h2>Quản lí nhân viên</h2>
+                                    <h2>Danh sách nhân viên bán hàng</h2>
                                 </div>
                                 <div class="col-sm-7">
                                     <a href="view\\admin\\CreateStaff.jsp" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Thêm nhân viên</span></a>               						
@@ -253,18 +253,17 @@
                         </div>
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>ID</th>
                                 <th>Họ và tên</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
-                                <th>Vai trò</th>
                                 <th>Trạng thái</th>
                                 <th>Ngày tạo</th>  
-                                           <th>Giới tính</th>  
+                                <th>Giới tính</th>  
                                 <th>Ca làm</th>  
                                 <th>Lương</th>  
-                                
-                                
+
+
                                 <th>Hoạt động</th>
                             </tr>
                         </thead>
@@ -276,26 +275,15 @@
                                     <td>${user.name}</td>
                                     <td>${user.email}</td>
                                     <td>${user.phone}</td>
-                                    <td>
-                                        <c:choose>
-                                            <c:when test="${user.role eq 2}">
-                                                Saler
-                                            </c:when>
-                                            <c:when test="${user.role eq 3}">
-                                                Shipper
-                                            </c:when>
-                                            <c:otherwise>
-                                                Unknown
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
+
+
                                     <td>
                                         <c:choose>
                                             <c:when test="${user.status eq 0}">
-                                                <span class="status text-warning" style="animation: blink 1.8s infinite; display: inline-block;">&bull;</span> &nbsp; Không hoạt động  
+                                                <span class="status text-warning" style="animation: blink 1.8s infinite; display: inline-block;">&bull;</span> &nbsp; Vắng 
                                             </c:when>
                                             <c:when test="${user.status eq 1}">
-                                                <span class="status text-success" style="animation: blink 1.8s infinite; display: inline-block;">&bull;</span> &nbsp; Đang hoạt động
+                                                <span class="status text-success" style="animation: blink 1.8s infinite; display: inline-block;">&bull;</span> &nbsp; Hoạt động
                                             </c:when>
                                             <c:otherwise>
                                                 <span class="status text-danger" style="animation: blink 1.8s infinite; display: inline-block;">&bull;</span> &nbsp; Không rõ
@@ -303,8 +291,36 @@
                                         </c:choose>
                                     </td>
                                     <td>${user.created_at}</td>
-
-
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${user.contract.gender eq 1}">
+                                                Nam
+                                            </c:when>
+                                            <c:when test="${user.contract.gender eq 2}">
+                                                Nữ
+                                            </c:when>
+                                            <c:otherwise>
+                                                Không rõ
+                                            </c:otherwise>
+                                        </c:choose>     
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${user.contract.slot eq 1}">
+                                                Ca sáng (7h30-11h30)
+                                            </c:when>
+                                            <c:when test="${user.contract.slot eq 2}">
+                                                Ca chiều (13h30-17h30)
+                                            </c:when>
+                                            <c:when test="${user.contract.slot eq 3}">
+                                                Ca tối (18h-21h30)
+                                            </c:when>
+                                            <c:otherwise>
+                                                Không rõ
+                                            </c:otherwise>
+                                        </c:choose>  
+                                    </td>
+                                    <td>${user.contract.salary} VND</td>
                                     <td>
                                         <a href="updateStaff?id=${user.id}" class="settings" title="Cập nhật" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                                         <a href="#" onclick="doDelete('${user.id}')" class="delete" title="Xóa" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>

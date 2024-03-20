@@ -49,6 +49,13 @@
                 <form  action="/SWP_391/createStaff" method="POST" onsubmit="return validateEmail();" >
                     <div class="mb-3">
                         Nhập tên: <input type="text" name="name" value="${name}"  class="form-control" required/><br>
+                    </div>     
+                    <div class="mb-3">  
+                        <label for="gender">Giới tính:</label>
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option value="1">Nam</option>
+                            <option value="2">Nữ</option>
+                        </select> 
                     </div>
                     <div class="mb-3">
                         Nhập Email: <input type="text" name="email"  value="${email} " id="email" class="form-control" required /><br>
@@ -71,6 +78,18 @@
                             </c:choose>
                         </select>
 
+                    </div>                  
+                    <div class="mb-3">   
+                        <label for="slot">Ca làm:</label>
+                        <select name="slot" id="slot" class="form-control" required>
+                            <option value="1">Ca sáng (7h30-11h30)</option>
+                            <option value="2">Ca chiều (13h30-17h30)</option>
+                            <option value="3">Ca tối (18h-21h30)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        Nhập tiền lương: <input type="number" name="salary" value="${salary}" class="form-control" required /><br>
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary" >Tạo mới </button>

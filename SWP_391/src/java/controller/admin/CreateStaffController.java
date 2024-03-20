@@ -4,6 +4,7 @@
  */
 package controller.admin;
 
+import DAO.Common.UserContractDAO;
 import DAO.Common.UserDAO;
 import Service.SendMailService;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Common.User;
+import model.Common.UserContract;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -89,7 +91,9 @@ public class CreateStaffController extends HttpServlet {
             String sPassword = request.getParameter("password");
             String sPhone = request.getParameter("phone");
             String sRole = request.getParameter("role");
-
+            String sSalary = request.getParameter("salary");
+            String sSlot = request.getParameter("slot");
+            String sGender = request.getParameter("gender");
             UserDAO userDAO = new UserDAO();
             User checkUser = userDAO.searchUserByEmail(sEmail);
             // if an user have used entered email
@@ -100,16 +104,45 @@ public class CreateStaffController extends HttpServlet {
                 request.setAttribute("password", sPassword);
                 request.setAttribute("phone", sPhone);
                 request.setAttribute("role", sRole);
+                request.setAttribute("salary", sSalary);
+                request.setAttribute("slot", sSlot);
+                request.setAttribute("gender", sGender);
                 request.setAttribute("errorEmailMessage", errorEmailMessage);
                 request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
             } else {
-              String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                    UserDAO udao = new UserDAO();
-                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
-                    udao.addNewUser(newUser);
-                    SendMailService sm = new SendMailService();
-                    sm.sendNewAccount(newUser.getEmail(), sPassword);
-                    response.sendRedirect("staff");
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                UserDAO udao = new UserDAO();
+                UserContractDAO uconDAO = new UserContractDAO();
+                User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                udao.addNewUser(newUser);
+                User newUserContract = userDAO.searchUserByEmail(sEmail);
+                if (sGender.equals("1")) {
+                    if (sSlot.equals("1")) {
+                        UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 1);
+                        uconDAO.addNewUserContract(uContract);
+                    } else if (sSlot.equals("2")) {
+                        UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 1);
+                        uconDAO.addNewUserContract(uContract);
+                    } else if (sSlot.equals("3")) {
+                        UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 1);
+                        uconDAO.addNewUserContract(uContract);
+                    }
+                } else if (sGender.equals("2")) {
+                    if (sSlot.equals("1")) {
+                        UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 2);
+                        uconDAO.addNewUserContract(uContract);
+                    } else if (sSlot.equals("2")) {
+                        UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 2);
+                        uconDAO.addNewUserContract(uContract);
+                    } else if (sSlot.equals("3")) {
+                        UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 2);
+                        uconDAO.addNewUserContract(uContract);
+                    }
+                }
+
+                SendMailService sm = new SendMailService();
+                sm.sendNewAccount(newUser.getEmail(), sPassword);
+                response.sendRedirect("staff");
             }
         }
 

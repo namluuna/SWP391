@@ -26,9 +26,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -102,9 +102,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -178,9 +178,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -253,9 +253,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -328,9 +328,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -403,9 +403,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -479,9 +479,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -553,9 +553,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "e63e649587e337";
+        final String username = "569d727e4b5d1c";
         //provide Mailtrap's password
-        final String password = "340e5584d2008f";
+        final String password = "461fd47168e99d";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details

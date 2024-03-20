@@ -22,9 +22,9 @@ public class User {
     private int status;
     private Timestamp created_at;
     ArrayList<UserAddress> address;
-    ArrayList<UserContract> contract;
+    UserContract contract;
 
-    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, Timestamp created_at, ArrayList<UserAddress> address, ArrayList<UserContract> contract) {
+    public User(int id, String name, String email, String password, String phone, int is_deleted, int role, int status, Timestamp created_at, ArrayList<UserAddress> address, UserContract contract) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -50,6 +50,14 @@ public class User {
         this.status = status;
         this.address = address;
         this.image = image;
+    }
+
+    public UserContract getContract() {
+        return contract;
+    }
+
+    public void setContract(UserContract contract) {
+        this.contract = contract;
     }
 
     public ArrayList<UserAddress> getAddress() {
@@ -106,7 +114,7 @@ public class User {
         this.status = status;
     }
 
-  
+    
     
     
     public int getId() {

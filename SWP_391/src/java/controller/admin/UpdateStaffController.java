@@ -113,25 +113,13 @@ public class UpdateStaffController extends HttpServlet {
             UserDAO udao = new UserDAO();
 
             if (sStatus.equals("1")) {
-                if (sRole.equals("2")) {
-                    User newUser = new User(sid, sName, sEmail, sPhone, 0, 2, 1);
-                    udao.update(newUser);
-                    response.sendRedirect("staff");
-                } else if (sRole.equals("3")) {
-                    User newUser = new User(sid, sName, sEmail, sPhone, 0, 3, 1);
-                    udao.update(newUser);
-                    response.sendRedirect("staff");
-                }
+                User newUser = new User(sid, sName, sEmail, sPhone, 0, 2, 1);
+                udao.update(newUser);
+                response.sendRedirect("staff");
             } else if (sStatus.equals("0")) {
-                if (sRole.equals("2")) {
-                    User newUser = new User(sid, sName, sEmail, sPhone, 0, 2, 0);
-                    udao.update(newUser);
-                    response.sendRedirect("staff");
-                } else if (sRole.equals("3")) {
-                    User newUser = new User(sid, sName, sEmail, sPhone, 0, 3, 0);
-                    udao.update(newUser);
-                    response.sendRedirect("staff");
-                }
+                User newUser = new User(sid, sName, sEmail, sPhone, 0, 2, 0);
+                udao.update(newUser);
+                response.sendRedirect("staff");
             }
         }
 
