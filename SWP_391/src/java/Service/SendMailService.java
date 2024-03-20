@@ -26,9 +26,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -102,9 +102,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -178,9 +178,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -253,9 +253,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -328,9 +328,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -403,9 +403,9 @@ public class SendMailService {
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -472,16 +472,16 @@ public class SendMailService {
             throw new RuntimeException(e);
         }
     }
-    
+
     public void sendOrderNoti4(String toEmail, Order order) {
         //provide recipient's email ID
         String to = toEmail;
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -547,15 +547,16 @@ public class SendMailService {
             throw new RuntimeException(e);
         }
     }
-        public void sendOrderNoti6(String toEmail, Order order) {
+
+    public void sendOrderNoti6(String toEmail, Order order) {
         //provide recipient's email ID
         String to = toEmail;
         //provide sender's email
         String from = "OnlineShoesStore@example.com";
         //provide Mailtrap's username
-        final String username = "569d727e4b5d1c";
+        final String username = "e63e649587e337";
         //provide Mailtrap's password
-        final String password = "461fd47168e99d";
+        final String password = "340e5584d2008f";
         //provide Mailtrap's host address
         String host = "smtp.mailtrap.io";
         //configure Mailtrap's SMTP server details
@@ -620,6 +621,7 @@ public class SendMailService {
             throw new RuntimeException(e);
         }
     }
+
     public static void main(String[] args) {
         SendMailService se = new SendMailService();
         se.sendNewAccount("ifyouwant9612@gmail.com", "hello123");
