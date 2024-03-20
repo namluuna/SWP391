@@ -170,23 +170,23 @@
                                     <li class="cb-color-fixed">
                                         <a href="CustomerProducts?detail=${c.id}">
                                             <span class="bg-color" style="background-color: ${c.color_code};"></span>
-<!--                                            <span>${color.color_code}</span>-->
+                                            <span>${c.color_code}</span>
                                         </a>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
 
-<!--                        <div class="color">
-                            <ul class="nav tree">
-                                <li class="cb-color-fixed">
-                                    <label data-link><span class="bg-color"
-                                                           style="background-color: ${pd.getColor().getColor_code()};
-                                                           "></span><input
-                                                           name="cbColor" type="checkbox" value="0" hidden></label>
-                                </li>
-                            </ul>
-                        </div>-->
+                        <!--                        <div class="color">
+                                                    <ul class="nav tree">
+                                                        <li class="cb-color-fixed">
+                                                            <label data-link><span class="bg-color"
+                                                                                   style="background-color: ${pd.getColor().getColor_code()};
+                                                                                   "></span><input
+                                                                                   name="cbColor" type="checkbox" value="0" hidden></label>
+                                                        </li>
+                                                    </ul>
+                                                </div>-->
                         <div class="divider"></div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -323,5 +323,24 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            // Sử dụng jQuery để chọn slick slider và khởi tạo nó
+            $('.prd-detail-slide1').slick();
+
+            // Bắt sự kiện khi click vào nút Previous
+            $('.slick-prev').click(function () {
+                // Chuyển ảnh chính về ảnh đầu tiên
+                $('.main-img').attr('src', 'images/${pd.getImage_url_1()}');
+            });
+
+            // Bắt sự kiện khi click vào nút Next
+            $('.slick-next').click(function () {
+                // Chuyển ảnh chính về ảnh đầu tiên
+                $('.main-img').attr('src', 'images/${pd.getImage_url_1()}');
+            });
+        });
+    </script>
+
 </body>
 </html>
