@@ -260,11 +260,11 @@
                                 <th>Vai trò</th>
                                 <th>Trạng thái</th>
                                 <th>Ngày tạo</th>  
-                                <!--             <th>Giới tính</th>  
+                                           <th>Giới tính</th>  
                                 <th>Ca làm</th>  
                                 <th>Lương</th>  
                                 
-                                --> 
+                                
                                 <th>Hoạt động</th>
                             </tr>
                         </thead>
