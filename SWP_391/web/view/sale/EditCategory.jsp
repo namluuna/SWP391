@@ -38,7 +38,7 @@
                 <div class="modal-content">
                     <form action="editcategory" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Employee</h4>
+                            <h4 class="modal-title">Sửa thông tin loại giày</h4>
                             <button  type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="loadcategory">X</a></button>
                         </div>
                         <div class="modal-body">
@@ -47,11 +47,11 @@
                                 <input value="${detail.id}" name="id" type="text" class="form-control" readonly required>
                             </div>
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Tên</label>
                                 <input value="${detail.name}" name="name" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>Mô tả</label>
                                 <textarea name="description" class="form-control" required>${detail.description}</textarea>
                             </div>
 

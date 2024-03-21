@@ -17,10 +17,17 @@
                 color: #000 !important; /* Đặt màu chữ */
                 font-size: 1.25rem !important; /* Đặt font size */
             }
+            /* Đảm bảo rằng các thuộc tính modal không bị ẩn bởi CSS chồng lên */
+            .modal.fade.show {
+                display: block !important;
+                opacity: 1 !important;
+            }
         </style>
+
     </head>
     <body>
         <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+        <div class="row prd-detail-img hidden-xs hidden-sm"></div>
             <div class="container mt-5">
 
                 <h1>Quản Lý Trạng Thái</h1>

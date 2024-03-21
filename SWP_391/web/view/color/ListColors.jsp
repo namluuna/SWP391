@@ -17,10 +17,17 @@
                 color: #000 !important; /* Đặt màu chữ */
                 font-size: 1.25rem !important; /* Đặt font size */
             }
+            /* Đảm bảo rằng các thuộc tính modal không bị ẩn bởi CSS chồng lên */
+            .modal.fade.show {
+                display: block !important;
+                opacity: 1 !important;
+            }
         </style>
+
     </head>
     <body>
-        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+        <div><jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include></div>
+        <div class="row prd-detail-img hidden-xs hidden-sm"></div>
             <div class="container mt-5">
 
                 <h1>Bảng màu sắc</h1>
@@ -155,7 +162,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                       Bạn có chắc muốn xóa mã màu này ?
+                                                        Bạn có chắc muốn xóa mã màu này ?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>

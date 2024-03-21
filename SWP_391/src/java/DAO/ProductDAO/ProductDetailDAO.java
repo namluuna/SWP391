@@ -120,8 +120,6 @@ public class ProductDetailDAO extends DBContext {
         }
         return ProductsList;
     }
-    
-    
 
     public boolean createNewProductDetails(String productId, String colorId, String sizeId, String inventoryNumber, String imageUrl1, String imageUrl2, String imageUrl3, String imageUrl4) {
         try {
@@ -266,10 +264,43 @@ public class ProductDetailDAO extends DBContext {
         return false;
     }
 
+    // Phương thức lấy ra tất cả các màu liên quan đến một productID
+    public ArrayList<Colors> getAllColorsByProductID(String productID) {
+        ArrayList<Colors> colorsList = new ArrayList<>();
+        try {
+            String sql = "SELECT c.* "
+                    + "FROM product_details pd "
+                    + "INNER JOIN colors c ON pd.color_id = c.id "
+                    + "WHERE pd.product_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, productID);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String colorId = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String colorCode = resultSet.getString("color_code");
+                String createdAt = resultSet.getString("created_at");
+                String deletedAt = resultSet.getString("deleted_at");
+                String updatedAt = resultSet.getString("updated_at");
+
+                Colors color = new Colors(colorId, name, colorCode, createdAt, deletedAt, updatedAt);
+                colorsList.add(color);
+            }
+        } catch (Exception e) {
+            System.out.println("Error while fetching colors by product ID: " + e.getMessage());
+        }
+        return colorsList;
+    }
+
     public static void main(String[] args) {
-        ProductDetailDAO pdao = new ProductDetailDAO();
-        ArrayList<ProductDetails> data = pdao.selectAllProductDetails();
-        ProductDetails pd = pdao.selectProductDetailById("8");
-        System.out.println(pd);
+        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
+        String productID = "5"; // Thay thế bằng productID cụ thể của bạn
+        ArrayList<Colors> colorsList = productDetailDAO.getAllColorsByProductID(productID);
+
+        // In ra danh sách màu
+        for (Colors color : colorsList) {
+            System.out.println(color.toString());
+        }
     }
 }

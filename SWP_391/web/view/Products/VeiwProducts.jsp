@@ -20,6 +20,13 @@
                 color: #000 !important; /* Đặt màu chữ */
                 font-size: 1.25rem !important; /* Đặt font size */
             }
+            /* Đảm bảo rằng các thuộc tính modal không bị ẩn bởi CSS chồng lên */
+            .modal.fade.show {
+                display: block !important;
+                opacity: 1 !important;
+            }
+
+
 
 
             td.description {
@@ -71,8 +78,8 @@
             </style>
         </head>
         <body>
-        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
-
+            <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+                <div class="row prd-detail-img hidden-xs hidden-sm"></div>
                 <div class="container mt-5">
 
                     <h1>Quản Lý Sản Phẩm</h1>
@@ -88,27 +95,29 @@
                         <thead>
                             <tr>
                                 <th style="text-align: center;">NO</th>
-                                <th style="text-align: center; white-space: nowrap">Mã Sản Phẩm</th>
-                                <th style="text-align: center;">Tên Sản Phẩm</th>
+                                <th style="text-align: center;
+                                    white-space: nowrap">Mã Sản Phẩm</th>
+                                    <th style="text-align: center;">Tên Sản Phẩm</th>
                                 <th style="text-align: center;">Mô Tả</th>
                                 <th style="text-align: center;">Thông Tin Sản Phẩm</th>
-                                <th style="text-align: center; white-space: nowrap">Chức Năng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Loop through the products and display their information -->
-                        <c:forEach var="product" items="${data}">
-                            <!-- Check if the product should be displayed based on the 'show' parameter -->
-                            <c:choose>
-                                <c:when test="${empty param.show || param.show eq 'all'}">
-                                    <!-- Display all products -->
-                                    <tr>
-                                        <td>${product.id}</td>
-                                        <td>${product.code}</td>
-                                        <td style="white-space: nowrap">${product.name}</td>
-                                        <td class="description">
-                                            <span class="short-description">${fn:substring(product.description, 0, 100)}</span>
-                                            <span class="full-description" style="display: none;">${product.description}</span>
+                                <th style="text-align: center;
+                                    white-space: nowrap">Chức Năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Loop through the products and display their information -->
+                            <c:forEach var="product" items="${data}">
+                                <!-- Check if the product should be displayed based on the 'show' parameter -->
+                                <c:choose>
+                                    <c:when test="${empty param.show || param.show eq 'all'}">
+                                        <!-- Display all products -->
+                                        <tr>
+                                            <td>${product.id}</td>
+                                            <td>${product.code}</td>
+                                            <td style="white-space: nowrap">${product.name}</td>
+                                            <td class="description">
+                                                <span class="short-description">${fn:substring(product.description, 0, 100)}</span>
+                                                <span class="full-description" style="display: none;">${product.description}</span>
                                             <span class="ellipsis" style="display: none;">...</span>
                                             <button class="btn btn-sm view-description"><i class="fas fa-eye"></i></button>
 
@@ -145,7 +154,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                             Bạn có muốn xóa sản phẩm này không ?
+                                                            Bạn có muốn xóa sản phẩm này không ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
@@ -259,7 +268,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                          Bạn có muốn xóa sản phẩm này không ?
+                                                            Bạn có muốn xóa sản phẩm này không ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
@@ -316,7 +325,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                           Bạn có muốn khôi phục sản phẩm này không ?
+                                                            Bạn có muốn khôi phục sản phẩm này không ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>

@@ -21,6 +21,13 @@
                 color: #000 !important; /* Đặt màu chữ */
                 font-size: 1.25rem !important; /* Đặt font size */
             }
+            /* Đảm bảo rằng các thuộc tính modal không bị ẩn bởi CSS chồng lên */
+            .modal.fade.show {
+                display: block !important;
+                opacity: 1 !important;
+            }
+
+
 
 
             td.description {
@@ -72,8 +79,8 @@
             </style>
         </head>
         <body>
-        <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
-
+            <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
+                <div class="row prd-detail-img hidden-xs hidden-sm"></div>
                 <div class="container mt-5">
 
                     <h1>Quản Lý Sản Phẩm</h1>
@@ -151,7 +158,6 @@
                                             </td>
                                             <td>
                                                 <a href="productdetails?mod=2&id=${pd.getId()}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                                                <a href="productdetails?mod=4&id=${pd.getId()}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal${pd.getId()}">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>

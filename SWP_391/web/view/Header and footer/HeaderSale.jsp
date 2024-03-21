@@ -26,11 +26,11 @@
 
         <link rel="stylesheet" id="fe-slick-theme-css" href=ananas.vn/wp-content/themes/ananas/fe-assets/css/slick-theme261b.css?ver=20233105" type="text/css" media="all">
 
-        <link rel="stylesheet" id="fe-bootstrap-select-css" href="ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css?ver=20233105" type="text/css" media="all">
+        <link rel="stylesheet" id="fe-bootstrap-select-css" href="ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css" type="text/css" media="all">
 
         <link rel="stylesheet" id="fe-jBox-css" href="ananas.vn/wp-content/themes/ananas/fe-assets/css/jBox261b.css?ver=20233105" type="text/css" media="all">
 
-        <link rel="stylesheet" id="fe-style-css" href="ananas.vn/wp-content/themes/ananas/fe-assets/css/style261b.css?ver=20233105" type="text/css" media="all">
+        <link rel="stylesheet" id="fe-style-css" href="ananas.vn/wp-content/themes/ananas/fe-assets/css/style261b.css" type="text/css" media="all">
 
         <link rel="stylesheet" id="ananas-style-css" href="ananas.vn/wp-content/themes/ananas/style5fba.css?ver=5.2" type="text/css" media="all">
     </head>

@@ -14,41 +14,47 @@
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <style>
-           .modal-title {
+            .modal-title {
                 color: #000 !important; /* Đặt màu chữ */
                 font-size: 1.25rem !important; /* Đặt font size */
             }
+            /* Đảm bảo rằng các thuộc tính modal không bị ẩn bởi CSS chồng lên */
+            .modal.fade.show {
+                display: block !important;
+                opacity: 1 !important;
+            }
         </style>
+
     </head>
     <body>
         <jsp:include page="../Header and footer/HeaderSale.jsp"></jsp:include>
-        
-        <div class="container mt-5">
-            
-            <h1>Quản Lý hãng giày</h1>
-            <div><a href="brands?mod=1" class="btn btn-primary mb-3">Tạo nhãn hàng mới</a></div>
-            
-            <div class="btn-group mb-3">
-                <a href="brands" class="btn btn-secondary">Tất cả nhãn hàng</a>
-                <a href="brands?show=active" class="btn btn-success">Nhãn hàng đang hoạt động</a>
-                <a href="brands?show=updated" class="btn btn-warning">Nhãn hàng vừa cập nhật</a>
-                <a href="brands?show=deleted" class="btn btn-danger">Nhãn hàng không hoạt động</a>
-            </div>
+        <div class="row prd-detail-img hidden-xs hidden-sm"></div>
+            <div class="container mt-5">
 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>Tên nhãn hàng</th>
-                        <th>Mô tả nhãn hàng</th>
-                        <th>Ngày tạo</th>
-                        <th>Ngày cập nhật</th>
-                        <th>Ngày xóa</th>
-                        <th>Chức Năng</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Loop through the groups and display their information -->
+                <h1>Quản Lý hãng giày</h1>
+                <div><a href="brands?mod=1" class="btn btn-primary mb-3">Tạo nhãn hàng mới</a></div>
+
+                <div class="btn-group mb-3">
+                    <a href="brands" class="btn btn-secondary">Tất cả nhãn hàng</a>
+                    <a href="brands?show=active" class="btn btn-success">Nhãn hàng đang hoạt động</a>
+                    <a href="brands?show=updated" class="btn btn-warning">Nhãn hàng vừa cập nhật</a>
+                    <a href="brands?show=deleted" class="btn btn-danger">Nhãn hàng không hoạt động</a>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>Tên nhãn hàng</th>
+                            <th>Mô tả nhãn hàng</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Ngày xóa</th>
+                            <th>Chức Năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the groups and display their information -->
                     <c:forEach var="brand" items="${data}">
                         <!-- Check if the brand should be displayed based on the 'show' parameter -->
                         <c:choose>
@@ -210,5 +216,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+    </body>
 </html>

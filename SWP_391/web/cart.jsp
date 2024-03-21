@@ -93,7 +93,7 @@
                                                         <a class="btn btn-link px-2" href="ReduceQuantityCartItem?id=${c.id}">
                                                             <i class="fa fa-minus" style="margin-top: 34px"></i>
                                                         </a>
-                                                        <input id="form1" min="0" name="quantity" value="${c.quantity}" type="number" style="width:75px; margin-top: 20px; background-color: white"
+                                                        <input id="form1" min="1" name="quantity" value="${c.quantity}" type="number" style="width:75px; margin-top: 20px; background-color: white"
                                                                class="form-control form-control-sm" readonly />
                                                         <a class="btn btn-link px-2" href="AddQuantityCartNumber?id=${c.id}">
                                                             <i class="fa fa-plus" style="margin-top: 34px"></i>
