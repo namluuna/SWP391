@@ -332,21 +332,18 @@
 
                                             <c:set var="found" value="false" />
                                             <c:forEach var="productdetail" items="${data0}" >
-                                                <c:if test="${not found and empty productdetail.product.id == product.id}">
-
+                                                <c:if test="${ not found and productdetail.product.id == product.id}">
                                                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
                                                         <div class="thumbnail">
                                                             <div class="cont-item">
-                                                                <a href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">
-                                                                    <img class="inormal"
-                                                                         src="images/${data0[data.indexOf(product)].getImage_url_1()}">
-                                                                    <img class="ihover"
-                                                                         src="images/${data0[data.indexOf(product)].getImage_url_2()}">
+                                                                <a href="CustomerProducts?detail=${productdetail.getId()}">
+                                                                    <img class="inormal" src="images/${productdetail.getImage_url_1()}">
+                                                                    <img class="ihover" src="images/${productdetail.getImage_url_2()}">
                                                                 </a>
                                                             </div>
                                                             <div class="button">
                                                                 <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                                                   href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">MUA
+                                                                   href="CustomerProducts?detail=${productdetail.getId()}">MUA
                                                                     NGAY</a>
 
                                                             </div>
@@ -354,7 +351,7 @@
                                                                 <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
                                                                 <h3 class="divider"></h3>
                                                                 <h3 class="name"><a
-                                                                        href="CustomerProducts?detail=${data0[data.indexOf(product)].getId()}">${product.name}</a>
+                                                                        href="CustomerProducts?detail=${productdetail.getId()}">${product.name}</a>
                                                                 </h3>
                                                                 <h3 class="price">
                                                                     ${product.price} VND                                                                    </h3>
