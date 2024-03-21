@@ -34,6 +34,32 @@
                 padding: 0 !important;
             }
         </style>
+        <style>
+            .color {
+                display: flex; /* Sử dụng flexbox */
+                justify-content: flex-start; /* Căn trái */
+                align-items: center; /* Căn dọc giữa */
+            }
+
+            .nav.tree {
+                display: flex; /* Sử dụng flexbox */
+                list-style-type: none; /* Loại bỏ các dấu hiệu danh sách */
+                padding: 0; /* Loại bỏ padding mặc định */
+                margin: 0; /* Loại bỏ margin mặc định */
+            }
+
+            .cb-color-fixed {
+                margin-right: 10px; /* Khoảng cách giữa các mục */
+            }
+
+            .bg-color {
+                width: 20px; /* Độ rộng của mỗi màu */
+                height: 20px; /* Chiều cao của mỗi màu */
+                display: inline-block; /* Hiển thị là khối */
+                margin-right: 5px; /* Khoảng cách giữa mỗi màu */
+            }
+
+        </style>
     </head>
     <body>
         <div class="header container-fluid hidden-xs hidden-sm">
@@ -168,14 +194,16 @@
                             <ul class="nav tree">
                                 <c:forEach var="c" items="${cls}">
                                     <li class="cb-color-fixed">
-                                        <a href="CustomerProducts?detail=${c.id}">
-                                            <span class="bg-color" style="background-color: ${c.color_code};"></span>
-                                            <span>${c.color_code}</span>
-                                        </a>
+                                        <label data-link>
+                                            <a href="CustomerProducts?detail=${c.id}">
+                                                <span class="bg-color" style="background-color: ${c.color_code};"></span>
+                                            </a>
+                                        </label>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
+
 
                         <!--                        <div class="color">
                                                     <ul class="nav tree">
@@ -324,22 +352,27 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            // Sử dụng jQuery để chọn slick slider và khởi tạo nó
-            $('.prd-detail-slide1').slick();
+        // Lưu trữ các color_code đã xuất hiện
+        var seenColors = {};
 
-            // Bắt sự kiện khi click vào nút Previous
-            $('.slick-prev').click(function () {
-                // Chuyển ảnh chính về ảnh đầu tiên
-                $('.main-img').attr('src', 'images/${pd.getImage_url_1()}');
-            });
+// Lấy danh sách các màu
+        var colors = document.querySelectorAll('.bg-color');
 
-            // Bắt sự kiện khi click vào nút Next
-            $('.slick-next').click(function () {
-                // Chuyển ảnh chính về ảnh đầu tiên
-                $('.main-img').attr('src', 'images/${pd.getImage_url_1()}');
-            });
+// Lặp qua từng màu
+        colors.forEach(function (color) {
+            // Lấy color_code của màu
+            var colorCode = color.style.backgroundColor;
+
+            // Nếu color_code đã xuất hiện, ẩn màu
+            if (seenColors[colorCode]) {
+                color.style.display = 'none';
+            } else {
+                // Nếu color_code chưa xuất hiện, đánh dấu đã xuất hiện và hiển thị màu
+                seenColors[colorCode] = true;
+                color.style.display = 'inline-block';
+            }
         });
+
     </script>
 
 </body>
