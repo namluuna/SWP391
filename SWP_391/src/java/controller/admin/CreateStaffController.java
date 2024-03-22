@@ -110,39 +110,102 @@ public class CreateStaffController extends HttpServlet {
                 request.setAttribute("errorEmailMessage", errorEmailMessage);
                 request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
             } else {
-                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                UserDAO udao = new UserDAO();
-                UserContractDAO uconDAO = new UserContractDAO();
-                User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
-                udao.addNewUser(newUser);
-                User newUserContract = userDAO.searchUserByEmail(sEmail);
                 if (sGender.equals("1")) {
-                    if (sSlot.equals("1")) {
-                        UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 1);
-                        uconDAO.addNewUserContract(uContract);
-                    } else if (sSlot.equals("2")) {
-                        UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 1);
-                        uconDAO.addNewUserContract(uContract);
-                    } else if (sSlot.equals("3")) {
-                        UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 1);
-                        uconDAO.addNewUserContract(uContract);
+                    switch (sSlot) {
+                        case "1": {
+                            String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                            UserDAO udao = new UserDAO();
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                            udao.addNewUser(newUser);
+                            User newUserContract = userDAO.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 1);
+                            uconDAO.addNewUserContract(uContract);
+                            SendMailService sm = new SendMailService();
+                            sm.sendNewAccount(newUser.getEmail(), sPassword);
+                            response.sendRedirect("staff");
+                            break;
+                        }
+                        case "2": {
+                            String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                            UserDAO udao = new UserDAO();
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                            udao.addNewUser(newUser);
+                            User newUserContract = userDAO.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 1);
+                            uconDAO.addNewUserContract(uContract);
+                            SendMailService sm = new SendMailService();
+                            sm.sendNewAccount(newUser.getEmail(), sPassword);
+                            response.sendRedirect("staff");
+                            break;
+                        }
+                        case "3": {
+                            String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                            UserDAO udao = new UserDAO();
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                            udao.addNewUser(newUser);
+                            User newUserContract = userDAO.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 1);
+                            uconDAO.addNewUserContract(uContract);
+                            SendMailService sm = new SendMailService();
+                            sm.sendNewAccount(newUser.getEmail(), sPassword);
+                            response.sendRedirect("staff");
+                            break;
+                        }
+                        default:
+                            break;
                     }
                 } else if (sGender.equals("2")) {
-                    if (sSlot.equals("1")) {
-                        UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 2);
-                        uconDAO.addNewUserContract(uContract);
-                    } else if (sSlot.equals("2")) {
-                        UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 2);
-                        uconDAO.addNewUserContract(uContract);
-                    } else if (sSlot.equals("3")) {
-                        UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 2);
-                        uconDAO.addNewUserContract(uContract);
+                    switch (sSlot) {
+                        case "1": {
+                            String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                            UserDAO udao = new UserDAO();
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                            udao.addNewUser(newUser);
+                            User newUserContract = userDAO.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 2);
+                            uconDAO.addNewUserContract(uContract);
+                            SendMailService sm = new SendMailService();
+                            sm.sendNewAccount(newUser.getEmail(), sPassword);
+                            response.sendRedirect("staff");
+                            break;
+                        }
+                        case "2": {
+                            String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                            UserDAO udao = new UserDAO();
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                            udao.addNewUser(newUser);
+                            User newUserContract = userDAO.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 2);
+                            uconDAO.addNewUserContract(uContract);
+                            SendMailService sm = new SendMailService();
+                            sm.sendNewAccount(newUser.getEmail(), sPassword);
+                            response.sendRedirect("staff");
+                            break;
+                        }
+                        case "3": {
+                            String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                            UserDAO udao = new UserDAO();
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                            udao.addNewUser(newUser);
+                            User newUserContract = userDAO.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 2);
+                            uconDAO.addNewUserContract(uContract);
+                            SendMailService sm = new SendMailService();
+                            sm.sendNewAccount(newUser.getEmail(), sPassword);
+                            response.sendRedirect("staff");
+                            break;
+                        }
+                        default:
+                            break;
                     }
                 }
 
-                SendMailService sm = new SendMailService();
-                sm.sendNewAccount(newUser.getEmail(), sPassword);
-                response.sendRedirect("staff");
             }
         }
 

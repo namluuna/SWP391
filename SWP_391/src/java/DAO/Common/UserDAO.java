@@ -172,6 +172,35 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+    
+     public User searchStaffByEmail(String email) {
+
+        try {
+            // Select user with email
+            String sql = "SELECT * FROM [users]  WHERE is_deleted = 0 AND [role] = 2 AND [email] = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String user_email = rs.getString("email");
+                String password = rs.getString("password");
+                String phone = rs.getString("phone");
+                int is_deleted = rs.getInt("is_deleted");
+                int role = rs.getInt("role");
+                int status = rs.getInt("status");
+                UserAddressDAO uadao = new UserAddressDAO();
+                ArrayList userAddresses = uadao.sellectallUserAddress(id);
+                String image = rs.getString("image_url");
+                User u = new User(id, name, email, password, phone, is_deleted, role, status, userAddresses, image);
+                return u;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public User searchUserByEmailAndPassword(String userEmail, String userPassword) {
 

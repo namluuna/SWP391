@@ -53,8 +53,10 @@
                     <div class="mb-3">  
                         <label for="gender">Giới tính:</label>
                         <select name="gender" id="gender" class="form-control" required>
-                            <option value="1">Nam</option>
-                            <option value="2">Nữ</option>
+                            <c:choose>
+                            <option value="1" ${gender == '1' ? 'selected' : ''}>Nam</option>
+                            <option value="2" ${gender == '2' ? 'selected' : ''}>Nữ</option>
+                            </c:choose>
                         </select> 
                     </div>
                     <div class="mb-3">
@@ -73,18 +75,18 @@
                         <label for="role">Vai trò:</label>
                         <select id="role" name="role" class="form-control" required>
                             <c:choose>
-                                <option value="" disabled selected>Chọn vai trò</option>
                                 <option value="2" ${role == '2' ? 'selected' : ''}>Nhân viên bán hàng</option>
                             </c:choose>
                         </select>
-
                     </div>                  
                     <div class="mb-3">   
                         <label for="slot">Ca làm:</label>
                         <select name="slot" id="slot" class="form-control" required>
-                            <option value="1">Ca sáng (7h30-11h30)</option>
-                            <option value="2">Ca chiều (13h30-17h30)</option>
-                            <option value="3">Ca tối (18h-21h30)</option>
+                            <c:choose>
+                            <option value="1"  ${slot == '1' ? 'selected' : ''} >Ca sáng (7h30-11h30)</option>
+                            <option value="2"  ${slot == '2' ? 'selected' : ''}>Ca chiều (13h30-17h30)</option>
+                            <option value="3"  ${slot == '3' ? 'selected' : ''}>Ca tối (18h-21h30)</option>
+                            </c:choose>
                         </select>
                     </div>
 

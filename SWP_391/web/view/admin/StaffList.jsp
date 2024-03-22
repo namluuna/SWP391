@@ -276,7 +276,6 @@
                                     <td>${user.email}</td>
                                     <td>${user.phone}</td>
 
-
                                     <td>
                                         <c:choose>
                                             <c:when test="${user.status eq 0}">
