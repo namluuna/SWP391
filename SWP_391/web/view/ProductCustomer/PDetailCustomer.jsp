@@ -6,20 +6,21 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel='stylesheet' id='fe-bootstrap-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap.min261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-ie10-viewport-bug-workaround-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/ie10-viewport-bug-workaround261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-jquery-simple-mobilemenu-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jquery-simple-mobilemenu261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-slick-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-slick-theme-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick-theme261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-bootstrap-select-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-jBox-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jBox261b.css?ver=20233105' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-bootstrap-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap.min261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-ie10-viewport-bug-workaround-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/ie10-viewport-bug-workaround261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-jquery-simple-mobilemenu-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jquery-simple-mobilemenu261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-slick-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-slick-theme-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick-theme261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-bootstrap-select-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-jBox-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jBox261b.css' type='text/css' media='all' />
         <link rel='stylesheet' id='fe-style-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/style261b.css' type='text/css' media='all' />
-        <link rel='stylesheet' id='ananas-style-css'  href='ananas.vn/wp-content/themes/ananas/style5fba.css?ver=5.2' type='text/css' media='all' />
+        <link rel='stylesheet' id='ananas-style-css'  href='ananas.vn/wp-content/themes/ananas/style5fba.css' type='text/css' media='all' />
         <style type="text/css">
             img.wp-smiley,
             img.emoji {
@@ -183,7 +184,7 @@
                         </h6>
 
                         <h5 class="detail1">
-                            <span class="saleprice">${pd.getProduct().getPrice()}</span>
+                            <span class="saleprice"><fmt:formatNumber type="currency" currencySymbol="VND" value="${pd.getProduct().getPrice()}" maxFractionDigits="0" /></span>
                             <!--                        <span class="realprice">580.000 VND</span>-->
 
                         </h5>
