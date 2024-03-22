@@ -159,7 +159,7 @@ public class CustomerProductsController extends HttpServlet {
         if (request.getParameter("detail") != null) {
             request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
             ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
-            String productId = productDetails.getId();
+            String productId = productDetails.getProduct().getId();
             ArrayList<Colors> cls = pd.getAllColorsByProductID(productId);
             request.setAttribute("cls", cls);
             

@@ -34,6 +34,32 @@
                 padding: 0 !important;
             }
         </style>
+        <style>
+            .color {
+                display: flex; /* Sử dụng flexbox */
+                justify-content: flex-start; /* Căn trái */
+                align-items: center; /* Căn dọc giữa */
+            }
+
+            .nav.tree {
+                display: flex; /* Sử dụng flexbox */
+                list-style-type: none; /* Loại bỏ các dấu hiệu danh sách */
+                padding: 0; /* Loại bỏ padding mặc định */
+                margin: 0; /* Loại bỏ margin mặc định */
+            }
+
+            .cb-color-fixed {
+                margin-right: 10px; /* Khoảng cách giữa các mục */
+            }
+
+            .bg-color {
+                width: 20px; /* Độ rộng của mỗi màu */
+                height: 20px; /* Chiều cao của mỗi màu */
+                display: inline-block; /* Hiển thị là khối */
+                margin-right: 5px; /* Khoảng cách giữa mỗi màu */
+            }
+
+        </style>
     </head>
     <body>
         <div class="header container-fluid hidden-xs hidden-sm">
@@ -168,14 +194,16 @@
                             <ul class="nav tree">
                                 <c:forEach var="c" items="${cls}">
                                     <li class="cb-color-fixed">
-                                        <a href="CustomerProducts?detail=${c.id}">
-                                            <span class="bg-color" style="background-color: ${c.color_code};"></span>
-                                            <span>${c.color_code}</span>
-                                        </a>
+                                        <label data-link>
+                                            <a href="CustomerProducts?detail=${c.id}">
+                                                <span class="bg-color" style="background-color: ${c.color_code};"></span>
+                                            </a>
+                                        </label>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
+
 
                         <!--                        <div class="color">
                                                     <ul class="nav tree">
@@ -188,25 +216,27 @@
                                                     </ul>
                                                 </div>-->
                         <div class="divider"></div>
+                        
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <h5>SIZE</h5>
-                                <select id="pickSize" class="selectpicker" data-style="btn" data-action="https://ananas.vn/wp-admin/admin-ajax.php" data-productID="25705">
-                                    <option selected>&nbsp;</option>
+                                <select class="selectpicker">
+                                    <option></option>
                                     <option >35</option>
-                                    <option disabled>36</option>
-                                    <option disabled>37</option>
-                                    <option disabled>38</option>
-                                    <option disabled>39</option>
+                                    <option>36</option>
+                                    <option>37</option>
+                                    <option>38</option>
+                                    <option>39</option>
                                     <option >40</option>
                                     <option >41</option>
                                     <option >42</option>
-                                    <option disabled>43</option>
-                                    <option disabled>44</option>
-                                    <option disabled>45</option>
+                                    <option>43</option>
+                                    <option>44</option>
+                                    <option >45</option>
                                     <option >46</option>
                                 </select>
                             </div>
+                            
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <h5>SỐ LƯỢNG</h5>
                                 <select id="pickQuantity" disabled class="selectpicker quantity" data-style="btn">
@@ -341,6 +371,28 @@
             });
         });
     </script>
+    <script>
+// Lưu trữ các color_code đã xuất hiện
+        var seenColors = {};
 
+// Lấy danh sách các màu
+        var colors = document.querySelectorAll('.bg-color');
+
+// Lặp qua từng màu
+        colors.forEach(function (color) {
+            // Lấy color_code của màu
+            var colorCode = color.style.backgroundColor;
+
+            // Nếu color_code đã xuất hiện, ẩn màu
+            if (seenColors[colorCode]) {
+                color.style.display = 'none';
+            } else {
+                // Nếu color_code chưa xuất hiện, đánh dấu đã xuất hiện và hiển thị màu
+                seenColors[colorCode] = true;
+                color.style.display = 'inline-block';
+            }
+        });
+
+    </script>
 </body>
 </html>
