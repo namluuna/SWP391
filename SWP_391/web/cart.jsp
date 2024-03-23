@@ -122,7 +122,7 @@
 
                                                     </div>
                                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0">VND</h6>
+                                                        <h6 class="mb-0">Giá Tiền(VND)</h6>
                                                         <h6 class="mb-0">
                                                             <fmt:formatNumber value="${c.productDetail.product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
                                                         </h6>

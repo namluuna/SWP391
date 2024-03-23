@@ -90,6 +90,7 @@
                                     <th>Size</th>
                                     <th>Số lượng</th>
                                     <th>Giá tiền</th>
+                                    <th>Thành tiền</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,9 +101,11 @@
                                         <td>${c.productDetail.size.name}</td>
                                         <td>${c.quantity}</td>
                                         <td><fmt:formatNumber value="${c.unitPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+                                        <td><fmt:formatNumber value="${c.unitPrice * c.quantity}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
                                     </tr>
                                 </c:forEach>
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

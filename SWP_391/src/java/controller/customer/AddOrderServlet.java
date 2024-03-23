@@ -61,6 +61,7 @@ public class AddOrderServlet extends HttpServlet {
                 ProductDetails p = pdDAO.selectProductDetailById(orderItem.getProductDetail().getId());
                 if (orderItem.getQuantity() > Integer.parseInt(p.getInventory_number())) {
                     request.getSession().setAttribute("invalidInventory", "Sản phẩm bạn muốn đặt hàng tạm thời hết hàng!");
+                    response.sendRedirect("CheckoutController");
                     return;
                 }
             }

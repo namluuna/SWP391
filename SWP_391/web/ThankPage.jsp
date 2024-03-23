@@ -84,6 +84,7 @@
                                                 <h5 class="text-muted">Người nhận hàng: ${newOrder.getCustomer().getName()}</strong></h5>   
                                                 <h5 class="text-muted">Số điện thoại: ${newOrder.getCustomer().getPhone()}</strong></h5> 
                                                 <h5 class="text-muted">Địa chỉ nhận hàng: ${newOrder.getDeliveryAddress().showAddress()}</strong></h5> 
+                                                <h5 class="text-muted">Ngày đặt hàng: <fmt:formatDate value="${newOrder.getOrderDate()}" pattern="dd/MM/yyyy" /> </strong></h5> 
                                             </div>
                                             <table class="table table-bordered">
                                                 <thead>
@@ -93,6 +94,7 @@
                                                         <th>Size</th>
                                                         <th>Số lượng</th>
                                                         <th>Giá tiền</th>
+                                                        <th>Thành tiền</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -103,12 +105,12 @@
                                                             <td>${c.getProductDetail().getSize().getName()}</td>
                                                             <td>${c.getQuantity()}</td>
                                                             <td><fmt:formatNumber value="${c.getProductDetail().getProduct().getPrice()}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+                                                            <td><fmt:formatNumber value="${c.getProductDetail().getProduct().getPrice() * c.getQuantity()}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
                                                         </tr>
                                                         
-                                                        <fmt:formatNumber value="${c.getProductDetail().getProduct().getPrice()}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
-                                                    </h6>-->
                                                     </c:forEach>
                                                     <tr>
+                                                        <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
