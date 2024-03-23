@@ -376,7 +376,7 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <c:forEach var="i" begin="0" end="${max_page}">
-                                    <li class="page-item ${i+1 == param.page ? 'active' : ''}">
+                                    <li class="page-item ${i+1 == param.page || empty param.page ? 'active' : ''}">
                                         <a class="page-link" href="CustomerProducts?page=${i+1}">${i+1}</a>
                                     </li>
                                 </c:forEach>
