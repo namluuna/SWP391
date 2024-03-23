@@ -162,7 +162,8 @@ public class CustomerProductsController extends HttpServlet {
             String productId = productDetails.getProduct().getId();
             ArrayList<Colors> cls = pd.getAllColorsByProductID(productId);
             request.setAttribute("cls", cls);
-            
+            ArrayList<Sizes> si  = pd.getAllSizesByColorID("");
+            request.setAttribute("si", si);
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();

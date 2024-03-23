@@ -292,15 +292,45 @@ public class ProductDetailDAO extends DBContext {
         }
         return colorsList;
     }
+    // Method to retrieve all sizes based on a given colorID
+
+    public ArrayList<Sizes> getAllSizesByColorID(String colorID) {
+        ArrayList<Sizes> sizesList = new ArrayList<>();
+        try {
+            String sql = "SELECT s.* "
+                    + "FROM product_details pd "
+                    + "INNER JOIN sizes s ON pd.size_id = s.id "
+                    + "WHERE pd.color_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, colorID);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String sizeId = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                String createdAt = resultSet.getString("created_at");
+                String deletedAt = resultSet.getString("deleted_at");
+                String updatedAt = resultSet.getString("updated_at");
+
+                Sizes size = new Sizes(sizeId, name, description, createdAt, deletedAt, updatedAt);
+                sizesList.add(size);
+            }
+        } catch (Exception e) {
+            System.out.println("Error while fetching sizes by color ID: " + e.getMessage());
+        }
+        return sizesList;
+    }
 
     public static void main(String[] args) {
         ProductDetailDAO productDetailDAO = new ProductDetailDAO();
-        String productID = "5"; // Thay thế bằng productID cụ thể của bạn
-        ArrayList<Colors> colorsList = productDetailDAO.getAllColorsByProductID(productID);
+        String colorID = "1"; // Replace with the specific color ID you want to test
+        ArrayList<Sizes> sizesList = productDetailDAO.getAllSizesByColorID(colorID);
 
-        // In ra danh sách màu
-        for (Colors color : colorsList) {
-            System.out.println(color.toString());
+        // Print out the sizes retrieved
+        System.out.println("Sizes for Color ID " + colorID + ":");
+        for (Sizes size : sizesList) {
+            System.out.println(size.toString());
         }
     }
 }
