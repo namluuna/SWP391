@@ -162,8 +162,15 @@ public class CustomerProductsController extends HttpServlet {
             String productId = productDetails.getProduct().getId();
             ArrayList<Colors> cls = pd.getAllColorsByProductID(productId);
             request.setAttribute("cls", cls);
-            ArrayList<Sizes> si  = pd.getAllSizesByColorID("");
-            request.setAttribute("si", si);
+            // Lấy colorId từ màu đầu tiên trong danh sách cls
+String colorId = null;
+if (!cls.isEmpty()) {
+    colorId = cls.get(0).getId(); // Lấy colorId từ màu đầu tiên trong danh sách cls
+}
+
+// Lấy ArrayList<Sizes> từ ProductDetail của productId và liên quan đến colorId
+ArrayList<Sizes> si = pd.getAllSizesByColorID(colorId);
+request.setAttribute("si", si);
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();
