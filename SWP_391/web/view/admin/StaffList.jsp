@@ -35,7 +35,7 @@
             }
             .table-title {
                 padding-bottom: 15px;
-                background:  #808080;
+                background:  #303030;
                 color: #fff;
                 padding: 16px 30px;
                 margin: -20px -25px 10px;
@@ -233,7 +233,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <h2>Danh sách nhân viên bán hàng</h2>
+                                    <h2 style="color: white">Danh sách nhân viên bán hàng</h2>
                                 </div>
                                 <div class="col-sm-7">
                                     <a href="view\\admin\\CreateStaff.jsp" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Thêm nhân viên</span></a>               						

@@ -47,7 +47,7 @@
         <div class="container">
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Cập nhật nhân viên</h1>
-                <c:set var="c" value="${getStaffId}" />
+                <c:set var="c" value="${getStaffId}" />                 
                 <form  action="/SWP_391/updateStaff" method="POST" onsubmit="return validateEmail();" >
                     <div class="mb-3">
                         <input type="hidden" name="id" value="${c.id}"  class="form-control" required readonly/><br>
@@ -57,6 +57,15 @@
                     </div>
                     <div class="mb-3">
                         Email: <input type="text" name="email"  value="${c.email}"  id="email" class="form-control" required readonly/><br>                    
+                    </div>
+                    <div class="mb-3">  
+                        <label for="gender">Giới tính:</label>
+                        <select name="gender" id="gender" class="form-control" required>
+
+                            <option value="1" >Nam</option>
+                            <option value="2" >Nữ</option>
+
+                        </select> 
                     </div>
                     <div class="mb-3">
                         Cập nhật số điện thoại: <input type="number" name="phone" value="${c.phone}" class="form-control" required /><br>
@@ -76,7 +85,22 @@
                             <option value="2"${c.role == '2' ? 'selected' : ''}>Nhân viên bán hàng</option>
                         </select>
                     </div>
-                            <br>
+
+                    <div class="mb-3">   
+                        <label for="slot">Ca làm:</label>
+                        <select name="slot" id="slot" class="form-control" required>
+
+                            <option value="1" ${c.contract.slot    == '1' ? 'selected' : ''}  >Ca sáng (7h30-11h30)</option>
+                            <option value="2" ${c.contract.slot == '2' ? 'selected' : ''}>Ca chiều (13h30-17h30)</option>
+                            <option value="3" ${c.contract.slot == '3' ? 'selected' : ''} >Ca tối (18h-21h30)</option>
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        Nhập tiền lương: <input type="number" name="salary"  class="form-control" required /><br>
+                    </div>
+                    <br>
                     <button type="submit" class="btn btn-primary" >Cập nhật</button>
                     <a href="/SWP_391/staff" class="btn btn-secondary">Hủy bỏ</a>
                 </form>
@@ -87,7 +111,7 @@
                 var emailInput = document.getElementById("email");
                 var emailValue = emailInput.value.trim(); // Remove leading and trailing spaces
 
-                 // Check if the email is not empty and matches the required format
+                // Check if the email is not empty and matches the required format
                 if (emailValue === "" || !/(^|\s)[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn)\s*$/.test(emailValue)) {
                     alert("Email phải được định dạng có'@gmail.com' hoặc '@fpt.edu.vn'.");
                     emailInput.focus();

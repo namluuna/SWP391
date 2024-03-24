@@ -58,21 +58,44 @@ public class UserContractDAO extends DBContext {
         }
     }
 
-    public void update(UserContract user) {
+    public void update(UserContract usercontract) {
         String sql = "update user_contracts SET [salary]=?,"
                 + " [slot] =?,"
                 + "[gender] = ?,"
                 + "where id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(4, user.getSalary());
-            statement.setInt(4, user.getSlot());
-            statement.setInt(5, user.getGender());
-            statement.setInt(6, user.getId());
+            statement.setString(1, usercontract.getSalary());
+            statement.setInt(2, usercontract.getSlot());
+            statement.setInt(3, usercontract.getGender());
+            statement.setInt(4, usercontract.getId());
             statement.executeUpdate();
         } catch (Exception e) {
         }
 
+    }
+    
+       public UserContract getUserByID(String userId) {
+
+        try {
+            // Select user with email
+            String sql = "SELECT * FROM users WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, userId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int slot = rs.getInt("slot");
+                String salary = rs.getString("salary");
+                int gender = rs.getInt("gender");
+
+                UserContract u = new UserContract(id, slot, salary, gender);
+                return u;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void main(String[] args) {

@@ -4,6 +4,7 @@
  */
 package controller.admin;
 
+import DAO.Common.UserContractDAO;
 import DAO.Common.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Common.User;
+import model.Common.UserContract;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -110,15 +112,118 @@ public class UpdateStaffController extends HttpServlet {
             String sPhone = request.getParameter("phone");
             String sRole = request.getParameter("role");
             String sStatus = request.getParameter("status");
+            String sSalary = request.getParameter("salary");
+            String sSlot = request.getParameter("slot");
+            String sGender = request.getParameter("gender");
             UserDAO udao = new UserDAO();
 
             if (sStatus.equals("1")) {
                 User newUser = new User(sid, sName, sEmail, sPhone, 0, 2, 1);
                 udao.update(newUser);
+
+                if (sGender.equals("1")) {
+                    switch (sSlot) {
+                        case "1": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 1);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "2": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 1);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "3": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 1);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                    }
+                } else if (sGender.equals("2")) {
+                    switch (sSlot) {
+                        case "1": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 2);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "2": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 2);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "3": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 2);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                    }
+                }
                 response.sendRedirect("staff");
             } else if (sStatus.equals("0")) {
                 User newUser = new User(sid, sName, sEmail, sPhone, 0, 2, 0);
                 udao.update(newUser);
+                if (sGender.equals("1")) {
+                    switch (sSlot) {
+                        case "1": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 1);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "2": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 1);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "3": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 1);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                    }
+                } else if (sGender.equals("2")) {
+                    switch (sSlot) {
+                        case "1": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 1, sSalary, 2);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "2": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 2, sSalary, 2);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                        case "3": {
+                            UserContractDAO uconDAO = new UserContractDAO();
+                            User newUserContract = udao.searchStaffByEmail(sEmail);
+                            UserContract uContract = new UserContract(newUserContract.getId(), 3, sSalary, 2);
+                            uconDAO.update(uContract);
+                            break;
+                        }
+                    }
+                }
+
                 response.sendRedirect("staff");
             }
         }
