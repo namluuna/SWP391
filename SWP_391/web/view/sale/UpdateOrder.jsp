@@ -51,7 +51,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="card mx-auto p-4">
+            <div class="card mx-auto p-4" style="width:650px">
                 <h1 class="text-center mb-4">Xử lý đơn hàng</h1>
                 <form name="form" action="EditOrderController" method="POST">
                     <input type="hidden" class="form-control" name="id" value="${order.id}">
@@ -82,19 +82,40 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Chi tiết đơn hàng:</label>
-                        <c:forEach var="c" items="${order.orderDetail}">
-                            <br>Thông tin sản phẩm:
-                            <br>Tên sản phẩm: ${c.productDetail.product.name} 
-                            <br>Màu sắc: ${c.productDetail.color.name} 
-                            <br>Size:${c.productDetail.size.name}
-                            <br>Số lượng: ${c.quantity}
-                            <br>Đơn giá: <fmt:formatNumber value="${c.unitPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
-                            <br>                                           
-                        </c:forEach>
-                        <h5>-------------------</h5>
-                        <h5>Tổng đơn hàng</h5>
-                        <h5><fmt:formatNumber value="${order.total}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></h5>
-                        <span id="error-message-description" style="color: red;"></span>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Màu sắc</th>
+                                    <th>Size</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá tiền</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${order.orderDetail}" var="c">
+                                    <tr>
+                                        <td>${c.productDetail.product.name}</td>
+                                        <td>${c.productDetail.color.name}</td>
+                                        <td>${c.productDetail.size.name}</td>
+                                        <td>${c.quantity}</td>
+                                        <td><fmt:formatNumber value="${c.unitPrice}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+                                        <td><fmt:formatNumber value="${c.unitPrice * c.quantity}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+                                    </tr>
+                                </c:forEach>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Tổng Cộng: 
+                                        <fmt:formatNumber value="${order.total}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+
+                            </tbody>
+                        </table>
+
                     </div>
 
                     <div class="mb-3">

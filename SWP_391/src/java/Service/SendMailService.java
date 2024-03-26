@@ -54,7 +54,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Kích hoạt tài khoản!");
+            message.setSubject("Kich Hoat Tai Khoan!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -68,11 +68,11 @@ public class SendMailService {
                     + "      \"\n"
                     + "    >\n"
                     + "    <h1>Quý khách hàng thân mến!</h1>\n"
-                    + "      <h3>Cảm ơn bạn vì đã trở thành khách hàng của Online Shoes Store</h3>\n"
+                    + "      <h3>Cam on ban vi da tro thanh khach hang cua Online Shoes Store</h3>\n"
                     + "      <small\n"
-                    + "        >Cảm ơn bạn vì đã tạo tài khoản. Xin hãy click vào nút bên dưới để kích hoạt tài khoản:</small>\n"
+                    + "        >Cam on ban vi da tao tai khoan trong he thong. Xin hay click vao button ben duoi de kich hoat tai khoan:</small>\n"
                     + "      <small\n"
-                    + "        >Nếu bạn không tạo tài khoản, xin hãy bỏ qua email này.</small\n"
+                    + "        >Neu ban khong tao tai khoan, xin hay bo qua email nay.</small\n"
                     + "      >\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -83,9 +83,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/verify?token=" + verifyCode + "\">Kích hoạt tài khoản</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/verify?token=" + verifyCode + "\">Kick hoat tai khoan</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi? <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi? <a href=\"\">Chung toi o day de giup ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -130,7 +130,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Kích hoạt tài khoản!");
+            message.setSubject("Reset mat khau!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -143,12 +143,12 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Quý khách hàng thân mến!</h1>\n"
-                    + "      <h3>Mật khẩu của bạn đã được reset thành công!</h3>\n"
+                    + "    <h1>Quy khach hang than men!</h1>\n"
+                    + "      <h3>Mat khau cua ban da duoc reset thanh cong!</h3>\n"
                     + "      <small\n"
-                    + "        >Xin hãy click vào nút bên dưới để tiến hành đặt lại mật khẩu:</small>\n"
+                    + "        >Xin hay click vao button ben duoi de dat lai mat khau:</small>\n"
                     + "      <small\n"
-                    + "        >Nếu bạn không reset mật khẩu, bạn có thể bỏ qua email này.</small\n"
+                    + "        >Neu ban khong reset mat khau, ban co the bo qua email nay.</small\n"
                     + "      >\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -159,9 +159,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SetNewPassword?token=" + resetPasswordToken + "\">Đặt lại mật khẩu</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SetNewPassword?token=" + resetPasswordToken + "\">Dat lai mat khau</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup do ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -206,7 +206,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Kích hoạt tài khoản!");
+            message.setSubject("Kich hoat tai khoan!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -219,11 +219,11 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Cảm ơn bạn đã trở thành nhân viên của Online Shoes Store!</h1>\n"
-                    + "      <h3>Quản trị viên đã tạo tài khoản cho bạn thành công!</h3>\n"
-                    + "      <h3>Mật khẩu của bạn là: " + newPassword + "</h3>\n"
+                    + "    <h1>Cam on ban vi da tro thanh nhan vien cua Online Shoes Store!</h1>\n"
+                    + "      <h3>Quan tri vien da tao tai khoan cho ban thanh cong!</h3>\n"
+                    + "      <h3>Mat khau cua ban la: " + newPassword + "</h3>\n"
                     + "      <small\n"
-                    + "        >Vui lòng click vào nút bên dưới để tiến hành đăng nhập</small>\n"
+                    + "        >Vui long click vao button ben duoi de tien hanh dang nhap</small>\n"
                     + "      <small\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -234,9 +234,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/login" + "\">Đăng nhập</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/login" + "\">Dang nhap</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup do</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -281,7 +281,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Thông báo đơn hàng!");
+            message.setSubject("Thong bao don hang!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -294,11 +294,11 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
-                    + "      <h3>Đơn hàng của bạn đã được đặt thành công và đang chờ đóng gói!</h3>\n"
-                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "    <h1>Cam on ban vi da dat hang tai Online Shoes Store!</h1>\n"
+                    + "      <h3>Don hang cua ban da duoc dat hang thanh cong va dang cho dong goi!</h3>\n"
+                    + "      <h3>Ma don hang cua ban la: " + order.getOrderCode() + "</h3>\n"
                     + "      <small\n"
-                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "        >Vui long click vao button ben duoi de kiem tra thong tin don hang</small>\n"
                     + "      <small\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -309,9 +309,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiem tra</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup do ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -356,7 +356,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Thông báo đơn hàng!");
+            message.setSubject("Thong bao don hang!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -369,11 +369,11 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
-                    + "      <h3>Đơn hàng của bạn đã được đóng gói hoàn tất và đang chờ giao cho đơn vị vận chuyển!</h3>\n"
-                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "    <h1>Cam on ban da dat hang tai Online Shoes Store!</h1>\n"
+                    + "      <h3>Don hang cua ban da duoc dong goi xong va dang cho giao cho don vi van chuyen!</h3>\n"
+                    + "      <h3>Ma don hang cua ban la: " + order.getOrderCode() + "</h3>\n"
                     + "      <small\n"
-                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "        >Vui long click vao button ben duoi de kiem tra thong tin don hang</small>\n"
                     + "      <small\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -384,9 +384,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiem tra</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -431,7 +431,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Thông báo đơn hàng!");
+            message.setSubject("Thong bao don hang!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -444,12 +444,12 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
-                    + "      <h3>Đơn vị vận chuyển đã tiếp nhận đơn hàng của bạn và đang tiến hành vận chuyển!</h3>\n"
-                    + "      <h3>Ngày giao hàng dự kiến là: " + order.getDeliveryDate() + "</h3>\n"
-                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "    <h1>Cam on ban vi da dat hang tai Online Shoes Store!</h1>\n"
+                    + "      <h3>Don vi van chuyen da nhan don hang cua ban va dang tien hanh van chuyen!</h3>\n"
+                    + "      <h3>Ngay giao hang du kien la: " + order.getDeliveryDate() + "</h3>\n"
+                    + "      <h3>Ma don hang cua ban la: " + order.getOrderCode() + "</h3>\n"
                     + "      <small\n"
-                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "        >Vui long click vao button ben duoi de kiem tra thong tin don hang</small>\n"
                     + "      <small\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -462,7 +462,7 @@ public class SendMailService {
                     + "      >\n"
                     + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup do ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -507,7 +507,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Thông báo đơn hàng!");
+            message.setSubject("Thong bao don hang!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -520,11 +520,11 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
-                    + "      <h3>Đơn hàng của bạn đã được giao hàng thành công!</h3>\n"
-                    + "      <h3>Mã đơn hàng của bạn là: " + order.getOrderCode() + "</h3>\n"
+                    + "    <h1>Cam on ban da dat hang tai Online Shoes Store!</h1>\n"
+                    + "      <h3>Don hang cua ban da duoc giao hang thanh cong!</h3>\n"
+                    + "      <h3>Ma don hang cua ban la: " + order.getOrderCode() + "</h3>\n"
                     + "      <small\n"
-                    + "        >Vui lòng click vào nút bên dưới để kiểm tra thông tin đơn hàng</small>\n"
+                    + "        >Vui long click vao button ben duoi de xem thong tin don hang</small>\n"
                     + "      <small\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -535,9 +535,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiểm tra</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/SearchOrder.jsp" + "\">Kiem tra</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup do ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message
@@ -581,7 +581,7 @@ public class SendMailService {
 
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             //set email subject field
-            message.setSubject("Thông báo đơn hàng!");
+            message.setSubject("Thong bao don hang!");
             //set the content of the email message
 //            message.setText("Just discovered that Jakarta Mail is fun and easy to use");
             message.setContent("<div\n"
@@ -594,10 +594,10 @@ public class SendMailService {
                     + "      border-radius: 10px\n"
                     + "      \"\n"
                     + "    >\n"
-                    + "    <h1>Cảm ơn bạn đã đặt hàng tại online shoes store!</h1>\n"
-                    + "      <h3>Đơn hàng của bạn đã được hủy thành công!</h3>\n"
+                    + "    <h1>Cam on ban vi da dat hang tai Online Shoes Store!</h1>\n"
+                    + "      <h3>Don hang cua ban da duoc huy thanh cong!</h3>\n"
                     + "      <small\n"
-                    + "        >Vui lòng click vào nút bên dưới để tiếp tục mua sắm</small>\n"
+                    + "        >Vui long click vao button ben duoi de tien hanh mua sam</small>\n"
                     + "      <small\n"
                     + "      <button\n"
                     + "        style=\"\n"
@@ -608,9 +608,9 @@ public class SendMailService {
                     + "          margin: 20px auto;\n"
                     + "        \"\n"
                     + "      >\n"
-                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/" + "\">Trang chủ</a>\n"
+                    + "        <a style=\"text-decoration: none\" href=\"http://localhost:8080/SWP_391/" + "\">Trang chu</a>\n"
                     + "      </button>\n"
-                    + "      <h5>Nếu bạn có câu hỏi?  <a href=\"\">Chúng tôi ở đây để giúp đỡ bạn</a></h5>\n"
+                    + "      <h5>Neu ban co cau hoi?  <a href=\"\">Chung toi o day de giup do ban</a></h5>\n"
                     + "    </div>",
                     "text/html");
             //send the email message

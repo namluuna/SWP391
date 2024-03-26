@@ -130,7 +130,13 @@
                                 </div>
                                 <div class="row" style="margin-left: 32px">
                                     <button type="submit" class="btn btn-dark btn-block btn-lg" style="width: 200px; font-size:16px"
-                                            data-mdb-ripple-color="dark">Đặt hàng</button>                                    
+                                            data-mdb-ripple-color="dark">Đặt hàng</button>      
+                                    <% String message = (String) session.getAttribute("invalidInventory"); %>
+                                    <% if(message != null){ %>
+                                    <% session.removeAttribute("invalidInventory"); %>
+                                    <br>
+                                    <div style="color:red !important"><%= message %></div>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>

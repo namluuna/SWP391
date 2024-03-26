@@ -259,13 +259,13 @@
                         </div>
                         <div class="row grp-btn1">
                             <button class="btn btn-addcart" type="submit" style="width: 480px">THÊM VÀO GIỎ HÀNG</button>
-                            <% String message = (String) session.getAttribute("addToCartSuccess"); %>
-                            <% if(message != null){ %>
-                            <% session.removeAttribute("addToCartSuccess"); %>
-                            <br>
-                            <div id="snackbar" style="color:green !important;"><%= message %></div>
-                            <% } %>
                         </div>
+                        <% String message = (String) session.getAttribute("addToCartSuccess"); %>
+                        <% if(message != null){ %>
+                        <% session.removeAttribute("addToCartSuccess"); %>
+                        <br>
+                        <div style="color:green !important"><%= message %></div>
+                        <% } %>
                         <div class="row info-validate empty-error" style="display: none;">
                             Vui lòng chọn Size/Số lượng phù hợp
                         </div>
