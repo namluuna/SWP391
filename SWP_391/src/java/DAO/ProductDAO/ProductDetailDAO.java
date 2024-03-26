@@ -322,15 +322,51 @@ public class ProductDetailDAO extends DBContext {
         return sizesList;
     }
 
-    public static void main(String[] args) {
-        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
-        String colorID = "1"; // Replace with the specific color ID you want to test
-        ArrayList<Sizes> sizesList = productDetailDAO.getAllSizesByColorID(colorID);
+    public ProductDetails selectProductDetailByProductIdColorIdAndSizeId(String productId, String colorId, String sizeId) {
+        try {
+            String sql = "SELECT * FROM product_details WHERE product_id = ? AND color_id = ? AND size_id = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, productId);
+            st.setString(2, colorId);
+            st.setString(3, sizeId);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                String Id = String.valueOf(rs.getInt("id"));
+                ProductsDAO pDAO = new ProductsDAO();
+                Products product = pDAO.selectProductByID(productId);
+                ColorsDAO cDAO = new ColorsDAO();
+                Colors color = cDAO.selectColorByID(colorId);
+                SizeDAO sDAO = new SizeDAO();
+                Sizes size = sDAO.selectSizeByID(sizeId);
+                String InventoryNumber = String.valueOf(rs.getInt("inventory_number"));
+                String Image_url_1 = rs.getString("image_url_1");
+                String Image_url_2 = rs.getString("image_url_2");
+                String Image_url_3 = rs.getString("image_url_3");
+                String Image_url_4 = rs.getString("image_url_4");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp editedAt = rs.getTimestamp("edited_at");
+                Timestamp deletedAt = rs.getTimestamp("deleted_at");
 
-        // Print out the sizes retrieved
-        System.out.println("Sizes for Color ID " + colorID + ":");
-        for (Sizes size : sizesList) {
-            System.out.println(size.toString());
+                return new ProductDetails(Id, product, color, size, InventoryNumber, Image_url_1, Image_url_2, Image_url_3, Image_url_4, createdAt, editedAt, deletedAt);
+            }
+        } catch (Exception e) {
+            System.out.println("selectProductDetailByProductIdColorIdAndSizeId: " + e.getMessage());
         }
+        return null;
+    }
+
+    public static void main(String[] args) {
+         ProductDetailDAO productDetailDAO = new ProductDetailDAO();
+
+        // Thay đổi các giá trị productId, colorId, và sizeId theo yêu cầu của bạn
+        String productId = "5";
+        String colorId = "2";
+        String sizeId = "1";
+
+        // Gọi phương thức selectProductDetailByParams để lấy ProductDetail
+        ProductDetails productDetail = productDetailDAO.selectProductDetailByProductIdColorIdAndSizeId(productId, colorId, sizeId);
+        System.out.println(productDetail);
+// Sử dụng productDetail nhận được từ truy vấn để thực hiện các thao tác tiếp theo
+
     }
 }
