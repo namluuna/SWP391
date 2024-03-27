@@ -20,6 +20,7 @@ import model.Common.Cart;
 import model.Common.Order;
 import model.Common.OrderDetail;
 import model.Common.User;
+import model.Product.ProductDetails;
 
 /**
  *
@@ -56,6 +57,14 @@ public class AddOrderServlet extends HttpServlet {
             ArrayList<Cart> orderItems = cartDAO.selectCheckoutItem(user.getId());
             OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
             ProductDetailDAO pdDAO = new ProductDetailDAO();
+            for (Cart orderItem : orderItems) {
+                ProductDetails p = pdDAO.selectProductDetailById(orderItem.getProductDetail().getId());
+                if (orderItem.getQuantity() > Integer.parseInt(p.getInventory_number())) {
+                    request.getSession().setAttribute("invalidInventory", "Sản phẩm bạn muốn đặt hàng tạm thời hết hàng!");
+                    response.sendRedirect("CheckoutController");
+                    return;
+                }
+            }
             for (Cart orderItem : orderItems) {
                 orderDetailDAO.addNewOrderDetail(order.getId(), Integer.parseInt(orderItem.getProductDetail().getId()), orderItem.getQuantity(), Integer.parseInt(orderItem.getProductDetail().getProduct().getPrice()));
                 cartDAO.removeItem(String.valueOf(orderItem.getId()));

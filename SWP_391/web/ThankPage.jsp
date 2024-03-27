@@ -79,28 +79,49 @@
                                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                                     <h3 class="text-muted">Chi tiết đơn hàng</h3> 
                                                     <h4 class="text-muted">Mã đơn hàng: <strong>${newOrder.getOrderCode()}</strong></h4>   
-                                                </div>
-                                            <div class="justify-content-between align-items-center mb-5">
-                                                    <h5 class="text-muted">Người nhận hàng: ${newOrder.getCustomer().getName()}</strong></h5>   
-                                                    <h5 class="text-muted">Số điện thoại: ${newOrder.getCustomer().getPhone()}</strong></h5> 
-                                                    <h5 class="text-muted">Địa chỉ nhận hàng: ${newOrder.getDeliveryAddress().showAddress()}</strong></h5> 
                                             </div>
-                                            <c:forEach items="${orderDetails}" var="c">
-                                                <hr class="my-4">                                               
-                                                <h6>Tên sản phẩm: ${c.getProductDetail().getProduct().getName()}</h6>
-                                                <h6>Màu sắc: ${c.getProductDetail().getColor().getName()}</h6>
-                                                <h6>Size: ${c.getProductDetail().getSize().getName()}</h6>
-                                                <h6>Số lượng: ${c.getQuantity()}</h6>
-                                                <h6>Giá: 
-                                                    <fmt:formatNumber value="${c.getProductDetail().getProduct().getPrice()}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
-                                                </h6>
-                                            </c:forEach>
-                                            <hr class="my-4">
-                                            <h6 class="mb-0">Tổng Cộng: 
-                                                <fmt:formatNumber value="${totalAmount}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
-                                                VND</h6>
+                                            <div class="justify-content-between align-items-center mb-5">
+                                                <h5 class="text-muted">Người nhận hàng: ${newOrder.getCustomer().getName()}</strong></h5>   
+                                                <h5 class="text-muted">Số điện thoại: ${newOrder.getCustomer().getPhone()}</strong></h5> 
+                                                <h5 class="text-muted">Địa chỉ nhận hàng: ${newOrder.getDeliveryAddress().showAddress()}</strong></h5> 
+                                                <h5 class="text-muted">Ngày đặt hàng: <fmt:formatDate value="${newOrder.getOrderDate()}" pattern="dd/MM/yyyy" /> </strong></h5> 
+                                            </div>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên sản phẩm</th>
+                                                        <th>Màu sắc</th>
+                                                        <th>Size</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Giá tiền</th>
+                                                        <th>Thành tiền</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach items="${orderDetails}" var="c">
+                                                        <tr>
+                                                            <td>${c.getProductDetail().getProduct().getName()}</td>
+                                                            <td>${c.getProductDetail().getColor().getName()}</td>
+                                                            <td>${c.getProductDetail().getSize().getName()}</td>
+                                                            <td>${c.getQuantity()}</td>
+                                                            <td><fmt:formatNumber value="${c.getProductDetail().getProduct().getPrice()}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+                                                            <td><fmt:formatNumber value="${c.getProductDetail().getProduct().getPrice() * c.getQuantity()}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /></td>
+                                                        </tr>
+                                                        
+                                                    </c:forEach>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>Tổng Cộng: 
+                                                            <fmt:formatNumber value="${totalAmount}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
+                                                            VND</td>
+                                                </tbody>
+                                            </table>
                                             <div class="pt-5">
-                                                <h6 class="mb-0"><a href="#!" ><i
+                                                <h6 class="mb-0"><a href="CustomerProducts" ><i
                                                             class="fa fa-long-arrow-left me-2"></i>Về trang chủ</a></h6>
                                             </div>
                                         </div>

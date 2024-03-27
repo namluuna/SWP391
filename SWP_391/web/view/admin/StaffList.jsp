@@ -35,7 +35,7 @@
             }
             .table-title {
                 padding-bottom: 15px;
-                background:  #808080;
+                background:  #303030;
                 color: #fff;
                 padding: 16px 30px;
                 margin: -20px -25px 10px;
@@ -233,7 +233,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <h2>Quản lí nhân viên</h2>
+                                    <h2 style="color: white">Quản lí nhân viên</h2>
                                 </div>
                                 <div class="col-sm-7">
                                     <a href="view\\admin\\CreateStaff.jsp" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Thêm nhân viên</span></a>               						
@@ -279,11 +279,8 @@
                                     <td>
                                         <c:choose>
                                             <c:when test="${user.role eq 2}">
-                                                Saler
-                                            </c:when>
-                                            <c:when test="${user.role eq 3}">
-                                                Shipper
-                                            </c:when>
+                                                Nhân viên bán hàng
+                                            </c:when>                                    
                                             <c:otherwise>
                                                 Unknown
                                             </c:otherwise>

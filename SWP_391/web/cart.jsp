@@ -74,7 +74,7 @@
                                             <div class="p-5">
                                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                                     <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
-                                            </div>
+                                                </div>
                                             <c:forEach items="${cartItems}" var="c">
                                                 <hr class="my-4">
 
@@ -88,20 +88,41 @@
                                                         <h6 class="text-muted">${c.productDetail.product.name}</h6>
                                                         <h6 class="text-black mb-0">Size: ${c.productDetail.size.name}</h6>
                                                         <h6 class="text-black mb-0">Màu sắc: ${c.productDetail.color.name}</h6>
+                                                        <h6 class="text-black mb-0">Số lượng còn lại: ${c.productDetail.inventory_number}</h6>
                                                     </div>
                                                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                        <a class="btn btn-link px-2" href="ReduceQuantityCartItem?id=${c.id}">
-                                                            <i class="fa fa-minus" style="margin-top: 34px"></i>
-                                                        </a>
+                                                        <c:choose>
+                                                            <c:when test="${c.quantity == 1}">
+                                                                <a class="btn btn-link px-2" href="ReduceQuantityCartItem?id=${c.id}" style="visibility: hidden;">
+                                                                    <i class="fa fa-minus" style="margin-top: 28px"></i>
+                                                                </a>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <a class="btn btn-link px-2" href="ReduceQuantityCartItem?id=${c.id}">
+                                                                    <i class="fa fa-minus" style="margin-top: 28px"></i>
+                                                                </a>
+                                                            </c:otherwise>
+                                                        </c:choose>  
+
                                                         <input id="form1" min="1" name="quantity" value="${c.quantity}" type="number" style="width:75px; margin-top: 20px; background-color: white"
                                                                class="form-control form-control-sm" readonly />
-                                                        <a class="btn btn-link px-2" href="AddQuantityCartNumber?id=${c.id}">
-                                                            <i class="fa fa-plus" style="margin-top: 34px"></i>
-                                                        </a>
-                                                        
+
+                                                        <c:choose>
+                                                            <c:when test="${c.quantity == c.productDetail.inventory_number}">
+                                                                <a class="btn btn-link px-2" href="AddQuantityCartNumber?id=${c.id}" style="visibility: hidden;">
+                                                                    <i class="fa fa-plus" style="margin-top: 28px"></i>
+                                                                </a>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <a class="btn btn-link px-2" href="AddQuantityCartNumber?id=${c.id}">
+                                                                    <i class="fa fa-plus" style="margin-top: 28px"></i>
+                                                                </a>
+                                                            </c:otherwise>
+                                                        </c:choose>  
+
                                                     </div>
                                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="mb-0">VND</h6>
+                                                        <h6 class="mb-0">Giá Tiền(VND)</h6>
                                                         <h6 class="mb-0">
                                                             <fmt:formatNumber value="${c.productDetail.product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
                                                         </h6>
@@ -146,7 +167,7 @@
                                             </div>
                                             <hr class="my-4">
 
-                                            
+
 
                                             <h5 class="text-uppercase mb-3">Phí vận chuyển</h5>
                                             <h6 class="mb-0">Miễn phí</h6>
@@ -155,11 +176,11 @@
 
                                             <hr class="my-4">
 
-                                            
-                                                <a href="CheckoutController">
-                                                    <button type="button" class="btn btn-dark btn-block btn-lg"
-                                                    data-mdb-ripple-color="dark">Đặt hàng</button>
-                                                </a>
+
+                                            <a href="CheckoutController">
+                                                <button type="button" class="btn btn-dark btn-block btn-lg"
+                                                        data-mdb-ripple-color="dark">Đặt hàng</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
