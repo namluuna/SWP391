@@ -216,7 +216,7 @@
                                 <li class="first-lvl">
                                     <label label-default="" class="tree-toggle nav-header orange">Hãng  <span class="caret caret-active"></span></label>
                                     <ul class="nav tree">
-                                    <c:forEach items="${data1}" var="o">
+                                    <c:forEach items="${data2}" var="o">
                                         <li>
                                             <label >
                                                 <a href="CustomerProducts?filter=brand&id=${o.id}">${o.name} </a>                                           <span class="glyphicon"></span>
@@ -348,7 +348,7 @@
 
                                                             </div>
                                                             <div class="caption">
-                                                                <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
+                                                                <h3 class="type">${product.getBrand()}</h3>
                                                                 <h3 class="divider"></h3>
                                                                 <h3 class="name"><a
                                                                         href="CustomerProducts?detail=${productdetail.getId()}">${product.name}</a>
