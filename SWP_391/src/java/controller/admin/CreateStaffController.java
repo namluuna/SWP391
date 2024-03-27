@@ -74,7 +74,7 @@ public class CreateStaffController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // processRequest(request, response);
+        processRequest(request, response);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user == null) {
@@ -103,13 +103,13 @@ public class CreateStaffController extends HttpServlet {
                 request.setAttribute("errorEmailMessage", errorEmailMessage);
                 request.getRequestDispatcher("view\\admin\\CreateStaff.jsp").forward(request, response);
             } else {
-              String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
-                    UserDAO udao = new UserDAO();
-                    User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
-                    udao.addNewUser(newUser);
-                    SendMailService sm = new SendMailService();
-                    sm.sendNewAccount(newUser.getEmail(), sPassword);
-                    response.sendRedirect("staff");
+                String encodedPassword = BCrypt.hashpw(sPassword, BCrypt.gensalt(10));
+                UserDAO udao = new UserDAO();
+                User newUser = new User(sName, sEmail, encodedPassword, sPhone, 0, 2, 1);
+                udao.addNewUser(newUser);
+                SendMailService sm = new SendMailService();
+                sm.sendNewAccount(newUser.getEmail(), sPassword);
+                response.sendRedirect("staff");
             }
         }
 
