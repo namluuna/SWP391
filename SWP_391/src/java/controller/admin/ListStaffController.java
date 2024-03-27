@@ -86,9 +86,7 @@ public class ListStaffController extends HttpServlet {
                     endPage++;
                 }
                 UserContractDAO ucdao = new UserContractDAO();
-                ArrayList<UserContract> contract = ucdao.sellectAllUserContract(user.getId());
                 ArrayList<User> selectStaff = userDAO.SearchUserByName(txtSearch, index);
-                request.setAttribute("contract", contract);
                 request.setAttribute("endPage", endPage);
                 request.setAttribute("selectStaff", selectStaff);
                 request.setAttribute("txtSearch", txtSearch);
@@ -101,14 +99,12 @@ public class ListStaffController extends HttpServlet {
                 }
                 ArrayList<User> selectStaff = userDAO.sellectallStaffByPaging(index);
                 UserContractDAO ucdao = new UserContractDAO();
-                ArrayList<UserContract> contract = ucdao.sellectAllUserContract(user.getId());
                 request.setAttribute("txtSearch", txtSearch);
                 request.setAttribute("endPage", endPage);
-                request.setAttribute("contract", contract);
                 request.setAttribute("selectStaff", selectStaff);
                 request.getRequestDispatcher("view\\admin\\StaffList.jsp").forward(request, response);
             }
-            
+
         }
 
     }
