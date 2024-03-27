@@ -348,7 +348,7 @@
 
                                                             </div>
                                                             <div class="caption">
-                                                                <h3 class="type">${product.getBrand()}</h3>
+                                                                <h3 class="type">${product.getBrand().getName()}</h3>
                                                                 <h3 class="divider"></h3>
                                                                 <h3 class="name"><a
                                                                         href="CustomerProducts?detail=${productdetail.getId()}">${product.name}</a>
