@@ -269,9 +269,11 @@ public class ProductDetailDAO extends DBContext {
         ArrayList<Colors> colorsList = new ArrayList<>();
         try {
             String sql = "SELECT c.* "
-                    + "FROM product_details pd "
-                    + "INNER JOIN colors c ON pd.color_id = c.id "
-                    + "WHERE pd.product_id = ?";
+                   + "FROM product_details pd "
+                   + "INNER JOIN colors c ON pd.color_id = c.id "
+                   + "WHERE pd.product_id = ? "
+                   + "AND pd.inventory_number > 0 "
+                   + "AND pd.deleted_at IS NULL";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, productID);
             ResultSet resultSet = statement.executeQuery();
@@ -292,35 +294,35 @@ public class ProductDetailDAO extends DBContext {
         }
         return colorsList;
     }
-    // Method to retrieve all sizes based on a given colorID
+    public ArrayList<Sizes> getAllSizesByColorIDAndProductID(String colorID, String productID) {
+    ArrayList<Sizes> sizesList = new ArrayList<>();
+    try {
+        String sql = "SELECT s.* "
+                + "FROM product_details pd "
+                + "INNER JOIN sizes s ON pd.size_id = s.id "
+                + "WHERE pd.color_id = ? AND pd.product_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, colorID);
+        statement.setString(2, productID);
+        ResultSet resultSet = statement.executeQuery();
 
-    public ArrayList<Sizes> getAllSizesByColorID(String colorID) {
-        ArrayList<Sizes> sizesList = new ArrayList<>();
-        try {
-            String sql = "SELECT s.* "
-                    + "FROM product_details pd "
-                    + "INNER JOIN sizes s ON pd.size_id = s.id "
-                    + "WHERE pd.color_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, colorID);
-            ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            String sizeId = resultSet.getString("id");
+            String name = resultSet.getString("name");
+            String description = resultSet.getString("description");
+            String createdAt = resultSet.getString("created_at");
+            String deletedAt = resultSet.getString("deleted_at");
+            String updatedAt = resultSet.getString("updated_at");
 
-            while (resultSet.next()) {
-                String sizeId = resultSet.getString("id");
-                String name = resultSet.getString("name");
-                String description = resultSet.getString("description");
-                String createdAt = resultSet.getString("created_at");
-                String deletedAt = resultSet.getString("deleted_at");
-                String updatedAt = resultSet.getString("updated_at");
-
-                Sizes size = new Sizes(sizeId, name, description, createdAt, deletedAt, updatedAt);
-                sizesList.add(size);
-            }
-        } catch (Exception e) {
-            System.out.println("Error while fetching sizes by color ID: " + e.getMessage());
+            Sizes size = new Sizes(sizeId, name, description, createdAt, deletedAt, updatedAt);
+            sizesList.add(size);
         }
-        return sizesList;
+    } catch (Exception e) {
+        System.out.println("Error while fetching sizes by color ID and product ID: " + e.getMessage());
     }
+    return sizesList;
+}
+
 
     public ProductDetails selectProductDetailByProductIdColorIdAndSizeId(String productId, String colorId, String sizeId) {
         try {
@@ -359,12 +361,12 @@ public class ProductDetailDAO extends DBContext {
          ProductDetailDAO productDetailDAO = new ProductDetailDAO();
 
         // Thay đổi các giá trị productId, colorId, và sizeId theo yêu cầu của bạn
-        String productId = "5";
-        String colorId = "2";
+        String productId = "3";
+        String colorId = "4";
         String sizeId = "1";
 
         // Gọi phương thức selectProductDetailByParams để lấy ProductDetail
-        ProductDetails productDetail = productDetailDAO.selectProductDetailByProductIdColorIdAndSizeId(productId, colorId, sizeId);
+        ArrayList<Sizes> productDetail = productDetailDAO.getAllSizesByColorIDAndProductID(colorId, productId);
         System.out.println(productDetail);
 // Sử dụng productDetail nhận được từ truy vấn để thực hiện các thao tác tiếp theo
 

@@ -337,14 +337,14 @@
                                                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
                                                         <div class="thumbnail">
                                                             <div class="cont-item">
-                                                                <a href="CustomerProducts?detail=${productdetail.getId()}">
+                                                                <a href="CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}">
                                                                     <img class="inormal" src="images/${productdetail.getImage_url_1()}">
                                                                     <img class="ihover" src="images/${productdetail.getImage_url_2()}">
                                                                 </a>
                                                             </div>
                                                             <div class="button">
                                                                 <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                                                   href="CustomerProducts?detail=${productdetail.getId()}">MUA
+                                                                   href="CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}">MUA
                                                                     NGAY</a>
 
                                                             </div>
@@ -352,7 +352,7 @@
                                                                 <h3 class="type">${product.getBrand().getName()}</h3>
                                                                 <h3 class="divider"></h3>
                                                                 <h3 class="name"><a
-                                                                        href="CustomerProducts?detail=${productdetail.getId()}">${product.name}</a>
+                                                                        href="CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}">${product.name}</a>
                                                                 </h3>
                                                                 <h3 class="price">
                                                                     <fmt:formatNumber value="${product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />

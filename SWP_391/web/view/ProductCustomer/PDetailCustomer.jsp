@@ -59,6 +59,15 @@
                 display: inline-block; /* Hiển thị là khối */
                 margin-right: 5px; /* Khoảng cách giữa mỗi màu */
             }
+            /* CSS cho phần size và số lượng */
+            .selectpicker {
+                width: calc(50% - 10px); /* Đặt chiều rộng của selectpicker là 50% của container cộng với khoảng cách giữa các cột */
+                margin-right: 10px; /* Khoảng cách giữa phần size và số lượng */
+            }
+
+            .grp-btn1 {
+                margin-top: 10px; /* Khoảng cách giữa phần số lượng và button Thêm vào giỏ hàng */
+            }
 
         </style>
     </head>
@@ -196,48 +205,24 @@
                                 <c:forEach var="c" items="${cls}">
                                     <li class="cb-color-fixed">
                                         <label data-link>
-                                            <a href="CustomerProducts?detail=${c.id}">
                                                 <span class="bg-color" style="background-color: ${c.color_code};"></span>
-                                            </a>
                                         </label>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
-
-
-                        <!--                        <div class="color">
-                                                    <ul class="nav tree">
-                                                        <li class="cb-color-fixed">
-                                                            <label data-link><span class="bg-color"
-                                                                                   style="background-color: ${pd.getColor().getColor_code()};
-                                                                                   "></span><input
-                                                                                   name="cbColor" type="checkbox" value="0" hidden></label>
-                                                        </li>
-                                                    </ul>
-                                                </div>-->
                         <div class="divider"></div>
-                        
+
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <h5>SIZE</h5>
                                 <select class="selectpicker">
-                                    <option></option>
-                                    <option >35</option>
-                                    <option>36</option>
-                                    <option>37</option>
-                                    <option>38</option>
-                                    <option>39</option>
-                                    <option >40</option>
-                                    <option >41</option>
-                                    <option >42</option>
-                                    <option>43</option>
-                                    <option>44</option>
-                                    <option >45</option>
-                                    <option >46</option>
+                                    <c:forEach var="sz" items="${si}">
+                                        <option value="${sz.getId()}">${sz.getName()}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
-                            
+
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <h5>SỐ LƯỢNG</h5>
                                 <select id="pickQuantity" disabled class="selectpicker quantity" data-style="btn">
@@ -355,24 +340,6 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            // Sử dụng jQuery để chọn slick slider và khởi tạo nó
-            $('.prd-detail-slide1').slick();
-
-            // Bắt sự kiện khi click vào nút Previous
-            $('.slick-prev').click(function () {
-                // Chuyển ảnh chính về ảnh đầu tiên
-                $('.main-img').attr('src', 'images/${pd.getImage_url_1()}');
-            });
-
-            // Bắt sự kiện khi click vào nút Next
-            $('.slick-next').click(function () {
-                // Chuyển ảnh chính về ảnh đầu tiên
-                $('.main-img').attr('src', 'images/${pd.getImage_url_1()}');
-            });
-        });
-    </script>
-    <script>
 // Lưu trữ các color_code đã xuất hiện
         var seenColors = {};
 
@@ -395,5 +362,48 @@
         });
 
     </script>
+   <script>
+    // Lưu trữ đường dẫn cơ sở
+    var baseURL = "CustomerProducts";
+
+    // Lấy productId từ URL hiện tại
+    var currentURL = new URL(window.location.href);
+    var productId = currentURL.searchParams.get("productId");
+
+    // Thêm sự kiện cho các màu
+    var colors = document.querySelectorAll('.bg-color');
+    colors.forEach(function (color) {
+        color.addEventListener('click', function () {
+            var colorId = color.getAttribute('data-color-id');
+            var sizeId = currentURL.searchParams.get("sizeId");
+            var url = new URL(baseURL);
+            url.searchParams.set("productId", productId);
+            url.searchParams.set("colorId", colorId);
+            url.searchParams.set("sizeId", sizeId ? sizeId : getRandomSizeId());
+            window.location.href = url.href;
+        });
+    });
+
+    // Thêm sự kiện cho các size
+    var sizes = document.querySelectorAll('.selectpicker');
+    sizes.forEach(function (size) {
+        size.addEventListener('change', function () {
+            var sizeId = size.value;
+            var colorId = currentURL.searchParams.get("colorId");
+            var url = new URL(baseURL);
+            url.searchParams.set("productId", productId);
+            url.searchParams.set("colorId", colorId);
+            url.searchParams.set("sizeId", sizeId);
+            window.location.href = url.href;
+        });
+    });
+
+    // Hàm lấy sizeId ngẫu nhiên
+    function getRandomSizeId() {
+        var size = document.querySelector('.selectpicker');
+        return size.value;
+    }
+</script>
+
 </body>
 </html>

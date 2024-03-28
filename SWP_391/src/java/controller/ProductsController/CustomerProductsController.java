@@ -143,34 +143,30 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbySearch(request.getParameter("id"));
             }
             request.setAttribute("data", data);
-            
-            if(Math.ceil(data.size() / 10) == 0)
-            {
-                request.setAttribute("max_page", 1);
-            }else
-            {
-                 request.setAttribute("max_page", Math.ceil(data.size() / 10));
-            }
-            
 
-            
+            if (Math.ceil(data.size() / 10) == 0) {
+                request.setAttribute("max_page", 1);
+            } else {
+                request.setAttribute("max_page", Math.ceil(data.size() / 10));
+            }
+
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
-        if (request.getParameter("detail") != null) {
-            request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
+        if (request.getParameter("productId") != null && request.getParameter("colorId") != null && request.getParameter("sizeId") != null) {
+            // Lấy các tham số từ request
+            String productId = request.getParameter("productId");
+            String colorId = request.getParameter("colorId");
+            String sizeId = request.getParameter("sizeId");
+            request.setAttribute("pd", pd.selectProductDetailByProductIdColorIdAndSizeId(productId, colorId, sizeId));
             ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
-            String productId = productDetails.getProduct().getId();
-            ArrayList<Colors> cls = pd.getAllColorsByProductID(productId);
+            String prodId = productDetails.getProduct().getId();
+            ArrayList<Colors> cls = pd.getAllColorsByProductID(prodId);
             request.setAttribute("cls", cls);
-            // Lấy colorId từ màu đầu tiên trong danh sách cls
-String colorId = null;
-if (!cls.isEmpty()) {
-    colorId = cls.get(0).getId(); // Lấy colorId từ màu đầu tiên trong danh sách cls
-}
-
 // Lấy ArrayList<Sizes> từ ProductDetail của productId và liên quan đến colorId
-ArrayList<Sizes> si = pd.getAllSizesByColorID(colorId);
-request.setAttribute("si", si);
+
+            ArrayList<Sizes> si = pd.getAllSizesByColorIDAndProductID(colorId, productId);
+            request.setAttribute("si", si);
+         
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();

@@ -67,7 +67,7 @@
                         <select id="color_id" name="color_id" class="form-select" required>
                             <option value="0">Xin hãy chọn màu sắc</option>                    
                             <c:forEach items="${data2}" var="c">
-                                <option value="${c.getId()}">${c.getName()}</option>
+                                <option value="${c.getId()}" style="width: 20px; height: 20px; background-color: ${c.color_code}; border: 1px solid black">${c.getName()}</option>
                             </c:forEach>
                         </select>
                         <span id="error-message-name" style="color: red;"></span>
