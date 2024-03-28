@@ -222,25 +222,6 @@
                                     </c:forEach>
                                 </select>
                             </div>
-
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <h5>SỐ LƯỢNG</h5>
-                                <select id="pickQuantity" disabled class="selectpicker quantity" data-style="btn">
-                                    <option selected >&nbsp;</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                            </div>
                         </div>
                         <div class="row grp-btn1">
                             <button class="btn btn-addcart" type="submit" style="width: 480px">THÊM VÀO GIỎ HÀNG</button>
