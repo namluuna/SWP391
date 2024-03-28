@@ -5,6 +5,7 @@
 package controller.customer;
 
 import DAO.Common.CartDAO;
+import DAO.ProductDAO.ProductDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Common.Cart;
 import model.Common.User;
+import model.Product.ProductDetails;
 
 /**
  *
@@ -41,21 +43,24 @@ public class AddToCartServlet extends HttpServlet {
             return;
         } else {
             String id = request.getParameter("id");
+            ProductDetailDAO prdDAO = new ProductDetailDAO();
+            ProductDetails pd = prdDAO.selectProductDetailById(id);
             String quantity = "1";
             CartDAO cartDAO = new CartDAO();
             int isExist = cartDAO.isExistItem(user.getId(), Integer.parseInt(id));
             if (isExist != 0) {
                 Cart cartItem = cartDAO.getCartItem(user.getId(), Integer.parseInt(id));
                 cartDAO.addQuantity(String.valueOf(cartItem.getId()));
+                //CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}
                 request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
-                response.sendRedirect("CustomerProducts?detail=" + id);
+                response.sendRedirect("CustomerProducts?productId=" + pd.getProduct().getId() + "&colorId=" + pd.getColor().getId() + "&sizeId=" + pd.getSize().getId());
             } else {
                 cartDAO.addTocart(user.getId(), Integer.parseInt(id), Integer.parseInt(quantity));
                 request.getSession().setAttribute("addToCartSuccess", "Sản phẩm đã được thêm vào giỏ hàng");
                 session.removeAttribute("total");
                 int total = cartDAO.getCartQuantity(user.getId());
                 session.setAttribute("total", total);
-                response.sendRedirect("CustomerProducts?detail=" + id);
+                response.sendRedirect("CustomerProducts?productId=" + pd.getProduct().getId() + "&colorId=" + pd.getColor().getId() + "&sizeId=" + pd.getSize().getId());
             }
 
         }

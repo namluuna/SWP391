@@ -145,7 +145,7 @@ public class CustomerProductsController extends HttpServlet {
             request.setAttribute("data", data);
 
             if (Math.ceil(data.size() / 9) == 0) {
-                request.setAttribute("max_page", 1);
+                request.setAttribute("max_page", 0);
             } else {
                 request.setAttribute("max_page", Math.ceil(data.size() / 9));
             }
@@ -174,7 +174,7 @@ public class CustomerProductsController extends HttpServlet {
             request.setAttribute("data", data);
 
             if (Math.ceil(data.size() / 9) == 0) {
-                request.setAttribute("max_page", 1);
+                request.setAttribute("max_page", 0);
             } else {
                 request.setAttribute("max_page", Math.ceil(data.size() / 9));
             }

@@ -129,7 +129,7 @@ public class ProductDetailController extends HttpServlet {
         for (int i = 1; i <= 4; i++) {
             Part filePart = request.getPart("image" + i); // Lấy tệp ảnh từ request
             String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Lấy tên tệp
-            String savePath = "D:\\SWP391\\project\\SWP391\\SWP_391\\web\\images\\" + fileName; // Đường dẫn lưu trữ trong dự án
+            String savePath = "C:\\FPT\\JavaWeb\\SWP\\SWP391\\SWP_391\\web\\images\\" + fileName; // Đường dẫn lưu trữ trong dự án
             // Đường dẫn lưu trữ ảnh mà bạn muốn so sánh
             String imagePath = "C:\\FPT\\JavaWeb\\SWP\\SWP391\\SWP_391\\web\\images\\" + fileName;
             filePart.write(savePath); // Lưu tệp ảnh vào thư mục

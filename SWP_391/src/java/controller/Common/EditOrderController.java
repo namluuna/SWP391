@@ -152,22 +152,30 @@ public class EditOrderController extends HttpServlet {
                 orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
                 SendMailService sms = new SendMailService();
                 Order o = orderDAO.searchOrderById(id);
-                sms.sendOrderNoti1(user.getEmail(), o);
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(o.getCustomer().getId()));
+                sms.sendOrderNoti1(customer.getEmail(), o);
             } else if (status.equals("2")) {
                 orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
                 SendMailService sms = new SendMailService();
                 Order o = orderDAO.searchOrderById(id);
-                sms.sendOrderNoti2(user.getEmail(), o);
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(o.getCustomer().getId()));
+                sms.sendOrderNoti2(customer.getEmail(), o);
             } else if (status.equals("3")) {
                 orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
                 SendMailService sms = new SendMailService();
                 Order o = orderDAO.searchOrderById(id);
-                sms.sendOrderNoti3(user.getEmail(), o);
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(o.getCustomer().getId()));
+                sms.sendOrderNoti3(customer.getEmail(), o);
             } else if (status.equals("4")) {
                 orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
                 SendMailService sms = new SendMailService();
                 Order o = orderDAO.searchOrderById(id);
-                sms.sendOrderNoti4(user.getEmail(), o);
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(o.getCustomer().getId()));
+                sms.sendOrderNoti4(customer.getEmail(), o);
             } else if (status.equals("5")) {
                 Order o = orderDAO.searchOrderById(id);
                 OrderDetailDAO odDAO = new OrderDetailDAO();
@@ -177,7 +185,9 @@ public class EditOrderController extends HttpServlet {
                 }
                 orderDAO.editOrder(Integer.parseInt(id), Integer.parseInt(shippingCompanyId), Integer.parseInt(status), note, Timestamp.valueOf(expectedDeliveryDate), shipping_code);
                 SendMailService sms = new SendMailService();
-                sms.sendOrderNoti4(user.getEmail(), o);
+                UserDAO udao = new UserDAO();
+                User customer = udao.getUserByID(String.valueOf(o.getCustomer().getId()));
+                sms.sendOrderNoti4(customer.getEmail(), o);
             }else{
                 Order o = orderDAO.searchOrderById(id);
                 OrderDetailDAO odDAO = new OrderDetailDAO();

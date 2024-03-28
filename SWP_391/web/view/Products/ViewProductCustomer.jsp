@@ -296,22 +296,7 @@
                                     </c:forEach>
                                 </ul>
                             </li>
-                            <li class="nav-divider"></li>
-                            <li class="first-lvl">
-                                <label label-default="" class="tree-toggle nav-header orange">MÀU SẮC  <span
-                                        class="caret caret-active"></span></label>
-                                <ul class="nav tree">
-
-                                    <li class="cb-color">
-                                        <c:forEach items="${data3}" var="o">
-                                            <label >
-                                                <a href="CustomerProducts?filter=color&id=${o.getId()}"><span class="bg-color" style="background-color: ${o.getColor_code()}"></span> </a>
-                                            </label>
-
-                                        </c:forEach>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             <li class="nav-divider"></li>
                         </ul>
                     </div>
