@@ -6,20 +6,21 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel='stylesheet' id='fe-bootstrap-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap.min261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-ie10-viewport-bug-workaround-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/ie10-viewport-bug-workaround261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-jquery-simple-mobilemenu-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jquery-simple-mobilemenu261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-slick-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-slick-theme-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick-theme261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-bootstrap-select-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css?ver=20233105' type='text/css' media='all' />
-        <link rel='stylesheet' id='fe-jBox-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jBox261b.css?ver=20233105' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-bootstrap-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap.min261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-ie10-viewport-bug-workaround-css-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/ie10-viewport-bug-workaround261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-jquery-simple-mobilemenu-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jquery-simple-mobilemenu261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-slick-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-slick-theme-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/slick-theme261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-bootstrap-select-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/bootstrap-select.min261b.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='fe-jBox-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/jBox261b.css' type='text/css' media='all' />
         <link rel='stylesheet' id='fe-style-css'  href='ananas.vn/wp-content/themes/ananas/fe-assets/css/style261b.css' type='text/css' media='all' />
-        <link rel='stylesheet' id='ananas-style-css'  href='ananas.vn/wp-content/themes/ananas/style5fba.css?ver=5.2' type='text/css' media='all' />
+        <link rel='stylesheet' id='ananas-style-css'  href='ananas.vn/wp-content/themes/ananas/style5fba.css' type='text/css' media='all' />
         <style type="text/css">
             img.wp-smiley,
             img.emoji {
@@ -57,6 +58,15 @@
                 height: 20px; /* Chiều cao của mỗi màu */
                 display: inline-block; /* Hiển thị là khối */
                 margin-right: 5px; /* Khoảng cách giữa mỗi màu */
+            }
+            /* CSS cho phần size và số lượng */
+            .selectpicker {
+                width: calc(50% - 10px); /* Đặt chiều rộng của selectpicker là 50% của container cộng với khoảng cách giữa các cột */
+                margin-right: 10px; /* Khoảng cách giữa phần size và số lượng */
+            }
+
+            .grp-btn1 {
+                margin-top: 10px; /* Khoảng cách giữa phần số lượng và button Thêm vào giỏ hàng */
             }
 
         </style>
@@ -183,7 +193,7 @@
                         </h6>
 
                         <h5 class="detail1">
-                            <span class="saleprice">${pd.getProduct().getPrice()}</span>
+                            <span class="saleprice"><fmt:formatNumber type="currency" currencySymbol="VND" value="${pd.getProduct().getPrice()}" maxFractionDigits="0" /></span>
                             <!--                        <span class="realprice">580.000 VND</span>-->
 
                         </h5>
@@ -195,46 +205,24 @@
                                 <c:forEach var="c" items="${cls}">
                                     <li class="cb-color-fixed">
                                         <label data-link>
-                                            <a href="CustomerProducts?detail=${c.id}">
                                                 <span class="bg-color" style="background-color: ${c.color_code};"></span>
-                                            </a>
                                         </label>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
-
-
-                        <!--                        <div class="color">
-                                                    <ul class="nav tree">
-                                                        <li class="cb-color-fixed">
-                                                            <label data-link><span class="bg-color"
-                                                                                   style="background-color: ${pd.getColor().getColor_code()};
-                                                                                   "></span><input
-                                                                                   name="cbColor" type="checkbox" value="0" hidden></label>
-                                                        </li>
-                                                    </ul>
-                                                </div>-->
                         <div class="divider"></div>
+
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <h5>SIZE</h5>
-                                <select id="pickSize" class="selectpicker" data-style="btn" data-action="https://ananas.vn/wp-admin/admin-ajax.php" data-productID="25705">
-                                    <option selected>&nbsp;</option>
-                                    <option >35</option>
-                                    <option disabled>36</option>
-                                    <option disabled>37</option>
-                                    <option disabled>38</option>
-                                    <option disabled>39</option>
-                                    <option >40</option>
-                                    <option >41</option>
-                                    <option >42</option>
-                                    <option disabled>43</option>
-                                    <option disabled>44</option>
-                                    <option disabled>45</option>
-                                    <option >46</option>
+                                <select class="selectpicker">
+                                    <c:forEach var="sz" items="${si}">
+                                        <option value="${sz.getId()}">${sz.getName()}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
+
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <h5>SỐ LƯỢNG</h5>
                                 <select id="pickQuantity" disabled class="selectpicker quantity" data-style="btn">
@@ -256,13 +244,13 @@
                         </div>
                         <div class="row grp-btn1">
                             <button class="btn btn-addcart" type="submit" style="width: 480px">THÊM VÀO GIỎ HÀNG</button>
-                            <% String message = (String) session.getAttribute("addToCartSuccess"); %>
-                            <% if(message != null){ %>
-                            <% session.removeAttribute("addToCartSuccess"); %>
-                            <br>
-                            <div id="snackbar" style="color:green !important;"><%= message %></div>
-                            <% } %>
                         </div>
+                        <% String message = (String) session.getAttribute("addToCartSuccess"); %>
+                        <% if(message != null){ %>
+                        <% session.removeAttribute("addToCartSuccess"); %>
+                        <br>
+                        <div style="color:green !important"><%= message %></div>
+                        <% } %>
                         <div class="row info-validate empty-error" style="display: none;">
                             Vui lòng chọn Size/Số lượng phù hợp
                         </div>
@@ -352,7 +340,7 @@
         </div>
     </div>
     <script>
-        // Lưu trữ các color_code đã xuất hiện
+// Lưu trữ các color_code đã xuất hiện
         var seenColors = {};
 
 // Lấy danh sách các màu
@@ -374,6 +362,48 @@
         });
 
     </script>
+   <script>
+    // Lưu trữ đường dẫn cơ sở
+    var baseURL = "CustomerProducts";
+
+    // Lấy productId từ URL hiện tại
+    var currentURL = new URL(window.location.href);
+    var productId = currentURL.searchParams.get("productId");
+
+    // Thêm sự kiện cho các màu
+    var colors = document.querySelectorAll('.bg-color');
+    colors.forEach(function (color) {
+        color.addEventListener('click', function () {
+            var colorId = color.getAttribute('data-color-id');
+            var sizeId = currentURL.searchParams.get("sizeId");
+            var url = new URL(baseURL);
+            url.searchParams.set("productId", productId);
+            url.searchParams.set("colorId", colorId);
+            url.searchParams.set("sizeId", sizeId ? sizeId : getRandomSizeId());
+            window.location.href = url.href;
+        });
+    });
+
+    // Thêm sự kiện cho các size
+    var sizes = document.querySelectorAll('.selectpicker');
+    sizes.forEach(function (size) {
+        size.addEventListener('change', function () {
+            var sizeId = size.value;
+            var colorId = currentURL.searchParams.get("colorId");
+            var url = new URL(baseURL);
+            url.searchParams.set("productId", productId);
+            url.searchParams.set("colorId", colorId);
+            url.searchParams.set("sizeId", sizeId);
+            window.location.href = url.href;
+        });
+    });
+
+    // Hàm lấy sizeId ngẫu nhiên
+    function getRandomSizeId() {
+        var size = document.querySelector('.selectpicker');
+        return size.value;
+    }
+</script>
 
 </body>
 </html>
