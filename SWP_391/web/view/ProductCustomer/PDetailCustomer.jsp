@@ -205,7 +205,7 @@
                                 <c:forEach var="c" items="${cls}">
                                     <li class="cb-color-fixed">
                                         <label data-link>
-                                                <span class="bg-color" style="background-color: ${c.color_code};"></span>
+                                            <span class="bg-color" style="background-color: ${c.color_code};"></span>
                                         </label>
                                     </li>
                                 </c:forEach>
@@ -362,48 +362,48 @@
         });
 
     </script>
-   <script>
-    // Lưu trữ đường dẫn cơ sở
-    var baseURL = "CustomerProducts";
+    <script>
+        // Lưu trữ đường dẫn cơ sở
+        var baseURL = "CustomerProducts";
 
-    // Lấy productId từ URL hiện tại
-    var currentURL = new URL(window.location.href);
-    var productId = currentURL.searchParams.get("productId");
+        // Lấy productId từ URL hiện tại
+        var currentURL = new URL(window.location.href);
+        var productId = currentURL.searchParams.get("productId");
 
-    // Thêm sự kiện cho các màu
-    var colors = document.querySelectorAll('.bg-color');
-    colors.forEach(function (color) {
-        color.addEventListener('click', function () {
-            var colorId = color.getAttribute('data-color-id');
-            var sizeId = currentURL.searchParams.get("sizeId");
-            var url = new URL(baseURL);
-            url.searchParams.set("productId", productId);
-            url.searchParams.set("colorId", colorId);
-            url.searchParams.set("sizeId", sizeId ? sizeId : getRandomSizeId());
-            window.location.href = url.href;
+        // Thêm sự kiện cho các màu
+        var colors = document.querySelectorAll('.bg-color');
+        colors.forEach(function (color) {
+            color.addEventListener('click', function () {
+                var colorId = color.getAttribute('data-color-id');
+                var sizeId = currentURL.searchParams.get("sizeId");
+                var url = new URL(baseURL);
+                url.searchParams.set("productId", productId);
+                url.searchParams.set("colorId", colorId);
+                url.searchParams.set("sizeId", sizeId ? sizeId : getRandomSizeId());
+                window.location.href = url.href;
+            });
         });
-    });
 
-    // Thêm sự kiện cho các size
-    var sizes = document.querySelectorAll('.selectpicker');
-    sizes.forEach(function (size) {
-        size.addEventListener('change', function () {
-            var sizeId = size.value;
-            var colorId = currentURL.searchParams.get("colorId");
-            var url = new URL(baseURL);
-            url.searchParams.set("productId", productId);
-            url.searchParams.set("colorId", colorId);
-            url.searchParams.set("sizeId", sizeId);
-            window.location.href = url.href;
+        // Thêm sự kiện cho các size
+        var sizes = document.querySelectorAll('.selectpicker');
+        sizes.forEach(function (size) {
+            size.addEventListener('change', function () {
+                var sizeId = size.value;
+                var colorId = currentURL.searchParams.get("colorId");
+                var url = new URL(baseURL);
+                url.searchParams.set("productId", productId);
+                url.searchParams.set("colorId", colorId);
+                url.searchParams.set("sizeId", sizeId);
+                window.location.href = url.href;
+            });
         });
-    });
 
-    // Hàm lấy sizeId ngẫu nhiên
-    function getRandomSizeId() {
-        var size = document.querySelector('.selectpicker');
-        return size.value;
-    }
-</script>
+        // Hàm lấy sizeId ngẫu nhiên
+        function getRandomSizeId() {
+            var size = document.querySelector('.selectpicker');
+            return size.value;
+        }
+    </script>
 
 </body>
 </html>
