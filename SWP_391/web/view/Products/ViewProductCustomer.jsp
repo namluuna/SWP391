@@ -327,7 +327,7 @@
                             </c:when>
                             <c:otherwise>
                                 <c:forEach var="product" items="${data}" >
-                                    <c:if test="${(page-1)*10 <= data.indexOf(product) + 1 && data.indexOf(product) + 1 <= page*10}">
+                                    <c:if test="${(page-1)*9 <= data.indexOf(product) + 1 && data.indexOf(product) + 1 <= page*9}">
                                         <c:if test="${empty product.deleted_at}">
                                             <!-- Nội dung của điều kiện if -->
 
@@ -355,7 +355,7 @@
                                                                         href="CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}">${product.name}</a>
                                                                 </h3>
                                                                 <h3 class="price">
-                                                                    <fmt:formatNumber value="${product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
+                                                                    <fmt:formatNumber value="${product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" /> VND
                                                                 </h3>
                                                             </div>
                                                         </div>
@@ -378,7 +378,7 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <c:forEach var="i" begin="0" end="${max_page}">
-                                    <li class="page-item ${i+1 == param.page || empty param.page ? 'active' : ''}">
+                                    <li class="page-item ${i+1 == param.page || empty param.page and i == 0? 'active' : ''}">
                                         <a class="page-link" href="CustomerProducts?page=${i+1}">${i+1}</a>
                                     </li>
                                 </c:forEach>
