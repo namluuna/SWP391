@@ -83,8 +83,8 @@
                 <div class="row prd-detail-img hidden-xs hidden-sm"></div>
                 <div class="container mt-5">
 
-                    <h1>Quản Lý Sản Phẩm</h1>
-                    <div><a href="productdetails?mod=1" class="btn btn-primary mb-3">Tạo sản phẩm mới</a></div>
+                    <h1>Quản Lý Chi Tiết Sản Phẩm</h1>
+                    <div><a href="productdetails?mod=1" class="btn btn-primary mb-3">Tạo mới</a></div>
 
                     <div class="btn-group mb-3">
                         <a href="productdetails" class="btn btn-secondary">Tất cả sản phẩm</a>

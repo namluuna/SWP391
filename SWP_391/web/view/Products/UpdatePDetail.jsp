@@ -101,11 +101,15 @@
                         </select>
                         <span id="error-message-size" style="color: red;"></span>
                     </div>
+                    
                     <div class="mb-3">
-                        <label for="inventory" class="form-label"><span style="color: red;">*</span>Số lượng hàng
+                        <label for="inventory" class="form-label"><span style="color: red;">*</span>Nhập Số Lượng Sản Phẩm:</label>
+                        <input type="text" class="form-control" id="inventory" name="inventory" value="${pDetail.getInventory_number()}">
+                        <span id="error-message-price" style="color: red;"></span>
+                    </div>
                     <div class="mb-3">
                         <label for="image1" class="form-label"><span style="color: red;">*</span>Ảnh 1:</label>
-                        <input type="file" class="form-control" id="image1" name="image1" accept="image/*">
+                        <input type="file" class="form-control" id="image1" name="image1" accept="image/*" value="${pDetail.getImage_url_1()}">
                     </div>
                     <div class="mb-3">
                         <label for="image2" class="form-label"><span style="color: red;">*</span>Ảnh 2:</label>
@@ -184,6 +188,5 @@
                 });
             });
         </script>
-
     </body>
 </html>
