@@ -296,7 +296,7 @@
                                     </c:forEach>
                                 </ul>
                             </li>
-                            
+
                             <li class="nav-divider"></li>
                         </ul>
                     </div>
@@ -322,14 +322,14 @@
                                                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 item">
                                                         <div class="thumbnail">
                                                             <div class="cont-item">
-                                                                <a href="CustomerProductss?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}">
+                                                                <a href="CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}">
                                                                     <img class="inormal" src="images/${productdetail.getImage_url_1()}">
                                                                     <img class="ihover" src="images/${productdetail.getImage_url_2()}">
                                                                 </a>
                                                             </div>
                                                             <div class="button">
                                                                 <a class="btn btn-prd1-buynow hidden-xs hidden-sm"
-                                                                   href="CustomerProductss?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}&sizeId=${productdetail.getSize().getId()}">MUA
+                                                                   href="CustomerProducts?productId=${productdetail.getProduct().getId()}&colorId=${productdetail.getColor().getId()}">MUA
                                                                     NGAY</a>
 
                                                             </div>

@@ -71,22 +71,22 @@
 
         </style>
         <script>
-        // Định nghĩa JavaScript
-        function updateURLSize(selectElement) {
-            var productId = document.getElementById('productID').value;
-            var colorId = getUrlParameter('colorId');
-            var sizeId = selectElement.value;
-            var newURL = 'CustomerProducts?productId=' + productId + '&colorId=' + colorId + '&sizeId=' + sizeId;
-            window.location.href = newURL;
-        }
+            // Định nghĩa JavaScript
+            function updateURLSize(selectElement) {
+                var productId = document.getElementById('productID').value;
+                var colorId = getUrlParameter('colorId');
+                var sizeId = selectElement.value;
+                var newURL = 'CustomerProductss?productId=' + productId + '&colorId=' + colorId + '&sizeId=' + sizeId;
+                window.location.href = newURL;
+            }
 
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-    </script>
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+        </script>
     </head>
     <body>
         <div class="header container-fluid hidden-xs hidden-sm">
@@ -218,32 +218,36 @@
                         <h6 class="detail1">${pd.getProduct().getForm().getDescription()}</h6>
                         <div class="divider"></div>
                         <div class="color">
-    <ul class="nav tree">
-        <c:forEach var="c" items="${cls}">
-            <li class="cb-color-fixed">
-                <label data-link>
-                    <span class="bg-color" style="background-color: ${c.color_code};"
-                        onclick="updateURL(${c.getId()})"></span>
-                </label>
-            </li>
-        </c:forEach>
-    </ul>
-</div>
-<div class="divider"></div>
+                            <ul class="nav tree">
+                                <c:set var="previousColor" value="" />
+                                <c:forEach var="c" items="${cls}">
+                                    <c:if test="${c.color_code ne previousColor}">
+                                        <li class="cb-color-fixed">
+                                            <label data-link>
+                                                <span class="bg-color" style="background-color: ${c.color_code};"
+                                                      onclick="updateURL(${c.getId()})"></span>
+                                            </label>
+                                        </li>
+                                        <c:set var="previousColor" value="${c.color_code}" />
+                                    </c:if>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
 
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
-        <h5>SIZE</h5>
-        <select class="selectpicker" onchange="updateURLSize(this)">
-                <option value="0">Vui lòng chọn</option>
-                <c:forEach var="sz" items="${si}">
-                    <option value="${sz.getId()}">${sz.getName()}</option>
-                </c:forEach>
-            </select>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <h5>SIZE</h5>
+                                <select class="selectpicker" onchange="updateURLSize(this)">
+                                    <option value="0">Vui lòng chọn</option>
+                                    <c:forEach var="sz" items="${si}">
+                                        <option value="${sz.getId()}">${sz.getName()}</option>
+                                    </c:forEach>
+                                </select>
 
 
-    </div>
-</div>
+                            </div>
+                        </div>
                         <div class="row grp-btn1">
                             <button class="btn btn-addcart" type="submit" style="width: 480px">THÊM VÀO GIỎ HÀNG</button>
                         </div>
@@ -256,45 +260,72 @@
                         <div class="row info-validate empty-error" style="display: none;">
                             Vui lòng chọn Size
                         </div>
-               
-                <div>
-                    <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
-                                       href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        THÔNG TIN SẢN PHẨM <span class="caret"></span>
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                                 aria-labelledby="headingOne">
-                                <div class="divider-1"></div>
-                                <div class="panel-body">
-                                    <h6><p>${pd.getProduct().getDescription()}</p>
-                                    </h6>
+
+                        <div>
+                            <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
+                                               href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                THÔNG TIN SẢN PHẨM <span class="caret"></span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                         aria-labelledby="headingOne">
+                                        <div class="divider-1"></div>
+                                        <div class="panel-body">
+                                            <h6><p>${pd.getProduct().getDescription()}</p>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="divider-1"></div>
                                 </div>
                             </div>
-                            <div class="divider-1"></div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-                                     </form>
         </div>
-    </div>
-                                    <script>
-    function updateURL(colorId) {
-        // Lấy productId từ trường ẩn
-        var productId = document.getElementById('productID').value;
+        <script>
+            function updateURL(colorId) {
+// Lấy productId từ trường ẩn
+                var productId = document.getElementById('productID').value;
 
-        // Cập nhật URL với colorId và productId mới
-        var newURL = 'CustomerProducts?productId=' + productId + '&colorId=' + colorId;
+// Cập nhật URL với colorId và productId mới
+                var newURL = 'CustomerProducts?productId=' + productId + '&colorId=' + colorId;
 
-        // Chuyển hướng đến URL mới
-        window.location.href = newURL;
-    }
-</script>
-</body>
+// Chuyển hướng đến URL mới
+                window.location.href = newURL;
+            }
+        </script>
+        <script>
+            window.onload = function () {
+                // Lấy sizeId từ tham số truy vấn của URL
+                var sizeId = getUrlParameter('sizeId');
+
+                // Nếu có sizeId trong URL, cập nhật option tương ứng
+                if (sizeId !== '') {
+                    var select = document.querySelector('.selectpicker');
+                    var options = select.querySelectorAll('option');
+                    for (var i = 0; i < options.length; i++) {
+                        var option = options[i];
+                        if (option.value === sizeId) {
+                            option.selected = true;
+                            break;
+                        }
+                    }
+                }
+            };
+
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+        </script>
+
+    </body>
 </html>
