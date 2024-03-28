@@ -70,7 +70,7 @@
         <script>
                     function validateForm() {
                         var name = document.getElementById("name").value.trim();
-                        var colorcode = document.getElementById("colorcode").value.trim();
+                        var colorcode = document.getElementById("color_code").value.trim();
                         var errorMessageName = document.getElementById("error-message-name");
                         var errorMessageColorCode = document.getElementById("error-message-colorcode");
 
