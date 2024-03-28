@@ -143,30 +143,25 @@ public class CustomerProductsController extends HttpServlet {
                 data = p.selectProductbySearch(request.getParameter("id"));
             }
             request.setAttribute("data", data);
-
-            if (Math.ceil(data.size() / 10) == 0) {
+            
+            if(Math.ceil(data.size() / 10) == 0)
+            {
                 request.setAttribute("max_page", 1);
-            } else {
-                request.setAttribute("max_page", Math.ceil(data.size() / 10));
+            }else
+            {
+                 request.setAttribute("max_page", Math.ceil(data.size() / 10));
             }
+            
 
+            
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
-        if (request.getParameter("productId") != null && request.getParameter("colorId") != null && request.getParameter("sizeId") != null) {
-            // Lấy các tham số từ request
-            String productId = request.getParameter("productId");
-            String colorId = request.getParameter("colorId");
-            String sizeId = request.getParameter("sizeId");
-            request.setAttribute("pd", pd.selectProductDetailByProductIdColorIdAndSizeId(productId, colorId, sizeId));
+        if (request.getParameter("detail") != null) {
+            request.setAttribute("pd", pd.selectProductDetailById(request.getParameter("detail")));
             ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
-            String prodId = productDetails.getProduct().getId();
-            ArrayList<Colors> cls = pd.getAllColorsByProductID(prodId);
+            String productId = productDetails.getProduct().getId();
+            ArrayList<Colors> cls = pd.getAllColorsByProductID(productId);          
             request.setAttribute("cls", cls);
-// Lấy ArrayList<Sizes> từ ProductDetail của productId và liên quan đến colorId
-
-            ArrayList<Sizes> si = pd.getAllSizesByColorIDAndProductID(colorId, productId);
-            request.setAttribute("si", si);
-         
             request.getRequestDispatcher("view\\ProductCustomer\\PDetailCustomer.jsp").forward(request, response);
         } else {
             data = p.selectAllProducts();
