@@ -1,5 +1,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!doctype html>
@@ -216,7 +217,7 @@
                                 <li class="first-lvl">
                                     <label label-default="" class="tree-toggle nav-header orange">Hãng  <span class="caret caret-active"></span></label>
                                     <ul class="nav tree">
-                                    <c:forEach items="${data1}" var="o">
+                                    <c:forEach items="${data2}" var="o">
                                         <li>
                                             <label >
                                                 <a href="CustomerProducts?filter=brand&id=${o.id}">${o.name} </a>                                           <span class="glyphicon"></span>
@@ -348,13 +349,14 @@
 
                                                             </div>
                                                             <div class="caption">
-                                                                <h3 class="type">${data1[data.indexOf(product)].getName()}</h3>
+                                                                <h3 class="type">${product.getBrand().getName()}</h3>
                                                                 <h3 class="divider"></h3>
                                                                 <h3 class="name"><a
                                                                         href="CustomerProducts?detail=${productdetail.getId()}">${product.name}</a>
                                                                 </h3>
                                                                 <h3 class="price">
-                                                                    ${product.price} VND                                                                    </h3>
+                                                                    <fmt:formatNumber value="${product.price}" type="currency" currencyCode="VND" groupingUsed="true" pattern="###,###" />
+                                                                </h3>
                                                             </div>
                                                         </div>
                                                     </div>
