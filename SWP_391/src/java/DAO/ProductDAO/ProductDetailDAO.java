@@ -382,7 +382,7 @@ public ProductDetails getAllProductDetailsByProductIdAndColorId(String productId
             Timestamp editedAt = resultSet.getTimestamp("edited_at");
             Timestamp deletedAt = resultSet.getTimestamp("deleted_at");
 
-            return new  ProductDetails(sql, product, color, size, inventoryNumber, imageUrl1, imageUrl2, imageUrl3, imageUrl4, createdAt, editedAt, deletedAt);
+            return new  ProductDetails(detailId, product, color, size, inventoryNumber, imageUrl1, imageUrl2, imageUrl3, imageUrl4, createdAt, editedAt, deletedAt);
         }
     } catch (Exception e) {
         System.out.println("Error while fetching product details by product ID and color ID: " + e.getMessage());
