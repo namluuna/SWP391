@@ -147,57 +147,58 @@
         <div class="prd-detail container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                    <div class="wrapper-slide">
-                        <div class="prd-detail-main-img">
-                            <img class="main-img" src="images/${pd.getImage_url_1()}">
-                        </div>
-                        <div class="prd-detail-slide1 slick-initialized slick-slider">
-                            <button class="slick-prev slick-arrow slick-disabled" aria-label="Previous" type="button" aria-disabled="true" style="display: block;" control-id="ControlID-2">Previous</button>
-                            <div class="slick-list draggable">
-                                <div class="slick-track" style="opacity: 1; width: 1600px; transform: translate3d(0px, 0px, 0px);">
-                                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 160px;">
-                                        <div>
-                                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item">
-                                                    <img src="images/${pd.getImage_url_1()}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 160px;">
-                                        <div><div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item">
-                                                    <img src="images/${pd.getImage_url_2()}"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 160px;">
-                                        <div>
-                                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item">
-                                                    <img src="images/${pd.getImage_url_3()}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 160px;">
-                                        <div>
-                                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                                <div class="cont-item">
-                                                    <img src="images/${pd.getImage_url_4()}"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <div class="wrapper-slide">
+        <div class="prd-detail-main-img">
+            <img class="main-img" id="mainImage" src="images/${pd.getImage_url_1()}">
+        </div>
+        <div class="prd-detail-slide1 slick-initialized slick-slider" id="thumbnailSlider">
+  
+            <div class="slick-list draggable">
+                <div class="slick-track" style="opacity: 1; width: 1600px; transform: translate3d(0px, 0px, 0px);">
+                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 160px;">
+                        <div>
+                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                <div class="cont-item">
+                                    <img src="images/${pd.getImage_url_1()}" onclick="changeMainImage('images/${pd.getImage_url_1()}')">
                                 </div>
                             </div>
-                            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;" aria-disabled="false" control-id="ControlID-3">Next</button>
                         </div>
                     </div>
-
-                    <div class="row prd-detail-img hidden-xs hidden-sm">
-
+                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 160px;">
+                        <div>
+                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                <div class="cont-item">
+                                    <img src="images/${pd.getImage_url_2()}" onclick="changeMainImage('images/${pd.getImage_url_2()}')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 160px;">
+                        <div>
+                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                <div class="cont-item">
+                                    <img src="images/${pd.getImage_url_3()}" onclick="changeMainImage('images/${pd.getImage_url_3()}')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 160px;">
+                        <div>
+                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                <div class="cont-item">
+                                    <img src="images/${pd.getImage_url_4()}" onclick="changeMainImage('images/${pd.getImage_url_4()}')">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+         
+        </div>
+    </div>
+    <div class="row prd-detail-img hidden-xs hidden-sm"></div>
+</div>
+
                 <form action="AddToCartServlet">
                     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 prd-detail-right">
                         <input type="hidden" name="id" value="${pd.id}">
@@ -326,6 +327,24 @@
                 return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
             }
         </script>
+        <script>
+            // Định nghĩa hàm để thay đổi ảnh lớn
+function changeMainImage(imageUrl) {
+    var mainImage = document.querySelector('.main-img');
+    mainImage.src = imageUrl;
+}
 
+// Gắn sự kiện cho các button và ảnh nhỏ
+document.addEventListener('DOMContentLoaded', function() {
+    var thumbnailImages = document.querySelectorAll('.cont-item img');
+    thumbnailImages.forEach(function(thumbnailImage) {
+        thumbnailImage.addEventListener('click', function() {
+            var imageUrl = this.src;
+            changeMainImage(imageUrl);
+        });
+    });
+});
+
+        </script>
     </body>
 </html>
