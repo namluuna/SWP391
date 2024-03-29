@@ -36,6 +36,10 @@
             }
         </style>
         <style>
+            .hidden {
+    display: none;
+}
+
             .color {
                 display: flex; /* Sử dụng flexbox */
                 justify-content: flex-start; /* Căn trái */
@@ -262,29 +266,28 @@
                             Vui lòng chọn Size
                         </div>
 
-                        <div>
-                            <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <h4 class="panel-title">
-                                            <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
-                                               href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                THÔNG TIN SẢN PHẨM <span class="caret"></span>
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                                         aria-labelledby="headingOne">
-                                        <div class="divider-1"></div>
-                                        <div class="panel-body">
-                                            <h6><p>${pd.getProduct().getDescription()}</p>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="divider-1"></div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
+                   href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="toggleProductDescription()">
+                    THÔNG TIN SẢN PHẨM
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+             aria-labelledby="headingOne">
+            <div class="divider-1"></div>
+            <div class="panel-body" id="productDescription">
+                <h6><p>${pd.getProduct().getDescription()}</p></h6>
+                <div class="divider-1"></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
                     </div>
                 </form>
             </div>
@@ -344,6 +347,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+        </script>
+        <script>
+            function toggleProductDescription() {
+    var descriptionElement = document.getElementById("productDescription");
+    if (descriptionElement.classList.contains("hidden")) {
+        descriptionElement.classList.remove("hidden");
+    } else {
+        descriptionElement.classList.add("hidden");
+    }
+}
 
         </script>
     </body>
