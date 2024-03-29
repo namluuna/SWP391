@@ -376,9 +376,7 @@
             <div class="gotop hidden-xs hidden-sm">
                 <a href="#"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/gotop.png"></a>
             </div>
-            <div class="text-center load-more-icon">
-                <img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/loading.gif">
-            </div>
+            
 
         </div>
         <input type="hidden" value="1" class="isProductListPage">
@@ -437,7 +435,7 @@
     <div class="row">
         <div class="col-md-3 sec-search">
             <div class="row center">
-                <img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Store.svg">
+                <img src="">
             </div>
             <div class="row">
                 <a class="btn btn-search-shop" href="ananas.vn/stores/index.html">TÌM CỬA HÀNG</a>
@@ -483,12 +481,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3">
-                    <h4>ANANAS SOCIAL</h4>
-                    <a href="https://www.facebook.com/Ananas.vietnam/"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_facebook.svg"></a>&nbsp;
-                    <a href="https://www.instagram.com/ananasvn/"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_instagram.svg"></a>&nbsp;
-                    <a href="https://www.youtube.com/discoveryou"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_youtube.svg"></a>
-                </div>
+                
                 <div class="col-md-3">
                     <h4>ĐĂNG KÝ NHẬN MAIL</h4>
                     <div class="form-group subscribe-group">
@@ -496,9 +489,7 @@
                         <a href="javascript:void(0)" class="subscribe"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/arrow_right.jpg"></a>
                     </div>
                 </div>
-                <div class="col-md-6 logo-footer">
-                    <a href="ananas.vn/index.html"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Logo_Ananas_Footer.svg"></a>
-                </div>
+               
             </div>
 
             <div class="row">
@@ -508,7 +499,7 @@
                 <div class="col-md-9 copyright">
                     <!--                    HAZZA JSC | Mã Số Thuế: 0315225920 <br>-->
                     <!--                    Địa Chỉ: 118/28 đường Nguyễn Văn Hưởng, Phường Thảo Điền, Quận 2, Hồ Chí Minh, Vietnam.<br>-->
-                    Copyright © 2022 Ananas. All rights reserved.
+                    Copyright © 2022. All rights reserved.
                 </div>
             </div>
         </div>
@@ -540,7 +531,7 @@
                 <ul class="nav tree">
                     <li><a href="ananas.vn/career/index.html">Dứa tuyển dụng</a></li>
                     <li><a href="ananas.vn/franchise-policy/index.html">Liên hệ nhượng quyền</a></li>
-                    <li class="last"><a href="ananas.vn/comming-soon.html">Về Ananas</a></li>
+                    <li class="last"><a href="ananas.vn/comming-soon.html"></a></li>
 
                     <div class="footer-divider"></div>
                 </ul>
@@ -627,35 +618,9 @@
         </div>
     </div>
 </div><!-- CART & SOCIAL GROUP-->
-<div class="cartfixed hidden-xs hidden-sm" data-target="#shop_cart" data-toggle="collapse">
-    <span class="countProduct">0</span><br>
-    <img
-        src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_gio_hang.svg">
 
-    <div id="shop_cart" class="cart collapse">
-        <span class="caret"></span>
-        <ul class="list-group">
-            <li class="list-group-item title">GIỎ HÀNG (<span class="countProduct">0</span>)</li>
-            <li class="list-group-item divider"></li>
-            <li class="list-group-item items">
-            </li>
-            <li class="list-group-item total"><span class="tleft">Tổng cộng:</span><span
-                    class="tright">0 VNĐ</span></li>
-            <li class="list-group-item butn">
-                <a href="ananas.vn/your-cart/index.html" class="btn btn-checkout mini-cart-checkout">THANH TOÁN</a>
-            </li>
-            <li class="list-group-item butn">
-                <a href="javascript:void(0)" class="btn btn-addlike multipleAddLike">THÊM VÀO YÊU THÍCH</a>
-            </li>
-        </ul>
-    </div>
-</div>
 
-<div class="social hidden-xs hidden-sm">
-    <a href="https://www.facebook.com/Ananas.vietnam/"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_facebook_2.svg"></a>
-    <a href="https://www.instagram.com/ananasvn/"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_instagram_2.svg"></a>
-    <a href="https://www.youtube.com/discoveryou"><img src="ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/icon_youtube_2.svg"></a>
-</div>
+
 <!-- END SOCIAL GROUP -->
 <script>
     const ajaxUrl = 'ananas.vn/wp-admin/admin-ajax.html';
