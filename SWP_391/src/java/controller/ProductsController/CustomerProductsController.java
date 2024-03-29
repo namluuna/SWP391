@@ -144,10 +144,10 @@ public class CustomerProductsController extends HttpServlet {
             }
             request.setAttribute("data", data);
 
-            if (Math.ceil(data.size() / 9) == 0) {
+            if (Math.ceil(data.size() / 12) == 0) {
                 request.setAttribute("max_page", 0);
             } else {
-                request.setAttribute("max_page", Math.ceil(data.size() / 9));
+                request.setAttribute("max_page", Math.ceil(data.size() / 12));
             }
 
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
@@ -173,10 +173,10 @@ public class CustomerProductsController extends HttpServlet {
 
             request.setAttribute("data", data);
 
-            if (Math.ceil(data.size() / 9) == 0) {
+            if (Math.ceil(data.size() / 12) == 0) {
                 request.setAttribute("max_page", 0);
             } else {
-                request.setAttribute("max_page", Math.ceil(data.size() / 9));
+                request.setAttribute("max_page", Math.ceil(data.size() /12));
             }
             
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);

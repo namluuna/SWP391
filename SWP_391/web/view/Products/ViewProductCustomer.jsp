@@ -312,7 +312,7 @@
                             </c:when>
                             <c:otherwise>
                                 <c:forEach var="product" items="${data}" >
-                                    <c:if test="${(page-1)*9 <= data.indexOf(product) + 1 && data.indexOf(product) + 1 <= page*9}">
+                                    <c:if test="${(page-1)*12 <= data.indexOf(product) + 1 && data.indexOf(product) + 1 <= page*12}">
                                         <c:if test="${empty product.deleted_at}">
                                             <!-- Nội dung của điều kiện if -->
 
