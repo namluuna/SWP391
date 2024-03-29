@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Group Management</title>
+        <title>Chi tiết sản phẩm</title>
         <!-- Include Bootstrap stylesheet -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -83,8 +83,8 @@
                 <div class="row prd-detail-img hidden-xs hidden-sm"></div>
                 <div class="container mt-5">
 
-                    <h1>Quản Lý Sản Phẩm</h1>
-                    <div><a href="productdetails?mod=1" class="btn btn-primary mb-3">Tạo sản phẩm mới</a></div>
+                    <h1>Quản Lý Chi Tiết Sản Phẩm</h1>
+                    <div><a href="productdetails?mod=1" class="btn btn-primary mb-3">Tạo mới</a></div>
 
                     <div class="btn-group mb-3">
                         <a href="productdetails" class="btn btn-secondary">Tất cả sản phẩm</a>

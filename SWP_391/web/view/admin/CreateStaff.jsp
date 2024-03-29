@@ -46,7 +46,7 @@
         <div class="container">
             <div class="card mx-auto p-4">
                 <h1 class="text-center mb-4">Tạo nhân viên mới</h1>
-                <form  action="/SWP_391/createStaff" method="POST" onsubmit="return validateForm()" >
+                <form  action="/SWP_391/createStaff" method="POST" onsubmit="return validateEmail();" >
                     <div class="mb-3">
                         Nhập tên: <input type="text" name="name" value="${name}"  class="form-control" required/><br>
                     </div>
@@ -60,7 +60,7 @@
                         Nhập mật khẩu: <input type="text" name="password"  value="${password}" class="form-control" required/><br>
                     </div>
                     <div class="mb-3">
-                        Nhập số điện thoại: <input type="text" name="phone" value="${phone}" class="form-control" required /><br>
+                        Nhập số điện thoại: <input type="number" name="phone" value="${phone}" class="form-control" required /><br>
                     </div>
                     <div class="mb-3">
                         <label for="role">Vai trò:</label>
@@ -78,35 +78,21 @@
                 </form>
             </div>
         </div>
-      <script>
-        function validateForm() {
-            return validateEmail() && validatePhoneNumber();
-        }
+        <script>
+            function validateEmail() {
+                var emailInput = document.getElementById("email");
+                var emailValue = emailInput.value.trim(); // Remove leading and trailing spaces
 
-        function validateEmail() {
-            var emailInput = document.getElementById("email");
-            var emailValue = emailInput.value.trim();
+                // Check if the email is not empty and matches the required format
+                if (emailValue === "" || !/(^|\s)[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn)\s*$/.test(emailValue)) {
+                    alert("Định dạng email không đúng! Vui lòng nhập lại");
+                    emailInput.focus();
+                    return false;
+                }
 
-            if (emailValue === "" || !/(^|\s)[a-zA-Z0-9._%+-]+@(gmail\.com|fpt\.edu\.vn)\s*$/.test(emailValue)) {
-                alert("Định dạng email không đúng! Vui lòng nhập lại");
-                emailInput.focus();
-                return false;
+                return true;
             }
-
-            return true;
-        }
-
-        function validatePhoneNumber() {
-            var phoneNumber = document.getElementsByName('phone')[0].value;
-            var regex = /^[0-9]{10}$/;
-
-            if (!regex.test(phoneNumber)) {
-                alert("Số điện thoại không bao gồm chữ cái, kí tự đặc biệt và không được quá 10 số. Vui lòng nhập lại!");
-                return false;
-            }
-            return true;
-        }
-    </script>
+        </script>
         <script>
             document.getElementById('email').addEventListener('input', function (event) {
                 var inputValue = event.target.value;

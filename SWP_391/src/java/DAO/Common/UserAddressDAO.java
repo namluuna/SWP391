@@ -234,6 +234,7 @@ public class UserAddressDAO extends DBContext {
     
     public static void main(String[] args) {
         UserAddressDAO uaDAO = new UserAddressDAO();
-        uaDAO.editUserAddress("11", "02", "028", "00829", "test", 1);
+        UserAddress ua = uaDAO.searchById("10");
+        System.out.println(ua.toString());
     }
 }

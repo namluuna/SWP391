@@ -99,6 +99,10 @@
         <servlet-name>ForgotPasswordController</servlet-name>
         <servlet-class>controller.Common.ForgotPasswordController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailCustomer</servlet-name>
+        <servlet-class>controller.ProductsController.DetailCustomer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FormsController</servlet-name>
         <url-pattern>/Forms</url-pattern>
@@ -410,6 +414,10 @@
     <servlet-mapping>
         <servlet-name>ForgotPasswordController</servlet-name>
         <url-pattern>/ForgotPasswordController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailCustomer</servlet-name>
+        <url-pattern>/CustomerProductss</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

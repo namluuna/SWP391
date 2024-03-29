@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create New Groups</title>
+        <title>Tạo màu mới</title>
         <!-- Thêm Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -70,7 +70,7 @@
         <script>
                     function validateForm() {
                         var name = document.getElementById("name").value.trim();
-                        var colorcode = document.getElementById("color_code").value.trim();
+                        var colorcode = document.getElementById("colorcode").value.trim();
                         var errorMessageName = document.getElementById("error-message-name");
                         var errorMessageColorCode = document.getElementById("error-message-colorcode");
 

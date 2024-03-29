@@ -152,12 +152,12 @@ public class CustomerProductsController extends HttpServlet {
 
             request.getRequestDispatcher("view\\Products\\ViewProductCustomer.jsp").forward(request, response);
         }
-        if (request.getParameter("productId") != null && request.getParameter("colorId") != null && request.getParameter("sizeId") != null) {
+        if (request.getParameter("productId") != null && request.getParameter("colorId") != null) {
             // Lấy các tham số từ request
             String productId = request.getParameter("productId");
             String colorId = request.getParameter("colorId");
             String sizeId = request.getParameter("sizeId");
-            request.setAttribute("pd", pd.selectProductDetailByProductIdColorIdAndSizeId(productId, colorId, sizeId));
+            request.setAttribute("pd", pd.getAllProductDetailsByProductIdAndColorId(productId, colorId));
             ProductDetails productDetails = (ProductDetails) request.getAttribute("pd");
             String prodId = productDetails.getProduct().getId();
             ArrayList<Colors> cls = pd.getAllColorsByProductID(prodId);

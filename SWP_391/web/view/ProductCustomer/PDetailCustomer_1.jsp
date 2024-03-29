@@ -36,10 +36,6 @@
             }
         </style>
         <style>
-            .hidden {
-    display: none;
-}
-
             .color {
                 display: flex; /* Sử dụng flexbox */
                 justify-content: flex-start; /* Căn trái */
@@ -75,22 +71,22 @@
 
         </style>
         <script>
-            // Định nghĩa JavaScript
-            function updateURLSize(selectElement) {
-                var productId = document.getElementById('productID').value;
-                var colorId = getUrlParameter('colorId');
-                var sizeId = selectElement.value;
-                var newURL = 'CustomerProductss?productId=' + productId + '&colorId=' + colorId + '&sizeId=' + sizeId;
-                window.location.href = newURL;
-            }
+        // Định nghĩa JavaScript
+        function updateURLSize(selectElement) {
+            var productId = document.getElementById('productID').value;
+            var colorId = getUrlParameter('colorId');
+            var sizeId = selectElement.value;
+            var newURL = 'CustomerProducts?productId=' + productId + '&colorId=' + colorId + '&sizeId=' + sizeId;
+            window.location.href = newURL;
+        }
 
-            function getUrlParameter(name) {
-                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-                var results = regex.exec(location.search);
-                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-            }
-        </script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+    </script>
     </head>
     <body>
         <div class="header container-fluid hidden-xs hidden-sm">
@@ -151,58 +147,57 @@
         <div class="prd-detail container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-    <div class="wrapper-slide">
-        <div class="prd-detail-main-img">
-            <img class="main-img" id="mainImage" src="images/${pd.getImage_url_1()}">
-        </div>
-        <div class="prd-detail-slide1 slick-initialized slick-slider" id="thumbnailSlider">
-  
-            <div class="slick-list draggable">
-                <div class="slick-track" style="opacity: 1; width: 1600px; transform: translate3d(0px, 0px, 0px);">
-                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 160px;">
-                        <div>
-                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                <div class="cont-item">
-                                    <img src="images/${pd.getImage_url_1()}" onclick="changeMainImage('images/${pd.getImage_url_1()}')">
+                    <div class="wrapper-slide">
+                        <div class="prd-detail-main-img">
+                            <img class="main-img" src="images/${pd.getImage_url_1()}">
+                        </div>
+                        <div class="prd-detail-slide1 slick-initialized slick-slider">
+                            <button class="slick-prev slick-arrow slick-disabled" aria-label="Previous" type="button" aria-disabled="true" style="display: block;" control-id="ControlID-2">Previous</button>
+                            <div class="slick-list draggable">
+                                <div class="slick-track" style="opacity: 1; width: 1600px; transform: translate3d(0px, 0px, 0px);">
+                                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 160px;">
+                                        <div>
+                                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                                <div class="cont-item">
+                                                    <img src="images/${pd.getImage_url_1()}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 160px;">
+                                        <div><div class="thumbnail" style="width: 100%; display: inline-block;">
+                                                <div class="cont-item">
+                                                    <img src="images/${pd.getImage_url_2()}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 160px;">
+                                        <div>
+                                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                                <div class="cont-item">
+                                                    <img src="images/${pd.getImage_url_3()}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 160px;">
+                                        <div>
+                                            <div class="thumbnail" style="width: 100%; display: inline-block;">
+                                                <div class="cont-item">
+                                                    <img src="images/${pd.getImage_url_4()}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;" aria-disabled="false" control-id="ControlID-3">Next</button>
                         </div>
                     </div>
-                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 160px;">
-                        <div>
-                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                <div class="cont-item">
-                                    <img src="images/${pd.getImage_url_2()}" onclick="changeMainImage('images/${pd.getImage_url_2()}')">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 160px;">
-                        <div>
-                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                <div class="cont-item">
-                                    <img src="images/${pd.getImage_url_3()}" onclick="changeMainImage('images/${pd.getImage_url_3()}')">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 160px;">
-                        <div>
-                            <div class="thumbnail" style="width: 100%; display: inline-block;">
-                                <div class="cont-item">
-                                    <img src="images/${pd.getImage_url_4()}" onclick="changeMainImage('images/${pd.getImage_url_4()}')">
-                                </div>
-                            </div>
-                        </div>
+
+                    <div class="row prd-detail-img hidden-xs hidden-sm">
+
                     </div>
                 </div>
-            </div>
-         
-        </div>
-    </div>
-    <div class="row prd-detail-img hidden-xs hidden-sm"></div>
-</div>
-
                 <form action="AddToCartServlet">
                     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 prd-detail-right">
                         <input type="hidden" name="id" value="${pd.id}">
@@ -223,36 +218,32 @@
                         <h6 class="detail1">${pd.getProduct().getForm().getDescription()}</h6>
                         <div class="divider"></div>
                         <div class="color">
-                            <ul class="nav tree">
-                                <c:set var="previousColor" value="" />
-                                <c:forEach var="c" items="${cls}">
-                                    <c:if test="${c.color_code ne previousColor}">
-                                        <li class="cb-color-fixed">
-                                            <label data-link>
-                                                <span class="bg-color" style="background-color: ${c.color_code};"
-                                                      onclick="updateURL(${c.getId()})"></span>
-                                            </label>
-                                        </li>
-                                        <c:set var="previousColor" value="${c.color_code}" />
-                                    </c:if>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                        <div class="divider"></div>
+    <ul class="nav tree">
+        <c:forEach var="c" items="${cls}">
+            <li class="cb-color-fixed">
+                <label data-link>
+                    <span class="bg-color" style="background-color: ${c.color_code};"
+                        onclick="updateURL(${c.getId()})"></span>
+                </label>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
+<div class="divider"></div>
 
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <h5>SIZE</h5>
-                                <select class="selectpicker" onchange="updateURLSize(this)">
-                                    <option value="0">Vui lòng chọn</option>
-                                    <c:forEach var="sz" items="${si}">
-                                        <option value="${sz.getId()}">${sz.getName()}</option>
-                                    </c:forEach>
-                                </select>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <h5>SIZE</h5>
+        <select class="selectpicker" onchange="updateURLSize(this)">
+                <option value="0">Vui lòng chọn</option>
+                <c:forEach var="sz" items="${si}">
+                    <option value="${sz.getId()}">${sz.getName()}</option>
+                </c:forEach>
+            </select>
 
 
-                            </div>
-                        </div>
+    </div>
+</div>
                         <div class="row grp-btn1">
                             <button class="btn btn-addcart" type="submit" style="width: 480px">THÊM VÀO GIỎ HÀNG</button>
                         </div>
@@ -265,100 +256,45 @@
                         <div class="row info-validate empty-error" style="display: none;">
                             Vui lòng chọn Size
                         </div>
-
-                        <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
-                   href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="toggleProductDescription()">
-                    THÔNG TIN SẢN PHẨM
-                </a>
-            </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-             aria-labelledby="headingOne">
-            <div class="divider-1"></div>
-            <div class="panel-body" id="productDescription">
-                <h6><p>${pd.getProduct().getDescription()}</p></h6>
-                <div class="divider-1"></div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-
+               
+                <div>
+                    <div class="panel-group" id="prdDetailInfor" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#prdDetailInfor"
+                                       href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        THÔNG TIN SẢN PHẨM <span class="caret"></span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                                <div class="divider-1"></div>
+                                <div class="panel-body">
+                                    <h6><p>${pd.getProduct().getDescription()}</p>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="divider-1"></div>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
+                                     </form>
         </div>
-        <script>
-            function updateURL(colorId) {
-// Lấy productId từ trường ẩn
-                var productId = document.getElementById('productID').value;
+    </div>
+                                    <script>
+    function updateURL(colorId) {
+        // Lấy productId từ trường ẩn
+        var productId = document.getElementById('productID').value;
 
-// Cập nhật URL với colorId và productId mới
-                var newURL = 'CustomerProducts?productId=' + productId + '&colorId=' + colorId;
+        // Cập nhật URL với colorId và productId mới
+        var newURL = 'CustomerProducts?productId=' + productId + '&colorId=' + colorId;
 
-// Chuyển hướng đến URL mới
-                window.location.href = newURL;
-            }
-        </script>
-        <script>
-            window.onload = function () {
-                // Lấy sizeId từ tham số truy vấn của URL
-                var sizeId = getUrlParameter('sizeId');
-
-                // Nếu có sizeId trong URL, cập nhật option tương ứng
-                if (sizeId !== '') {
-                    var select = document.querySelector('.selectpicker');
-                    var options = select.querySelectorAll('option');
-                    for (var i = 0; i < options.length; i++) {
-                        var option = options[i];
-                        if (option.value === sizeId) {
-                            option.selected = true;
-                            break;
-                        }
-                    }
-                }
-            };
-
-            function getUrlParameter(name) {
-                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-                var results = regex.exec(location.search);
-                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-            }
-        </script>
-        <script>
-            // Định nghĩa hàm để thay đổi ảnh lớn
-function changeMainImage(imageUrl) {
-    var mainImage = document.querySelector('.main-img');
-    mainImage.src = imageUrl;
-}
-
-// Gắn sự kiện cho các button và ảnh nhỏ
-document.addEventListener('DOMContentLoaded', function() {
-    var thumbnailImages = document.querySelectorAll('.cont-item img');
-    thumbnailImages.forEach(function(thumbnailImage) {
-        thumbnailImage.addEventListener('click', function() {
-            var imageUrl = this.src;
-            changeMainImage(imageUrl);
-        });
-    });
-});
-
-        </script>
-        <script>
-            function toggleProductDescription() {
-    var descriptionElement = document.getElementById("productDescription");
-    if (descriptionElement.classList.contains("hidden")) {
-        descriptionElement.classList.remove("hidden");
-    } else {
-        descriptionElement.classList.add("hidden");
+        // Chuyển hướng đến URL mới
+        window.location.href = newURL;
     }
-}
-
-        </script>
-    </body>
+</script>
+</body>
 </html>

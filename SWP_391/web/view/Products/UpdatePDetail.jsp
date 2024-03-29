@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update Product Details</title>
+        <title>Chỉnh sửa thông tin chi tiết sản phẩm</title>
         <!-- Include Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
@@ -101,11 +101,15 @@
                         </select>
                         <span id="error-message-size" style="color: red;"></span>
                     </div>
+                    
                     <div class="mb-3">
-                        <label for="inventory" class="form-label"><span style="color: red;">*</span>Số lượng hàng
+                        <label for="inventory" class="form-label"><span style="color: red;">*</span>Nhập Số Lượng Sản Phẩm:</label>
+                        <input type="text" class="form-control" id="inventory" name="inventory" value="${pDetail.getInventory_number()}">
+                        <span id="error-message-price" style="color: red;"></span>
+                    </div>
                     <div class="mb-3">
                         <label for="image1" class="form-label"><span style="color: red;">*</span>Ảnh 1:</label>
-                        <input type="file" class="form-control" id="image1" name="image1" accept="image/*">
+                        <input type="file" class="form-control" id="image1" name="image1" accept="image/*" value="${pDetail.getImage_url_1()}">
                     </div>
                     <div class="mb-3">
                         <label for="image2" class="form-label"><span style="color: red;">*</span>Ảnh 2:</label>
@@ -184,6 +188,5 @@
                 });
             });
         </script>
-
     </body>
 </html>

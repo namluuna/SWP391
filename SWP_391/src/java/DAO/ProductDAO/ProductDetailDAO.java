@@ -356,18 +356,51 @@ public class ProductDetailDAO extends DBContext {
         }
         return null;
     }
+public ProductDetails getAllProductDetailsByProductIdAndColorId(String productId, String colorId) {
+    try {
+        String sql = "SELECT * FROM product_details WHERE product_id = ? AND color_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, productId);
+        statement.setString(2, colorId);
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()) {
+            String detailId = String.valueOf(resultSet.getInt("id"));
+            ProductsDAO productsDAO = new ProductsDAO();
+            Products product = productsDAO.selectProductByID(productId);
+            ColorsDAO colorsDAO = new ColorsDAO();
+            Colors color = colorsDAO.selectColorByID(colorId);
+            String sizeId = String.valueOf(resultSet.getInt("size_id"));
+            SizeDAO sizeDAO = new SizeDAO();
+            Sizes size = sizeDAO.selectSizeByID(sizeId);
+            String inventoryNumber = String.valueOf(resultSet.getInt("inventory_number"));
+            String imageUrl1 = resultSet.getString("image_url_1");
+            String imageUrl2 = resultSet.getString("image_url_2");
+            String imageUrl3 = resultSet.getString("image_url_3");
+            String imageUrl4 = resultSet.getString("image_url_4");
+            Timestamp createdAt = resultSet.getTimestamp("created_at");
+            Timestamp editedAt = resultSet.getTimestamp("edited_at");
+            Timestamp deletedAt = resultSet.getTimestamp("deleted_at");
+
+            return new  ProductDetails(sql, product, color, size, inventoryNumber, imageUrl1, imageUrl2, imageUrl3, imageUrl4, createdAt, editedAt, deletedAt);
+        }
+    } catch (Exception e) {
+        System.out.println("Error while fetching product details by product ID and color ID: " + e.getMessage());
+    }
+    return null;
+}
 
     public static void main(String[] args) {
          ProductDetailDAO productDetailDAO = new ProductDetailDAO();
 
         // Thay đổi các giá trị productId, colorId, và sizeId theo yêu cầu của bạn
-        String productId = "3";
-        String colorId = "4";
+        String productId = "5";
+        String colorId = "8";
         String sizeId = "1";
 
         // Gọi phương thức selectProductDetailByParams để lấy ProductDetail
-        ArrayList<Sizes> productDetail = productDetailDAO.getAllSizesByColorIDAndProductID(colorId, productId);
-        System.out.println(productDetail);
+//        ArrayList<ProductDetails> productDetail = productDetailDAO.getAllProductDetailsByProductIdAndColorId(productId, colorId);
+//        System.out.println(productDetail);
 // Sử dụng productDetail nhận được từ truy vấn để thực hiện các thao tác tiếp theo
 
     }

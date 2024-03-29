@@ -6,6 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -283,13 +284,13 @@
                             <td>${c.getProductDetail().getColor().getName()}</td>
                             <td>${c.getProductDetail().getSize().getName()}</td>
                             <td>${c.getQuantity()}</td>
-                            <td>${c.getProductDetail().getProduct().getPrice()} VND</td>
+                            <td><fmt:formatNumber type="currency" currencySymbol="VND" value="${c.getProductDetail().getProduct().getPrice()}" maxFractionDigits="0" /></td>
                         </tr>
                     </c:forEach>
 
                 </table>
                 <strong>
-                    <h1> Tổng số tiền cần thanh toán: ${total} VND</h1>
+                    <h1> Tổng số tiền cần thanh toán: <fmt:formatNumber type="currency" currencySymbol="VND" value="${total}" maxFractionDigits="0" /></h1>
                 </strong>           
 
                 <hr class="custom-hr">

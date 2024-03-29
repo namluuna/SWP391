@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Fogot password</title>
+        <title>Quên mật khẩu</title>
         <style>
             body {
                 margin: 0;
